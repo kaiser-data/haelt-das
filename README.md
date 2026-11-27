@@ -8,7 +8,7 @@
 and is someone trying to trick you?**
 **Every reason is tiered by how hard it is to fake, and a live Nebius call makes the decision.**
 
-[![Live demo](https://img.shields.io/badge/live%20demo-replay%20of%20recorded%20runs-15130f?style=for-the-badge)](https://competent-studied-tumor-informal.trycloudflare.com/?replay)
+[![Live demo](https://img.shields.io/badge/live%20demo-replay%20of%20recorded%20runs-15130f?style=for-the-badge)](https://haelt-das.martinkaiser-bln.workers.dev)
 
 ![idealo](https://img.shields.io/badge/idealo%20MCP-catalogue%20·%20offers%20·%20alternatives-ff6600)
 ![Nebius](https://img.shields.io/badge/Nebius%20Token%20Factory-Qwen3%20·%20Gemma%203%20·%20DeepSeek--V4-1d4ea8)
@@ -22,10 +22,10 @@ Agentic Hackathon Berlin (AI Agents Berlin) · 27 Nov 2026 · built in one day
 
 </div>
 
-> **Try it:** open the [live demo](https://competent-studied-tumor-informal.trycloudflare.com/?replay) and click
+> **Try it:** open the [live demo](https://haelt-das.martinkaiser-bln.workers.dev) and click
 > **„21V" drill**, then **LG OLED TV**. Each one replays a real live run (idealo, Nebius, Tavily) recorded on
 > 27 Nov 2026, sped up to about 10 seconds. The public link runs **replays only**, so no API credits are spent, and
-> it is up while the builder's laptop is on. Live checks of your own listings: [run it locally](#run-it-locally).
+> it runs on Cloudflare Workers as static files (no server, no keys). Live checks of your own listings: [run it locally](#run-it-locally).
 
 <p align="center"><img src="docs/img/architecture.svg" width="100%" alt="One listing (a link, a screenshot, the shop page via the browser extension, or a phone share) is read by a Nebius model, then checked in parallel against idealo, physics rules, look-alike searches, failure reports in three languages, the official French durability index and green-claim registries; the evidence becomes a receipt (cost per day) and a live Nebius verdict that goes back to the web app, the shop-page badge and a Supabase log."></p>
 
@@ -129,14 +129,13 @@ python3 scripts/idealo_mcp.py login          # idealo MCP OAuth (callback port 6
 ```
 
 Browser extension: `chrome://extensions` → Developer mode → *Load unpacked* → `extension/`.
-Public replay-only link: `HAELTDAS_REPLAY_ONLY=1 uvicorn app.server:app --port 8788` behind
-`cloudflared tunnel --url http://127.0.0.1:8788`.
+Public static demo: `python3 scripts/build_static.py && npx wrangler@4 deploy` (Cloudflare Workers, assets only).
 
 ## Limits
 
 - idealo Trial tier: review summaries only; per-review fake detection needs the Partner tier.
 - Life estimates are ranges, not measurements; web evidence is thin for brand-new products (then: **ASK**).
-- The public link is a Cloudflare quick tunnel to a laptop, replays only.
+- The public demo replays recorded runs (Cloudflare Workers, static); live checks run locally with your own keys.
 
 **What's next:** hosted deployment · per-review fake detection (idealo Partner tier) · more official indexes
 (EU energy label, repairability) · price-history timing ("wait a week")

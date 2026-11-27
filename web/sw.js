@@ -7,11 +7,11 @@ self.addEventListener("install", event => {
   event.waitUntil(caches.open(SHELL).then(cache => cache.addAll(SHELL_FILES)).then(() => self.skipWaiting()));
 });
 
+const MAX_OLD_SHELLS = 10;  // bound the parallel deletes; leftovers beyond this go on the next activation
+
 async function dropOldShells() {
-  // one at a time: there are only ever a handful of our own old shell versions to delete
-  for (const key of await caches.keys()) {
-    if (key.startsWith("haeltdas-shell-") && key !== SHELL) await caches.delete(key);
-  }
+  const old = (await caches.keys()).filter(k => k.startsWith("haeltdas-shell-") && k !== SHELL).slice(0, MAX_OLD_SHELLS);
+  await Promise.all(old.map(k => caches.delete(k)));
 }
 
 self.addEventListener("activate", event => {

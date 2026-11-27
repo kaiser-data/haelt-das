@@ -18,7 +18,7 @@ CONSUMABLE_CATEGORIES = ("printer", "coffee", "espresso", "capsule", "toothbrush
 CLAIM_SCHEMA = """{
  "title": str, "brand": str|null, "model": str|null,
  "category": str (short English, e.g. "cordless drill", "usb stick", "projector", "power bank", "printer", "smartwatch"),
- "price_eur": number|null, "stars": number|null, "review_count": int|null,
+ "price_eur": number|null, "condition": str|null (item condition as written, e.g. "neu", "gebraucht", "defekt - nicht funktionsfähig", "Ersatzteil"), "stars": number|null, "review_count": int|null,
  "claimed_specs": {"voltage_v": number|null, "capacity_mah": number|null, "weight_g": number|null,
                    "storage_tb": number|null, "lumen": number|null, "health_claims": [str], "other": [str]},
  "idealo_exact_query": str (brand + model for an exact catalogue search),
@@ -262,9 +262,12 @@ async def running_cost(claim, found, life):
                      "per_day": {"best": round(per_day(life_y.get("high")), 3), "mid": round(per_day(life_y.get("mid")), 3),
                                  "worst": round(per_day(life_y.get("low")), 3)},
                      "url": alts[idx - 1]["url"] if idx > 0 and idx - 1 < len(alts) else claim.get("source_url")})
+    if rows and (broken := rules.not_working(claim)):  # a broken unit has no days of use to spread the price over
+        rows[0].update(not_working=broken, life_years={"low": 0, "mid": 0, "high": 0},
+                       per_day={"best": None, "mid": None, "worst": None})
     for r in rows:
         mid = r["per_day"]["mid"]
-        r["per_month"], r["per_year"] = round(mid * 30.4, 2), round(mid * 365, 2)
+        r["per_month"], r["per_year"] = (None, None) if mid is None else (round(mid * 30.4, 2), round(mid * 365, 2))
     wears = plan.get("wears")
     if claim.get("is_clothing") and wears and rows:
         p = rows[0]["price"] or 0
@@ -369,6 +372,10 @@ async def run(inp):
                      data=fr)
 
     flags = rules.check(claim.get("claimed_specs") or {}, claim.get("price_eur"), claim.get("category", ""))
+    if (broken := rules.not_working(claim)):
+        flags.append({"severity": "high", "rule": "not_working",
+                      "text": f"The listing says \"{broken}\": this is a broken unit or a part, not a working product. "
+                              "There is no cost per day of use to compare."})
     yield _event("step", id="specs", status="warn" if flags else "done",
                  title=f"{len(flags)} spec claim(s) don't add up" if flags else "Specs plausible", data=flags)
 

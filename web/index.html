@@ -174,9 +174,14 @@ function renderReceipt(cost){
     lines.push(`<hr><div class="row big"><span>PER WEAR</span><span>${eur(me.per_wear.mid)}</span></div>`);
     lines.push(`<div class="note">range ${eur(me.per_wear.high)}–${eur(me.per_wear.low)} per wear</div>`);
   }
-  lines.push(`<hr><div class="row big"><span>PER DAY</span><span>${eur(me.per_day.mid)}</span></div>`);
-  lines.push(`<div class="row"><span>per month · per year</span><b>${eur(me.per_month)} · ${eur(me.per_year)}</b></div>`);
-  lines.push(`<div class="note">range ${eur(me.per_day.best)}–${eur(me.per_day.worst)} per day · ${esc(me.basis||"")}</div>`);
+  if (me.not_working) {
+    lines.push(`<hr><div class="row big"><span>PER DAY</span><span>n/a</span></div>`);
+    lines.push(`<div class="note">listing says "${esc(me.not_working)}": not a working product, so there are no days of use to price</div>`);
+  } else {
+    lines.push(`<hr><div class="row big"><span>PER DAY</span><span>${eur(me.per_day.mid)}</span></div>`);
+    lines.push(`<div class="row"><span>per month · per year</span><b>${eur(me.per_month)} · ${eur(me.per_year)}</b></div>`);
+    lines.push(`<div class="note">range ${eur(me.per_day.best)}–${eur(me.per_day.worst)} per day · ${esc(me.basis||"")}</div>`);
+  }
   if (alts.length){
     lines.push(`<hr><div class="row"><span><b>COMPARE</b></span><span>per day</span></div>`);
     for (const a of alts) lines.push(`<div class="row"><span><a href="${esc(a.url)}" target="_blank">${esc(a.name).slice(0,36)}</a> ${eur(a.price)}</span><b>${eur(a.per_day.mid)}</b></div>`);

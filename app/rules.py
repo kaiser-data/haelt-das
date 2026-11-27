@@ -2,6 +2,16 @@
 
 LIION_MAX_WH_PER_KG = 270  # best commercial Li-ion cells; packs with housing are lower
 
+# Listings that sell a broken unit or a part: a cost per day of use is meaningless for them.
+NOT_WORKING_TERMS = ("defekt", "nicht funktionsfähig", "funktioniert nicht", "ersatzteil", "für bastler", "bastlerware",
+                     "for parts", "not working", "spares or repair", "pour pièces", "hors service", "en panne")
+
+
+def not_working(claim: dict) -> str | None:
+    """Return the matching phrase if the listing says the item is broken or sold as parts, else None."""
+    text = " ".join(str(claim.get(k) or "") for k in ("title", "condition")).lower()
+    return next((t for t in NOT_WORKING_TERMS if t in text), None)
+
 
 def check(specs: dict, price_eur, category: str = ""):
     flags = []

@@ -8,7 +8,7 @@ import io
 import json
 import math
 
-from app import idealo, llm, rules, store, web
+from app import fr_index, idealo, llm, rules, store, web
 
 ELECTRICITY_EUR_PER_KWH = 0.37  # assumption, shown in the UI and adjustable
 # Only these product types have running consumables worth pricing; for tools, bits and chargers are not running costs.
@@ -327,7 +327,7 @@ Rules: weigh hard-to-fake evidence (independent tests, many established shops, s
 above cheap signals (star average, review count, marketing). Country of origin is NOT a signal; throwaway brands and rebrand
 cycles are. Statements about environmental harm or worker rights may ONLY repeat an official listing or a named source
 from the evidence ("listed on X"); never accuse on your own. Vague green claims without a certificate are "unproven".
-For clothing, judge cost per wear. If evidence is thin or contradictory, choose ASK and name the single missing fact that would decide it.
+For clothing, judge cost per wear. A French durability index (official, per model, 0-10) is tier A evidence. If evidence is thin or contradictory, choose ASK and name the single missing fact that would decide it.
 Reply JSON only:
 {"verdict": "BUY"|"AVOID"|"BUY_ALTERNATIVE"|"ASK", "headline": str (max 12 words),
  "confidence": "low"|"medium"|"high",
@@ -361,6 +361,12 @@ async def run(inp):
     found = await find_on_idealo(claim)
     yield _event("step", id="idealo", status="done" if found["exact"] else "warn",
                  title="Found on idealo" if found["exact"] else "Not sold by any idealo shop", data=found)
+
+    fr = fr_index.lookup(claim)
+    if fr:
+        yield _event("step", id="fr", status="done",
+                     title=f"French durability index {fr['overall']}/10 (repair {fr['repairability']}, reliability {fr['reliability']})",
+                     data=fr)
 
     flags = rules.check(claim.get("claimed_specs") or {}, claim.get("price_eur"), claim.get("category", ""))
     yield _event("step", id="specs", status="warn" if flags else "done",
@@ -417,7 +423,7 @@ async def run(inp):
 
     yield _event("step", id="verdict", status="running", title="Deciding (live Nebius call)")
     v = await verdict({"claim": public_claim, "idealo": found, "spec_flags": flags, "clone_family": clones,
-                       "responsibility": resp, "lifetime": {"reports": [{k: r.get(k) for k in ("url", "failure", "after_weeks", "component", "usage", "summary_en")}
+                       "french_durability_index": fr, "responsibility": resp, "lifetime": {"reports": [{k: r.get(k) for k in ("url", "failure", "after_weeks", "component", "usage", "summary_en")}
                                                 for r in life.get("reports", [])], "tests": life.get("tests")},
                        "cost": cost})
     if (c := calls()):

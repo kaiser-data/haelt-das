@@ -1,0 +1,21 @@
+{
+  "name": "Hält das? · What it really costs, and whether it lasts",
+  "short_name": "Hält das?",
+  "description": "Checks any product listing: cost per day, expected life, and whether someone is trying to trick you.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f4f2ee",
+  "theme_color": "#ffffff",
+  "icons": [
+    {"src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
+    {"src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"},
+    {"src": "/icons/icon-192-maskable.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable"},
+    {"src": "/icons/icon-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ],
+  "share_target": {
+    "action": "/",
+    "method": "GET",
+    "params": {"title": "title", "text": "text", "url": "url"}
+  }
+}

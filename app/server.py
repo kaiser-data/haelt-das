@@ -2,6 +2,7 @@
 import asyncio
 import json
 import logging
+import os
 import re
 from pathlib import Path
 
@@ -68,41 +69,76 @@ def _tokens(text):
     return set(re.findall(r"[a-z0-9äöüß]+", (text or "").lower()))
 
 
+REPLAY_MIN_MATCH = 0.75  # token overlap needed to reuse a recording; an edited listing must not borrow another's result
+# Public demo link: no live checks (they spend API credits); recorded examples only
+REPLAY_ONLY = os.environ.get("HAELTDAS_REPLAY_ONLY") == "1"
+
+
+def _load_recording(path):
+    try:
+        rec = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, ValueError) as e:
+        log.warning("skipping unreadable recording %s: %s", path.name, e)
+        return None
+    return rec if isinstance(rec.get("events"), list) else None
+
+
 def _find_recording(text):
-    """The saved live run whose input matches this text best (token overlap), or None."""
+    """The saved live run whose input matches this text (token overlap >= REPLAY_MIN_MATCH), or None."""
     want, best, best_score = _tokens(text), None, 0.0
     for path in SAMPLES.glob("*.json"):
-        rec = json.loads(path.read_text(encoding="utf-8"))
+        rec = _load_recording(path)
+        if rec is None:
+            continue
         inp = rec.get("input")
         have = _tokens(inp if isinstance(inp, str) else json.dumps(inp))
+        if {t for t in want if t.isdigit()} - have:  # a different price or spec is a different listing
+            continue
         score = len(want & have) / max(len(want | have), 1)
         if score > best_score:
             best, best_score = rec, score
-    return best if best_score >= 0.5 else None
+    return best if best_score >= REPLAY_MIN_MATCH else None
+
+
+def _sse(ev):
+    return f"data: {json.dumps(ev, ensure_ascii=False, default=str)}\n\n"
+
+
+async def _replay_stream(inp):
+    text = inp.get("text") if isinstance(inp, dict) else None
+    if not isinstance(text, str) or not text.strip():
+        yield _sse({"type": "error", "message": "Replay works for the example listings only (pick a chip). Links, "
+                                                "screenshots and pages need a live check."})
+    else:
+        rec = await asyncio.to_thread(_find_recording, text)
+        if rec is None:
+            yield _sse({"type": "error", "message": "No recorded run for this listing. Pick one of the examples."})
+        else:
+            original = rec["input"] if isinstance(rec["input"], str) else json.dumps(rec["input"], ensure_ascii=False)
+            yield _sse({"type": "step", "id": "replay", "status": "done",
+                        "title": f"Recorded live run (27 Nov 2026), replayed faster: {original[:90]}"})
+            for ev in rec["events"]:
+                kind = ev.get("status") if ev.get("status") == "running" else ev.get("type")
+                await asyncio.sleep(REPLAY_PACE.get(kind, 0.3))
+                yield _sse(ev)
+    yield _sse({"type": "end"})
 
 
 @app.post("/api/replay")
 async def replay(req: Request):
     """Demo recording mode: stream a saved live run (samples/batch) with the same events, at a recordable pace."""
-    inp = await req.json()
-    rec = await asyncio.to_thread(_find_recording, inp.get("text") or "")
-
-    async def stream():
-        if rec is None:
-            yield f"data: {json.dumps({'type': 'error', 'message': 'No recorded run for this input; use a live check.'})}\n\n"
-        else:
-            for ev in rec["events"]:
-                kind = ev.get("status") if ev.get("status") == "running" else ev.get("type")
-                await asyncio.sleep(REPLAY_PACE.get(kind, 0.3))
-                yield f"data: {json.dumps(ev, ensure_ascii=False, default=str)}\n\n"
-        yield "data: {\"type\": \"end\"}\n\n"
-
-    return StreamingResponse(stream(), media_type="text/event-stream",
+    try:
+        inp = await req.json()
+    except ValueError:
+        inp = None
+    return StreamingResponse(_replay_stream(inp), media_type="text/event-stream",
                              headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"})
 
 
 @app.post("/api/check")
 async def check(req: Request):
+    if REPLAY_ONLY:
+        return await replay(req)
     inp = await req.json()
 
     async def stream():

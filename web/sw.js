@@ -10,7 +10,7 @@ self.addEventListener("install", event => {
 self.addEventListener("activate", event => {
   event.waitUntil(
     caches.keys()
-      .then(keys => Promise.all(keys.filter(k => k !== SHELL).map(k => caches.delete(k))))
+      .then(keys => Promise.all(keys.filter(k => k.startsWith("haeltdas-shell-") && k !== SHELL).map(k => caches.delete(k))))
       .then(() => self.clients.claim())
   );
 });
@@ -20,7 +20,17 @@ self.addEventListener("fetch", event => {
   if (event.request.method !== "GET" || url.origin !== location.origin || url.pathname.startsWith("/api/")) return;
   if (event.request.mode === "navigate") {
     // network first, so a new version shows up at once; the cached shell only when offline
-    event.respondWith(fetch(event.request).catch(() => caches.match("/")));
+    event.respondWith(
+      fetch(event.request)
+        .then(res => {
+          if (res.ok && url.pathname === "/") {  // keep the offline copy as fresh as the last successful visit
+            const copy = res.clone();
+            event.waitUntil(caches.open(SHELL).then(cache => cache.put("/", copy)));
+          }
+          return res;
+        })
+        .catch(() => caches.match("/"))
+    );
     return;
   }
   event.respondWith(caches.match(event.request).then(hit => hit || fetch(event.request)));

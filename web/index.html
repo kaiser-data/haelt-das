@@ -106,6 +106,7 @@
   .err{color:var(--red);font-weight:600}
   .replay-note{display:none;font:600 11px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:var(--line-2);border-radius:999px;padding:4px 10px;margin-left:auto}
   body.replay .replay-note{display:inline-block}
+  body.replay header{position:sticky;top:0;z-index:5}
   .empty{color:var(--faint);font-size:14px;padding:14px 0}
   @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.receipt .line{opacity:1;transform:none}}
   /* side panel inside the browser extension: one column, no header */
@@ -130,7 +131,7 @@
   </form>
   <div class="chips">
     <button class="chip" data-q="Brushless Akkuschrauber Set 21V, Akku-Bohrschrauber Bürstenlos 2x 2000mAh Akku, 60Nm, 25+3 Drehmomentstufen, 4,7 Sterne (1.832 Bewertungen), 39,99 €, Marke: SEESII">No-name „21V“ drill · €39.99</button>
-    <button class="chip" data-q="USB Stick 2TB, USB 3.0 Speicherstick 2000GB, Metall, wasserdicht, 4,5 Sterne (920 Bewertungen), 15,99 €, Marke: KOOTION-Style generic">„2 TB“ USB stick · €15.99</button>
+    <button class="chip" data-q="USB Stick 2TB, USB 3.0 Speicherstick 2000GB, Metall, wasserdicht, 4,5 Sterne (920 Bewertungen), 15,99 €, no-name">„2 TB“ USB stick · €15.99</button>
     <button class="chip" data-q="Powerbank 50000mAh, 22,5W Schnellladung, nur 180g, 4,6 Sterne (2.410 Bewertungen), 24,99 €, Marke: generic">„50,000 mAh“ power bank · 180 g</button>
     <button class="chip" data-q="Herren T-Shirt Eco Collection, 100% Baumwolle, nachhaltig und umweltfreundlich produziert, klimaneutraler Versand, 4,3 Sterne (2.900 Bewertungen), 7,99 €, Marke: TrendWave (fiktive Demo-Marke)">„Eco“ fast-fashion T-shirt · €7.99</button>
     <button class="chip" data-q="Armedangels T-Shirt Jaames, 100% Bio-Baumwolle, GOTS zertifiziert, Fair Wear Mitglied, 39,90 €, Marke: Armedangels">GOTS T-shirt · €39.90</button>
@@ -299,7 +300,8 @@ async function run(){
   const body = pagePayload ? {page: pagePayload} : image ? {image} : (/^https?:\/\//.test(q) ? {url:q} : {text:q});
   pagePayload = null;
   try{
-    const res = await fetch(REPLAY && body.text ? "/api/replay" : "/api/check", {method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify(body)});
+    const res = await fetch(REPLAY ? "/api/replay" : "/api/check", {method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify(body)});
+    if (!res.ok) throw new Error(`Server error ${res.status}`);
     const reader = res.body.getReader(); const dec = new TextDecoder(); let buf = "";
     for(;;){
       const {value, done} = await reader.read(); if (done) break;

@@ -57,7 +57,7 @@
   .done .ico{background:var(--green)} .warn .ico{background:var(--amber)}
   .warn{color:var(--ink)}
   @keyframes spin{to{transform:rotate(360deg)}}
-  .calls{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-card);padding:4px 16px;font:12px/1.5 var(--mono);max-height:300px;overflow:auto;color:var(--muted)}
+  .calls{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-card);padding:4px 16px;font:12px/1.5 var(--mono);max-height:420px;overflow:auto;color:var(--muted)}
   .calls .c{display:grid;grid-template-columns:1fr auto;gap:10px;border-bottom:1px solid var(--line-2);padding:8px 0}
   .calls .c:last-child{border-bottom:0}
   .calls .p{color:var(--ink);font-family:var(--sans);font-size:13px;font-weight:600} .calls .m{color:var(--muted)} .calls .t{color:var(--faint);text-align:right}
@@ -67,6 +67,11 @@
   .verdict .h{font:700 28px/1.18 var(--sans);letter-spacing:-.02em;margin-top:12px;color:var(--ink);text-wrap:balance}
   .verdict .meta{font-size:14px;color:var(--ink);margin-top:8px}
   .verdict .meta b{font-weight:600;color:var(--muted)}
+  .verdict .stats{display:flex;gap:28px;flex-wrap:wrap;margin:16px 0 4px;padding-top:14px;border-top:1px solid rgba(21,19,15,.1)}
+  .verdict .stat .k{font:600 11px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .verdict .stat .n{font:700 30px/1.1 var(--sans);letter-spacing:-.02em;color:var(--ink);margin-top:2px}
+  .verdict .stat .n s{color:var(--faint);font-weight:600;text-decoration-thickness:2px}
+  .calls-sum{font:600 12px var(--sans);color:var(--ink);margin:-4px 0 8px}
   .verdict.AVOID{background:var(--red-t);border-color:#f5cdc9} .verdict.AVOID .v{color:var(--red)} .verdict.AVOID .v::before{background:var(--red)}
   .verdict.BUY{background:var(--green-t);border-color:#c5e6d4} .verdict.BUY .v{color:var(--green)} .verdict.BUY .v::before{background:var(--green)}
   .verdict.BUY_ALTERNATIVE{background:var(--blue-t);border-color:#cddbf3} .verdict.BUY_ALTERNATIVE .v{color:var(--blue)} .verdict.BUY_ALTERNATIVE .v::before{background:var(--blue)}
@@ -145,6 +150,7 @@
       <h3>Live analysis</h3>
       <div class="ticker" id="ticker"><div class="empty">Waiting for a product…</div></div>
       <h3 style="margin-top:22px">Nebius Token Factory calls</h3>
+      <div class="calls-sum" id="calls-sum"></div>
       <div class="calls" id="calls">no calls yet</div>
     </section>
     <section>
@@ -184,6 +190,7 @@ function stepEl(ev){
   el.innerHTML = `<div class="ico">${ico}</div><div>${esc(ev.title)}</div>`;
 }
 let nCalls = 0;
+const callTotals = {tokens: 0, ms: 0, models: new Set()};
 function addCalls(calls){
   if (!nCalls) $("#calls").innerHTML = "";
   for (const c of calls){
@@ -191,8 +198,12 @@ function addCalls(calls){
     const d = document.createElement("div"); d.className = "c";
     d.innerHTML = `<div><span class="p">${esc(c.purpose)}</span><br><span class="m">${esc(c.model)}</span></div>
       <div class="t">${c.ms} ms<br>${c.prompt_tokens ?? "?"}→${c.completion_tokens ?? "?"} tok</div>`;
-    $("#calls").appendChild(d); $("#calls").scrollTop = 1e9;
+    $("#calls").appendChild(d);
+    callTotals.tokens += (c.prompt_tokens || 0) + (c.completion_tokens || 0);
+    callTotals.ms += c.ms || 0;
+    if (c.model) callTotals.models.add(c.model);
   }
+  $("#calls-sum").textContent = `${nCalls} live calls · ${callTotals.models.size} models · ${(callTotals.tokens / 1000).toFixed(1)}k tokens · ${Math.round(callTotals.ms / 1000)} s model time`;
 }
 
 const state = {};
@@ -242,6 +253,7 @@ function onStep(ev){
   stepEl(ev);
   if (ev.status === "running") return;
   const d = ev.data;
+  if (ev.id === "claim" && d) state.claim = d;
   if (ev.id === "condition" && d)
     card(`<h3>Not a working product</h3><div class="flag high">${esc(d.text)}</div>`);
   if (ev.id === "specs" && d?.length)
@@ -271,13 +283,23 @@ function onStep(ev){
   if (ev.id === "cost") { renderReceipt(d); window.__perDay = d?.rows?.[0]?.per_day?.mid ?? null; }
 }
 
+function heroStats(v){
+  const shown = Number(state.claim?.stars), trusted = Number(v.trust_adjusted_stars);
+  const out = [];
+  if (shown && trusted) out.push(`<div class="stat"><div class="k">Rating</div><div class="n"><s>${shown.toFixed(1)}★</s> → ${trusted.toFixed(1)}★</div></div>`);
+  if (state.claim?.price_eur != null) out.push(`<div class="stat"><div class="k">Sticker price</div><div class="n">${eur(state.claim.price_eur)}</div></div>`);
+  if (window.__perDay != null) out.push(`<div class="stat"><div class="k">Real cost per day</div><div class="n">${eur(window.__perDay)}</div></div>`);
+  return out.length ? `<div class="stats">${out.join("")}</div>` : "";
+}
+
 function onVerdict(v){
   const el = $("#verdict");
   el.className = "verdict " + v.verdict;
   el.innerHTML = `<div class="v" data-label="${esc(v.verdict.replace("_"," "))}">confidence ${esc(v.confidence)}${v.trust_adjusted_stars ? ` · trust-adjusted ${esc(v.trust_adjusted_stars)}★` : ""}</div>
     <div class="h">${esc(v.headline)}</div>
     ${v.better_alternative ? `<div class="meta"><b>Better</b> ${esc(v.better_alternative)}</div>` : ""}
-    ${v.missing_fact ? `<div class="meta"><b>What would change my mind</b> ${esc(v.missing_fact)}</div>` : ""}`;
+    ${v.missing_fact ? `<div class="meta"><b>What would change my mind</b> ${esc(v.missing_fact)}</div>` : ""}
+    ${heroStats(v)}`;
   el.style.display = "block";
   if (window.parent !== window) window.parent.postMessage({type: "haeltdas-result", verdict: v.verdict, perDay: window.__perDay}, "*");
   const rs = (v.reasons||[]).map(r => `<div class="reason"><div class="tier t${esc(r.tier)}">${esc(r.tier)}</div><div>${esc(r.text)} ${r.url ? `<a href="${esc(r.url)}" target="_blank">source</a>` : ""}</div></div>`).join("");
@@ -305,6 +327,7 @@ async function run(){
   $("#ticker").innerHTML = ""; $("#cards").innerHTML = ""; $("#calls").innerHTML = "no calls yet";
   $("#verdict").style.display = "none"; $("#receipt").style.display = "none";
   for (const k in steps) delete steps[k]; nCalls = 0;
+  callTotals.tokens = 0; callTotals.ms = 0; callTotals.models.clear(); $("#calls-sum").textContent = ""; state.claim = null;
   const body = pagePayload ? {page: pagePayload} : image ? {image} : (/^https?:\/\//.test(q) ? {url:q} : {text:q});
   pagePayload = null;
   try{

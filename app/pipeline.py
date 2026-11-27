@@ -313,6 +313,12 @@ async def responsibility(claim):
             f"Brand: {brand}\nSnippets: " + json.dumps(snippets, ensure_ascii=False)[:7000],
             purpose="certificate + official red-flag check")
     judged["flags"] = [f for f in judged.get("flags", []) if f.get("listed")]
+    merged = {}  # one row per certificate; confirmed wins if any snippet confirms it
+    for c in judged.get("certs", []):
+        k = (c.get("certificate") or "").strip().lower()
+        if k and (k not in merged or (c.get("confirmed") and not merged[k].get("confirmed"))):
+            merged[k] = c
+    judged["certs"] = list(merged.values())
     return {"claims": claims, **judged}
 
 

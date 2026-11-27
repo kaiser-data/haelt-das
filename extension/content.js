@@ -2,18 +2,29 @@
 (() => {
   if (window.__haeltdas) return; window.__haeltdas = true;
 
+  // Finds the first schema.org Product in a parsed JSON-LD value (plain object, array, or @graph).
+  function findProduct(o) {
+    if (!o || typeof o !== "object") return null;
+    if (Array.isArray(o)) {
+      for (const x of o) { const r = findProduct(x); if (r) return r; }
+      return null;
+    }
+    const types = [].concat(o["@type"] || []).map(String);
+    if (types.includes("Product")) return o;
+    return findProduct(o["@graph"]);
+  }
+
   function jsonLdProduct() {
     for (const s of document.querySelectorAll('script[type="application/ld+json"]')) {
+      let data;
       try {
-        const walk = o => {
-          if (!o || typeof o !== "object") return null;
-          if (Array.isArray(o)) { for (const x of o) { const r = walk(x); if (r) return r; } return null; }
-          const t = [].concat(o["@type"] || []).map(String);
-          if (t.includes("Product")) return o;
-          return walk(o["@graph"]) || null;
-        };
-        const p = walk(JSON.parse(s.textContent)); if (p) return p;
-      } catch (e) { /* malformed JSON-LD on many shops; try the next block */ }
+        data = JSON.parse(s.textContent);
+      } catch (e) {
+        console.debug("Hält das? skipping malformed JSON-LD block", e.message);  // common on shop pages
+        continue;
+      }
+      const p = findProduct(data);
+      if (p) return p;
     }
     return null;
   }
@@ -40,7 +51,7 @@
     };
   }
 
-  const looksLikeProduct = () => !!jsonLdProduct() || meta("og:type") === "product" || !!document.querySelector("#productTitle");
+  const looksLikeProduct = () => Boolean(jsonLdProduct()) || meta("og:type") === "product" || Boolean(document.querySelector("#productTitle"));
   if (!looksLikeProduct()) return;
 
   const host = document.createElement("div");
@@ -57,7 +68,12 @@
   btn.addEventListener("click", () => {
     label.textContent = "checking…";
     let page;
-    try { page = grab(); } catch (e) { page = { url: location.href, title: document.title, text: document.body.innerText.slice(0, 6000) }; }
+    try {
+      page = grab();
+    } catch (e) {
+      console.warn("Hält das? structured grab failed, sending page text instead", e);
+      page = { url: location.href, title: document.title, text: document.body.innerText.slice(0, 6000) };
+    }
     chrome.runtime.sendMessage({ type: "haeltdas-check", page }).catch(e => { label.textContent = "reload page"; console.warn("Hält das?", e); });
   });
   chrome.runtime.onMessage.addListener(msg => {

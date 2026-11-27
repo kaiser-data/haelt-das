@@ -1,0 +1,9 @@
+// Hält das? public demo: static assets only (the page replays recorded live runs in the browser).
+// No Worker script, no bindings, no secrets. Build first: python3 scripts/build_static.py
+{
+  "name": "haelt-das",
+  "compatibility_date": "2026-11-27",
+  "assets": {
+    "directory": "./dist"
+  }
+}

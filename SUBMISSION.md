@@ -65,12 +65,15 @@ Every call goes through `app/llm.py` and appears in the UI's call log (model, la
   code* (the server-side diagnostics line) → we moved the whole app (pipeline, store, server) to `logging`; then
   1 Low *logging.basicConfig outside `__main__`* → only the `app.*` logger is configured, the root logger is left to
   whoever imports us. Sequence on PR #3: **6 → 2 → 1 → 1 → 0** ✅, each step a cause fixed, nothing deleted.
+  PR #9 (demo replay + installable app) showed the same pattern twice more: 4 issues → fixed; then Norma flagged our
+  fix for its *unbounded `Promise.all`* rule as *sequential await in a loop*. Resolution: a bounded `Promise.all`
+  (at most 10 of our own old caches). 4 → 1 → 0 ✅. All 9 PRs were merged only after a clean Norma check.
 - **What we deliberately left:** (1) The pre-existing issues Norma lists in the files we touched (7 on the last PR
   check, from the baseline scan). Our rule for the day: a PR may not *introduce* an issue; old ones are fixed when
   we touch their cause (e.g. the old `print()` in `app/store.py` went with the logging fix), not mass-edited for
   score. (2) A risk we accept by design: untrusted web text (search snippets, listing pages) goes into model
   prompts in `app/pipeline.py` / `app/web.py`. Reading that text is the product's job. Mitigations: JSON-only
-  outputs, no model can call tools or act, every reason must cite a URL a human can open, the UI escapes all
+  outputs, no model can call tools or act, reasons cite a URL a human can open wherever a source exists, the UI escapes all
   model output, and extension diagnostics are kept out of prompts. Norma's Security area scores 100 %.
 - **Consistency example:** the two agents disagreed on missing numbers. Grok's PR #5 filled a missing wear count
   with 1 (`wears.get(k) or 1`), so an empty estimate showed the full price as "cost per wear". The repo's rule,
@@ -86,4 +89,11 @@ self-declared spare-part fields sit at the legal minimum for every model and car
 
 ## Honest limits
 idealo Trial tier (no per-review data, so no per-review fake detection yet); life estimates are ranges; web evidence is
-thin for brand-new products, where the agent answers ASK. AI voice in the video (Qwen3-TTS); footage is a real recording.
+thin for brand-new products, where the agent answers ASK. Demo video: live runs recorded on 27 Nov, replayed faster through
+the same event stream (`?replay`, labelled on screen and in the first step); narrated by the builder.
+
+## Try it
+- Public demo link (Cloudflare Tunnel, replay of the recorded runs only, so no API credits are spent; works while the
+  builder's laptop is on): <https://competent-studied-tumor-informal.trycloudflare.com/?replay>
+- Installable app (PWA): "Install" in Chrome; on Android, share any listing link into it.
+- Run locally with live checks: `.venv/bin/uvicorn app.server:app --port 8787`; `pytest -v` runs the 23 offline tests.

@@ -6,9 +6,12 @@ import asyncio
 import base64
 import io
 import json
+import logging
 import math
 
 from app import fr_index, idealo, llm, rules, store, web
+
+log = logging.getLogger(__name__)
 
 ELECTRICITY_EUR_PER_KWH = 0.37  # assumption, shown in the UI and adjustable
 # Only these product types have running consumables worth pricing; for tools, bits and chargers are not running costs.
@@ -48,7 +51,10 @@ async def understand(inp):
         return claim
     page = None
     if inp.get("page"):  # from the browser extension
-        page = inp["page"]
+        diag = {k: inp["page"][k] for k in ("jsonld_skipped", "grab_error") if inp["page"].get(k)}
+        if diag:  # extension diagnostics belong in the server log, not in the model prompt
+            log.info("extension diagnostics for %s: %s", inp["page"].get("url"), diag)
+        page = {k: v for k, v in inp["page"].items() if k not in ("jsonld_skipped", "grab_error")}
         text = json.dumps(page, ensure_ascii=False)[:12000]
         img = (page.get("images") or [None])[0]
     elif inp.get("url"):

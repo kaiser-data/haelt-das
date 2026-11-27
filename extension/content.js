@@ -2,18 +2,32 @@
 (() => {
   if (window.__haeltdas) return; window.__haeltdas = true;
 
+  // Finds the first schema.org Product in a parsed JSON-LD value (plain object, array, or @graph).
+  function findProduct(o) {
+    if (!o || typeof o !== "object") return null;
+    if (Array.isArray(o)) {
+      for (const x of o) { const r = findProduct(x); if (r) return r; }
+      return null;
+    }
+    const types = [].concat(o["@type"] || []).map(String);
+    if (types.includes("Product")) return o;
+    return findProduct(o["@graph"]);
+  }
+
+  // Malformed JSON-LD is common on shop pages: each skipped block's reason travels with the page payload.
+  const jsonLdSkipped = [];
+
   function jsonLdProduct() {
     for (const s of document.querySelectorAll('script[type="application/ld+json"]')) {
+      let data;
       try {
-        const walk = o => {
-          if (!o || typeof o !== "object") return null;
-          if (Array.isArray(o)) { for (const x of o) { const r = walk(x); if (r) return r; } return null; }
-          const t = [].concat(o["@type"] || []).map(String);
-          if (t.includes("Product")) return o;
-          return walk(o["@graph"]) || null;
-        };
-        const p = walk(JSON.parse(s.textContent)); if (p) return p;
-      } catch (e) { /* malformed JSON-LD on many shops; try the next block */ }
+        data = JSON.parse(s.textContent);
+      } catch (e) {
+        if (jsonLdSkipped.length < 5) jsonLdSkipped.push(e.message);
+        continue;
+      }
+      const p = findProduct(data);
+      if (p) return p;
     }
     return null;
   }
@@ -37,10 +51,11 @@
       description: (p.description || txt("#feature-bullets") || "").slice(0, 2000),
       images: [].concat(p.image || meta("og:image") || []).map(i => (typeof i === "object" ? i.url : i)).filter(Boolean).slice(0, 3),
       text: document.body.innerText.replace(/\s+\n/g, "\n").slice(0, 6000),
+      jsonld_skipped: jsonLdSkipped.slice(),
     };
   }
 
-  const looksLikeProduct = () => !!jsonLdProduct() || meta("og:type") === "product" || !!document.querySelector("#productTitle");
+  const looksLikeProduct = () => Boolean(jsonLdProduct()) || meta("og:type") === "product" || Boolean(document.querySelector("#productTitle"));
   if (!looksLikeProduct()) return;
 
   const host = document.createElement("div");
@@ -57,7 +72,12 @@
   btn.addEventListener("click", () => {
     label.textContent = "checking…";
     let page;
-    try { page = grab(); } catch (e) { page = { url: location.href, title: document.title, text: document.body.innerText.slice(0, 6000) }; }
+    try {
+      page = grab();
+    } catch (e) {
+      page = { url: location.href, title: document.title, text: document.body.innerText.slice(0, 6000),
+               grab_error: String(e?.message || e) };  // the server logs it; the check still runs on the page text
+    }
     chrome.runtime.sendMessage({ type: "haeltdas-check", page }).catch(e => { label.textContent = "reload page"; console.warn("Hält das?", e); });
   });
   chrome.runtime.onMessage.addListener(msg => {

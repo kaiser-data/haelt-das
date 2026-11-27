@@ -57,7 +57,11 @@
   .done .ico{background:var(--green)} .warn .ico{background:var(--amber)}
   .warn{color:var(--ink)}
   @keyframes spin{to{transform:rotate(360deg)}}
-  .calls{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-card);padding:4px 16px;font:12px/1.5 var(--mono);max-height:300px;overflow:auto;color:var(--muted)}
+  .callsum{font:600 12px var(--mono);color:var(--ink);margin:-4px 0 8px}
+  .verdict .vs{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:14px;font:600 14px var(--sans);color:var(--muted)}
+  .verdict .vs b{display:block;font:800 26px/1.1 var(--sans);color:var(--ink);letter-spacing:-.02em}
+  .verdict .vs s{color:var(--faint);font-weight:600}
+  .calls{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-card);padding:4px 16px;font:12px/1.5 var(--mono);max-height:480px;overflow:auto;color:var(--muted)}
   .calls .c{display:grid;grid-template-columns:1fr auto;gap:10px;border-bottom:1px solid var(--line-2);padding:8px 0}
   .calls .c:last-child{border-bottom:0}
   .calls .p{color:var(--ink);font-family:var(--sans);font-size:13px;font-weight:600} .calls .m{color:var(--muted)} .calls .t{color:var(--faint);text-align:right}
@@ -145,6 +149,7 @@
       <h3>Live analysis</h3>
       <div class="ticker" id="ticker"><div class="empty">Waiting for a product…</div></div>
       <h3 style="margin-top:22px">Nebius Token Factory calls</h3>
+      <div class="callsum" id="callsum"></div>
       <div class="calls" id="calls">no calls yet</div>
     </section>
     <section>
@@ -184,10 +189,13 @@ function stepEl(ev){
   el.innerHTML = `<div class="ico">${ico}</div><div>${esc(ev.title)}</div>`;
 }
 let nCalls = 0;
+const callTot = {ms: 0, tok: 0, models: new Set()};
 function addCalls(calls){
   if (!nCalls) $("#calls").innerHTML = "";
   for (const c of calls){
     nCalls++;
+    callTot.ms += c.ms || 0; callTot.tok += (c.prompt_tokens || 0) + (c.completion_tokens || 0); callTot.models.add(c.model);
+    $("#callsum").textContent = `${nCalls} live calls · ${callTot.models.size} models · ${(callTot.tok/1000).toFixed(1)}k tokens · ${Math.round(callTot.ms/1000)} s model time`;
     const d = document.createElement("div"); d.className = "c";
     d.innerHTML = `<div><span class="p">${esc(c.purpose)}</span><br><span class="m">${esc(c.model)}</span></div>
       <div class="t">${c.ms} ms<br>${c.prompt_tokens ?? "?"}→${c.completion_tokens ?? "?"} tok</div>`;
@@ -196,6 +204,19 @@ function addCalls(calls){
 }
 
 const state = {};
+// life in years → readable: weeks under 3 months, months under 2 years
+function fmtLife(y){
+  if (y == null) return "?";
+  if (y < 0.25) return Math.max(1, Math.round(y * 52)) + " wk";
+  if (y < 2) return Math.round(y * 12) + " mo";
+  return (Math.round(y * 10) / 10) + " yrs";
+}
+// Tier A means hard to fake (lab tests, official registers). A video, marketplace page or forum post is at most B.
+const USER_MADE = /(^|\.)(youtube\.com|youtu\.be|alibaba\.com|aliexpress\.com|amazon\.[a-z.]+|temu\.com|ebay\.[a-z.]+|reddit\.com|facebook\.com|tiktok\.com|instagram\.com|trustpilot\.com)$/;
+function tierOf(r){
+  if (r.tier !== "A") return r.tier;
+  try { return USER_MADE.test(new URL(r.url).hostname) ? "B" : "A"; } catch { return "B"; }
+}
 function card(html){ const d = document.createElement("div"); d.className = "card"; d.innerHTML = html; $("#cards").appendChild(d); return d; }
 
 function renderReceipt(cost){
@@ -214,7 +235,7 @@ function renderReceipt(cost){
   lines.push(`<div class="row"><span>${esc(me.name).slice(0,38)}</span><b>${eur(me.price)}</b></div>`);
   for (const c of cost.consumables || []) lines.push(`<div class="row"><span>+ ${esc(c.name)} / year</span><b>${eur(c.per_year)}</b></div>`);
   if (cost.energy_eur_year) lines.push(`<div class="row"><span>+ electricity / year</span><b>${eur(cost.energy_eur_year)}</b></div>`);
-  if (!me.not_working) lines.push(`<div class="row"><span>expected life</span><b>${me.life_years.low}–${me.life_years.high} yrs</b></div>`);
+  if (!me.not_working) lines.push(`<div class="row"><span>expected life</span><b>${fmtLife(me.life_years.mid ?? me.life_years.low)} <span style="font-weight:400">(${fmtLife(me.life_years.low)}–${fmtLife(me.life_years.high)})</span></b></div>`);
   if (me.per_wear) {
     lines.push(`<div class="row"><span>expected wears</span><b>${me.wears.low}–${me.wears.high}</b></div>`);
     lines.push(`<hr><div class="row big"><span>PER WEAR</span><span>${eur(me.per_wear.mid)}</span></div>`);
@@ -268,7 +289,19 @@ function onStep(ev){
   }
   if (ev.id === "fr" && d)
     card(`<h3>Official French durability index</h3><div class="row" style="display:flex;gap:18px;align-items:baseline"><span style="font:800 34px var(--sans)">${d.overall}</span><span>/10 · repairability <b>${d.repairability}</b> · reliability <b>${d.reliability}</b></span></div><div class="report">${esc(d.model)} · filed by ${esc(d.filed_by)} · ${esc(d.date||"")} ${d.detail_url ? `<a href="${esc(d.detail_url)}" target="_blank">scoring sheet</a>` : ""}</div><div class="note" style="font-size:12px;color:var(--muted)">${esc(d.source)}</div>`);
-  if (ev.id === "cost") { renderReceipt(d); window.__perDay = d?.rows?.[0]?.per_day?.mid ?? null; }
+  if (ev.id === "claim" && d) state.stars = d.stars;
+  if (ev.id === "cost") { state.alts = (d?.rows || []).slice(1).filter(a => a.per_day?.mid); renderReceipt(d); window.__perDay = d?.rows?.[0]?.per_day?.mid ?? null; }
+}
+
+function verdictStats(v){
+  const out = [];
+  if (state.stars && v.trust_adjusted_stars && Number(v.trust_adjusted_stars) < Number(state.stars) - 0.2)
+    out.push(`<div><b><s>${esc(state.stars)}★</s> → ${esc(v.trust_adjusted_stars)}★</b>shown → trust-adjusted rating</div>`);
+  const me = window.__perDay, alts = state.alts || [];
+  const best = alts.reduce((m, a) => (!m || a.per_day.mid < m.per_day.mid) ? a : m, null);
+  if (me && best && me / best.per_day.mid >= 1.5)
+    out.push(`<div><b>${Math.round(me / best.per_day.mid)}× more per day</b>than ${esc(best.name)} (${eur(me)} vs ${eur(best.per_day.mid)})</div>`);
+  return out.length ? `<div class="vs">${out.join("")}</div>` : "";
 }
 
 function onVerdict(v){
@@ -276,11 +309,12 @@ function onVerdict(v){
   el.className = "verdict " + v.verdict;
   el.innerHTML = `<div class="v" data-label="${esc(v.verdict.replace("_"," "))}">confidence ${esc(v.confidence)}${v.trust_adjusted_stars ? ` · trust-adjusted ${esc(v.trust_adjusted_stars)}★` : ""}</div>
     <div class="h">${esc(v.headline)}</div>
+    ${verdictStats(v)}
     ${v.better_alternative ? `<div class="meta"><b>Better</b> ${esc(v.better_alternative)}</div>` : ""}
     ${v.missing_fact ? `<div class="meta"><b>What would change my mind</b> ${esc(v.missing_fact)}</div>` : ""}`;
   el.style.display = "block";
   if (window.parent !== window) window.parent.postMessage({type: "haeltdas-result", verdict: v.verdict, perDay: window.__perDay}, "*");
-  const rs = (v.reasons||[]).map(r => `<div class="reason"><div class="tier t${esc(r.tier)}">${esc(r.tier)}</div><div>${esc(r.text)} ${r.url ? `<a href="${esc(r.url)}" target="_blank">source</a>` : ""}</div></div>`).join("");
+  const rs = (v.reasons||[]).map(r => `<div class="reason"><div class="tier t${esc(tierOf(r))}">${esc(tierOf(r))}</div><div>${esc(r.text)} ${r.url ? `<a href="${esc(r.url)}" target="_blank">source</a>` : ""}</div></div>`).join("");
   const c = card(`<h3>Why · tier A = hard to fake, C = cheap signal</h3>${rs}`);
   $("#cards").prepend(c);
 }
@@ -302,7 +336,7 @@ async function run(){
   const q = $("#q").value.trim();
   if (!q && !image && !pagePayload) return;
   $("#go").disabled = true;
-  $("#ticker").innerHTML = ""; $("#cards").innerHTML = ""; $("#calls").innerHTML = "no calls yet";
+  $("#ticker").innerHTML = ""; $("#cards").innerHTML = ""; $("#calls").innerHTML = "no calls yet"; $("#callsum").textContent = ""; nCalls = 0; callTot.ms = 0; callTot.tok = 0; callTot.models.clear(); state.stars = null; state.alts = [];
   $("#verdict").style.display = "none"; $("#receipt").style.display = "none";
   for (const k in steps) delete steps[k]; nCalls = 0;
   const body = pagePayload ? {page: pagePayload} : image ? {image} : (/^https?:\/\//.test(q) ? {url:q} : {text:q});

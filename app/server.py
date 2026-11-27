@@ -14,7 +14,7 @@ from fastapi import FastAPI, HTTPException, Request, status  # noqa: E402
 from fastapi.middleware.cors import CORSMiddleware  # noqa: E402
 from fastapi.responses import FileResponse, StreamingResponse  # noqa: E402
 
-from app import pipeline  # noqa: E402
+from app import agent_ready, pipeline  # noqa: E402
 
 log = logging.getLogger("app.server")
 
@@ -37,11 +37,16 @@ SAMPLES = Path(__file__).resolve().parent.parent / "samples" / "batch"
 REPLAY_PACE = {"running": 0.35, "step": 0.7, "calls": 0.25, "verdict": 0.9}
 app = FastAPI(title="Hält das?")
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
+app.include_router(agent_ready.router)  # robots.txt, sitemap, llms.txt, API catalog, agent skills
 
 
+@app.head("/", include_in_schema=False)
 @app.get("/", status_code=status.HTTP_200_OK, summary="The web app")
-async def index():
-    return FileResponse(WEB / "index.html")
+async def index(req: Request):
+    """The web app, or its markdown overview when the client prefers text/markdown (agents)."""
+    if agent_ready.wants_markdown(req):
+        return agent_ready.markdown_response(req)
+    return FileResponse(WEB / "index.html", headers={"Vary": "Accept", "Link": agent_ready.LINK_HEADER})
 
 
 # Installable app (PWA): manifest with a share target, service worker at the root scope, icons
@@ -124,7 +129,21 @@ async def _replay_stream(inp):
     yield _sse({"type": "end"})
 
 
-@app.post("/api/replay", status_code=status.HTTP_200_OK, summary="Replay a recorded live run as SSE")
+CHECK_OPENAPI = {
+    "requestBody": {"required": True, "content": {"application/json": {"schema": {
+        "type": "object",
+        "description": "One of text, url or image.",
+        "properties": {"text": {"type": "string", "description": "Listing text"},
+                       "url": {"type": "string", "format": "uri", "description": "Product page URL"},
+                       "image": {"type": "string", "description": "Screenshot as a data: URL"}}}}}},
+    "responses": {"200": {"description": "Server-Sent Events; JSON events with a 'type' "
+                                         "(step, calls, verdict, saved, error), ending with {\"type\": \"end\"}",
+                          "content": {"text/event-stream": {"schema": {"type": "string"}}}}},
+}
+
+
+@app.post("/api/replay", status_code=status.HTTP_200_OK, summary="Replay a recorded live run as SSE",
+          openapi_extra=CHECK_OPENAPI)
 async def replay(req: Request):
     """Demo recording mode: stream a saved live run (samples/batch) with the same events, at a recordable pace."""
     try:
@@ -135,7 +154,8 @@ async def replay(req: Request):
                              headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"})
 
 
-@app.post("/api/check", status_code=status.HTTP_200_OK, summary="Check a listing live, streamed as SSE")
+@app.post("/api/check", status_code=status.HTTP_200_OK, summary="Check a listing live, streamed as SSE",
+          openapi_extra=CHECK_OPENAPI)
 async def check(req: Request):
     if REPLAY_ONLY:
         return await replay(req)

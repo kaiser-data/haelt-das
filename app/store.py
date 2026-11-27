@@ -1,7 +1,10 @@
 """Optional persistence to Supabase (PostgREST). Active only when SUPABASE_URL and SUPABASE_SERVICE_KEY are set."""
+import logging
 import os
 
 import httpx
+
+log = logging.getLogger(__name__)
 
 _client = httpx.AsyncClient(timeout=20)
 
@@ -33,5 +36,5 @@ async def save_check(inp, claim, found, flags, clones, life, cost, verdict, call
         r.raise_for_status()
         return r.json()[0]["id"]
     except Exception as e:  # noqa: BLE001 - a storage outage must never break a live check
-        print("supabase save failed:", e)
+        log.warning("supabase save failed: %s", e)
         return None

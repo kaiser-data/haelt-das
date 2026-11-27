@@ -47,3 +47,15 @@ def test_alternative_uses_the_idealo_price(monkeypatch):
     rows = run_cost(monkeypatch, {"title": "Akkuschrauber", "category": "cordless drill"}, plan, found=found)["rows"]
     assert rows[1]["price"] == 89.0
     assert rows[1]["per_day"]["mid"] < rows[0]["per_day"]["mid"]  # dearer up front, cheaper per day
+
+
+def test_tshirt_gets_a_cost_per_wear(monkeypatch):
+    plan = {"items": [{"name": "TrendWave Eco T-Shirt", "price_eur": 19.99, "life_years": {"low": 1, "mid": 2, "high": 3}}],
+            "wears": {"low": 20, "mid": 40, "high": 80}}
+    row = run_cost(monkeypatch, {"title": "TrendWave Eco T-Shirt", "is_clothing": True}, plan)["rows"][0]
+    assert row["per_wear"] == {"low": 1.0, "mid": 0.5, "high": 0.25}
+
+
+def test_non_clothing_never_gets_a_per_wear_line(monkeypatch):
+    row = run_cost(monkeypatch, {"title": "Akkuschrauber"}, {**PLAN, "wears": {"low": 1, "mid": 1, "high": 1}})["rows"][0]
+    assert "per_wear" not in row

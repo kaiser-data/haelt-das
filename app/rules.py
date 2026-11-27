@@ -99,3 +99,66 @@ def green_claims(claims, certifications):
         out.append({"claim": c, "vague": vague,
                     "status": "backed by a named certificate" if certs else ("unproven" if vague else "specific")})
     return out
+
+
+# ---- cost and evidence hygiene (deterministic, applied around the model calls) ----
+
+# Categories whose running costs can legitimately exceed the product price every year (ink, capsules).
+HIGH_RUNNING_COST = ("printer", "coffee", "espresso", "capsule")
+# Accessories a buyer may add, not parts the product needs to keep working.
+ACCESSORY_WORDS = re.compile(r"\b(bits?|bohrer|aufs[aä]tze?|zubeh[oö]r|accessor(y|ies)|attachments?|cases?|tasche|koffer)\b",
+                             re.IGNORECASE)
+
+
+def is_accessory(name: str) -> bool:
+    """True for add-ons (drill bits, cases) that must not count as running costs."""
+    return bool(ACCESSORY_WORDS.search(name or ""))
+
+
+def consumables_cap(price_eur, category: str = "") -> float:
+    """Upper limit for consumables per year: 3x the price for ink/capsule machines, else 1x the price."""
+    price = float(price_eur or 0)
+    factor = 3 if any(k in (category or "").lower() for k in HIGH_RUNNING_COST) else 1
+    return factor * price
+
+
+def life_from_failures(life_years: dict, failure_weeks: list) -> dict:
+    """Reported failures pull the whole life range down: low to the earliest failure, mid to 4x and high to 12x the
+    latest reported failure (at least one year), so "6 years" never sits next to "breaks after weeks"."""
+    weeks = [float(w) for w in failure_weeks if w]
+    if not weeks:
+        return dict(life_years)
+    out = dict(life_years)
+    out["low"] = round(min(float(out.get("low") or 99), min(weeks) / 52), 2)
+    out["mid"] = round(min(float(out.get("mid") or 99), max(weeks) / 52 * 4), 2)
+    out["high"] = round(min(float(out.get("high") or 99), max(1.0, max(weeks) / 52 * 12)), 2)
+    out["mid"] = max(out["mid"], out["low"])
+    out["high"] = max(out["high"], out["mid"])
+    return out
+
+
+def dedupe_alternatives(alternatives: list) -> list:
+    """One entry per model (name normalised), the cheapest offer, original order kept."""
+    best = {}
+    for a in alternatives or []:
+        key = re.sub(r"[^a-z0-9]", "", str(a.get("name", "")).lower())
+        price = a.get("price") if isinstance(a.get("price"), (int, float)) else math.inf
+        if key not in best or price < best[key][1]:
+            best[key] = (a, price)
+    keep = {id(v[0]) for v in best.values()}
+    return [a for a in alternatives or [] if id(a) in keep]
+
+
+# Videos, marketplaces and forums are user-made: useful, but anyone can write them. At most tier B.
+USER_MADE_HOSTS = re.compile(r"(^|\.)(youtube\.com|youtu\.be|alibaba\.com|aliexpress\.com|amazon\.[a-z.]+|temu\.com|"
+                             r"ebay\.[a-z.]+|reddit\.com|facebook\.com|tiktok\.com|instagram\.com|trustpilot\.com)$")
+
+
+def strict_tier(reason: dict) -> dict:
+    """Tier A is reserved for evidence that is hard to fake; a tier-A reason from a user-made source becomes B."""
+    if not isinstance(reason, dict) or reason.get("tier") != "A":
+        return reason
+    host = re.sub(r"^https?://", "", str(reason.get("url") or "")).split("/")[0].split(":")[0].lower()
+    if not host or USER_MADE_HOSTS.search(host):
+        return {**reason, "tier": "B", "tier_note": "user-made or unlinked source: at most tier B"}
+    return reason

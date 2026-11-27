@@ -16,7 +16,7 @@ and is someone trying to trick you?**
 ![Norma](https://img.shields.io/badge/Norma-GitHub%20App%20·%20MCP-127a4b)
 ![FastAPI](https://img.shields.io/badge/FastAPI-SSE%20streaming-009688?logo=fastapi&logoColor=white)
 ![Supabase](https://img.shields.io/badge/Supabase-check%20log-3ecf8e?logo=supabase&logoColor=white)
-![tests](https://img.shields.io/badge/tests-23%20passing-127a4b)
+![tests](https://img.shields.io/badge/tests-36%20passing-127a4b)
 
 Agentic Hackathon Berlin (AI Agents Berlin) · 27 Nov 2026 · built in one day
 
@@ -110,7 +110,7 @@ live · the service worker never caches `/api/*`.
 app/          pipeline (evidence + verdict), Nebius gateway, idealo client, rules, French index, server
 web/          the web app (single page), PWA manifest, service worker, icons
 extension/    Chrome MV3 extension: product-page badge, side panel
-tests/        23 offline tests, one per demo listing
+tests/        36 offline tests: demo listings, replay matching, cost and evidence rules
 samples/batch recorded live runs (used by replay)
 data/         French durability index (consolidated CSV) and findings
 scripts/      idealo OAuth login, batch runs, Supabase backfill
@@ -125,7 +125,7 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements.txt -r requiremen
 python3 scripts/idealo_mcp.py login          # idealo MCP OAuth (callback port 6274)
 # .env: NEBIUS_API_KEY=…  TAVILY_API_KEY=…  (optional) SUPABASE_URL=…  SUPABASE_SERVICE_KEY=…
 .venv/bin/uvicorn app.server:app --port 8787  # live checks at http://127.0.0.1:8787, replays at /?replay
-.venv/bin/python -m pytest -v                 # 23 passed
+.venv/bin/python -m pytest -v                 # 36 passed
 ```
 
 Browser extension: `chrome://extensions` → Developer mode → *Load unpacked* → `extension/`.

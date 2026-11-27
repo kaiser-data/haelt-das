@@ -27,12 +27,12 @@
   ::selection{background:#15130f;color:#fff}
   :focus-visible{outline:2px solid var(--brand);outline-offset:2px}
   body{margin:0;background:var(--canvas);color:var(--ink);font:15px/1.55 var(--sans);font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased}
-  header{padding:22px max(40px, calc((100% - 1240px) / 2 + 40px));display:flex;align-items:baseline;gap:20px;flex-wrap:wrap;border-bottom:1px solid var(--line);background:var(--surface)}
+  header{padding:22px max(40px, calc((100% - 1400px) / 2 + 40px));display:flex;align-items:baseline;gap:20px;flex-wrap:wrap;border-bottom:1px solid var(--line);background:var(--surface)}
   .mark{font:800 28px/1 var(--sans);letter-spacing:-.035em}
   .mark span{color:var(--brand)}
   .tag{color:var(--muted);font-size:15px}
-  main{padding:28px 40px 72px;max-width:1240px;margin:0 auto}
-  .input{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-card);padding:10px 10px 10px 16px;display:grid;grid-template-columns:1fr auto;gap:10px;transition:border-color .15s, box-shadow .15s}
+  main{padding:28px 40px 72px;max-width:1400px;margin:0 auto}
+  .input{max-width:1100px;margin:0 auto;box-shadow:0 1px 2px rgba(0,0,0,.04),0 8px 24px rgba(0,0,0,.05);background:var(--surface);border:1px solid var(--line);border-radius:var(--r-card);padding:10px 10px 10px 16px;display:grid;grid-template-columns:1fr auto;gap:10px;transition:border-color .15s, box-shadow .15s}
   .input:focus-within{border-color:var(--ink);box-shadow:0 0 0 3px rgba(21,19,15,.08)}
   .input textarea{border:0;outline:0;resize:none;font:16px/1.45 var(--sans);color:var(--ink);background:transparent;min-height:48px;padding:6px 0}
   .input textarea::placeholder{color:var(--faint)}
@@ -41,11 +41,13 @@
   .input button:disabled{opacity:.45;cursor:wait}
   .drop{grid-column:1/-1;display:flex;gap:10px;align-items:center;color:var(--faint);font-size:13px;border-top:1px solid var(--line-2);padding-top:8px}
   .drop img{height:56px;border:1px solid var(--line);border-radius:6px}
-  .chips{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 32px;align-items:center}
-  .chips::before{content:"Try";font:600 11px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-right:4px}
+  .chips{display:flex;gap:6px 8px;flex-wrap:wrap;margin:12px auto 32px;align-items:center;justify-content:center;max-width:1100px}
+  .chips::before{content:"More examples";font:600 11px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-right:4px}
   .chip{font:500 13px var(--sans);color:var(--ink);border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 13px;cursor:pointer;transition:border-color .15s, background .15s}
   .chip:hover{border-color:var(--ink)}
-  .grid{display:grid;grid-template-columns:minmax(300px,360px) 1fr;gap:32px;align-items:start}
+  body:not(.has-run) .grid{display:none}
+  body.has-run .hero{display:none}
+  .grid{display:grid;grid-template-columns:minmax(300px,380px) 1fr;gap:36px;align-items:start}
   .grid > section:first-child{position:sticky;top:20px}
   @media (max-width:900px){.grid{grid-template-columns:1fr;gap:20px} .grid > section:first-child{position:static;order:2} header,main{padding-left:18px;padding-right:18px}}
   h3{font:600 11px/1.2 var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:0 0 12px}
@@ -76,7 +78,7 @@
   .verdict.BUY_ALTERNATIVE{background:var(--blue-t);border-color:#cddbf3} .verdict.BUY_ALTERNATIVE .v{color:var(--blue)} .verdict.BUY_ALTERNATIVE .v::before{background:var(--blue)}
   .verdict.ASK{background:var(--amber-t);border-color:#f1dcb5} .verdict.ASK .v{color:var(--amber)} .verdict.ASK .v::before{background:var(--amber)}
   @keyframes rise{from{opacity:0;transform:translateY(6px)}}
-  .receipt{background:#fff;font:13.5px/1.65 var(--mono);padding:24px 24px 34px;max-width:480px;position:relative;
+  .receipt{background:#fff;font:13.5px/1.65 var(--mono);padding:24px 24px 34px;max-width:560px;position:relative;
     filter:drop-shadow(0 1px 1px rgba(0,0,0,.06)) drop-shadow(0 6px 14px rgba(0,0,0,.07));margin:0 0 24px;display:none;
     -webkit-mask: conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) 50%/14px 100%;}
   .receipt .title{text-align:center;font-weight:700;letter-spacing:.14em;font-size:13px}
@@ -108,13 +110,55 @@
   .report:last-child{border-bottom:0}
   .report .pill{font-size:10.5px;padding:1px 7px;text-transform:uppercase}
   .err{color:var(--red);font-weight:600}
+  /* after a click: one calm column, in reading order: verdict, receipt, how it got there, evidence */
+  body.has-run .grid{display:flex;flex-direction:column;gap:18px;max-width:900px;margin:8px auto 0}
+  body.has-run .grid > section{display:contents}
+  body.has-run #verdict{order:1;margin:0}
+  body.has-run #receipt{order:2;margin:6px auto 10px;width:100%;max-width:560px}
+  body.has-run .grid > section:first-child > *{order:3;margin:0}
+  body.has-run .grid > section:first-child > h3{margin:14px 0 -8px}
+  body.has-run #cards{order:4}
+  body.has-run .calls, body.has-run .ticker{width:100%;box-sizing:border-box}
+  body.has-run .grid > section:first-child{position:static}
+  .hero{max-width:1100px;margin:18px auto 26px;text-align:center}
+  .hero .lead{margin-left:auto !important;margin-right:auto !important}
+  .hero .promises{text-align:left}
+  .hero h3{text-align:left}
+  .ex{text-align:left}
+  .hero h1{font:700 44px/1.08 var(--sans);letter-spacing:-.03em;margin:0;text-wrap:balance}
+  .hero h1 span{color:var(--brand)}
+  .hero .lead{color:var(--muted);font-size:16px;margin:10px 0 22px;max-width:60ch}
+  .promises{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:0 0 26px;padding:0;list-style:none}
+  .promises li{border-top:2px solid var(--ink);padding-top:10px;font-size:14px;color:var(--muted)}
+  .promises b{display:block;color:var(--ink);font-size:15px;margin-bottom:2px}
+  .examples{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .ex{all:unset;box-sizing:border-box;cursor:pointer;display:block;border:1px solid var(--line);border-radius:var(--r-card);padding:14px 16px;background:var(--canvas);transition:border-color .15s, transform .15s}
+  .hero .ex{text-align:left;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start}
+  .ex:hover{border-color:var(--ink);transform:translateY(-1px)}
+  .ex:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+  .ex .vp{display:inline-block;font:700 11px var(--sans);letter-spacing:.06em;color:#fff;border-radius:999px;padding:3px 9px}
+  .ex .t{font:600 15px/1.3 var(--sans);margin:10px 0 4px;color:var(--ink)}
+  .ex .d{font-size:13px;color:var(--muted);line-height:1.45}
+  .ex .go{font:600 12px var(--sans);color:var(--ink);margin-top:10px}
+  .vp.AVOID{background:var(--red)} .vp.BUY_ALTERNATIVE{background:var(--blue)} .vp.ASK{background:var(--amber)}
+  @media (max-width:900px){.promises,.examples{grid-template-columns:1fr}
+    .hero{margin:6px auto 18px} .hero h1{font-size:30px} .hero .lead{font-size:15px}
+    .promises{gap:12px;margin-bottom:18px} .verdict .h{font-size:22px} .verdict{padding:18px}
+    header{padding-top:16px;padding-bottom:16px} .tag{font-size:13px} .replay-note{margin-left:0}}
+  .evpills{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+  .evpill{font:600 12px var(--sans);background:rgba(255,255,255,.75);border:1px solid rgba(21,19,15,.12);color:var(--ink);border-radius:999px;padding:4px 10px}
+  .evpill i{font-style:normal;color:var(--muted);font-weight:600;margin-right:4px}
+  .ticker .step{position:relative;border-bottom:0}
+  .ticker .ico{position:relative;z-index:1;box-shadow:0 0 0 3px var(--surface)}
+  .ticker .step:not(:last-child)::after{content:"";position:absolute;left:9px;top:31px;bottom:-8px;width:2px;background:var(--line)}
+  .muted-note{font-size:12px;color:var(--faint);font-weight:400;text-transform:none;letter-spacing:0}
   .replay-note{display:none;font:600 11px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:var(--line-2);border-radius:999px;padding:4px 10px;margin-left:auto}
   body.replay .replay-note{display:inline-block}
   body.replay header{position:sticky;top:0;z-index:5}
   .empty{color:var(--faint);font-size:14px;padding:14px 0}
   @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.receipt .line{opacity:1;transform:none}}
   /* side panel inside the browser extension: one column, no header */
-  body.embed header, body.embed .chips, body.embed .input{display:none}
+  body.embed header, body.embed .chips, body.embed .input, body.embed .hero{display:none}
   body.embed main{padding:12px}
   body.embed .grid{grid-template-columns:1fr;gap:14px}
   body.embed .grid > section:first-child{order:2;position:static}
@@ -128,26 +172,41 @@
   <div class="replay-note" title="Events of a recorded live run, played back faster; no live calls are made">Recorded live run · 27 Nov 2026 · replayed faster · live checks off</div>
 </header>
 <main>
+  <div class="hero" id="hero">
+    <h1>Will it last? Know before you pay<span>.</span></h1>
+    <p class="lead">Paste any listing, a link or a screenshot. An agent checks it the way an experienced buyer would, and every reason links to a source where one exists.</p>
+    <ul class="promises">
+      <li><b>What it really costs</b>price spread over the life you can expect, per day or per wear</li>
+      <li><b>Who is tricking you</b>inflated specs, rebrands under other names, unproven green claims</li>
+      <li><b>When it doesn't know</b>conflicting evidence gets ASK and the one fact that would decide</li>
+    </ul>
+    <h3>Recorded examples</h3>
+    <div class="examples">
+      <button class="ex" data-chip="21V"><span class="vp BUY_ALTERNATIVE">BUY ALTERNATIVE</span><div class="t">No-name „21V" drill, €39.99</div><div class="d">4.7★, but sold under 8 brand names and by no idealo shop.</div><div class="go">See the check →</div></button>
+      <button class="ex" data-chip="USB stick"><span class="vp AVOID">AVOID</span><div class="t">„2 TB" USB stick, €15.99</div><div class="d">€8 per terabyte: the size can't be real.</div><div class="go">See the check →</div></button>
+      <button class="ex" data-chip="LG OLED"><span class="vp ASK">ASK</span><div class="t">LG OLED TV, €1,799</div><div class="d">Official index 8/10 vs failure reports: what would decide it?</div><div class="go">See the check →</div></button>
+    </div>
+  </div>
   <form class="input" id="f">
     <textarea id="q" rows="2" placeholder="Paste a product link, a description, or a screenshot (⌘V)…"></textarea>
     <button id="go" type="submit">Check</button>
     <div class="drop" id="drop">or drop / paste a screenshot of any listing (Amazon, Temu, Instagram ad…)</div>
   </form>
   <div class="chips">
-    <button class="chip" data-q="Brushless Akkuschrauber Set 21V, Akku-Bohrschrauber Bürstenlos 2x 2000mAh Akku, 60Nm, 4,7 Sterne (1.832 Bewertungen), 39,99 €, Marke: SEESII">No-name „21V“ drill · €39.99</button>
-    <button class="chip" data-q="USB Stick 2TB, USB 3.0 Speicherstick 2000GB, Metall, wasserdicht, 4,5 Sterne (920 Bewertungen), 15,99 €, no-name">„2 TB“ USB stick · €15.99</button>
+    <button class="chip" hidden data-q="Brushless Akkuschrauber Set 21V, Akku-Bohrschrauber Bürstenlos 2x 2000mAh Akku, 60Nm, 4,7 Sterne (1.832 Bewertungen), 39,99 €, Marke: SEESII">No-name „21V“ drill · €39.99</button>
+    <button class="chip" hidden data-q="USB Stick 2TB, USB 3.0 Speicherstick 2000GB, Metall, wasserdicht, 4,5 Sterne (920 Bewertungen), 15,99 €, no-name">„2 TB“ USB stick · €15.99</button>
     <button class="chip" data-q="Powerbank 50000mAh, 22,5W Schnellladung, nur 180g, 4,6 Sterne (2.410 Bewertungen), 24,99 €, Marke: generic">„50,000 mAh“ power bank · 180 g</button>
     <button class="chip" data-q="Herren T-Shirt Eco Collection, 100% Baumwolle, nachhaltig und umweltfreundlich produziert, klimaneutraler Versand, 4,3 Sterne (2.900 Bewertungen), 7,99 €, Marke: TrendWave (fiktive Demo-Marke)">„Eco“ fast-fashion T-shirt · €7.99</button>
     <button class="chip" data-q="Armedangels T-Shirt Jaames, 100% Bio-Baumwolle, GOTS zertifiziert, Fair Wear Mitglied, 39,90 €, Marke: Armedangels">GOTS T-shirt · €39.90</button>
     <button class="chip" data-q="Bosch Akkuschrauber PSR 18 LI-2 (18V, 2x Akku, 2-Gang), 4,7 Sterne, 129 €, Marke Bosch">Bosch PSR 18 LI-2</button>
-    <button class="chip" data-q="LG OLED77B65LA 77 Zoll OLED TV, 4K, webOS, 1.799 €, Marke LG">LG OLED TV · €1,799</button>
+    <button class="chip" hidden data-q="LG OLED77B65LA 77 Zoll OLED TV, 4K, webOS, 1.799 €, Marke LG">LG OLED TV · €1,799</button>
     <button class="chip" data-q="Bosch PSR 18 LI-2 Akkuschrauber 18V, Ersatzteil/Defekt – nicht funktionsfähig, startet nicht. 25 € VB, Abholung Berlin">Broken drill · €25</button>
   </div>
 
   <div class="grid">
     <section>
-      <h3>Live analysis</h3>
-      <div class="ticker" id="ticker"><div class="empty">Waiting for a product…</div></div>
+      <h3>How it got there</h3>
+      <div class="ticker" id="ticker"><div class="empty">Each step appears here as the agent works.</div></div>
       <h3 style="margin-top:22px">Nebius Token Factory calls</h3>
       <div class="callsum" id="callsum"></div>
       <div class="calls" id="calls">no calls yet</div>
@@ -263,6 +322,10 @@ function onStep(ev){
   stepEl(ev);
   if (ev.status === "running") return;
   const d = ev.data;
+  if (ev.id === "idealo" && d) state.idealo = d;
+  if (ev.id === "specs") state.flags = d || [];
+  if (ev.id === "life" && d) state.fails = (d.reports || []).filter(r => r.failure).length;
+  if (ev.id === "clones" && d) state.brands = (d.brands || []).length;
   if (ev.id === "condition" && d)
     card(`<h3>Not a working product</h3><div class="flag high">${esc(d.text)}</div>`);
   if (ev.id === "specs" && d?.length)
@@ -271,7 +334,8 @@ function onStep(ev){
     const imgs = (d.visual_matches||[]).map(m => `<figure><img src="${esc(m.image)}" loading="lazy"><figcaption>${esc(m.brand_on_image_2||"look-alike")} · ${esc(m.same)}</figcaption></figure>`).join("");
     const src = Object.fromEntries((d.evidence||[]).map(e => [e.brand, e.url]));
     const brands = (d.brands||[]).map(b => src[b] ? `<a class="pill" href="${esc(src[b])}" target="_blank" title="source">${esc(b)} ↗</a>` : `<span class="pill">${esc(b)}</span>`).join("");
-    if (imgs || brands) card(`<h3>Same product, other names</h3>${brands ? `<div>${brands}</div>` : ""}${imgs ? `<div class="family" style="margin-top:10px">${imgs}</div>` : ""}`);
+    const how = imgs ? "" : ` <span class="muted-note">· found by name, no image match</span>`;
+    if (imgs || brands) card(`<h3>Same product, other names${how}</h3>${brands ? `<div>${brands}</div>` : ""}${imgs ? `<div class="family" style="margin-top:10px">${imgs}</div>` : ""}`);
   }
   if (ev.id === "life" && d?.reports?.length){
     const rs = d.reports.filter(r => r.failure).map(r => `<div class="report">${r.after_weeks ? `<b>after ${esc(r.after_weeks)} wk</b> · ` : ""}${esc(r.summary_en)} <span class="pill">${esc(r.lang)}</span> <a href="${esc(r.url)}" target="_blank">source</a></div>`).join("");
@@ -304,12 +368,24 @@ function verdictStats(v){
   return out.length ? `<div class="vs">${out.join("")}</div>` : "";
 }
 
+// the hard, checkable evidence right under the decision
+function evidencePills(){
+  const out = [];
+  const i = state.idealo;
+  if (i) out.push(i.exact ? `<span class="evpill"><i>idealo</i>${esc(i.exact.offer_count)} shops sell it</span>` : `<span class="evpill"><i>idealo</i>no shop sells it</span>`);
+  if (state.flags?.length) out.push(`<span class="evpill"><i>physics</i>${state.flags.length > 1 ? state.flags.length + " spec claims don't" : "1 spec claim doesn't"} add up</span>`);
+  if (state.fails) out.push(`<span class="evpill"><i>reports</i>${state.fails} failure report${state.fails > 1 ? "s" : ""}</span>`);
+  if (state.brands > 1) out.push(`<span class="evpill"><i>look-alikes</i>${state.brands} other brand names</span>`);
+  return out.length ? `<div class="evpills">${out.join("")}</div>` : "";
+}
+
 function onVerdict(v){
   const el = $("#verdict");
   el.className = "verdict " + v.verdict;
   el.innerHTML = `<div class="v" data-label="${esc(v.verdict.replace("_"," "))}">confidence ${esc(v.confidence)}${v.trust_adjusted_stars ? ` · trust-adjusted ${esc(v.trust_adjusted_stars)}★` : ""}</div>
     <div class="h">${esc(v.headline)}</div>
     ${verdictStats(v)}
+    ${evidencePills()}
     ${v.better_alternative ? `<div class="meta"><b>Better</b> ${esc(v.better_alternative)}</div>` : ""}
     ${v.missing_fact ? `<div class="meta"><b>What would change my mind</b> ${esc(v.missing_fact)}</div>` : ""}`;
   el.style.display = "block";
@@ -332,13 +408,20 @@ addEventListener("message", e => {
   run();
 });
 
+document.querySelectorAll(".ex").forEach(b => b.onclick = () => {
+  const chip = [...document.querySelectorAll(".chip")].find(c => c.textContent.includes(b.dataset.chip));
+  if (chip) chip.click();
+});
+
 async function run(){
   const q = $("#q").value.trim();
   if (!q && !image && !pagePayload) return;
   $("#go").disabled = true;
+  document.body.classList.add("has-run");
   $("#ticker").innerHTML = ""; $("#cards").innerHTML = ""; $("#calls").innerHTML = "no calls yet"; $("#callsum").textContent = ""; nCalls = 0; callTot.ms = 0; callTot.tok = 0; callTot.models.clear(); state.stars = null; state.alts = [];
   $("#verdict").style.display = "none"; $("#receipt").style.display = "none";
   for (const k in steps) delete steps[k]; nCalls = 0;
+  state.idealo = null; state.flags = []; state.fails = 0; state.brands = 0;
   const body = pagePayload ? {page: pagePayload} : image ? {image} : (/^https?:\/\//.test(q) ? {url:q} : {text:q});
   pagePayload = null;
   try{

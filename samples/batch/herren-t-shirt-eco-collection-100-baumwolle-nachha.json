@@ -1,0 +1,491 @@
+{
+ "input": "Herren T-Shirt Eco Collection, 100% Baumwolle, nachhaltig und umweltfreundlich produziert, klimaneutraler Versand, 4,3 Sterne (2.900 Bewertungen), 7,99 €, Marke: TrendWave (fiktive Demo-Marke)",
+ "events": [
+  {
+   "type": "step",
+   "id": "claim",
+   "status": "running",
+   "title": "Reading the listing"
+  },
+  {
+   "type": "step",
+   "id": "claim",
+   "status": "done",
+   "title": "Listing read",
+   "data": {
+    "title": "Herren T-Shirt Eco Collection",
+    "brand": "TrendWave",
+    "model": null,
+    "category": "t-shirt",
+    "price_eur": 7.99,
+    "condition": "neu",
+    "condition_code": "new",
+    "stars": 4.3,
+    "review_count": 2900,
+    "claimed_specs": {
+     "voltage_v": null,
+     "capacity_mah": null,
+     "weight_g": null,
+     "storage_tb": null,
+     "lumen": null,
+     "health_claims": [],
+     "other": []
+    },
+    "idealo_exact_query": "TrendWave Herren T-Shirt Eco Collection",
+    "idealo_generic_query": "T-Shirt Herren 100% Baumwolle",
+    "clone_image_query": "men's t-shirt 100% cotton eco friendly",
+    "failure_queries": {
+     "de": "Herren T-Shirt Eco Collection Probleme",
+     "en": "men's t-shirt eco collection issues",
+     "fr": "problèmes t-shirt homme eco collection"
+    },
+    "is_clothing": true,
+    "material": "100% Baumwolle",
+    "sustainability_claims": [
+     "nachhaltig",
+     "umweltfreundlich produziert",
+     "klimaneutraler Versand"
+    ],
+    "certifications": [],
+    "image_url": null,
+    "source_url": null
+   }
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "read listing",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 5075,
+     "prompt_tokens": 538,
+     "completion_tokens": 297,
+     "ts": 1795800720,
+     "output_preview": "{\"title\": \"Herren T-Shirt Eco Collection\", \"brand\": \"TrendWave\", \"model\": null, \"category\": \"t-shirt\", \"price_eur\": 7.99, \"condition\": \"neu\", \"condition_code\": \"new\", \"stars\": 4.3, \"review_count\": 2900, \"claimed_specs\": {\"voltage_v\": null, \"capacity_mah\": null, \"weight_g\": null, \"storage_tb\": null, \"lumen\": null, \"health_claims\": [], \"other\": []}, \"idealo_exact_query\": \"TrendWave Herren T-Shirt Ec"
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "idealo",
+   "status": "running",
+   "title": "Looking it up on idealo"
+  },
+  {
+   "type": "step",
+   "id": "idealo",
+   "status": "warn",
+   "title": "Not sold by any idealo shop",
+   "data": {
+    "exact": null,
+    "alternatives": [
+     {
+      "name": "Levi's Long Sleeve Original Logo Tee",
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/200516997_-long-sleeve-original-logo-tee-patch-dress-blues-levi-s.html",
+      "image": "https://cdn.idealo.com/folder/Product/200516/9/200516997/s1_produktbild_mobil/levi-s-long-sleeve-original-logo-tee-patch-dress-blues.jpg",
+      "price": 18.69,
+      "offer_count": 52,
+      "stars": 4.35,
+      "review_count": 683,
+      "ref": "pr.v1.k1.T1qQcoXJfw6IR-zoUMfmG6j5XPozNVHw7KeGxjN8rCW8MAC3OQ"
+     },
+     {
+      "name": "Tommy Hilfiger Long Sleeved Ribbed Organic Cotton T-Shirt (DM0DM04409)",
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/6786037_-long-sleeved-ribbed-organic-cotton-t-shirt-dm0dm04409-black-tommy-hilfiger.html",
+      "image": "https://cdn.idealo.com/folder/Product/6786/0/6786037/s1_produktbild_mobil/tommy-hilfiger-long-sleeved-ribbed-organic-cotton-t-shirt-dm0dm04409-black.jpg",
+      "price": 22.07,
+      "offer_count": 40,
+      "stars": 4.12,
+      "review_count": 252,
+      "ref": "pr.v1.k1.UyvQvNfR3NRxpBXsfhFngTiA6ZYB7pGiA7qZ5OfZqrgyQmw"
+     },
+     {
+      "name": "Tommy Hilfiger 2-Pack Longsleeve TJM Slim (DM0DM22148)",
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/209283185_-2-pack-longsleeve-tjm-slim-dm0dm22148-ecru-dark-night-navy-tommy-hilfiger.html",
+      "image": "https://cdn.idealo.com/folder/Product/209283/1/209283185/s1_produktbild_mobil/tommy-hilfiger-2-pack-longsleeve-tjm-slim-dm0dm22148-0x0-ecru-dark-night-navy.jpg",
+      "price": 30.46,
+      "offer_count": 15,
+      "stars": 4.25,
+      "review_count": 12,
+      "ref": "pr.v1.k1.dPLGK7OVLR6qetbAWE5385nsLr9RXHWC18cbdW08wGBBjd7Zmw"
+     }
+    ]
+   }
+  },
+  {
+   "type": "step",
+   "id": "specs",
+   "status": "done",
+   "title": "Specs plausible",
+   "data": []
+  },
+  {
+   "type": "step",
+   "id": "clones",
+   "status": "running",
+   "title": "Searching for the same product under other names"
+  },
+  {
+   "type": "step",
+   "id": "life",
+   "status": "running",
+   "title": "Collecting failure reports (DE/EN/FR)"
+  },
+  {
+   "type": "step",
+   "id": "resp",
+   "status": "running",
+   "title": "Checking green claims and certificates"
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "certificate + official red-flag check",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 7501,
+     "prompt_tokens": 988,
+     "completion_tokens": 378,
+     "ts": 1795800731,
+     "output_preview": "{\"certs\": [{\"certificate\": \"EU Safety Gate\", \"confirmed\": false, \"url\": \"https://ec.europa.eu/newsroom/growth/redirection/item/46955\"}, {\"certificate\": \"EU Safety Gate\", \"confirmed\": false, \"url\": \"https://ec.europa.eu/programmes/erasmus-plus/project-result-content/8d598b89-946f-49f3-a1fa-5de9d0e7b1b5/Brochure_-_CITA-ESITH.pdf\"}, {\"certificate\": \"EU Safety Gate\", \"confirmed\": false, \"url\": \"https:"
+    }
+   ]
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "rebrand names",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 5726,
+     "prompt_tokens": 587,
+     "completion_tokens": 267,
+     "ts": 1795800736,
+     "output_preview": "{\"brands\": [\"Recover Brands\", \"Fair Indigo\", \"Toad&Co\", \"Organic Blank\", \"Tentree\", \"Green Label Organic\"], \"evidence\": [{\"brand\": \"Recover Brands\", \"url\": \"https://recoverbrands.com/products/organic-cotton-t-shirt\"}, {\"brand\": \"Fair Indigo\", \"url\": \"https://www.fairindigo.com/collections/forever-organic-tees-for-women-and-men-organic-pima-cotton-ethically-made\"}, {\"brand\": \"Toad&Co\", \"url\": \"http"
+    }
+   ]
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "classify failure reports",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 23042,
+     "prompt_tokens": 2423,
+     "completion_tokens": 1214,
+     "ts": 1795800730,
+     "output_preview": "{\"items\": [{\"i\": 0, \"relevant\": false, \"failure\": false, \"after_weeks\": null, \"component\": null, \"usage\": \"unknown\", \"lang\": \"en\", \"summary_en\": \"General advice on sustainable t-shirt materials and certifications, not specific to any brand/model.\"}, {\"i\": 1, \"relevant\": false, \"failure\": false, \"after_weeks\": null, \"component\": null, \"usage\": \"unknown\", \"lang\": \"en\", \"summary_en\": \"Review of a bra"
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "resp",
+   "status": "warn",
+   "title": "3 unproven green claim(s), 0 certificate(s) confirmed, 0 official red flag(s)",
+   "data": {
+    "claims": [
+     {
+      "claim": "nachhaltig",
+      "vague": true,
+      "status": "unproven"
+     },
+     {
+      "claim": "umweltfreundlich produziert",
+      "vague": true,
+      "status": "unproven"
+     },
+     {
+      "claim": "klimaneutraler Versand",
+      "vague": true,
+      "status": "unproven"
+     }
+    ],
+    "certs": [
+     {
+      "certificate": "EU Safety Gate",
+      "confirmed": false,
+      "url": "https://ec.europa.eu/newsroom/growth/redirection/item/46955"
+     },
+     {
+      "certificate": "US forced-labour lists (UFLPA/CBP)",
+      "confirmed": false,
+      "url": "https://www.cbp.gov/trade/forced-labor/faqs-uflpa-enforcement"
+     }
+    ],
+    "flags": []
+   }
+  },
+  {
+   "type": "step",
+   "id": "clones",
+   "status": "warn",
+   "title": "Look-alikes: 0 visual match(es), 6 brand name(s)",
+   "data": {
+    "visual_matches": [],
+    "brands": [
+     "Recover Brands",
+     "Fair Indigo",
+     "Toad&Co",
+     "Organic Blank",
+     "Tentree",
+     "Green Label Organic"
+    ],
+    "evidence": [
+     {
+      "brand": "Recover Brands",
+      "url": "https://recoverbrands.com/products/organic-cotton-t-shirt"
+     },
+     {
+      "brand": "Fair Indigo",
+      "url": "https://www.fairindigo.com/collections/forever-organic-tees-for-women-and-men-organic-pima-cotton-ethically-made"
+     },
+     {
+      "brand": "Toad&Co",
+      "url": "https://www.toadandco.com/collections/mens-t-shirts"
+     },
+     {
+      "brand": "Organic Blank",
+      "url": "https://organicblank.com/collections/custom-t-shirts"
+     },
+     {
+      "brand": "Tentree",
+      "url": "https://www.tentree.com/collections/mens-t-shirts-tanks"
+     },
+     {
+      "brand": "Green Label Organic",
+      "url": "https://greenlabelorganic.com/categories/mens.html"
+     }
+    ]
+   }
+  },
+  {
+   "type": "step",
+   "id": "life",
+   "status": "done",
+   "title": "0 failure report(s), 0 distinct stories",
+   "data": {
+    "reports": [],
+    "clusters": 0,
+    "tests": []
+   }
+  },
+  {
+   "type": "step",
+   "id": "cost",
+   "status": "running",
+   "title": "Working out the cost per day"
+  },
+  {
+   "type": "step",
+   "id": "cost",
+   "status": "done",
+   "title": "Cost per day",
+   "data": {
+    "rows": [
+     {
+      "name": "Herren T-Shirt Eco Collection",
+      "price": 7.99,
+      "life_years": {
+       "low": 1.0,
+       "mid": 2.5,
+       "high": 4.0
+      },
+      "basis": "The product is a 100% cotton t-shirt from a brand with 2,900 reviews and a 4.3-star rating. No failure reports exist. Cotton t-shirts typically wear out after repeated washing and use. Based on common usage patterns and material durability, average wear is estimated between 1–4 years. The high end assumes careful washing and infrequent use. The low end accounts for potential fading, stretching, or early wear due to fabric quality or washing habits.",
+      "per_day": {
+       "best": 0.005,
+       "mid": 0.009,
+       "worst": 0.022
+      },
+      "url": null,
+      "per_month": 0.27,
+      "per_year": 3.28,
+      "per_wear": {
+       "low": 0.08,
+       "mid": 0.03,
+       "high": 0.02
+      },
+      "wears": {
+       "low": 100.0,
+       "mid": 250.0,
+       "high": 400.0
+      }
+     },
+     {
+      "name": "Levi's Long Sleeve Original Logo Tee",
+      "price": 18.69,
+      "life_years": {
+       "low": 1.5,
+       "mid": 3.0,
+       "high": 5.0
+      },
+      "basis": "Levi's is a well-established brand with 683 reviews and a 4.35-star rating. The product is a long-sleeve cotton tee, which generally lasts longer than short sleeves due to less exposure. No failure reports. Based on brand reputation and typical cotton garment longevity, life is estimated higher than average. The high end assumes proper care and limited wear.",
+      "per_day": {
+       "best": 0.01,
+       "mid": 0.017,
+       "worst": 0.034
+      },
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/200516997_-long-sleeve-original-logo-tee-patch-dress-blues-levi-s.html",
+      "per_month": 0.52,
+      "per_year": 6.21
+     },
+     {
+      "name": "Tommy Hilfiger Long Sleeved Ribbed Organic Cotton T-Shirt (DM0DM04409)",
+      "price": 22.07,
+      "life_years": {
+       "low": 1.0,
+       "mid": 2.5,
+       "high": 4.0
+      },
+      "basis": "Tommy Hilfiger has a strong brand presence with 252 reviews and 4.12 stars. The product is organic cotton, which may be softer but not necessarily more durable. No failure reports. The life estimate is similar to the base product due to comparable material and use case. The lower end reflects potential shrinkage or pilling common in organic cotton over time.",
+      "per_day": {
+       "best": 0.015,
+       "mid": 0.024,
+       "worst": 0.06
+      },
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/6786037_-long-sleeved-ribbed-organic-cotton-t-shirt-dm0dm04409-black-tommy-hilfiger.html",
+      "per_month": 0.73,
+      "per_year": 8.76
+     },
+     {
+      "name": "Tommy Hilfiger 2-Pack Longsleeve TJM Slim (DM0DM22148)",
+      "price": 30.46,
+      "life_years": {
+       "low": 1.0,
+       "mid": 2.0,
+       "high": 3.5
+      },
+      "basis": "This is a 2-pack of long-sleeve tees from Tommy Hilfiger, with only 12 reviews and 4.25 stars. Low review count reduces confidence in durability. The product is marketed as slim-fit, which may lead to faster wear at stress points (shoulders, cuffs). No failure reports. The life estimate is conservative due to limited user feedback and pack-based pricing implying lower individual quality expectations.",
+      "per_day": {
+       "best": 0.024,
+       "mid": 0.042,
+       "worst": 0.083
+      },
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/209283185_-2-pack-longsleeve-tjm-slim-dm0dm22148-ecru-dark-night-navy-tommy-hilfiger.html",
+      "per_month": 1.28,
+      "per_year": 15.33
+     }
+    ],
+    "consumables": [],
+    "energy_eur_year": 0.0,
+    "electricity_price": 0.37,
+    "usage_assumption": "Each t-shirt is worn 100 times per year on average, with washing after each use. This is typical for casual clothing.",
+    "decisive_question": "How many times will the t-shirt be worn before it is no longer usable?"
+   }
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "lifetime + consumables estimate",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 17460,
+     "prompt_tokens": 550,
+     "completion_tokens": 777,
+     "ts": 1795800753,
+     "output_preview": "{\"items\": [{\"name\": \"Herren T-Shirt Eco Collection\", \"price_eur\": 7.99, \"life_years\": {\"low\": 1.0, \"mid\": 2.5, \"high\": 4.0}, \"basis\": \"The product is a 100% cotton t-shirt from a brand with 2,900 reviews and a 4.3-star rating. No failure reports exist. Cotton t-shirts typically wear out after repeated washing and use. Based on common usage patterns and material durability, average wear is estimate"
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "verdict",
+   "status": "running",
+   "title": "Deciding (live Nebius call)"
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "final verdict",
+     "model": "deepseek-ai/DeepSeek-V4-Pro-0813",
+     "status": 200,
+     "ms": 98802,
+     "prompt_tokens": 2827,
+     "completion_tokens": 2033,
+     "ts": 1795800771,
+     "output_preview": "{\"verdict\": \"ASK\", \"headline\": \"Cheap tee, but durability and eco claims unproven\", \"confidence\": \"low\", \"reasons\": [{\"text\": \"2,900 reviews and 4.3 stars are cheap signals; no independent test or French durability index exists for this model.\", \"tier\": \"C\", \"url\": null}, {\"text\": \"Sustainability claims (nachhaltig, umweltfreundlich produziert, klimaneutraler Versand) are vague and unproven; no ce"
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "verdict",
+   "status": "done",
+   "title": "Decided (live Nebius call)"
+  },
+  {
+   "type": "verdict",
+   "data": {
+    "verdict": "ASK",
+    "headline": "Cheap tee, but durability and eco claims unproven",
+    "confidence": "low",
+    "reasons": [
+     {
+      "text": "2,900 reviews and 4.3 stars are cheap signals; no independent test or French durability index exists for this model.",
+      "tier": "C",
+      "url": null
+     },
+     {
+      "text": "Sustainability claims (nachhaltig, umweltfreundlich produziert, klimaneutraler Versand) are vague and unproven; no certifications are listed.",
+      "tier": "C",
+      "url": null
+     },
+     {
+      "text": "Cost per wear is low (€0.02–0.08) but rests on assumed 100–400 wears, not measured durability.",
+      "tier": "B",
+      "url": null
+     },
+     {
+      "text": "No exact Idealo listing or established retailer offers found; brand durability is unverified.",
+      "tier": "C",
+      "url": null
+     }
+    ],
+    "better_alternative": null,
+    "missing_fact": "Measured durability (e.g., fabric weight/GSM or independent wash test) to confirm the t-shirt survives 250+ wears.",
+    "trust_adjusted_stars": null
+   }
+  },
+  {
+   "type": "saved",
+   "id": "a694d84a-de19-476f-a204-59aa7b568b5f"
+  }
+ ],
+ "verdict": {
+  "verdict": "ASK",
+  "headline": "Cheap tee, but durability and eco claims unproven",
+  "confidence": "low",
+  "reasons": [
+   {
+    "text": "2,900 reviews and 4.3 stars are cheap signals; no independent test or French durability index exists for this model.",
+    "tier": "C",
+    "url": null
+   },
+   {
+    "text": "Sustainability claims (nachhaltig, umweltfreundlich produziert, klimaneutraler Versand) are vague and unproven; no certifications are listed.",
+    "tier": "C",
+    "url": null
+   },
+   {
+    "text": "Cost per wear is low (€0.02–0.08) but rests on assumed 100–400 wears, not measured durability.",
+    "tier": "B",
+    "url": null
+   },
+   {
+    "text": "No exact Idealo listing or established retailer offers found; brand durability is unverified.",
+    "tier": "C",
+    "url": null
+   }
+  ],
+  "better_alternative": null,
+  "missing_fact": "Measured durability (e.g., fabric weight/GSM or independent wash test) to confirm the t-shirt survives 250+ wears.",
+  "trust_adjusted_stars": null
+ }
+}

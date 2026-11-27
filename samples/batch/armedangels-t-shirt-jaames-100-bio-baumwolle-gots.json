@@ -1,0 +1,482 @@
+{
+ "input": "Armedangels T-Shirt Jaames, 100% Bio-Baumwolle, GOTS zertifiziert, Fair Wear Mitglied, 39,90 €, Marke: Armedangels",
+ "events": [
+  {
+   "type": "step",
+   "id": "claim",
+   "status": "running",
+   "title": "Reading the listing"
+  },
+  {
+   "type": "step",
+   "id": "claim",
+   "status": "done",
+   "title": "Listing read",
+   "data": {
+    "title": "T-Shirt Jaames",
+    "brand": "Armedangels",
+    "model": "Jaames",
+    "category": "t-shirt",
+    "price_eur": 39.9,
+    "condition": null,
+    "condition_code": null,
+    "stars": null,
+    "review_count": null,
+    "claimed_specs": {
+     "voltage_v": null,
+     "capacity_mah": null,
+     "weight_g": null,
+     "storage_tb": null,
+     "lumen": null,
+     "health_claims": [],
+     "other": []
+    },
+    "idealo_exact_query": "Armedangels Jaames",
+    "idealo_generic_query": "T-Shirt 100% Bio-Baumwolle",
+    "clone_image_query": "plain t-shirt 100% organic cotton",
+    "failure_queries": {
+     "de": "Armedangels T-Shirt Jaames Probleme",
+     "en": "Armedangels Jaames t-shirt issues",
+     "fr": "problèmes t-shirt Jaames Armedangels"
+    },
+    "is_clothing": true,
+    "material": "100% Bio-Baumwolle",
+    "sustainability_claims": [
+     "nachhaltig",
+     "fair produziert"
+    ],
+    "certifications": [
+     "GOTS zertifiziert",
+     "Fair Wear Mitglied"
+    ],
+    "image_url": null,
+    "source_url": null
+   }
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "read listing",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 6206,
+     "prompt_tokens": 514,
+     "completion_tokens": 296,
+     "ts": 1795800818,
+     "output_preview": "{\"title\": \"T-Shirt Jaames\", \"brand\": \"Armedangels\", \"model\": \"Jaames\", \"category\": \"t-shirt\", \"price_eur\": 39.9, \"condition\": null, \"condition_code\": null, \"stars\": null, \"review_count\": null, \"claimed_specs\": {\"voltage_v\": null, \"capacity_mah\": null, \"weight_g\": null, \"storage_tb\": null, \"lumen\": null, \"health_claims\": [], \"other\": []}, \"idealo_exact_query\": \"Armedangels Jaames\", \"idealo_generic_"
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "idealo",
+   "status": "running",
+   "title": "Looking it up on idealo"
+  },
+  {
+   "type": "step",
+   "id": "idealo",
+   "status": "done",
+   "title": "Found on idealo",
+   "data": {
+    "exact": {
+     "name": "armedangels JAAMES T-SHIRT | 100% Bio-Baumwolle - rot ( ) (30008308-3639)",
+     "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/211716275_-jaames-t-shirt-100-bio-baumwolle-rot-30008308-3639-armedangels.html",
+     "price": 15.68,
+     "offer_count": 30,
+     "reviews": null,
+     "tests": [],
+     "overview": [
+      "Baumwolle",
+      "Regular Fit",
+      "mit Rundhals",
+      "kurzarm",
+      "Fair Wear Foundation"
+     ],
+     "shops": [
+      {
+       "name": "aboutyou.de",
+       "rating": {
+        "count": 2541,
+        "avg": 2.63
+       },
+       "marketplace": false
+      },
+      {
+       "name": "aboutyou.de",
+       "rating": {
+        "count": 2541,
+        "avg": 2.63
+       },
+       "marketplace": false
+      },
+      {
+       "name": "aboutyou.de",
+       "rating": {
+        "count": 2541,
+        "avg": 2.63
+       },
+       "marketplace": false
+      }
+     ]
+    },
+    "alternatives": []
+   }
+  },
+  {
+   "type": "step",
+   "id": "specs",
+   "status": "done",
+   "title": "Specs plausible",
+   "data": []
+  },
+  {
+   "type": "step",
+   "id": "clones",
+   "status": "running",
+   "title": "Searching for the same product under other names"
+  },
+  {
+   "type": "step",
+   "id": "life",
+   "status": "running",
+   "title": "Collecting failure reports (DE/EN/FR)"
+  },
+  {
+   "type": "step",
+   "id": "resp",
+   "status": "running",
+   "title": "Checking green claims and certificates"
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "certificate + official red-flag check",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 6813,
+     "prompt_tokens": 1843,
+     "completion_tokens": 315,
+     "ts": 1795800830,
+     "output_preview": "{\"certs\": [{\"certificate\": \"GOTS zertifiziert\", \"confirmed\": false, \"url\": \"https://www.global-standard.org/de/zertifizierung-und-labelling/wer-muss-zertifiziert-werden\"}, {\"certificate\": \"GOTS zertifiziert\", \"confirmed\": false, \"url\": \"https://global-standard.org/de/zertifizierung-und-labelling/wer-muss-zertifiziert-werden\"}, {\"certificate\": \"GOTS zertifiziert\", \"confirmed\": false, \"url\": \"http:/"
+    }
+   ]
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "rebrand names",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 4450,
+     "prompt_tokens": 568,
+     "completion_tokens": 178,
+     "ts": 1795800834,
+     "output_preview": "{\"brands\": [\"Fair Indigo\", \"Taylor Stitch\", \"The Classic T-Shirt Co.\", \"Organic Blank\"], \"evidence\": [{\"brand\": \"Fair Indigo\", \"url\": \"https://www.fairindigo.com/collections/100-organic-cotton-t-shirts\"}, {\"brand\": \"Taylor Stitch\", \"url\": \"https://www.taylorstitch.com/collections/organic-cotton-tees\"}, {\"brand\": \"The Classic T-Shirt Co.\", \"url\": \"https://theclassictshirt.com\"}, {\"brand\": \"Organic "
+    }
+   ]
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "classify failure reports",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 18397,
+     "prompt_tokens": 3254,
+     "completion_tokens": 1139,
+     "ts": 1795800828,
+     "output_preview": "{\"items\": [{\"i\": 0, \"relevant\": false, \"failure\": false, \"after_weeks\": null, \"component\": null, \"usage\": \"unknown\", \"lang\": \"en\", \"summary_en\": \"General product description of the JAAMES T-shirt by Armedangels, noting the fabric is sturdy but thin and the label is scratchy. No specific failure reported.\"}, {\"i\": 1, \"relevant\": true, \"failure\": true, \"after_weeks\": 4, \"component\": \"fabric\", \"usage"
+    },
+    {
+     "purpose": "dedupe reports across languages",
+     "model": "Qwen/Qwen3-Embedding-8B",
+     "status": 200,
+     "ms": 6840,
+     "prompt_tokens": 74,
+     "completion_tokens": 0,
+     "ts": 1795800846
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "resp",
+   "status": "done",
+   "title": "0 unproven green claim(s), 1 certificate(s) confirmed, 0 official red flag(s)",
+   "data": {
+    "claims": [
+     {
+      "claim": "nachhaltig",
+      "vague": true,
+      "status": "backed by a named certificate"
+     },
+     {
+      "claim": "fair produziert",
+      "vague": false,
+      "status": "backed by a named certificate"
+     }
+    ],
+    "certs": [
+     {
+      "certificate": "GOTS zertifiziert",
+      "confirmed": false,
+      "url": "https://www.global-standard.org/de/zertifizierung-und-labelling/wer-muss-zertifiziert-werden"
+     },
+     {
+      "certificate": "Fair Wear Mitglied",
+      "confirmed": true,
+      "url": "https://www.fairwear.org/brands/armedangels"
+     }
+    ],
+    "flags": []
+   }
+  },
+  {
+   "type": "step",
+   "id": "clones",
+   "status": "warn",
+   "title": "Look-alikes: 0 visual match(es), 4 brand name(s)",
+   "data": {
+    "visual_matches": [],
+    "brands": [
+     "Fair Indigo",
+     "Taylor Stitch",
+     "The Classic T-Shirt Co.",
+     "Organic Blank"
+    ],
+    "evidence": [
+     {
+      "brand": "Fair Indigo",
+      "url": "https://www.fairindigo.com/collections/100-organic-cotton-t-shirts"
+     },
+     {
+      "brand": "Taylor Stitch",
+      "url": "https://www.taylorstitch.com/collections/organic-cotton-tees"
+     },
+     {
+      "brand": "The Classic T-Shirt Co.",
+      "url": "https://theclassictshirt.com"
+     },
+     {
+      "brand": "Organic Blank",
+      "url": "https://organicblank.com/collections/custom-t-shirts"
+     }
+    ]
+   }
+  },
+  {
+   "type": "step",
+   "id": "life",
+   "status": "warn",
+   "title": "2 failure report(s), 3 distinct stories",
+   "data": {
+    "reports": [
+     {
+      "title": "ARMEDANGELS Jaames - T-shirt Men's | Buy online | Bergfreunde",
+      "url": "https://www.bergfreunde.eu/armedangels-jaames-t-shirt",
+      "text": "Klaus\n\n16.09.2025\n\n- ### Advantages\n  \n  Robust Good cut Breathable\n- ### Disadvantages\n  \n  Shrinks\n\nYes, I would recommend this product to a friend\n\nSola\n\n16.10.2024\n\n- ### Advantages\n  \n  Good cut Robust\n\nYes, I would recommend this product to a friend\n\nThomas\n\n24.07.2024\n\n- ### Advantages\n  \n  Robust Good cut\n\nYes, I would recommend this product to a friend\n\nLara\n\n15.10.2023\n\n- ### Advantages\n  \n  Robust Good cut\n\nYes, I would recommend this product to a friend\n\nAndrea\n\n16.07.2023 [...] cott",
+      "i": 1,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": 4,
+      "component": "fabric",
+      "usage": "unknown",
+      "lang": "en",
+      "summary_en": "One user reports that the JAAMES T-shirt shrinks after washing, indicating a material failure within a few weeks of use."
+     },
+     {
+      "title": "JAAMES T-SHIRT for men in black",
+      "url": "https://www.armedangels.com/en-wo/products/jaames-black",
+      "text": "# JAAMES T-SHIRT\n\nMade from 100% organic cotton\n\n25,13 €\n\n20,92 €\n\n0 Reviews\n\nSize help\n\nHelp with size selection\n\nAre you unsure about your size?\n\nFind your size with FitFinder\n\n3 for -10%\n\nDiscover our bestseller: the JAAMES T-shirt. A classic T-shirt with a comfortable fit made\n\nAll reviews\n\nOutstanding quality Only the tag on the neck is bothering. I cut it out :-)\n\nQuality\n\nOur organic cotton is grown according to organic farming standards.\n\nDetails & Fit\n\nDetails & Fit\n\nJAAMES T-SHIRT [...",
+      "i": 3,
+      "relevant": true,
+      "failure": false,
+      "after_weeks": null,
+      "component": "neck tag",
+      "usage": "unknown",
+      "lang": "en",
+      "summary_en": "A user mentions the neck tag is bothersome and had to be cut out, indicating a minor discomfort issue but not a structural failure."
+     },
+     {
+      "title": "ARMEDANGELS Jaames - T-shirt Men's | Buy online | Bergfreunde",
+      "url": "https://www.bergfreunde.eu/armedangels-jaames-t-shirt",
+      "text": "Klaus\n\n16.09.2025\n\n- ### Advantages\n  \n  Robust Good cut Breathable\n- ### Disadvantages\n  \n  Shrinks\n\nYes, I would recommend this product to a friend\n\nSola\n\n16.10.2024\n\n- ### Advantages\n  \n  Good cut Robust\n\nYes, I would recommend this product to a friend\n\nThomas\n\n24.07.2024\n\n- ### Advantages\n  \n  Robust Good cut\n\nYes, I would recommend this product to a friend\n\nLara\n\n15.10.2023\n\n- ### Advantages\n  \n  Robust Good cut\n\nYes, I would recommend this product to a friend\n\nAndrea\n\n16.07.2023 [...] cott",
+      "i": 10,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": 4,
+      "component": "fabric",
+      "usage": "unknown",
+      "lang": "en",
+      "summary_en": "Same as snippet 1: user reports shrinking after a few weeks, indicating a material failure."
+     }
+    ],
+    "clusters": 3,
+    "tests": []
+   }
+  },
+  {
+   "type": "step",
+   "id": "cost",
+   "status": "running",
+   "title": "Working out the cost per day"
+  },
+  {
+   "type": "step",
+   "id": "cost",
+   "status": "done",
+   "title": "Cost per day",
+   "data": {
+    "rows": [
+     {
+      "name": "T-Shirt Jaames",
+      "price": 39.9,
+      "life_years": {
+       "low": 0.08,
+       "mid": 0.31,
+       "high": 1.0
+      },
+      "basis": "Two failure reports indicate fabric failure after 4 weeks (≈0.1 years), suggesting short lifespan. No established brand presence or long-term reviews. Material is 100% organic cotton, which is durable but failure reports override durability assumptions. Life is pulled down to the failure range.",
+      "per_day": {
+       "best": 0.109,
+       "mid": 0.353,
+       "worst": 1.366
+      },
+      "url": null,
+      "per_month": 10.73,
+      "per_year": 128.84,
+      "per_wear": {
+       "low": 9.97,
+       "mid": 1.53,
+       "high": 0.77
+      },
+      "wears": {
+       "low": 4.0,
+       "mid": 26.0,
+       "high": 52.0
+      }
+     }
+    ],
+    "consumables": [],
+    "energy_eur_year": 0.0,
+    "electricity_price": 0.37,
+    "usage_assumption": "Worn once per week, 52 times per year.",
+    "decisive_question": "How many times will this t-shirt be worn before it wears out?"
+   }
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "lifetime + consumables estimate",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 4869,
+     "prompt_tokens": 409,
+     "completion_tokens": 224,
+     "ts": 1795800853,
+     "output_preview": "{\"items\": [{\"name\": \"T-Shirt Jaames\", \"price_eur\": 39.9, \"life_years\": {\"low\": 0.1, \"mid\": 0.5, \"high\": 1.0}, \"basis\": \"Two failure reports indicate fabric failure after 4 weeks (≈0.1 years), suggesting short lifespan. No established brand presence or long-term reviews. Material is 100% organic cotton, which is durable but failure reports override durability assumptions. Life is pulled down to the"
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "verdict",
+   "status": "running",
+   "title": "Deciding (live Nebius call)"
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "final verdict",
+     "model": "deepseek-ai/DeepSeek-V4-Pro-0813",
+     "status": 200,
+     "ms": 32586,
+     "prompt_tokens": 1775,
+     "completion_tokens": 1481,
+     "ts": 1795800858,
+     "output_preview": "{\"verdict\": \"ASK\", \"headline\": \"Cheap organic tee, but durability evidence is too thin\", \"confidence\": \"low\", \"reasons\": [{\"text\": \"Fair Wear membership is confirmed on the Fair Wear website, supporting the fair-production claim.\", \"tier\": \"A\", \"url\": \"https://www.fairwear.org/brands/armedangels\"}, {\"text\": \"At €15.68 across 30 offers, cost per wear is acceptable if the shirt lasts 26+ wears, but "
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "verdict",
+   "status": "done",
+   "title": "Decided (live Nebius call)"
+  },
+  {
+   "type": "verdict",
+   "data": {
+    "verdict": "ASK",
+    "headline": "Cheap organic tee, but durability evidence is too thin",
+    "confidence": "low",
+    "reasons": [
+     {
+      "text": "Fair Wear membership is confirmed on the Fair Wear website, supporting the fair-production claim.",
+      "tier": "A",
+      "url": "https://www.fairwear.org/brands/armedangels"
+     },
+     {
+      "text": "At €15.68 across 30 offers, cost per wear is acceptable if the shirt lasts 26+ wears, but poor if the reported 4-week shrinking is typical.",
+      "tier": "B",
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/211716275_-jaames-t-shirt-100-bio-baumwolle-rot-30008308-3639-armedangels.html"
+     },
+     {
+      "text": "One user reports fabric shrinking after about 4 weeks, but this appears isolated and is not backed by an independent durability test or French durability index.",
+      "tier": "C",
+      "url": "https://www.bergfreunde.eu/armedangels-jaames-t-shirt"
+     },
+     {
+      "text": "The GOTS certification claim is not confirmed in the provided evidence, so treat it as unverified.",
+      "tier": "C",
+      "url": "https://www.global-standard.org/de/zertifizierung-und-labelling/wer-muss-zertifiziert-werden"
+     }
+    ],
+    "better_alternative": null,
+    "missing_fact": "Whether the reported 4-week shrinking is an isolated defect or a common material flaw, ideally shown by an independent wash test or broader failure rate.",
+    "trust_adjusted_stars": null
+   }
+  },
+  {
+   "type": "saved",
+   "id": "ea246688-40dd-46ca-94f8-e558fa7f022b"
+  }
+ ],
+ "verdict": {
+  "verdict": "ASK",
+  "headline": "Cheap organic tee, but durability evidence is too thin",
+  "confidence": "low",
+  "reasons": [
+   {
+    "text": "Fair Wear membership is confirmed on the Fair Wear website, supporting the fair-production claim.",
+    "tier": "A",
+    "url": "https://www.fairwear.org/brands/armedangels"
+   },
+   {
+    "text": "At €15.68 across 30 offers, cost per wear is acceptable if the shirt lasts 26+ wears, but poor if the reported 4-week shrinking is typical.",
+    "tier": "B",
+    "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/211716275_-jaames-t-shirt-100-bio-baumwolle-rot-30008308-3639-armedangels.html"
+   },
+   {
+    "text": "One user reports fabric shrinking after about 4 weeks, but this appears isolated and is not backed by an independent durability test or French durability index.",
+    "tier": "C",
+    "url": "https://www.bergfreunde.eu/armedangels-jaames-t-shirt"
+   },
+   {
+    "text": "The GOTS certification claim is not confirmed in the provided evidence, so treat it as unverified.",
+    "tier": "C",
+    "url": "https://www.global-standard.org/de/zertifizierung-und-labelling/wer-muss-zertifiziert-werden"
+   }
+  ],
+  "better_alternative": null,
+  "missing_fact": "Whether the reported 4-week shrinking is an isolated defect or a common material flaw, ideally shown by an independent wash test or broader failure rate.",
+  "trust_adjusted_stars": null
+ }
+}

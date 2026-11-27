@@ -110,6 +110,16 @@
   .report:last-child{border-bottom:0}
   .report .pill{font-size:10.5px;padding:1px 7px;text-transform:uppercase}
   .err{color:var(--red);font-weight:600}
+  /* after a click: one calm column, in reading order: verdict, receipt, how it got there, evidence */
+  body.has-run .grid{display:flex;flex-direction:column;gap:18px;max-width:900px;margin:8px auto 0}
+  body.has-run .grid > section{display:contents}
+  body.has-run #verdict{order:1;margin:0}
+  body.has-run #receipt{order:2;margin:6px auto 10px;width:100%;max-width:560px}
+  body.has-run .grid > section:first-child > *{order:3;margin:0}
+  body.has-run .grid > section:first-child > h3{margin:14px 0 -8px}
+  body.has-run #cards{order:4}
+  body.has-run .calls, body.has-run .ticker{width:100%;box-sizing:border-box}
+  body.has-run .grid > section:first-child{position:static}
   .hero{max-width:1100px;margin:18px auto 26px;text-align:center}
   .hero .lead{margin-left:auto !important;margin-right:auto !important}
   .hero .promises{text-align:left}
@@ -195,7 +205,7 @@
 
   <div class="grid">
     <section>
-      <h3>Live analysis</h3>
+      <h3>How it got there</h3>
       <div class="ticker" id="ticker"><div class="empty">Each step appears here as the agent works.</div></div>
       <h3 style="margin-top:22px">Nebius Token Factory calls</h3>
       <div class="callsum" id="callsum"></div>

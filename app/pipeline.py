@@ -227,12 +227,14 @@ async def running_cost(claim, found, life):
         "Life: base it on evidence. Failure reports with after_weeks must pull 'low' down to that range; throwaway rebrand "
         "products without tests or spare parts get short lives; established brands with many shops and reviews get longer ones.\n"
         "Consumables: ONLY parts the product needs to keep working and that wear out by design (ink, capsules, filters, "
-        "brush heads, blades). Not accessories, not optional bits. Many products have none: return []. Reply JSON:\n"
+        "brush heads, blades). Not accessories, not optional bits. Many products have none: return []. "
+        "Wears: for clothing, shoes and home textiles estimate how many times the item will be worn/used before it is worn out (use material and failure reports); for everything else return null. Reply JSON:\n"
         '{"items": [{"name": str, "price_eur": number, "life_years": {"low": number, "mid": number, "high": number}, '
         '"basis": str}], "consumables": [{"name": str, "idealo_query": str, "units_per_year": number}], '
-        '"energy_kwh_per_year": number|null, "usage_assumption": str, "decisive_question": str}\n'
+        '"energy_kwh_per_year": number|null, "usage_assumption": str, "decisive_question": str, '
+        '"wears": {"low": number, "mid": number, "high": number}|null}\n'
         "items[0] must be the product the user looks at; then each alternative in order.\n"
-        f"Product: {json.dumps({k: claim.get(k) for k in ('title', 'brand', 'category', 'price_eur', 'stars', 'review_count')}, ensure_ascii=False)}\n"
+        f"Product: {json.dumps({k: claim.get(k) for k in ('title', 'brand', 'category', 'price_eur', 'stars', 'review_count', 'is_clothing', 'material')}, ensure_ascii=False)}\n"
         f"Alternatives: {json.dumps([{k: a[k] for k in ('name', 'price', 'stars', 'review_count', 'offer_count')} for a in alts], ensure_ascii=False)}\n"
         f"Failure reports: {json.dumps([{k: r.get(k) for k in ('after_weeks', 'component', 'usage')} for r in life.get('reports', []) if r.get('failure')], ensure_ascii=False)}",
         purpose="lifetime + consumables estimate", max_tokens=2500)
@@ -273,7 +275,7 @@ async def running_cost(claim, found, life):
         mid = r["per_day"]["mid"]
         r["per_month"], r["per_year"] = round(mid * 30.4, 2), round(mid * 365, 2)
     wears = plan.get("wears")
-    if claim.get("is_clothing") and wears and rows:
+    if claim.get("is_clothing") and isinstance(wears, dict) and rows:
         p = rows[0]["price"] or 0
         rows[0]["per_wear"] = {k: round(p / max(float(wears.get(k) or 1), 1), 2) for k in ("low", "mid", "high")}
         rows[0]["wears"] = wears
@@ -320,6 +322,12 @@ async def responsibility(claim):
             f"Brand: {brand}\nSnippets: " + json.dumps(snippets, ensure_ascii=False)[:7000],
             purpose="certificate + official red-flag check")
     judged["flags"] = [f for f in judged.get("flags", []) if f.get("listed")]
+    merged = {}  # one row per certificate; confirmed wins if any snippet confirms it
+    for c in judged.get("certs", []):
+        k = (c.get("certificate") or "").strip().lower()
+        if k and (k not in merged or (c.get("confirmed") and not merged[k].get("confirmed"))):
+            merged[k] = c
+    judged["certs"] = list(merged.values())
     return {"claims": claims, **judged}
 
 

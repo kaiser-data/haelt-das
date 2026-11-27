@@ -25,7 +25,7 @@ screen (fact-checked against `samples/batch/*.json` by Codex). Say "Hält das" r
 | **1:10** CASE 2 · the impossible spec | Click **„2 TB" USB stick · €15.99** | "Two terabytes for sixteen euros is eight euros per terabyte. Real flash memory costs several times that. Sticks like this fake their size and put your files at risk. Avoid." |
 | **1:25** CASE 3 · conflicting evidence | Click **LG OLED TV · €1,799**; when it's done, point at the left column (Nebius calls) | "The hard case: an eighteen-hundred-euro TV. The official French durability index, declared by LG, gives this model eight out of ten. But owners of LG's B-series report processor failures, though none for this exact model. A live Nebius call weighs both, says *ask*, and names the one fact that would decide: does this model use the same board as the older ones? Every model call is logged here." |
 | **1:50** CASE 4 · greenwashing | Click **„Eco" fast-fashion T-shirt · €7.99** | "A T-shirt from a made-up demo brand: 'sustainable', 'environmentally friendly production', 'climate-neutral shipping', and no certificate listed. All three claims: unproven. Verdict: ask. It never accuses a brand; it only repeats official registries. And it prints the cost per wear: three cents." |
-| **2:05** CLOSE | Verdict area, or the installed app window | "Built today on the idealo MCP, Nebius Token Factory and Tavily: a website, a browser extension, and an app you can install. Two coding agents, every pull request checked by Norma. Hält das? Know what lasts, before you pay." |
+| **2:05** CLOSE | Verdict area, or the installed app window | "Built today on the idealo MCP, Nebius Token Factory and Tavily: a website, a browser extension, and an app you can install. Every change went through a pull request that Norma checked before merge, written by two people and two coding agents. When Norma found issues, we fixed the cause, not the finding, and Norma also runs inside the agent's loop. Hält das? Know what lasts, before you pay." |
 
 ## Notes
 
@@ -35,3 +35,6 @@ screen (fact-checked against `samples/batch/*.json` by Codex). Say "Hält das" r
   verdict on the badge. Cut the wait.
 - Live on stage (20:00): `?replay` is the safe path; run one chip live if there's time (~1–2 min per check).
 - Public link for judges: replay only (see the README / submission); live checks run on the laptop.
+- Norma facts you can say (check before recording): every PR checked by the Norma GitHub App before merge; PR #3 went
+  6 → 2 → 1 → 1 → 0 issues; a second human author (Silvia's PR) only if it is merged by the time you record;
+  Norma MCP in the agent loop (live_check clean, 5 fixes registered, PR #11); policies set in the Norma workspace.

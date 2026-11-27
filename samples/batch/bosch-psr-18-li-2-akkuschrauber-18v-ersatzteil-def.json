@@ -1,0 +1,530 @@
+{
+ "input": "Bosch PSR 18 LI-2 Akkuschrauber 18V, Ersatzteil/Defekt – nicht funktionsfähig, startet nicht. 25 € VB, Abholung Berlin",
+ "events": [
+  {
+   "type": "step",
+   "id": "claim",
+   "status": "running",
+   "title": "Reading the listing"
+  },
+  {
+   "type": "step",
+   "id": "claim",
+   "status": "done",
+   "title": "Listing read",
+   "data": {
+    "title": "Bosch PSR 18 LI-2 Akkuschrauber 18V, Ersatzteil/Defekt – nicht funktionsfähig, startet nicht",
+    "brand": "Bosch",
+    "model": "PSR 18 LI-2",
+    "category": "cordless drill",
+    "price_eur": 25,
+    "condition": "defekt - nicht funktionsfähig",
+    "condition_code": "defective",
+    "stars": null,
+    "review_count": null,
+    "claimed_specs": {
+     "voltage_v": 18,
+     "capacity_mah": null,
+     "weight_g": null,
+     "storage_tb": null,
+     "lumen": null,
+     "health_claims": [],
+     "other": []
+    },
+    "idealo_exact_query": "Bosch PSR 18 LI-2",
+    "idealo_generic_query": "Akku-Bohrschrauber 18V",
+    "clone_image_query": "cordless drill 18V",
+    "failure_queries": {
+     "de": "Bosch PSR 18 LI-2 startet nicht",
+     "en": "Bosch PSR 18 LI-2 does not start",
+     "fr": "Bosch PSR 18 LI-2 ne démarre pas"
+    },
+    "is_clothing": false,
+    "material": null,
+    "sustainability_claims": [],
+    "certifications": [],
+    "image_url": null,
+    "source_url": null
+   }
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "read listing",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 5483,
+     "prompt_tokens": 515,
+     "completion_tokens": 319,
+     "ts": 1795800720,
+     "output_preview": "{\"title\": \"Bosch PSR 18 LI-2 Akkuschrauber 18V, Ersatzteil/Defekt – nicht funktionsfähig, startet nicht\", \"brand\": \"Bosch\", \"model\": \"PSR 18 LI-2\", \"category\": \"cordless drill\", \"price_eur\": 25, \"condition\": \"defekt - nicht funktionsfähig\", \"condition_code\": \"defective\", \"stars\": null, \"review_count\": null, \"claimed_specs\": {\"voltage_v\": 18, \"capacity_mah\": null, \"weight_g\": null, \"storage_tb\": nu"
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "idealo",
+   "status": "running",
+   "title": "Looking it up on idealo"
+  },
+  {
+   "type": "step",
+   "id": "idealo",
+   "status": "done",
+   "title": "Found on idealo",
+   "data": {
+    "exact": {
+     "name": "Bosch PSR18V-60",
+     "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/214170186_-psr18v-60-06039d7201-bosch.html",
+     "price": 86.3,
+     "offer_count": 23,
+     "reviews": null,
+     "tests": [],
+     "overview": [
+      "max. Leerlaufdrehzahl 1.900 U/min",
+      "max. Drehmoment hart 51 Nm",
+      "Drehmomentstufen 20 + 1",
+      "bürstenloser EC-Motor",
+      "18 V",
+      "2,5 Ah"
+     ],
+     "shops": [
+      {
+       "name": "baumarkteu.de",
+       "rating": {
+        "count": 10450,
+        "avg": 4.25
+       },
+       "marketplace": false
+      },
+      {
+       "name": "alango.de",
+       "rating": {
+        "count": 570,
+        "avg": 5
+       },
+       "marketplace": false
+      },
+      {
+       "name": "manomano.de",
+       "rating": {
+        "count": null,
+        "avg": null
+       },
+       "marketplace": true
+      }
+     ]
+    },
+    "alternatives": [
+     {
+      "name": "Makita DDF482",
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/6148180_-ddf482rfj-makita.html",
+      "image": "https://cdn.idealo.com/folder/Product/6148/1/6148180/s1_produktbild_mobil/makita-ddf482rfj.jpg",
+      "price": 168.99,
+      "offer_count": 53,
+      "stars": 4.87,
+      "review_count": 39,
+      "ref": "pr.v1.k1.gGoRQgsJQpiWagyHAPVJUcK2SoQi-OdGr8FIYzJn1XZEISk"
+     },
+     {
+      "name": "Bosch GSR 18V-65",
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/205555020_-gsr-18v-65-0-601-9n3-200-bosch.html",
+      "image": "https://cdn.idealo.com/folder/Product/205555/0/205555020/s1_produktbild_mobil/bosch-gsr-18v-65-0-601-9n3-200.jpg",
+      "price": 78.99,
+      "offer_count": 33,
+      "stars": 4.78,
+      "review_count": 76,
+      "ref": "pr.v1.k1.d90DBzY2_swLe64dDVyc_mfR5XEhaNrgnQ3Zej8IsBIEAYRACQ"
+     }
+    ]
+   }
+  },
+  {
+   "type": "step",
+   "id": "condition",
+   "status": "warn",
+   "title": "Sold as broken or for parts: no cost per day",
+   "data": {
+    "phrase": "Defekt",
+    "text": "The listing says \"Defekt\": this is a broken unit or a donor for parts, not a working product. There is no cost per day of use to compare."
+   }
+  },
+  {
+   "type": "step",
+   "id": "specs",
+   "status": "done",
+   "title": "Specs plausible",
+   "data": []
+  },
+  {
+   "type": "step",
+   "id": "clones",
+   "status": "running",
+   "title": "Searching for the same product under other names"
+  },
+  {
+   "type": "step",
+   "id": "life",
+   "status": "running",
+   "title": "Collecting failure reports (DE/EN/FR)"
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "rebrand names",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 7471,
+     "prompt_tokens": 752,
+     "completion_tokens": 403,
+     "ts": 1795800728,
+     "output_preview": "{\"brands\": [\"Ryobi\", \"Milwaukee\", \"Warrior\", \"Makita\", \"Bosch\", \"Harbor Freight\", \"Amazon\", \"Lowe's\"], \"evidence\": [{\"brand\": \"Ryobi\", \"url\": \"https://www.ryobitools.com/collections/drilling\"}, {\"brand\": \"Milwaukee\", \"url\": \"https://www.youtube.com/watch?v=Y4BkB9Q52LU\"}, {\"brand\": \"Warrior\", \"url\": null}, {\"brand\": \"Makita\", \"url\": \"https://www.popularmechanics.com/home/tools/a27923491/best-cordle"
+    }
+   ]
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "classify failure reports",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 30386,
+     "prompt_tokens": 2951,
+     "completion_tokens": 1427,
+     "ts": 1795800729,
+     "output_preview": "{\"items\": [{\"i\": 0, \"relevant\": true, \"failure\": true, \"after_weeks\": null, \"component\": \"battery connection / trigger mechanism\", \"usage\": \"unknown\", \"lang\": \"en\", \"summary_en\": \"User reports that the Bosch PSR 18 LI-2 drill does not start, but a specific troubleshooting method—partially depressing the trigger while reattaching the battery—successfully resolves the issue. This indicates a functio"
+    },
+    {
+     "purpose": "dedupe reports across languages",
+     "model": "Qwen/Qwen3-Embedding-8B",
+     "status": 200,
+     "ms": 16290,
+     "prompt_tokens": 335,
+     "completion_tokens": 0,
+     "ts": 1795800759
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "clones",
+   "status": "warn",
+   "title": "Look-alikes: 0 visual match(es), 8 brand name(s)",
+   "data": {
+    "visual_matches": [],
+    "brands": [
+     "Ryobi",
+     "Milwaukee",
+     "Warrior",
+     "Makita",
+     "Bosch",
+     "Harbor Freight",
+     "Amazon",
+     "Lowe's"
+    ],
+    "evidence": [
+     {
+      "brand": "Ryobi",
+      "url": "https://www.ryobitools.com/collections/drilling"
+     },
+     {
+      "brand": "Milwaukee",
+      "url": "https://www.youtube.com/watch?v=Y4BkB9Q52LU"
+     },
+     {
+      "brand": "Warrior",
+      "url": null
+     },
+     {
+      "brand": "Makita",
+      "url": "https://www.popularmechanics.com/home/tools/a27923491/best-cordless-drills"
+     },
+     {
+      "brand": "Bosch",
+      "url": "https://www.boschtools.com/us/en/18v-drill-drivers-37960-ocs-c"
+     },
+     {
+      "brand": "Harbor Freight",
+      "url": "https://www.harborfreight.com/18v-cordless-38-in-drill-kit-with-battery-and-charger-58389.html"
+     },
+     {
+      "brand": "Amazon",
+      "url": "https://www.amazon.com/18v-cordless-drill/s?k=18v+cordless+drill"
+     },
+     {
+      "brand": "Lowe's",
+      "url": "https://www.lowes.com/pl/power-tools/drills-drivers/drills/18-volt-battery/4294607722-4294613538"
+     }
+    ]
+   }
+  },
+  {
+   "type": "step",
+   "id": "life",
+   "status": "warn",
+   "title": "6 failure report(s), 6 distinct stories",
+   "data": {
+    "reports": [
+     {
+      "title": "Bosch Power Tools PSR 18 LI-2 Questions | ProductReview.com.au",
+      "url": "https://www.productreview.com.au/listings/bosch-psr-14-4-li-2-psr-18-li-2-18-li-2/q-and-a",
+      "text": "It sounds similar to the unresolved problem that I have.If you slide off the battery and partially depress the trigger and then slide the battery back onto the lock position will the drill start to spin ?\n\nGraham - I've been trying to problem solve this problem for 24 hours and looking on YouTube and various forums. Without meaning to jinx it - your solution has worked for me. Thanks\n\nCheers Graham, I had same problem and came across your solution, it worked! [...] My psr 18 l1-2 will not operat",
+      "i": 0,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": null,
+      "component": "battery connection / trigger mechanism",
+      "usage": "unknown",
+      "lang": "en",
+      "summary_en": "User reports that the Bosch PSR 18 LI-2 drill does not start, but a specific troubleshooting method—partially depressing the trigger while reattaching the battery—successfully resolves the issue. This indicates a functional failure related to the battery connection or trigger interlock."
+     },
+     {
+      "title": "Bosch PSB 18 LI-2 Teardown and Quick Inspection",
+      "url": "https://www.youtube.com/watch?v=-V-UPtqRM5A&vl=en",
+      "text": "Good day. Today I'm looking at something slightly different. A Bosch drill. And this one, pull the trigger. Got a light down here. It says we got battery, but we get no spin. So, I'm not sure if it's a setting issue or what, but going to take the screws out and just have a look and see what I can see. with very minimal knowledge on drills. We do have a model number PA6-GF30. So, I'm going to assume that that may be the model number. I know PSB 18 Alli 2. Should we start by disconnecting the [...",
+      "i": 1,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": null,
+      "component": "motor / internal electronics",
+      "usage": "unknown",
+      "lang": "en",
+      "summary_en": "A user attempts to diagnose a Bosch PSR 18 LI-2 drill that shows battery power (light on) but does not spin when the trigger is pulled. The user suspects a hardware or internal electronics issue and proceeds to disassemble the tool, indicating a failure to start despite proper battery connection."
+     },
+     {
+      "title": "Bosch PSB 18 LI-2 Chuck Problem | Tools In Action",
+      "url": "https://toolsinaction.com/forum/topic/1328-bosch-psb-18-li-2-chuck-problem",
+      "text": "The problem I am having is that every time I put a drill bit in and start using it the chuck keeps loosening off and I have to repeatedly retighten it to finish the job. I have read all through the instructions and can’t see anything extra I should be doing to lock the keyless chuck. Has anyone else had similar problems with this drill? Or any suggestions of what I might be missing? I don’t want to take it back if it is just something I am doing wrong!\n\nThanks for any help/suggestions [...] Yea,",
+      "i": 3,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": null,
+      "component": "chuck",
+      "usage": "unknown",
+      "lang": "en",
+      "summary_en": "User reports that the keyless chuck on their Bosch PSB 18 LI-2 drill keeps loosening during use, requiring repeated retightening. This is a recurring mechanical failure specific to the chuck mechanism."
+     },
+     {
+      "title": "Reperatur BOSCH PSR18 LI-2",
+      "url": "https://www.youtube.com/watch?v=lLqutCc3jkQ",
+      "text": "euch da oben dieses weite teile deshalb zwischen den beiden seiten nicht richtig geklemmt hat gedauert nachdem die kamera aufgefallen ist keine gesehen so neun minuten video hat er noch aufgenommen kurz danach so fünf minuten sechs minuten danach ungefähr hat sein funktioniert und ich habe ihn zusammen strom können ja tut mir leid ich bekomme ich nicht damit klar ich hab zwar 230 arbeit in den linken und von gute 12 nutzbaren aber ich habe alte videos nicht gelöscht von dem mobiltelefon und [...",
+      "i": 4,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": null,
+      "component": "internal electronics / power system",
+      "usage": "unknown",
+      "lang": "de",
+      "summary_en": "User describes a Bosch PSR 18 LI-2 drill that stopped working after a video recording session. After a few minutes of inactivity, the tool failed to power on again. The user suspects internal electrical or power management failure, though no repair was confirmed."
+     },
+     {
+      "title": "Site de Philippe LE GUEN - Panne sur Perceuse/Visseuse BOSCH",
+      "url": "https://www.pleguen.fr/index.php/panne-sur-perceuse-visseuse-bosch-psb-18-li-2",
+      "text": "## Panne sur Perceuse/Visseuse BOSCH PSB 18 LI-2\n\nUne fois n'est pas coutume, me voici confronté à une panne sur mon matériel, en l'occurrence la perceuse/visseuse BOSCH PSB 18 LI-2 achetée en Avril 2017.vue de la BOSCH PSB 18 LI-2...  \nQue ce soit avec l'une ou l'autre de mes 2 batteries chargées à bloc, lors de l'appui sur la gâchette le moteur refuse de démarrer et les 3 LED vertes ainsi que la blanche clignotent 3 fois...\n\n## Intervention [...] BOSCH PSB 18 LI 2 (Puissance)Comme je l'écrivai",
+      "i": 11,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": 96,
+      "component": "internal electronics / power system",
+      "usage": "unknown",
+      "lang": "fr",
+      "summary_en": "User reports that their Bosch PSB 18 LI-2 drill (purchased April 2017) stopped starting after 8 years. The drill shows flashing green and white LEDs (3 flashes), indicating a system error. The issue persists across two fully charged batteries, suggesting a hardware failure in the drill’s internal electronics."
+     },
+     {
+      "title": "Bosch PSB 18 LI-2 Battery Not Charging: Diagnosis | ReeFix",
+      "url": "https://reefix.ai/en/repair/bosch-psb-18-li2-battery-not-charging-diagnosis-and-repair-guide",
+      "text": "A Bosch PSB 18 LI-2 drill that does not charge and shows a flashing error indicator almost always points to a problem in the power management system. The most common causes involve the battery itself, the charger, the contacts, or, less frequently, the internal electronics of the drill.\n\nCauses and Probabilities:\n\n1. Defective Bosch PSB 18 LI-2 Battery (60-75% probability): [...] If quick checks indicate that the problem is the battery or the charger -> replace the defective component; otherwise",
+      "i": 12,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": null,
+      "component": "battery / charger / power management",
+      "usage": "unknown",
+      "lang": "en",
+      "summary_en": "Repair guide for a Bosch PSB 18 LI-2 drill that won’t charge and shows a flashing error indicator. The most likely cause is a defective battery, charger, or internal power management system, indicating a functional failure."
+     }
+    ],
+    "clusters": 6,
+    "tests": []
+   }
+  },
+  {
+   "type": "step",
+   "id": "cost",
+   "status": "running",
+   "title": "Working out the cost per day"
+  },
+  {
+   "type": "step",
+   "id": "cost",
+   "status": "done",
+   "title": "Cost per day",
+   "data": {
+    "rows": [
+     {
+      "name": "Bosch PSR 18 LI-2 Akkuschrauber 18V, Ersatzteil/Defekt – nicht funktionsfähig, startet nicht",
+      "price": 25,
+      "life_years": {
+       "low": null,
+       "mid": null,
+       "high": null
+      },
+      "basis": "Product is sold as a non-functional spare part; no working condition or usage history. Failure reports show multiple internal electronics failures, including one at 96 weeks (~1.8 years), indicating early failure risk. No evidence of long-term reliability. Short life assumed due to lack of functionality and high failure rate in critical components. No spare parts or repairability evidence.",
+      "per_day": {
+       "best": null,
+       "mid": null,
+       "worst": null
+      },
+      "url": null,
+      "not_working": "Defekt",
+      "per_month": null,
+      "per_year": null
+     },
+     {
+      "name": "Makita DDF482",
+      "price": 168.99,
+      "life_years": {
+       "low": 5,
+       "mid": 8,
+       "high": 12
+      },
+      "basis": "Makita is a well-established brand with strong reputation in power tools. 39 reviews and 53 offers indicate market presence. No failure reports for this model, but general reliability of Makita tools is high. Industry standard for cordless drills is 5–10+ years with proper care. Life extended due to brand reliability and typical usage patterns.",
+      "per_day": {
+       "best": 0.039,
+       "mid": 0.058,
+       "worst": 0.093
+      },
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/6148180_-ddf482rfj-makita.html",
+      "per_month": 1.76,
+      "per_year": 21.17
+     },
+     {
+      "name": "Bosch GSR 18V-65",
+      "price": 78.99,
+      "life_years": {
+       "low": 4,
+       "mid": 7,
+       "high": 10
+      },
+      "basis": "Bosch is a reputable brand with 76 reviews and 33 offers, indicating availability and user trust. The model is a well-known professional-grade drill. While the user's product has failure reports, the GSR 18V-65 is a more robust variant with better build quality. No specific failure reports for this model. Life extended based on brand reliability and higher review count compared to the non-functional unit.",
+      "per_day": {
+       "best": 0.022,
+       "mid": 0.031,
+       "worst": 0.055
+      },
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/205555020_-gsr-18v-65-0-601-9n3-200-bosch.html",
+      "per_month": 0.94,
+      "per_year": 11.31
+     }
+    ],
+    "consumables": [],
+    "energy_eur_year": 0.0,
+    "electricity_price": 0.37,
+    "usage_assumption": "Average household use: 1–2 hours per week, occasional DIY projects.",
+    "decisive_question": "Is the cost of replacing a non-functional tool worth the investment in a reliable, long-lasting alternative?"
+   }
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "lifetime + consumables estimate",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 9276,
+     "prompt_tokens": 628,
+     "completion_tokens": 596,
+     "ts": 1795800775,
+     "output_preview": "{\"items\": [{\"name\": \"Bosch PSR 18 LI-2 Akkuschrauber 18V, Ersatzteil/Defekt – nicht funktionsfähig, startet nicht\", \"price_eur\": 25, \"life_years\": {\"low\": 1, \"mid\": 3, \"high\": 5}, \"basis\": \"Product is sold as a non-functional spare part; no working condition or usage history. Failure reports show multiple internal electronics failures, including one at 96 weeks (~1.8 years), indicating early failu"
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "verdict",
+   "status": "running",
+   "title": "Deciding (live Nebius call)"
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "final verdict",
+     "model": "deepseek-ai/DeepSeek-V4-Pro-0813",
+     "status": 200,
+     "ms": 33014,
+     "prompt_tokens": 3073,
+     "completion_tokens": 1212,
+     "ts": 1795800785,
+     "output_preview": "{\"verdict\": \"BUY_ALTERNATIVE\", \"headline\": \"Do not buy a broken drill; get working Bosch GSR 18V-65.\", \"confidence\": \"high\", \"reasons\": [{\"text\": \"Listed as 'Defekt – nicht funktionsfähig, startet nicht'; a non-working drill has no utility unless you need specific spare parts, which is unproven.\", \"tier\": \"A\", \"url\": null}, {\"text\": \"Multiple user reports for PSR/PSB 18 LI-2 family show start fail"
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "verdict",
+   "status": "done",
+   "title": "Decided (live Nebius call)"
+  },
+  {
+   "type": "verdict",
+   "data": {
+    "verdict": "BUY_ALTERNATIVE",
+    "headline": "Do not buy a broken drill; get working Bosch GSR 18V-65.",
+    "confidence": "high",
+    "reasons": [
+     {
+      "text": "Listed as 'Defekt – nicht funktionsfähig, startet nicht'; a non-working drill has no utility unless you need specific spare parts, which is unproven.",
+      "tier": "A",
+      "url": null
+     },
+     {
+      "text": "Multiple user reports for PSR/PSB 18 LI-2 family show start failures and internal electronics issues, including one at about 96 weeks.",
+      "tier": "B",
+      "url": "https://www.productreview.com.au/listings/bosch-psr-14-4-li-2-psr-18-li-2-18-li-2/q-and-a"
+     },
+     {
+      "text": "Working Bosch GSR 18V-65 costs 78.99 EUR with 33 offers and 4.78 stars from 76 reviews, far better value than a dead unit.",
+      "tier": "B",
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/205555020_-gsr-18v-65-0-601-9n3-200-bosch.html"
+     }
+    ],
+    "better_alternative": "Bosch GSR 18V-65",
+    "missing_fact": null,
+    "trust_adjusted_stars": null
+   }
+  },
+  {
+   "type": "saved",
+   "id": "8a4b9730-8b15-415a-90c4-d1e1f2693bbe"
+  }
+ ],
+ "verdict": {
+  "verdict": "BUY_ALTERNATIVE",
+  "headline": "Do not buy a broken drill; get working Bosch GSR 18V-65.",
+  "confidence": "high",
+  "reasons": [
+   {
+    "text": "Listed as 'Defekt – nicht funktionsfähig, startet nicht'; a non-working drill has no utility unless you need specific spare parts, which is unproven.",
+    "tier": "A",
+    "url": null
+   },
+   {
+    "text": "Multiple user reports for PSR/PSB 18 LI-2 family show start failures and internal electronics issues, including one at about 96 weeks.",
+    "tier": "B",
+    "url": "https://www.productreview.com.au/listings/bosch-psr-14-4-li-2-psr-18-li-2-18-li-2/q-and-a"
+   },
+   {
+    "text": "Working Bosch GSR 18V-65 costs 78.99 EUR with 33 offers and 4.78 stars from 76 reviews, far better value than a dead unit.",
+    "tier": "B",
+    "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/205555020_-gsr-18v-65-0-601-9n3-200-bosch.html"
+   }
+  ],
+  "better_alternative": "Bosch GSR 18V-65",
+  "missing_fact": null,
+  "trust_adjusted_stars": null
+ }
+}

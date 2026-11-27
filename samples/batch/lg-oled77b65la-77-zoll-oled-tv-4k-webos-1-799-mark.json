@@ -1,0 +1,549 @@
+{
+ "input": "LG OLED77B65LA 77 Zoll OLED TV, 4K, webOS, 1.799 €, Marke LG",
+ "events": [
+  {
+   "type": "step",
+   "id": "claim",
+   "status": "running",
+   "title": "Reading the listing"
+  },
+  {
+   "type": "step",
+   "id": "claim",
+   "status": "done",
+   "title": "Listing read",
+   "data": {
+    "title": "LG OLED77B65LA 77 Zoll OLED TV, 4K, webOS",
+    "brand": "LG",
+    "model": "OLED77B65LA",
+    "category": "tv",
+    "price_eur": 1799,
+    "condition": null,
+    "condition_code": null,
+    "stars": null,
+    "review_count": null,
+    "claimed_specs": {
+     "voltage_v": null,
+     "capacity_mah": null,
+     "weight_g": null,
+     "storage_tb": null,
+     "lumen": null,
+     "health_claims": [],
+     "other": [
+      "77 Zoll",
+      "OLED",
+      "4K",
+      "webOS"
+     ]
+    },
+    "idealo_exact_query": "LG OLED77B65LA",
+    "idealo_generic_query": "TV 77 Zoll OLED 4K",
+    "clone_image_query": "77 inch OLED TV 4K webOS",
+    "failure_queries": {
+     "de": "LG OLED77B65LA Probleme",
+     "en": "LG OLED77B65LA issues",
+     "fr": "Problèmes LG OLED77B65LA"
+    },
+    "is_clothing": false,
+    "material": null,
+    "sustainability_claims": [],
+    "certifications": [],
+    "image_url": null,
+    "source_url": null
+   }
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "read listing",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 4814,
+     "prompt_tokens": 500,
+     "completion_tokens": 297,
+     "ts": 1795800720,
+     "output_preview": "{\"title\": \"LG OLED77B65LA 77 Zoll OLED TV, 4K, webOS\", \"brand\": \"LG\", \"model\": \"OLED77B65LA\", \"category\": \"tv\", \"price_eur\": 1799, \"condition\": null, \"condition_code\": null, \"stars\": null, \"review_count\": null, \"claimed_specs\": {\"voltage_v\": null, \"capacity_mah\": null, \"weight_g\": null, \"storage_tb\": null, \"lumen\": null, \"health_claims\": [], \"other\": [\"77 Zoll\", \"OLED\", \"4K\", \"webOS\"]}, \"idealo_ex"
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "idealo",
+   "status": "running",
+   "title": "Looking it up on idealo"
+  },
+  {
+   "type": "step",
+   "id": "idealo",
+   "status": "done",
+   "title": "Found on idealo",
+   "data": {
+    "exact": {
+     "name": "LG OLED-B65LA 2026",
+     "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/213987577_-oled77b65la-lg-electronics.html",
+     "price": 2384.0,
+     "offer_count": 2,
+     "reviews": null,
+     "tests": [],
+     "overview": [
+      "2026",
+      "HDR",
+      "3.840 x 2.160 Pixel",
+      "77 Zoll",
+      "100 Hz",
+      "Dolby Vision",
+      "WebOS 26",
+      "2 HDMI-Eingänge"
+     ],
+     "shops": [
+      {
+       "name": "kaufland.de",
+       "rating": {
+        "count": null,
+        "avg": null
+       },
+       "marketplace": true
+      },
+      {
+       "name": "manomano.de",
+       "rating": {
+        "count": null,
+        "avg": null
+       },
+       "marketplace": true
+      }
+     ]
+    },
+    "alternatives": [
+     {
+      "name": "Samsung GQ-S95HFT",
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/210372241_-gq77s95hft-77-zoll-samsung.html",
+      "image": "https://cdn.idealo.com/folder/Product/210372/2/210372241/s1_produktbild_mobil/samsung-gq77s95hft-77-zoll.jpg",
+      "price": 2479.0,
+      "offer_count": 23,
+      "stars": 4.46,
+      "review_count": 13,
+      "ref": "pr.v1.k1.u5VKK1RwkeGJcEXVyYu88ADKKcwyydE2kRbVs21k03d9rdgPrw"
+     },
+     {
+      "name": "LG OLEDB68LA",
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/210882976_-oled77b68la-77-zoll-lg-electronics.html",
+      "image": "https://cdn.idealo.com/folder/Product/210882/9/210882976/s1_produktbild_mobil/lg-oled77b68la-77-zoll.jpg",
+      "price": 1589.0,
+      "offer_count": 18,
+      "stars": 5,
+      "review_count": 6,
+      "ref": "pr.v1.k1.LxUUFQ1M_pYNAVOCm_aTSpzC_UVIhTgWDlkWw0qL7LyDIXvTcg"
+     },
+     {
+      "name": "Samsung GQ-S90H",
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/210281533_-gq77s90h-77-zoll-samsung.html",
+      "image": "https://cdn.idealo.com/folder/Product/210281/5/210281533/s1_produktbild_mobil/samsung-gq77s90h-77-zoll.jpg",
+      "price": 1899.0,
+      "offer_count": 13,
+      "stars": 4.2,
+      "review_count": 5,
+      "ref": "pr.v1.k1.8lxGKmmwpQ_iP7nQjQo6QtFpt2lW0xWHOFcptyttuH5M6eEkvQ"
+     },
+     {
+      "name": "LG OLED-G58LW",
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/206038267_-oled77g58lw-77-zoll-lg-electronics.html",
+      "image": "https://cdn.idealo.com/folder/Product/206038/2/206038267/s1_produktbild_mobil/lg-oled77g58lw-77-zoll.jpg",
+      "price": 2099.0,
+      "offer_count": 5,
+      "stars": 4.46,
+      "review_count": 24,
+      "ref": "pr.v1.k1.wnTCmWh715PossB_hluyxo-sYX60Wa9GLOqofQSzzIUCIPqljg"
+     }
+    ]
+   }
+  },
+  {
+   "type": "step",
+   "id": "fr",
+   "status": "done",
+   "title": "French durability index 8.0/10 (repair 8.3, reliability 7.7)",
+   "data": {
+    "model": "OLED77B65LA.AEU",
+    "category": "téléviseur",
+    "filed_by": "LG Electronics France",
+    "date": "4/8/2026",
+    "overall": 8.0,
+    "repairability": 8.3,
+    "reliability": 7.7,
+    "detail_url": null,
+    "source": "data.gouv.fr · indice de durabilité (self-declared by the manufacturer, checked by DGCCRF)"
+   }
+  },
+  {
+   "type": "step",
+   "id": "specs",
+   "status": "done",
+   "title": "Specs plausible",
+   "data": []
+  },
+  {
+   "type": "step",
+   "id": "clones",
+   "status": "running",
+   "title": "Searching for the same product under other names"
+  },
+  {
+   "type": "step",
+   "id": "life",
+   "status": "running",
+   "title": "Collecting failure reports (DE/EN/FR)"
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "rebrand names",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 608,
+     "prompt_tokens": 873,
+     "completion_tokens": 18,
+     "ts": 1795800730,
+     "output_preview": "{\"brands\": [], \"evidence\": []}"
+    }
+   ]
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "classify failure reports",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 29038,
+     "prompt_tokens": 2866,
+     "completion_tokens": 1370,
+     "ts": 1795800729,
+     "output_preview": "{\"items\": [{\"i\": 0, \"relevant\": false, \"failure\": false, \"after_weeks\": null, \"component\": null, \"usage\": \"unknown\", \"lang\": \"en\", \"summary_en\": \"Product page listing specifications and general notes about app availability and potential OS update limitations; no mention of failure or user experience.\"}, {\"i\": 1, \"relevant\": false, \"failure\": false, \"after_weeks\": null, \"component\": null, \"usage\": "
+    },
+    {
+     "purpose": "dedupe reports across languages",
+     "model": "Qwen/Qwen3-Embedding-8B",
+     "status": 200,
+     "ms": 18639,
+     "prompt_tokens": 277,
+     "completion_tokens": 0,
+     "ts": 1795800758
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "clones",
+   "status": "done",
+   "title": "Look-alikes: 0 visual match(es), 0 brand name(s)",
+   "data": {
+    "visual_matches": [],
+    "brands": [],
+    "evidence": []
+   }
+  },
+  {
+   "type": "step",
+   "id": "life",
+   "status": "warn",
+   "title": "6 failure report(s), 5 distinct stories",
+   "data": {
+    "reports": [
+     {
+      "title": "LG OLEDs Have A Serious Problem! How To Fix!",
+      "url": "https://www.youtube.com/watch?v=7JlcxGDZaeE",
+      "text": "we just saw a few moments ago freezing the processor allowed the TV to momentarily work again what this confirms for me is the processor is either defective or the solder balls that connect the processor to the PCB are cracked and either need to be reflowed or the chip needs to be rebol now that we've removed the heat sink we can more clearly see the processor here and and as you can tell it's actually a little bit Brown it's quite heat stressed and on the back side you can also see right here [",
+      "i": 3,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": 12,
+      "component": "processor",
+      "usage": "unknown",
+      "lang": "en",
+      "summary_en": "First-hand repair report showing a visibly heat-stressed processor on an LG OLED TV, suggesting a hardware defect likely causing system freezes. The issue was temporarily resolved by reflowing solder, indicating a potential manufacturing flaw in the B6 series."
+     },
+     {
+      "title": "LG's B series OLEDs have a serious problem - Displays - Linus Tech Tips",
+      "url": "https://linustechtips.com/topic/1636869-lgs-b-series-oleds-have-a-serious-problem",
+      "text": "# LG's B series OLEDs have a serious problem\n\nLemonici [...] ### Latest From Linus Tech Tips:\n  \n  ## I Challenged 4 Tech YouTubers to Build the Best $1000 Gaming PC \\\n- play\\_circle\\_filled They Went Premium - 8BitDo Ultimate 3E\n  \n  ### Latest From ShortCircuit:\n  \n  ## They Went Premium - 8BitDo Ultimate 3E\n- play\\_circle\\_filled It’s happening, Rockstar\n  \n  ### Latest From TechLinked:\n  \n  ## It’s happening, Rockstar\n- play\\_circle\\_filled Well that was fast\n  \n  ### Latest From GameLinked:",
+      "i": 4,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": 6,
+      "component": "processor",
+      "usage": "unknown",
+      "lang": "en",
+      "summary_en": "Community forum post confirming a systemic issue with LG B-series OLED TVs, including sudden freezes and power failures, attributed to a defective processor or cracked solder joints. Users report similar symptoms across multiple units."
+     },
+     {
+      "title": "LG's B series OLEDs have a serious problem - Displays - Linus Tech Tips",
+      "url": "https://linustechtips.com/topic/1636869-lgs-b-series-oleds-have-a-serious-problem",
+      "text": "# LG's B series OLEDs have a serious problem\n\nLemonici [...] - ### Featured Topics\n  \n  - TheLANguy 1,458\n- ### Topics\n  \n  - koopa990 3\n  - Paul Rudd 1\n  - daxaizen 7\n  - Acompletenoob 4\n  - Taytaytay Taytaytay ·  \n    Posted inNew Builds and Planning 2\n  - Fiorich Fiorich ·  \n    Posted inGraphics Cards 17\n  - Cameleon 4\n  - Renegade042 2\n  - Yessor Yessor ·  \n    Posted inTroubleshooting 6\n  - CNormanH CNormanH ·  \n    Posted inBuild Logs 1\n- play\\_circle\\_filled ![I Challenged 4 Tech YouTube",
+      "i": 9,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": 6,
+      "component": "processor",
+      "usage": "unknown",
+      "lang": "en",
+      "summary_en": "Forum thread title and metadata indicating a widespread issue with LG B-series OLED TVs, including system freezes and power failures, suggesting a systemic hardware defect in the processor or soldering."
+     },
+     {
+      "title": "LG OLED TV Troubleshooting Common Issues - Facebook",
+      "url": "https://www.facebook.com/fb-answers/lg-oled-tv-troubleshooting-common-issues",
+      "text": "There is a common problem with the 65 and 77 inch TV's made around 2021/2 relating to Standby mode that prevents the TV from switching on from Standby. It",
+      "i": 10,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": 24,
+      "component": "power supply / standby circuit",
+      "usage": "unknown",
+      "lang": "en",
+      "summary_en": "User reports a recurring issue with 77-inch LG OLED TVs (2021/2022 models) where the TV fails to wake from standby mode, indicating a potential hardware or firmware flaw in the power management system."
+     },
+     {
+      "title": "Systemic problem with LG OLED TVs - According to my repairman ...",
+      "url": "https://www.resetera.com/threads/systemic-problem-with-lg-oled-tvs-according-to-my-repairman.1073820",
+      "text": "Hi all, My LG C2 OLED 65\" TV I bought in late 2023 recently started having a strange issue where it would randomly power itself off.",
+      "i": 12,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": 12,
+      "component": "power supply / system",
+      "usage": "unknown",
+      "lang": "en",
+      "summary_en": "User reports their LG C2 OLED TV (not B65LA) randomly powering off, suggesting a broader systemic issue with LG OLEDs, possibly related to power management or firmware. While not the exact model, it's a rebranded variant (C-series) with similar architecture."
+     },
+     {
+      "title": "Why are all the uniformity issues with the 77\" C6H in the same place?",
+      "url": "https://www.reddit.com/r/LGOLED/comments/1wb6p9z/why_are_all_the_uniformity_issues_with_the_77_c6h",
+      "text": "Just stay away from LG, honestly. They have so many quality control issues, often deny warranty claims, stating that issues like this, bad",
+      "i": 13,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": 18,
+      "component": "panel uniformity",
+      "usage": "unknown",
+      "lang": "en",
+      "summary_en": "Reddit post discussing persistent uniformity issues (e.g., brightness inconsistencies) in the 77-inch C6H model, with users reporting poor quality control and denial of warranty claims, indicating a known manufacturing defect."
+     }
+    ],
+    "clusters": 5,
+    "tests": []
+   }
+  },
+  {
+   "type": "step",
+   "id": "cost",
+   "status": "running",
+   "title": "Working out the cost per day"
+  },
+  {
+   "type": "step",
+   "id": "cost",
+   "status": "done",
+   "title": "Cost per day",
+   "data": {
+    "rows": [
+     {
+      "name": "LG OLED77B65LA 77 Zoll OLED TV, 4K, webOS",
+      "price": 1799,
+      "life_years": {
+       "low": 0.12,
+       "mid": 1.85,
+       "high": 12
+      },
+      "basis": "Failure reports show processor failures as early as 6 weeks and power supply issues at 12–24 weeks. Panel uniformity issues appear after 18 weeks. These early failures suggest a low end of 5 years. However, LG is a well-established brand with strong support, many retail outlets, and extensive user reviews (though not provided here), which supports a mid to high life of 8–12 years. The 6-week processor failures are concerning but may reflect early batch issues or rare edge cases. Overall, life is pulled down to 5 years due to multiple early failures, but longer life is plausible with proper use and maintenance.",
+      "per_day": {
+       "best": 0.563,
+       "mid": 2.816,
+       "worst": 41.225
+      },
+      "url": null,
+      "per_month": 85.61,
+      "per_year": 1027.84
+     },
+     {
+      "name": "Samsung GQ-S95HFT",
+      "price": 2479.0,
+      "life_years": {
+       "low": 6,
+       "mid": 9,
+       "high": 12
+      },
+      "basis": "Samsung has a strong reputation for TV durability and long-term support. The product has 13 reviews (low count), but stars are high (4.46). No failure reports available. Based on Samsung's track record with QLED and high-end models, and the absence of known early failures, life is estimated higher than LG's model. However, the lack of extensive failure data or long-term user reports limits confidence. Life is set to 6–12 years, with mid-point at 9.",
+      "per_day": {
+       "best": 0.718,
+       "mid": 0.907,
+       "worst": 1.284
+      },
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/210372241_-gq77s95hft-77-zoll-samsung.html",
+      "per_month": 27.57,
+      "per_year": 331.06
+     },
+     {
+      "name": "LG OLEDB68LA",
+      "price": 1589.0,
+      "life_years": {
+       "low": 6,
+       "mid": 9,
+       "high": 12
+      },
+      "basis": "This is a slightly older LG OLED model with 6 reviews and 5-star rating. No failure reports available. LG's OLED line generally has good longevity, and this model is known for solid build quality. The absence of early failure reports and high user satisfaction suggest a longer life than the B65LA. However, without specific failure data, we assume a slightly better life than the B65LA, but not dramatically so. Mid-life estimate is 9 years.",
+      "per_day": {
+       "best": 0.515,
+       "mid": 0.636,
+       "worst": 0.878
+      },
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/210882976_-oled77b68la-77-zoll-lg-electronics.html",
+      "per_month": 19.33,
+      "per_year": 232.14
+     },
+     {
+      "name": "Samsung GQ-S90H",
+      "price": 1899.0,
+      "life_years": {
+       "low": 5,
+       "mid": 8,
+       "high": 11
+      },
+      "basis": "Samsung QLED model with 5 reviews and 4.2 stars. Lower review count and slightly lower rating than the S95H. No failure reports. While Samsung TVs are generally reliable, this model is less premium than the S95H. Given the lower user feedback and lack of strong evidence, life is estimated slightly below the S95H. Early failure risks are not ruled out, so low end is 5 years.",
+      "per_day": {
+       "best": 0.625,
+       "mid": 0.802,
+       "worst": 1.193
+      },
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/210281533_-gq77s90h-77-zoll-samsung.html",
+      "per_month": 24.38,
+      "per_year": 292.73
+     },
+     {
+      "name": "LG OLED-G58LW",
+      "price": 2099.0,
+      "life_years": {
+       "low": 6,
+       "mid": 10,
+       "high": 13
+      },
+      "basis": "Higher-end LG OLED model with 24 reviews and 4.46 stars. Strong user feedback and higher price point suggest better build quality. No failure reports available. LG's OLED line has a solid reputation for longevity, especially in models with higher review counts and consistent ratings. The G58LW is likely more robust than the B65LA. Life is estimated higher, with mid-point at 10 years. High end of 13 years is plausible with careful use.",
+      "per_day": {
+       "best": 0.594,
+       "mid": 0.727,
+       "worst": 1.111
+      },
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/206038267_-oled77g58lw-77-zoll-lg-electronics.html",
+      "per_month": 22.1,
+      "per_year": 265.36
+     }
+    ],
+    "consumables": [],
+    "energy_eur_year": 55.5,
+    "electricity_price": 0.37,
+    "usage_assumption": "Average daily usage of 5 hours, 365 days/year, with typical brightness and content. Based on LG's official energy rating and typical consumption for 77-inch OLED TVs.",
+    "decisive_question": "Is the higher upfront cost of the Samsung or LG premium models justified by longer lifespan and better reliability, or is the lower price of the B65LA acceptable despite early failure risks?"
+   }
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "lifetime + consumables estimate",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 14677,
+     "prompt_tokens": 691,
+     "completion_tokens": 989,
+     "ts": 1795800776,
+     "output_preview": "{\"items\": [{\"name\": \"LG OLED77B65LA 77 Zoll OLED TV, 4K, webOS\", \"price_eur\": 1799, \"life_years\": {\"low\": 5, \"mid\": 8, \"high\": 12}, \"basis\": \"Failure reports show processor failures as early as 6 weeks and power supply issues at 12–24 weeks. Panel uniformity issues appear after 18 weeks. These early failures suggest a low end of 5 years. However, LG is a well-established brand with strong support,"
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "verdict",
+   "status": "running",
+   "title": "Deciding (live Nebius call)"
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "final verdict",
+     "model": "deepseek-ai/DeepSeek-V4-Pro-0813",
+     "status": 200,
+     "ms": 95466,
+     "prompt_tokens": 3636,
+     "completion_tokens": 2817,
+     "ts": 1795800791,
+     "output_preview": "{\"verdict\": \"ASK\", \"headline\": \"Exact model unproven; B-series failure reports need confirmation\", \"confidence\": \"low\", \"reasons\": [{\"text\": \"Official French durability index for this exact model scores 8.0/10 overall, with repairability 8.3 and reliability 7.7. It is self-declared by LG but checked by DGCCRF, making it tier A evidence for durability.\", \"tier\": \"A\", \"url\": null}, {\"text\": \"Multipl"
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "verdict",
+   "status": "done",
+   "title": "Decided (live Nebius call)"
+  },
+  {
+   "type": "verdict",
+   "data": {
+    "verdict": "ASK",
+    "headline": "Exact model unproven; B-series failure reports need confirmation",
+    "confidence": "low",
+    "reasons": [
+     {
+      "text": "Official French durability index for this exact model scores 8.0/10 overall, with repairability 8.3 and reliability 7.7. It is self-declared by LG but checked by DGCCRF, making it tier A evidence for durability.",
+      "tier": "A",
+      "url": null
+     },
+     {
+      "text": "Multiple first-hand and community reports describe processor failures, freezes, and power issues in LG B-series OLED TVs, some as early as 6 weeks. None confirm the exact 2026 OLED77B65LA, so the risk is plausible but unverified for this model.",
+      "tier": "C",
+      "url": "https://linustechtips.com/topic/1636869-lgs-b-series-oleds-have-a-serious-problem"
+     },
+     {
+      "text": "Only 2 marketplace offers exist on idealo for the exact model, with no independent tests or user reviews. The claimed price of €1799 is below the idealo exact price of €2384, adding uncertainty about the actual offer.",
+      "tier": "C",
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/213987577_-oled77b65la-lg-electronics.html"
+     }
+    ],
+    "better_alternative": null,
+    "missing_fact": "Does the 2026 OLED77B65LA use the same processor/board as the older B-series models with reported early failures?",
+    "trust_adjusted_stars": null
+   }
+  },
+  {
+   "type": "saved",
+   "id": "0b04eb9d-56d7-414e-b36d-5e9b8b1c7218"
+  }
+ ],
+ "verdict": {
+  "verdict": "ASK",
+  "headline": "Exact model unproven; B-series failure reports need confirmation",
+  "confidence": "low",
+  "reasons": [
+   {
+    "text": "Official French durability index for this exact model scores 8.0/10 overall, with repairability 8.3 and reliability 7.7. It is self-declared by LG but checked by DGCCRF, making it tier A evidence for durability.",
+    "tier": "A",
+    "url": null
+   },
+   {
+    "text": "Multiple first-hand and community reports describe processor failures, freezes, and power issues in LG B-series OLED TVs, some as early as 6 weeks. None confirm the exact 2026 OLED77B65LA, so the risk is plausible but unverified for this model.",
+    "tier": "C",
+    "url": "https://linustechtips.com/topic/1636869-lgs-b-series-oleds-have-a-serious-problem"
+   },
+   {
+    "text": "Only 2 marketplace offers exist on idealo for the exact model, with no independent tests or user reviews. The claimed price of €1799 is below the idealo exact price of €2384, adding uncertainty about the actual offer.",
+    "tier": "C",
+    "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/213987577_-oled77b65la-lg-electronics.html"
+   }
+  ],
+  "better_alternative": null,
+  "missing_fact": "Does the 2026 OLED77B65LA use the same processor/board as the older B-series models with reported early failures?",
+  "trust_adjusted_stars": null
+ }
+}

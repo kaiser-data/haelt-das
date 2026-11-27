@@ -229,7 +229,7 @@ def _cos(a, b):
 
 
 async def running_cost(claim, found, life):
-    alts = found.get("alternatives", [])
+    alts = rules.dedupe_alternatives(found.get("alternatives", []))
     plan = await llm.chat_json(
         "Estimate ownership cost inputs. Use the evidence; where you must assume, say so in 'basis'.\n"
         "Life: base it on evidence. Failure reports with after_weeks must pull 'low' down to that range; throwaway rebrand "
@@ -249,11 +249,13 @@ async def running_cost(claim, found, life):
     cons_total = 0.0
     consumables = []
     has_consumables = any(k in (claim.get("category") or "").lower() for k in CONSUMABLE_CATEGORIES)
-    for c in (plan.get("consumables", [])[:3] if has_consumables else []):
+    cap = rules.consumables_cap(claim.get("price_eur"), claim.get("category", ""))
+    wanted = [c for c in plan.get("consumables", []) if not rules.is_accessory(c.get("name"))]
+    for c in (wanted[:3] if has_consumables else []):
         res = (await idealo.search(c["idealo_query"])).get("results") or []
         price = idealo.euro(res[0].get("price")) if res else None
         if price:
-            per_year = min(price * float(c.get("units_per_year") or 0), 3 * (claim.get("price_eur") or price))
+            per_year = min(price * float(c.get("units_per_year") or 0), max(cap - cons_total, 0) if cap else price)
             cons_total += per_year
             consumables.append({**c, "price_eur": price, "per_year": round(per_year, 2), "url": res[0]["url"],
                                 "found": res[0]["name"]})
@@ -266,9 +268,7 @@ async def running_cost(claim, found, life):
         life_y = dict(it.get("life_years") or {})
         if idx == 0:  # evidence beats optimism: reported failures cap the low end of the life estimate
             weeks = [r["after_weeks"] for r in life.get("reports", []) if r.get("failure") and r.get("after_weeks")]
-            if weeks:
-                life_y["low"] = round(min(float(life_y.get("low") or 99), min(weeks) / 52), 2)
-                life_y["mid"] = round(min(float(life_y.get("mid") or 99), max(weeks) / 52 * 4), 2)
+            life_y = rules.life_from_failures(life_y, weeks)
         per_year_running = cons_total + energy  # same consumable class assumed across alternatives
 
         def per_day(years):
@@ -358,7 +358,10 @@ Reply JSON only:
 
 
 async def verdict(evidence):
-    return await llm.decide("Evidence:\n" + json.dumps(evidence, ensure_ascii=False, default=str)[:24000], system=VERDICT_SYSTEM)
+    v = await llm.decide("Evidence:\n" + json.dumps(evidence, ensure_ascii=False, default=str)[:24000], system=VERDICT_SYSTEM)
+    if isinstance(v, dict) and isinstance(v.get("reasons"), list):
+        v["reasons"] = [rules.strict_tier(r) for r in v["reasons"]]  # tier A only for evidence that is hard to fake
+    return v
 
 
 async def run(inp):

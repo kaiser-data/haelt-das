@@ -17,7 +17,8 @@ MODEL_DECIDE = "deepseek-ai/DeepSeek-V4-Pro-0813"
 MODEL_DECIDE_FALLBACK = "deepseek-ai/DeepSeek-V4.1-Flash-1017"
 
 call_log: contextvars.ContextVar = contextvars.ContextVar("call_log", default=None)
-_client = httpx.AsyncClient(timeout=120)
+CONNECT_TIMEOUT = 5  # a dead host shows up in seconds; only reading the answer may take long
+_client = httpx.AsyncClient(timeout=httpx.Timeout(120, connect=CONNECT_TIMEOUT))
 
 
 def _headers():

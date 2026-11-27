@@ -41,7 +41,7 @@ async def image_hash(url):
         r = await _client.get(url)
         if r.status_code != 200:
             return None
-        img = Image.open(io.BytesIO(r.content)).convert("RGB")
-        return imagehash.phash(img)
+        with Image.open(io.BytesIO(r.content)) as src:
+            return imagehash.phash(src.convert("RGB"))
     except Exception:  # noqa: BLE001 - third-party images fail in many ways; a missing hash is fine
         return None

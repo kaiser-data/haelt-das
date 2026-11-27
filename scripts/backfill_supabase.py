@@ -1,12 +1,14 @@
 """Load saved batch results (samples/batch/*.json) into Supabase public.checks."""
 import asyncio
-import glob
 import json
+from pathlib import Path
 
 from dotenv import load_dotenv
 
 load_dotenv()
 from app import store  # noqa: E402
+
+BATCH_DIR = Path("samples/batch")
 
 
 def last(events, sid, default):
@@ -14,9 +16,13 @@ def last(events, sid, default):
     return data[-1] if data else default
 
 
-async def main():
-    for path in sorted(glob.glob("samples/batch/*.json")):
-        d = json.load(open(path))
+def load_checks():
+    """Read every saved run up front (plain file I/O, outside the event loop)."""
+    return [(path, json.loads(path.read_text(encoding="utf-8"))) for path in sorted(BATCH_DIR.glob("*.json"))]
+
+
+async def save_all(checks):
+    for path, d in checks:
         ev = d["events"]
         inp = d["input"] if isinstance(d["input"], dict) else {"text": d["input"]}
         calls = [c for e in ev if e.get("type") == "calls" for c in (e.get("data") or e.get("calls") or [])]
@@ -26,4 +32,5 @@ async def main():
         print(sid, path)
 
 
-asyncio.run(main())
+if __name__ == "__main__":
+    asyncio.run(save_all(load_checks()))

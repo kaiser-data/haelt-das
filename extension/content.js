@@ -14,13 +14,16 @@
     return findProduct(o["@graph"]);
   }
 
+  // Malformed JSON-LD is common on shop pages: each skipped block's reason travels with the page payload.
+  const jsonLdSkipped = [];
+
   function jsonLdProduct() {
     for (const s of document.querySelectorAll('script[type="application/ld+json"]')) {
       let data;
       try {
         data = JSON.parse(s.textContent);
       } catch (e) {
-        console.debug("Hält das? skipping malformed JSON-LD block", e.message);  // common on shop pages
+        if (jsonLdSkipped.length < 5) jsonLdSkipped.push(e.message);
         continue;
       }
       const p = findProduct(data);
@@ -48,6 +51,7 @@
       description: (p.description || txt("#feature-bullets") || "").slice(0, 2000),
       images: [].concat(p.image || meta("og:image") || []).map(i => (typeof i === "object" ? i.url : i)).filter(Boolean).slice(0, 3),
       text: document.body.innerText.replace(/\s+\n/g, "\n").slice(0, 6000),
+      jsonld_skipped: jsonLdSkipped.slice(),
     };
   }
 
@@ -71,8 +75,8 @@
     try {
       page = grab();
     } catch (e) {
-      console.warn("Hält das? structured grab failed, sending page text instead", e);
-      page = { url: location.href, title: document.title, text: document.body.innerText.slice(0, 6000) };
+      page = { url: location.href, title: document.title, text: document.body.innerText.slice(0, 6000),
+               grab_error: String(e?.message || e) };  // the server logs it; the check still runs on the page text
     }
     chrome.runtime.sendMessage({ type: "haeltdas-check", page }).catch(e => { label.textContent = "reload page"; console.warn("Hält das?", e); });
   });

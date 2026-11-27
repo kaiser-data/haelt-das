@@ -1,7 +1,17 @@
 // Opens the side panel next to the shop page and relays the page data and the verdict.
 // Expected failures (no side panel API when headless, no real user gesture, panel not open yet, tab closed)
-// are logged at debug level instead of being swallowed, so they show up in the service-worker console.
-const logSkip = where => e => console.debug("Hält das?", where, e?.message || e);
+// are recorded, not swallowed: the last 20 go to chrome.storage.session "diagnostics" ({at, where, error}),
+// where the panel and the extension's devtools can read them. One channel, no console noise in shop pages.
+const DIAG_MAX = 20;
+let diagnosticsDropped = 0;  // entries lost because the store itself failed; reported with the next entry
+function recordDiagnostic(where, e) {
+  const entry = { at: Date.now(), where, error: String(e?.message || e), dropped_before: diagnosticsDropped };
+  chrome.storage.session.get("diagnostics")
+    .then(({ diagnostics = [] }) => chrome.storage.session.set({ diagnostics: [...diagnostics, entry].slice(-DIAG_MAX) }))
+    .then(() => { diagnosticsDropped = 0; })
+    .catch(() => { diagnosticsDropped += 1; });
+}
+const logSkip = where => e => recordDiagnostic(where, e);
 
 if (chrome.sidePanel?.setPanelBehavior) {
   chrome.sidePanel.setPanelBehavior({ openPanelOnActionClick: true }).catch(logSkip("setPanelBehavior"));

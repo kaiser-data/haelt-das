@@ -47,7 +47,10 @@ async def understand(inp):
         return claim
     page = None
     if inp.get("page"):  # from the browser extension
-        page = inp["page"]
+        diag = {k: inp["page"][k] for k in ("jsonld_skipped", "grab_error") if inp["page"].get(k)}
+        if diag:  # extension diagnostics belong in the server log, not in the model prompt
+            print("extension diagnostics:", inp["page"].get("url"), diag)
+        page = {k: v for k, v in inp["page"].items() if k not in ("jsonld_skipped", "grab_error")}
         text = json.dumps(page, ensure_ascii=False)[:12000]
         img = (page.get("images") or [None])[0]
     elif inp.get("url"):

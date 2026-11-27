@@ -4,8 +4,10 @@ import asyncio
 from app import pipeline
 
 
-def run_cost(monkeypatch, claim, plan, life=None, found=None):
+def run_cost(monkeypatch, claim, plan, life=None, found=None, prompts=None):
     async def fake_chat_json(prompt, **kw):
+        if prompts is not None:
+            prompts.append(prompt)
         return plan
 
     async def fake_search(query, country="DE"):
@@ -36,8 +38,9 @@ def test_failure_reports_pull_the_life_estimate_down(monkeypatch):
 def test_defect_listing_gets_no_per_day_price(monkeypatch):
     claim = {"title": "Akkuschrauber Defekt – nicht funktionsfähig", "category": "cordless drill"}
     row = run_cost(monkeypatch, claim, PLAN)["rows"][0]
-    assert row["not_working"] == "defekt"
+    assert row["not_working"] == "Defekt"
     assert row["per_day"]["mid"] is None and row["per_year"] is None
+    assert row["life_years"]["low"] is None  # no "0–0 years" on the receipt
 
 
 def test_alternative_uses_the_idealo_price(monkeypatch):
@@ -59,3 +62,23 @@ def test_tshirt_gets_a_cost_per_wear(monkeypatch):
 def test_non_clothing_never_gets_a_per_wear_line(monkeypatch):
     row = run_cost(monkeypatch, {"title": "Akkuschrauber"}, {**PLAN, "wears": {"low": 1, "mid": 1, "high": 1}})["rows"][0]
     assert "per_wear" not in row
+
+
+def test_prompt_asks_for_wear_counts_with_clothing_facts(monkeypatch):
+    prompts = []
+    run_cost(monkeypatch, {"title": "TrendWave Eco T-Shirt", "is_clothing": True, "material": "100% Baumwolle"}, PLAN,
+             prompts=prompts)
+    assert '"wears"' in prompts[0] and '"is_clothing": true' in prompts[0] and "100% Baumwolle" in prompts[0]
+
+
+def test_unusable_wear_estimate_is_skipped_not_invented(monkeypatch):
+    for wears in ({}, {"low": "40+", "mid": 50, "high": 60}):
+        row = run_cost(monkeypatch, {"title": "T-Shirt", "is_clothing": True}, {**PLAN, "wears": wears})["rows"][0]
+        assert "per_wear" not in row
+
+
+def test_broken_clothing_gets_no_cost_per_wear_or_running_costs(monkeypatch):
+    out = run_cost(monkeypatch, {"title": "Winterjacke, Reißverschluss defekt", "is_clothing": True},
+                   {**PLAN, "wears": {"low": 20, "mid": 40, "high": 80}, "energy_kwh_per_year": 10})
+    assert out["rows"][0]["not_working"] == "defekt"
+    assert "per_wear" not in out["rows"][0] and out["energy_eur_year"] == 0

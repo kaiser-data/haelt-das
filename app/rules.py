@@ -2,15 +2,48 @@
 
 LIION_MAX_WH_PER_KG = 270  # best commercial Li-ion cells; packs with housing are lower
 
-# Listings that sell a broken unit or a part: a cost per day of use is meaningless for them.
-NOT_WORKING_TERMS = ("defekt", "nicht funktionsfähig", "funktioniert nicht", "für bastler", "bastlerware",
-                     "for parts", "not working", "spares or repair", "pour pièces", "hors service", "en panne")
+import math
+import re
+
+# Listings that sell a broken unit or a donor for parts: a cost per day of use is meaningless for them.
+# Word-boundary patterns (DE/EN/FR); a negation just before the phrase ("kein Defekt", "nicht für Bastler") or a
+# packaging noun ("Verpackung defekt") means the item itself works.
+_NOT_WORKING = re.compile(
+    r"\bdefekte?[rsnm]?\b|\bnicht (?:mehr )?funktionsfähig\b|\bfunktioniert nicht\b(?! nur)|\bohne funktion\b"
+    r"|\bfür bastler\b|\bbastlerware\b|\bersatzteilspender\b|\bals ersatzteil\b"
+    r"|\bfor parts\b|\bnot working\b(?! with)|\bspares or repairs?\b|\bbroken\b|\bdefective\b|\bfaulty\b"
+    r"|\bdoes(?: not|n't) (?:work|turn on|power on|charge)\b"
+    r"|\bpour pièces\b|\bhors service\b|\ben panne\b|\bne fonctionne (?:pas|plus)\b|\bdéfectueu(?:x|se)\b")
+_NEGATION = {"kein", "keine", "keinen", "keiner", "keinerlei", "nicht", "nie", "ohne", "no", "not", "never", "without",
+             "sans", "pas", "aucun", "aucune", "non"}
+_PACKAGING = {"verpackung", "ovp", "karton", "box", "packaging", "packung", "emballage", "carton"}
 
 
 def not_working(claim: dict) -> str | None:
-    """Return the matching phrase if the listing says the item is broken or sold as parts, else None."""
-    text = " ".join(str(claim.get(k) or "") for k in ("title", "condition")).lower()
-    return next((t for t in NOT_WORKING_TERMS if t in text), None)
+    """The phrase that says this listing sells a broken unit or a donor for parts, as written; else None."""
+    for field in ("title", "condition"):
+        text = str(claim.get(field) or "")
+        for m in _NOT_WORKING.finditer(text.lower()):
+            before = re.findall(r"[\wäöüßéèàç]+", text.lower()[:m.start()])[-3:]
+            if _NEGATION & set(before) or (before and before[-1] in _PACKAGING):
+                continue
+            return text[m.start():m.end()]
+    if claim.get("condition_code") == "defective":
+        return str(claim.get("condition") or "defective")
+    return None
+
+
+def wear_counts(wears) -> dict | None:
+    """Validated low/mid/high wear counts (finite, positive, sorted), or None if the estimate is unusable."""
+    if not isinstance(wears, dict):
+        return None
+    try:
+        vals = sorted(float(wears[k]) for k in ("low", "mid", "high"))
+    except (KeyError, TypeError, ValueError):
+        return None
+    if not all(math.isfinite(v) and v >= 1 for v in vals):
+        return None
+    return dict(zip(("low", "mid", "high"), vals))
 
 
 def check(specs: dict, price_eur, category: str = ""):

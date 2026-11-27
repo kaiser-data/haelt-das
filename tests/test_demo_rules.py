@@ -44,12 +44,29 @@ def test_empty_specs_produce_no_flags():
 
 
 def test_defect_listing_is_not_a_working_product():
-    assert rules.not_working({"title": "Bosch PSR 18 Ersatzteil/Defekt – nicht funktionsfähig"}) == "defekt"
-    assert rules.not_working({"title": "iPhone 12", "condition": "For parts or not working"}) == "for parts"
+    assert rules.not_working({"title": "Bosch PSR 18 Ersatzteil/Defekt – nicht funktionsfähig"}) == "Defekt"
+    assert rules.not_working({"title": "iPhone 12", "condition": "For parts or not working"}) == "For parts"
+    assert rules.not_working({"title": "Lave-linge", "condition": "ne fonctionne pas"}) == "ne fonctionne pas"
+    assert rules.not_working({"title": "Kopfhörer", "condition": "broken, does not charge"}) == "broken"
 
 
-def test_working_spare_part_is_not_flagged_as_broken():
-    assert rules.not_working({"title": "Ersatzteil Akku für Dyson V8, neu", "condition": "neu"}) is None
+def test_model_coded_defective_condition_counts_too():
+    assert rules.not_working({"title": "Saugroboter", "condition": "siehe Fotos", "condition_code": "defective"}) == "siehe Fotos"
+
+
+def test_working_listings_are_not_flagged_as_broken():
+    working = ["Ersatzteil Akku für Dyson V8, neu", "Akkuschrauber, kein Defekt, top Zustand", "defektfrei, wie neu",
+               "Verpackung defekt, Gerät neu", "nicht für Bastler, voll funktionsfähig", "funktioniert nicht nur mit Android",
+               "Adapter, not working with iPhone 15? Ask us", "sans défaut, jamais en panne"]
+    for title in working:
+        assert rules.not_working({"title": title}) is None, title
+
+
+def test_wear_counts_must_be_complete_and_positive():
+    assert rules.wear_counts({"low": 80, "mid": 20, "high": 40}) == {"low": 20, "mid": 40, "high": 80}
+    for bad in ({}, None, {"low": 20, "mid": None, "high": 80}, {"low": "40+", "mid": 50, "high": 60},
+                {"low": 0, "mid": 10, "high": 20}, {"low": float("nan"), "mid": 1, "high": 2}):
+        assert rules.wear_counts(bad) is None, bad
 
 
 def test_vague_green_claim_without_certificate_is_unproven():

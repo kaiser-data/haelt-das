@@ -12,3 +12,4 @@ samples/*.log
 .DS_Store
 data/fr_durabilite/
 .pytest_cache/
+HANDOFF.md

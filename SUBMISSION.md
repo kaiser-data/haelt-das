@@ -61,7 +61,10 @@ Every call goes through `app/llm.py` and appears in the UI's call log (model, la
   opposite ways (don't swallow errors / don't log to the console), so we gave the extension one diagnostics channel:
   background failures go to a 20-entry ring buffer in `chrome.storage.session`, content-script problems travel in
   the payload and the server logs them (kept out of the model prompt). Verified in Chromium: the headless "needs a
-  user gesture" failure is recorded; badge and click relay unchanged. Final re-check: <result>.
+  user gesture" failure is recorded; badge and click relay unchanged. Next checks: 1 Medium *print() in production
+  code* (the server-side diagnostics line) → we moved the whole app (pipeline, store, server) to `logging`; then
+  1 Low *logging.basicConfig outside `__main__`* → only the `app.*` logger is configured, the root logger is left to
+  whoever imports us. Sequence on PR #3: **6 → 2 → 1 → 1 → 0** ✅, each step a cause fixed, nothing deleted.
 - **Finding we accepted:** <rule> in `app/pipeline.py` / `app/web.py`: untrusted web text (search snippets, listing
   pages) is passed into model prompts. That is the product's purpose; mitigations: JSON-only outputs, the decision
   model never executes tools, every claim must cite a URL, the UI escapes all model output.

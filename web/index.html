@@ -213,6 +213,8 @@ function onStep(ev){
     const fl = (d.flags||[]).map(f => `<div class="flag high">Listed: ${esc(f.source)}: ${esc(f.what)} <a href="${esc(f.url)}" target="_blank">source</a></div>`).join("");
     card(`<h3>Green claims · certificates · official lists</h3>${cl}${ce}${fl || `<div class="report">No entry on EU Safety Gate or US forced-labour lists found for this brand.</div>`}<div class="note" style="font-size:12px;color:var(--muted);margin-top:6px">We only repeat official listings and named sources; we never accuse on our own.</div>`);
   }
+  if (ev.id === "fr" && d)
+    card(`<h3>Official French durability index</h3><div class="row" style="display:flex;gap:18px;align-items:baseline"><span style="font:800 34px var(--sans)">${d.overall}</span><span>/10 · repairability <b>${d.repairability}</b> · reliability <b>${d.reliability}</b></span></div><div class="report">${esc(d.model)} · filed by ${esc(d.filed_by)} · ${esc(d.date||"")} ${d.detail_url ? `<a href="${esc(d.detail_url)}" target="_blank">scoring sheet</a>` : ""}</div><div class="note" style="font-size:12px;color:var(--muted)">${esc(d.source)}</div>`);
   if (ev.id === "cost") renderReceipt(d);
 }
 

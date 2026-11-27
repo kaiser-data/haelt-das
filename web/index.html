@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hält das? · What it really costs, and whether it lasts</title>
+<style>
+  :root{
+    --ink:#16130f; --paper:#f4efe4; --card:#fffdf8; --muted:#6f675b; --line:#ded5c3;
+    --red:#c8361d; --amber:#b9770e; --green:#2f7a3f; --blue:#1f4f8a;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    --sans: ui-sans-serif, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.5 var(--sans)}
+  header{padding:28px 40px 8px;display:flex;align-items:baseline;gap:18px;flex-wrap:wrap}
+  .mark{font:800 34px/1 var(--sans);letter-spacing:-.02em}
+  .mark span{color:var(--red)}
+  .tag{color:var(--muted);font-size:15px}
+  main{padding:8px 40px 60px;max-width:1280px}
+  .input{background:var(--card);border:1.5px solid var(--ink);border-radius:4px;padding:16px;display:grid;grid-template-columns:1fr auto;gap:12px;box-shadow:4px 4px 0 var(--ink)}
+  .input textarea{border:0;outline:0;resize:none;font:16px/1.4 var(--sans);background:transparent;min-height:48px}
+  .input button{background:var(--ink);color:var(--paper);border:0;border-radius:3px;padding:0 22px;font:700 15px var(--sans);cursor:pointer}
+  .input button:disabled{opacity:.5;cursor:wait}
+  .drop{grid-column:1/-1;display:flex;gap:10px;align-items:center;color:var(--muted);font-size:13px}
+  .drop img{height:56px;border:1px solid var(--line);border-radius:3px}
+  .chips{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 26px}
+  .chip{font:13px var(--sans);border:1px solid var(--ink);background:transparent;border-radius:99px;padding:5px 12px;cursor:pointer}
+  .chip:hover{background:var(--ink);color:var(--paper)}
+  .grid{display:grid;grid-template-columns:minmax(300px,380px) 1fr;gap:28px;align-items:start}
+  @media (max-width:900px){.grid{grid-template-columns:1fr} header,main{padding-left:18px;padding-right:18px}}
+  h3{font:700 12px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+  .ticker{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:14px 16px}
+  .step{display:grid;grid-template-columns:22px 1fr;gap:8px;padding:7px 0;border-bottom:1px dashed var(--line);font-size:14px}
+  .step:last-child{border-bottom:0}
+  .ico{font:700 14px var(--mono);text-align:center}
+  .running .ico{color:var(--blue);animation:pulse 1s infinite}
+  .done .ico{color:var(--green)} .warn .ico{color:var(--amber)}
+  @keyframes pulse{50%{opacity:.25}}
+  .calls{margin-top:18px;background:#1b1813;color:#e9e1cf;border-radius:4px;padding:12px 14px;font:12px/1.55 var(--mono);max-height:280px;overflow:auto}
+  .calls .c{display:grid;grid-template-columns:1fr auto;gap:6px;border-bottom:1px solid #2f2a22;padding:4px 0}
+  .calls .m{color:#9fd3a6} .calls .p{color:#e9e1cf} .calls .t{color:#a89c84}
+  .verdict{border-radius:4px;padding:18px 20px;color:#fff;margin-bottom:22px;display:none}
+  .verdict .v{font:800 13px var(--mono);letter-spacing:.14em}
+  .verdict .h{font:800 26px/1.15 var(--sans);margin-top:6px}
+  .verdict .meta{font-size:13px;opacity:.85;margin-top:8px}
+  .AVOID{background:var(--red)} .BUY{background:var(--green)} .BUY_ALTERNATIVE{background:var(--blue)} .ASK{background:var(--amber)}
+  .receipt{background:#fff;font:14px/1.6 var(--mono);padding:22px 22px 30px;max-width:520px;position:relative;
+    filter:drop-shadow(0 3px 6px rgba(0,0,0,.12));margin-bottom:26px;display:none;
+    -webkit-mask: conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) 50%/14px 100%;}
+  .receipt .title{text-align:center;font-weight:800;letter-spacing:.1em}
+  .receipt .sub{text-align:center;color:var(--muted);font-size:12px;margin-bottom:10px}
+  .receipt .row{display:flex;justify-content:space-between;gap:12px}
+  .receipt .row b{white-space:nowrap}
+  .receipt hr{border:0;border-top:1.5px dashed #999;margin:10px 0}
+  .receipt .big{font-size:20px;font-weight:800}
+  .receipt .note{font-size:11px;color:var(--muted)}
+  .receipt .line{opacity:0;transform:translateY(-4px);animation:print .25s forwards}
+  @keyframes print{to{opacity:1;transform:none}}
+  .cards{display:grid;gap:14px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:14px 16px}
+  .reason{display:grid;grid-template-columns:30px 1fr;gap:10px;padding:6px 0;border-bottom:1px dashed var(--line)}
+  .reason:last-child{border-bottom:0}
+  .tier{font:800 11px var(--mono);border-radius:3px;text-align:center;padding:2px 0;height:20px}
+  .tA{background:#dfeedd;color:var(--green)} .tB{background:#f6ead2;color:var(--amber)} .tC{background:#eee;color:#777}
+  a{color:var(--blue)}
+  .flag{border-left:3px solid var(--amber);padding:4px 10px;margin:6px 0;font-size:14px}
+  .flag.high{border-color:var(--red)}
+  .family{display:flex;gap:10px;flex-wrap:wrap}
+  .family figure{margin:0;width:110px;font-size:11px;color:var(--muted)}
+  .family img{width:110px;height:90px;object-fit:contain;background:#fff;border:1px solid var(--line);border-radius:3px}
+  .pill{display:inline-block;font:700 11px var(--mono);padding:2px 8px;border-radius:99px;background:#eee;margin:2px 4px 2px 0}
+  .report{font-size:14px;padding:5px 0;border-bottom:1px dashed var(--line)}
+  .report:last-child{border-bottom:0}
+  .err{color:var(--red);font-weight:700}
+  .empty{color:var(--muted);font-size:14px;padding:30px 0}
+  /* side panel inside the browser extension: one column, no header */
+  body.embed header, body.embed .chips, body.embed .input{display:none}
+  body.embed main{padding:10px}
+  body.embed .grid{grid-template-columns:1fr;gap:14px}
+  body.embed .grid > section:first-child{order:2}
+  body.embed .verdict .h{font-size:20px}
+</style>
+</head>
+<body>
+<header>
+  <div class="mark">Hält das<span>?</span></div>
+  <div class="tag">What it really costs per day, how long it lasts, and whether someone is trying to trick you.</div>
+</header>
+<main>
+  <form class="input" id="f">
+    <textarea id="q" rows="2" placeholder="Paste a product link, a description, or a screenshot (⌘V)…"></textarea>
+    <button id="go" type="submit">Check</button>
+    <div class="drop" id="drop">or drop / paste a screenshot of any listing (Amazon, Temu, Instagram ad…)</div>
+  </form>
+  <div class="chips">
+    <button class="chip" data-q="Brushless Akkuschrauber Set 21V, Akku-Bohrschrauber Bürstenlos 2x 2000mAh Akku, 60Nm, 25+3 Drehmomentstufen, 4,7 Sterne (1.832 Bewertungen), 39,99 €, Marke: SEESII">No-name „21V“ drill · €39.99</button>
+    <button class="chip" data-q="USB Stick 2TB, USB 3.0 Speicherstick 2000GB, Metall, wasserdicht, 4,5 Sterne (920 Bewertungen), 15,99 €, Marke: KOOTION-Style generic">„2 TB“ USB stick · €15.99</button>
+    <button class="chip" data-q="Powerbank 50000mAh, 22,5W Schnellladung, nur 180g, 4,6 Sterne (2.410 Bewertungen), 24,99 €, Marke: generic">„50,000 mAh“ power bank · 180 g</button>
+    <button class="chip" data-q="Herren T-Shirt Eco Collection, 100% Baumwolle, nachhaltig und umweltfreundlich produziert, klimaneutraler Versand, 4,3 Sterne (2.900 Bewertungen), 7,99 €, Marke: TrendWave (fiktive Demo-Marke)">„Eco“ fast-fashion T-shirt · €7.99</button>
+    <button class="chip" data-q="Armedangels T-Shirt Jaames, 100% Bio-Baumwolle, GOTS zertifiziert, Fair Wear Mitglied, 39,90 €, Marke: Armedangels">GOTS T-shirt · €39.90</button>
+    <button class="chip" data-q="Bosch Akkuschrauber PSR 18 LI-2 (18V, 2x Akku, 2-Gang), 4,7 Sterne, 129 €, Marke Bosch">Bosch PSR 18 LI-2</button>
+  </div>
+
+  <div class="grid">
+    <section>
+      <h3>Live analysis</h3>
+      <div class="ticker" id="ticker"><div class="empty">Waiting for a product…</div></div>
+      <h3 style="margin-top:22px">Nebius Token Factory calls</h3>
+      <div class="calls" id="calls">no calls yet</div>
+    </section>
+    <section>
+      <div class="verdict" id="verdict"></div>
+      <div class="receipt" id="receipt"></div>
+      <div class="cards" id="cards"></div>
+    </section>
+  </div>
+</main>
+<script>
+const $ = s => document.querySelector(s);
+let image = null;
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const eur = n => n == null ? "–" : "€" + Number(n).toFixed(2);
+
+function setImage(dataUrl){
+  image = dataUrl;
+  $("#drop").innerHTML = `<img src="${dataUrl}" alt="screenshot"> screenshot attached · <a href="#" id="clr">remove</a>`;
+  $("#clr").onclick = e => { e.preventDefault(); image = null; $("#drop").textContent = "or drop / paste a screenshot of any listing"; };
+}
+function readFile(file){ const r = new FileReader(); r.onload = () => setImage(r.result); r.readAsDataURL(file); }
+document.addEventListener("paste", e => {
+  const f = [...(e.clipboardData?.files || [])].find(f => f.type.startsWith("image/"));
+  if (f) { e.preventDefault(); readFile(f); }
+});
+document.addEventListener("dragover", e => e.preventDefault());
+document.addEventListener("drop", e => { e.preventDefault(); const f = e.dataTransfer.files[0]; if (f?.type.startsWith("image/")) readFile(f); });
+document.querySelectorAll(".chip").forEach(c => c.onclick = () => { $("#q").value = c.dataset.q; run(); });
+$("#f").onsubmit = e => { e.preventDefault(); run(); };
+
+const steps = {};
+function stepEl(ev){
+  let el = steps[ev.id];
+  if (!el){ el = document.createElement("div"); steps[ev.id] = el; $("#ticker").appendChild(el); }
+  const ico = {running:"◌", done:"✓", warn:"!"}[ev.status] || "·";
+  el.className = "step " + ev.status;
+  el.innerHTML = `<div class="ico">${ico}</div><div>${esc(ev.title)}</div>`;
+}
+let nCalls = 0;
+function addCalls(calls){
+  if (!nCalls) $("#calls").innerHTML = "";
+  for (const c of calls){
+    nCalls++;
+    const d = document.createElement("div"); d.className = "c";
+    d.innerHTML = `<div><span class="p">${esc(c.purpose)}</span><br><span class="m">${esc(c.model)}</span></div>
+      <div class="t">${c.ms} ms<br>${c.prompt_tokens ?? "?"}→${c.completion_tokens ?? "?"} tok</div>`;
+    $("#calls").appendChild(d); $("#calls").scrollTop = 1e9;
+  }
+}
+
+const state = {};
+function card(html){ const d = document.createElement("div"); d.className = "card"; d.innerHTML = html; $("#cards").appendChild(d); return d; }
+
+function renderReceipt(cost){
+  const r = $("#receipt"); if (!cost?.rows?.length) return;
+  const [me, ...alts] = cost.rows;
+  const lines = [];
+  lines.push(`<div class="title">RECEIPT FROM THE FUTURE</div><div class="sub">what it really costs you · ${new Date().toLocaleDateString("de-DE")}</div>`);
+  lines.push(`<div class="row"><span>${esc(me.name).slice(0,38)}</span><b>${eur(me.price)}</b></div>`);
+  for (const c of cost.consumables || []) lines.push(`<div class="row"><span>+ ${esc(c.name)} / year</span><b>${eur(c.per_year)}</b></div>`);
+  if (cost.energy_eur_year) lines.push(`<div class="row"><span>+ electricity / year</span><b>${eur(cost.energy_eur_year)}</b></div>`);
+  lines.push(`<div class="row"><span>expected life</span><b>${me.life_years.low}–${me.life_years.high} yrs</b></div>`);
+  if (me.per_wear) {
+    lines.push(`<div class="row"><span>expected wears</span><b>${me.wears.low}–${me.wears.high}</b></div>`);
+    lines.push(`<hr><div class="row big"><span>PER WEAR</span><span>${eur(me.per_wear.mid)}</span></div>`);
+    lines.push(`<div class="note">range ${eur(me.per_wear.high)}–${eur(me.per_wear.low)} per wear</div>`);
+  }
+  lines.push(`<hr><div class="row big"><span>PER DAY</span><span>${eur(me.per_day.mid)}</span></div>`);
+  lines.push(`<div class="row"><span>per month · per year</span><b>${eur(me.per_month)} · ${eur(me.per_year)}</b></div>`);
+  lines.push(`<div class="note">range ${eur(me.per_day.best)}–${eur(me.per_day.worst)} per day · ${esc(me.basis||"")}</div>`);
+  if (alts.length){
+    lines.push(`<hr><div class="row"><span><b>COMPARE</b></span><span>per day</span></div>`);
+    for (const a of alts) lines.push(`<div class="row"><span><a href="${esc(a.url)}" target="_blank">${esc(a.name).slice(0,36)}</a> ${eur(a.price)}</span><b>${eur(a.per_day.mid)}</b></div>`);
+  }
+  if (cost.decisive_question) lines.push(`<hr><div class="note">Decisive question: ${esc(cost.decisive_question)}</div>`);
+  lines.push(`<div class="note" style="text-align:center;margin-top:10px">prices: idealo.de · electricity €${cost.electricity_price}/kWh (assumption)</div>`);
+  r.innerHTML = lines.map((l,i) => `<div class="line" style="animation-delay:${i*120}ms">${l}</div>`).join("");
+  r.style.display = "block";
+}
+
+function onStep(ev){
+  stepEl(ev);
+  if (ev.status === "running") return;
+  const d = ev.data;
+  if (ev.id === "specs" && d?.length)
+    card(`<h3>Spec claims that don't add up</h3>` + d.map(f => `<div class="flag ${f.severity}">${esc(f.text)}</div>`).join(""));
+  if (ev.id === "clones" && d){
+    const imgs = (d.visual_matches||[]).map(m => `<figure><img src="${esc(m.image)}" loading="lazy"><figcaption>${esc(m.brand_on_image_2||"look-alike")} · ${esc(m.same)}</figcaption></figure>`).join("");
+    const brands = (d.brands||[]).map(b => `<span class="pill">${esc(b)}</span>`).join("");
+    const ev2 = (d.evidence||[]).map(e => `<div class="report">${esc(e.brand)} · <a href="${esc(e.url)}" target="_blank">source</a></div>`).join("");
+    if (imgs || brands) card(`<h3>Same product, other names</h3>${brands ? `<div>${brands}</div>` : ""}${imgs ? `<div class="family" style="margin-top:10px">${imgs}</div>` : ""}${ev2}`);
+  }
+  if (ev.id === "life" && d?.reports?.length){
+    const rs = d.reports.filter(r => r.failure).map(r => `<div class="report">${r.after_weeks ? `<b>after ${esc(r.after_weeks)} wk</b> · ` : ""}${esc(r.summary_en)} <span class="pill">${esc(r.lang)}</span> <a href="${esc(r.url)}" target="_blank">source</a></div>`).join("");
+    if (rs) card(`<h3>Failure reports (${d.clusters} distinct stories)</h3>${rs}`);
+  }
+  if (ev.id === "idealo" && d){
+    if (d.exact) card(`<h3>On idealo</h3><a href="${esc(d.exact.url)}" target="_blank">${esc(d.exact.name)}</a> · ${d.exact.offer_count} shops · ${d.exact.reviews ? d.exact.reviews.averageRating + "★ (" + d.exact.reviews.totalReviewCount + ")" : "no reviews"}`);
+    else card(`<h3>On idealo</h3><div class="flag">No idealo shop sells this exact product. Established retailers don't stock it.</div>`);
+  }
+  if (ev.id === "resp" && d){
+    const cl = (d.claims||[]).map(c => `<div class="flag ${c.status === "unproven" ? "high" : ""}">„${esc(c.claim)}“ · <b>${esc(c.status)}</b></div>`).join("");
+    const ce = (d.certs||[]).map(c => `<div class="report">${c.confirmed ? "✓" : "✗"} ${esc(c.certificate)} ${c.confirmed ? "confirmed in the official registry" : "not confirmed"} ${c.url ? `<a href="${esc(c.url)}" target="_blank">source</a>` : ""}</div>`).join("");
+    const fl = (d.flags||[]).map(f => `<div class="flag high">Listed: ${esc(f.source)}: ${esc(f.what)} <a href="${esc(f.url)}" target="_blank">source</a></div>`).join("");
+    card(`<h3>Green claims · certificates · official lists</h3>${cl}${ce}${fl || `<div class="report">No entry on EU Safety Gate or US forced-labour lists found for this brand.</div>`}<div class="note" style="font-size:12px;color:var(--muted);margin-top:6px">We only repeat official listings and named sources; we never accuse on our own.</div>`);
+  }
+  if (ev.id === "cost") renderReceipt(d);
+}
+
+function onVerdict(v){
+  const el = $("#verdict");
+  el.className = "verdict " + v.verdict;
+  el.innerHTML = `<div class="v">${esc(v.verdict.replace("_"," "))} · confidence ${esc(v.confidence)}${v.trust_adjusted_stars ? ` · trust-adjusted ${v.trust_adjusted_stars}★` : ""}</div>
+    <div class="h">${esc(v.headline)}</div>
+    ${v.better_alternative ? `<div class="meta">Better: ${esc(v.better_alternative)}</div>` : ""}
+    ${v.missing_fact ? `<div class="meta">What would change my mind: ${esc(v.missing_fact)}</div>` : ""}`;
+  el.style.display = "block";
+  const rs = (v.reasons||[]).map(r => `<div class="reason"><div class="tier t${esc(r.tier)}">${esc(r.tier)}</div><div>${esc(r.text)} ${r.url ? `<a href="${esc(r.url)}" target="_blank">source</a>` : ""}</div></div>`).join("");
+  const c = card(`<h3>Why · evidence tier A = hard to fake · C = cheap signal</h3>${rs}`);
+  $("#cards").prepend(c);
+}
+
+// Browser extension: the side panel posts the page the user is looking at
+if (new URLSearchParams(location.search).has("embed")) document.body.classList.add("embed");
+let pagePayload = null;
+addEventListener("message", e => {
+  if (e.data?.type !== "haeltdas-page") return;
+  pagePayload = e.data.page;
+  $("#q").value = `${pagePayload.title || ""}\n${pagePayload.url}`;
+  run();
+});
+
+async function run(){
+  const q = $("#q").value.trim();
+  if (!q && !image && !pagePayload) return;
+  $("#go").disabled = true;
+  $("#ticker").innerHTML = ""; $("#cards").innerHTML = ""; $("#calls").innerHTML = "no calls yet";
+  $("#verdict").style.display = "none"; $("#receipt").style.display = "none";
+  for (const k in steps) delete steps[k]; nCalls = 0;
+  const body = pagePayload ? {page: pagePayload} : image ? {image} : (/^https?:\/\//.test(q) ? {url:q} : {text:q});
+  pagePayload = null;
+  try{
+    const res = await fetch("/api/check", {method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify(body)});
+    const reader = res.body.getReader(); const dec = new TextDecoder(); let buf = "";
+    for(;;){
+      const {value, done} = await reader.read(); if (done) break;
+      buf += dec.decode(value, {stream:true});
+      let i;
+      while ((i = buf.indexOf("\n\n")) >= 0){
+        const chunk = buf.slice(0, i); buf = buf.slice(i + 2);
+        if (!chunk.startsWith("data:")) continue;
+        const ev = JSON.parse(chunk.slice(5));
+        if (ev.type === "step") onStep(ev);
+        else if (ev.type === "calls") addCalls(ev.calls);
+        else if (ev.type === "verdict") onVerdict(ev.data);
+        else if (ev.type === "error") card(`<div class="err">Error: ${esc(ev.message)}</div>`);
+      }
+    }
+  } catch(e){ card(`<div class="err">${esc(e)}</div>`); }
+  $("#go").disabled = false;
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,504 @@
+{
+ "input": "Bosch Akkuschrauber PSR 18 LI-2 (18V, 2x Akku, 2-Gang), 4,7 Sterne, 129 €, Marke Bosch",
+ "events": [
+  {
+   "type": "step",
+   "id": "claim",
+   "status": "running",
+   "title": "Reading the listing"
+  },
+  {
+   "type": "step",
+   "id": "claim",
+   "status": "done",
+   "title": "Listing read",
+   "data": {
+    "title": "Bosch Akkuschrauber PSR 18 LI-2",
+    "brand": "Bosch",
+    "model": "PSR 18 LI-2",
+    "category": "cordless drill",
+    "price_eur": 129,
+    "stars": 4.7,
+    "review_count": null,
+    "claimed_specs": {
+     "voltage_v": 18,
+     "capacity_mah": null,
+     "weight_g": null,
+     "storage_tb": null,
+     "lumen": null,
+     "health_claims": [],
+     "other": [
+      "2-Gang",
+      "2x Akku"
+     ]
+    },
+    "idealo_exact_query": "Bosch PSR 18 LI-2",
+    "idealo_generic_query": "Akku-Bohrschrauber 18V",
+    "clone_image_query": "cordless drill 18V 2-speed 2 battery",
+    "failure_queries": {
+     "de": "Bosch PSR 18 LI-2 Probleme",
+     "en": "Bosch PSR 18 LI-2 issues",
+     "fr": "Problèmes Bosch PSR 18 LI-2"
+    },
+    "image_url": null,
+    "source_url": null
+   }
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "read listing",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 4740,
+     "prompt_tokens": 331,
+     "completion_tokens": 269,
+     "ts": 1795794920,
+     "output_preview": "{\"title\": \"Bosch Akkuschrauber PSR 18 LI-2\", \"brand\": \"Bosch\", \"model\": \"PSR 18 LI-2\", \"category\": \"cordless drill\", \"price_eur\": 129, \"stars\": 4.7, \"review_count\": null, \"claimed_specs\": {\"voltage_v\": 18, \"capacity_mah\": null, \"weight_g\": null, \"storage_tb\": null, \"lumen\": null, \"health_claims\": [], \"other\": [\"2-Gang\", \"2x Akku\"]}, \"idealo_exact_query\": \"Bosch PSR 18 LI-2\", \"idealo_generic_query\""
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "idealo",
+   "status": "running",
+   "title": "Looking it up on idealo"
+  },
+  {
+   "type": "step",
+   "id": "idealo",
+   "status": "done",
+   "title": "Found on idealo",
+   "data": {
+    "exact": {
+     "name": "Bosch PSR18V-60",
+     "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/214170186_-psr18v-60-06039d7201-bosch.html",
+     "price": 86.3,
+     "offer_count": 23,
+     "reviews": null,
+     "tests": [],
+     "overview": [
+      "max. Leerlaufdrehzahl 1.900 U/min",
+      "max. Drehmoment hart 51 Nm",
+      "Drehmomentstufen 20 + 1",
+      "bürstenloser EC-Motor",
+      "18 V",
+      "2,5 Ah"
+     ],
+     "shops": [
+      {
+       "name": "baumarkteu.de",
+       "rating": {
+        "count": 10450,
+        "avg": 4.25
+       },
+       "marketplace": false
+      },
+      {
+       "name": "alango.de",
+       "rating": {
+        "count": 570,
+        "avg": 5
+       },
+       "marketplace": false
+      },
+      {
+       "name": "manomano.de",
+       "rating": {
+        "count": null,
+        "avg": null
+       },
+       "marketplace": true
+      }
+     ]
+    },
+    "alternatives": [
+     {
+      "name": "Makita DDF482",
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/6148180_-ddf482rfj-makita.html",
+      "image": "https://cdn.idealo.com/folder/Product/6148/1/6148180/s1_produktbild_mobil/makita-ddf482rfj.jpg",
+      "price": 168.99,
+      "offer_count": 53,
+      "stars": 4.87,
+      "review_count": 39,
+      "ref": "pr.v1.k1.gGoRQgsJQpiWagyHAPVJUcK2SoQi-OdGr8FIYzJn1XZEISk"
+     },
+     {
+      "name": "Bosch GSR 18V-65",
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/205555020_-gsr-18v-65-0-601-9n3-200-bosch.html",
+      "image": "https://cdn.idealo.com/folder/Product/205555/0/205555020/s1_produktbild_mobil/bosch-gsr-18v-65-0-601-9n3-200.jpg",
+      "price": 78.99,
+      "offer_count": 31,
+      "stars": 4.78,
+      "review_count": 76,
+      "ref": "pr.v1.k1.d90DBzY2_swLe64dDVyc_mfR5XEhaNrgnQ3Zej8IsBIEAYRACQ"
+     }
+    ]
+   }
+  },
+  {
+   "type": "step",
+   "id": "specs",
+   "status": "done",
+   "title": "Specs plausible",
+   "data": []
+  },
+  {
+   "type": "step",
+   "id": "clones",
+   "status": "running",
+   "title": "Searching for the same product under other names"
+  },
+  {
+   "type": "step",
+   "id": "life",
+   "status": "running",
+   "title": "Collecting failure reports (DE/EN/FR)"
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "rebrand names",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 5518,
+     "prompt_tokens": 743,
+     "completion_tokens": 334,
+     "ts": 1795794942,
+     "output_preview": "{\"brands\": [\"OneVan\", \"DeWalt\", \"Black+Decker\", \"Metabo HPT\", \"RIDGID\", \"RYOBI\", \"DIYtoolifz\"], \"evidence\": [{\"brand\": \"OneVan\", \"url\": null}, {\"brand\": \"DeWalt\", \"url\": null}, {\"brand\": \"Black+Decker\", \"url\": null}, {\"brand\": \"Metabo HPT\", \"url\": \"https://metabo-hpt.com/products/product/18v-cordless-drill-kit-metabo-hpt-ds18dbfl2em\"}, {\"brand\": \"RIDGID\", \"url\": \"https://powertools.ridgid.com/prod"
+    }
+   ]
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "classify failure reports",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 24189,
+     "prompt_tokens": 2735,
+     "completion_tokens": 1419,
+     "ts": 1795794932,
+     "output_preview": "{\"items\": [{\"i\": 0, \"relevant\": true, \"failure\": true, \"after_weeks\": null, \"component\": \"motor/trigger\", \"usage\": \"unknown\", \"lang\": \"de\", \"summary_en\": \"The user describes a Bosch PSR 18 LI-2 drill that stopped working after a video recording session, with intermittent functionality reported shortly after. The issue appears to be related to internal mechanical or electrical failure, possibly in "
+    },
+    {
+     "purpose": "dedupe reports across languages",
+     "model": "Qwen/Qwen3-Embedding-8B",
+     "status": 200,
+     "ms": 395,
+     "prompt_tokens": 247,
+     "completion_tokens": 0,
+     "ts": 1795794956
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "clones",
+   "status": "warn",
+   "title": "Look-alikes: 0 visual match(es), 7 brand name(s)",
+   "data": {
+    "visual_matches": [],
+    "brands": [
+     "OneVan",
+     "DeWalt",
+     "Black+Decker",
+     "Metabo HPT",
+     "RIDGID",
+     "RYOBI",
+     "DIYtoolifz"
+    ],
+    "evidence": [
+     {
+      "brand": "OneVan",
+      "url": null
+     },
+     {
+      "brand": "DeWalt",
+      "url": null
+     },
+     {
+      "brand": "Black+Decker",
+      "url": null
+     },
+     {
+      "brand": "Metabo HPT",
+      "url": "https://metabo-hpt.com/products/product/18v-cordless-drill-kit-metabo-hpt-ds18dbfl2em"
+     },
+     {
+      "brand": "RIDGID",
+      "url": "https://powertools.ridgid.com/products/648846090252"
+     },
+     {
+      "brand": "RYOBI",
+      "url": "https://www.homedepot.com/p/RYOBI-ONE-18V-Cordless-1-2-in-Drill-Driver-Kit-with-1-Compact-Battery-and-Charger-PCL206K1/317987598"
+     },
+     {
+      "brand": "DIYtoolifz",
+      "url": "https://www.amazon.com/clp/B0CN72N75S"
+     }
+    ]
+   }
+  },
+  {
+   "type": "step",
+   "id": "life",
+   "status": "warn",
+   "title": "5 failure report(s), 4 distinct stories",
+   "data": {
+    "reports": [
+     {
+      "title": "Reperatur BOSCH PSR18 LI-2",
+      "url": "https://www.youtube.com/watch?v=lLqutCc3jkQ",
+      "text": "euch da oben dieses weite teile deshalb zwischen den beiden seiten nicht richtig geklemmt hat gedauert nachdem die kamera aufgefallen ist keine gesehen so neun minuten video hat er noch aufgenommen kurz danach so fünf minuten sechs minuten danach ungefähr hat sein funktioniert und ich habe ihn zusammen strom können ja tut mir leid ich bekomme ich nicht damit klar ich hab zwar 230 arbeit in den linken und von gute 12 nutzbaren aber ich habe alte videos nicht gelöscht von dem mobiltelefon und [...",
+      "i": 0,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": null,
+      "component": "motor/trigger",
+      "usage": "unknown",
+      "lang": "de",
+      "summary_en": "The user describes a Bosch PSR 18 LI-2 drill that stopped working after a video recording session, with intermittent functionality reported shortly after. The issue appears to be related to internal mechanical or electrical failure, possibly in the motor or trigger mechanism."
+     },
+     {
+      "title": "Bosch PSB 18 LI-2 Teardown and Quick Inspection - YouTube",
+      "url": "https://www.youtube.com/watch?v=-V-UPtqRM5A&vl=en",
+      "text": "in this video im opening up a Faulty Bosch PSB 18 LI-2",
+      "i": 1,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": null,
+      "component": "internal components",
+      "usage": "unknown",
+      "lang": "en",
+      "summary_en": "A YouTube video shows a teardown of a faulty Bosch PSB 18 LI-2 drill, indicating a known failure in the device. The video is focused on diagnosing and inspecting internal faults, confirming the model experienced a malfunction."
+     },
+     {
+      "title": "Bosch PSB 18 LI-2 Battery Not Charging: Diagnosis | ReeFix",
+      "url": "https://reefix.ai/en/repair/bosch-psb-18-li2-battery-not-charging-diagnosis-and-repair-guide",
+      "text": "1. Quick checks (DIY): Clean the contacts. If you have another Bosch PSB 18 LI-2 Battery or another compatible Bosch 18V Charger, try swapping components to isolate the fault.\n2. If the problem persists and you don't have spare parts for testing:\n    If the drill is old or the battery shows signs of swelling/damage: Replace the Bosch PSB 18 LI-2 Battery. It is the most probable and often the most economical cause. If it doesn't resolve the issue, consider a new drill if it's old. [...] A Bosch P",
+      "i": 8,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": 24,
+      "component": "battery",
+      "usage": "heavy",
+      "lang": "en",
+      "summary_en": "A repair guide for the Bosch PSB 18 LI-2 battery not charging. The article reports that battery failure is common after extended use, especially if the battery shows swelling or damage. The issue is attributed to aging, suggesting a failure after several months of heavy use."
+     },
+     {
+      "title": "Reperatur BOSCH PSR18 LI-2",
+      "url": "https://www.youtube.com/watch?v=lLqutCc3jkQ",
+      "text": "euch da oben dieses weite teile deshalb zwischen den beiden seiten nicht richtig geklemmt hat gedauert nachdem die kamera aufgefallen ist keine gesehen so neun minuten video hat er noch aufgenommen kurz danach so fünf minuten sechs minuten danach ungefähr hat sein funktioniert und ich habe ihn zusammen strom können ja tut mir leid ich bekomme ich nicht damit klar ich hab zwar 230 arbeit in den linken und von gute 12 nutzbaren aber ich habe alte videos nicht gelöscht von dem mobiltelefon und [...",
+      "i": 10,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": null,
+      "component": "motor/trigger",
+      "usage": "unknown",
+      "lang": "de",
+      "summary_en": "Same as snippet 0 — a user reports intermittent failure of the Bosch PSR 18 LI-2 after a video recording, with the drill working briefly before failing again. Indicates a possible internal mechanical or electrical fault."
+     },
+     {
+      "title": "Bosch PSB 18 LI-2 Teardown and Quick Inspection - YouTube",
+      "url": "https://www.youtube.com/watch?v=-V-UPtqRM5A&vl=en",
+      "text": "in this video im opening up a Faulty Bosch PSB 18 LI-2",
+      "i": 11,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": null,
+      "component": "internal components",
+      "usage": "unknown",
+      "lang": "en",
+      "summary_en": "Same as snippet 1 — a YouTube video showing a teardown of a faulty Bosch PSB 18 LI-2. Confirms the model has known internal failures, likely due to wear or component degradation."
+     }
+    ],
+    "clusters": 4,
+    "tests": []
+   }
+  },
+  {
+   "type": "step",
+   "id": "cost",
+   "status": "running",
+   "title": "Working out the cost per day"
+  },
+  {
+   "type": "step",
+   "id": "cost",
+   "status": "done",
+   "title": "Cost per day",
+   "data": {
+    "rows": [
+     {
+      "name": "Bosch Akkuschrauber PSR 18 LI-2",
+      "price": 129,
+      "life_years": {
+       "low": 0.46,
+       "mid": 1.85,
+       "high": 10
+      },
+      "basis": "Bosch is a well-established brand with strong reviews (4.7 stars, multiple shops, high offer count). Failure reports show one battery failure after 24 weeks under heavy use, suggesting battery life is a weak point. Motor/trigger and internal component failures are reported but not time-specific, so we assume they are rare. Battery replacement is common, so the overall life is extended with replacement. Based on evidence, low end is set to 3 years (accounting for early battery failure), mid to 7 (typical user), high to 10 (well-maintained, battery replaced).",
+      "per_day": {
+       "best": 0.037,
+       "mid": 0.193,
+       "worst": 0.77
+      },
+      "url": null,
+      "per_month": 5.87,
+      "per_year": 70.45
+     },
+     {
+      "name": "Makita DDF482",
+      "price": 168.99,
+      "life_years": {
+       "low": 5,
+       "mid": 8,
+       "high": 12
+      },
+      "basis": "Makita has a strong reputation, high star rating (4.87), and 39 reviews. No specific failure reports provided, but high reliability is implied by brand and rating. Higher price suggests better build quality. Life extended due to robust construction and brand longevity. Low end set to 5 (conservative), mid to 8, high to 12 (ideal conditions, maintenance).",
+      "per_day": {
+       "best": 0.04,
+       "mid": 0.059,
+       "worst": 0.094
+      },
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/6148180_-ddf482rfj-makita.html",
+      "per_month": 1.79,
+      "per_year": 21.54
+     },
+     {
+      "name": "Bosch GSR 18V-65",
+      "price": 78.99,
+      "life_years": {
+       "low": 2,
+       "mid": 5,
+       "high": 7
+      },
+      "basis": "Lower price and slightly lower star rating (4.78) with 76 reviews. While still a reputable Bosch product, it's a more basic model. No failure reports provided, but lower price and fewer premium features suggest shorter expected life. Based on market positioning and price point, life is estimated lower. Low end at 2 (budget use), mid at 5, high at 7 (with care and battery replacement).",
+      "per_day": {
+       "best": 0.032,
+       "mid": 0.045,
+       "worst": 0.11
+      },
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/205555020_-gsr-18v-65-0-601-9n3-200-bosch.html",
+      "per_month": 1.37,
+      "per_year": 16.43
+     }
+    ],
+    "consumables": [],
+    "energy_eur_year": 0.55,
+    "electricity_price": 0.37,
+    "usage_assumption": "Average household use: 1 hour per week, 50 weeks per year. Charging occurs once per week. Charger efficiency and standby power included.",
+    "decisive_question": "Which drill offers the best balance of durability, cost, and long-term ownership cost, considering battery replacement and reliability?"
+   }
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "lifetime + consumables estimate",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 14509,
+     "prompt_tokens": 503,
+     "completion_tokens": 714,
+     "ts": 1795794956,
+     "output_preview": "{\"items\": [{\"name\": \"Bosch Akkuschrauber PSR 18 LI-2\", \"price_eur\": 129, \"life_years\": {\"low\": 3, \"mid\": 7, \"high\": 10}, \"basis\": \"Bosch is a well-established brand with strong reviews (4.7 stars, multiple shops, high offer count). Failure reports show one battery failure after 24 weeks under heavy use, suggesting battery life is a weak point. Motor/trigger and internal component failures are repo"
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "verdict",
+   "status": "running",
+   "title": "Deciding (live Nebius call)"
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "final verdict",
+     "model": "deepseek-ai/DeepSeek-V4-Pro-0813",
+     "status": 200,
+     "ms": 47318,
+     "prompt_tokens": 2726,
+     "completion_tokens": 3235,
+     "ts": 1795794971,
+     "output_preview": "{\"verdict\": \"ASK\", \"headline\": \"Ask: confirm exact kit contents and model before buying\", \"confidence\": \"low\", \"reasons\": [{\"text\": \"Idealo exact query for 'Bosch PSR 18 LI-2' returned a different model, Bosch PSR18V-60, at €86.30 with 23 offers; the claimed €129 price may be for an older or different kit.\", \"tier\": \"A\", \"url\": \"https://www.idealo.de/preisvergleich/OffersOfProduct/214170186_-psr18"
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "verdict",
+   "status": "done",
+   "title": "Decided (live Nebius call)"
+  },
+  {
+   "type": "verdict",
+   "data": {
+    "verdict": "ASK",
+    "headline": "Ask: confirm exact kit contents and model before buying",
+    "confidence": "low",
+    "reasons": [
+     {
+      "text": "Idealo exact query for 'Bosch PSR 18 LI-2' returned a different model, Bosch PSR18V-60, at €86.30 with 23 offers; the claimed €129 price may be for an older or different kit.",
+      "tier": "A",
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/214170186_-psr18v-60-06039d7201-bosch.html"
+     },
+     {
+      "text": "No independent tests and no review count are available for the claimed PSR 18 LI-2; the 4.7-star average is unverified.",
+      "tier": "B",
+      "url": null
+     },
+     {
+      "text": "Failure reports are sparse and mostly concern the PSB 18 LI-2, not the PSR 18 LI-2; one PSR motor/trigger failure is not enough to judge reliability.",
+      "tier": "C",
+      "url": "https://www.youtube.com/watch?v=lLqutCc3jkQ"
+     },
+     {
+      "text": "Cheaper alternatives with more review evidence exist: Bosch GSR 18V-65 at €78.99 (76 reviews, 31 offers) and Makita DDF482 at €168.99 (39 reviews, 53 offers).",
+      "tier": "B",
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/205555020_-gsr-18v-65-0-601-9n3-200-bosch.html"
+     }
+    ],
+    "better_alternative": "Bosch GSR 18V-65",
+    "missing_fact": "Does the €129 PSR 18 LI-2 kit include two batteries and a charger and match the newer €86 PSR18V-60 specs?",
+    "trust_adjusted_stars": null
+   }
+  }
+ ],
+ "verdict": {
+  "verdict": "ASK",
+  "headline": "Ask: confirm exact kit contents and model before buying",
+  "confidence": "low",
+  "reasons": [
+   {
+    "text": "Idealo exact query for 'Bosch PSR 18 LI-2' returned a different model, Bosch PSR18V-60, at €86.30 with 23 offers; the claimed €129 price may be for an older or different kit.",
+    "tier": "A",
+    "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/214170186_-psr18v-60-06039d7201-bosch.html"
+   },
+   {
+    "text": "No independent tests and no review count are available for the claimed PSR 18 LI-2; the 4.7-star average is unverified.",
+    "tier": "B",
+    "url": null
+   },
+   {
+    "text": "Failure reports are sparse and mostly concern the PSB 18 LI-2, not the PSR 18 LI-2; one PSR motor/trigger failure is not enough to judge reliability.",
+    "tier": "C",
+    "url": "https://www.youtube.com/watch?v=lLqutCc3jkQ"
+   },
+   {
+    "text": "Cheaper alternatives with more review evidence exist: Bosch GSR 18V-65 at €78.99 (76 reviews, 31 offers) and Makita DDF482 at €168.99 (39 reviews, 53 offers).",
+    "tier": "B",
+    "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/205555020_-gsr-18v-65-0-601-9n3-200-bosch.html"
+   }
+  ],
+  "better_alternative": "Bosch GSR 18V-65",
+  "missing_fact": "Does the €129 PSR 18 LI-2 kit include two batteries and a charger and match the newer €86 PSR18V-60 specs?",
+  "trust_adjusted_stars": null
+ }
+}

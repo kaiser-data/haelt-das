@@ -1,0 +1,927 @@
+{
+ "input": "Samsung Galaxy A56 5G 128GB Smartphone, 5000 mAh, IP67, 6 Jahre Updates, 329 €",
+ "events": [
+  {
+   "type": "step",
+   "id": "claim",
+   "status": "running",
+   "title": "Reading the listing"
+  },
+  {
+   "type": "step",
+   "id": "claim",
+   "status": "done",
+   "title": "Listing read",
+   "data": {
+    "title": "Samsung Galaxy A56 5G 128GB Smartphone, 5000 mAh, IP67, 329 €",
+    "brand": "Samsung",
+    "model": "Galaxy A56 5G",
+    "category": "smartphone",
+    "price_eur": 329,
+    "stars": null,
+    "review_count": null,
+    "claimed_specs": {
+     "voltage_v": null,
+     "capacity_mah": 5000,
+     "weight_g": null,
+     "storage_tb": 0.128,
+     "lumen": null,
+     "health_claims": [
+      "IP67",
+      "6 Jahre Updates"
+     ],
+     "other": [
+      "5G"
+     ]
+    },
+    "idealo_exact_query": "Samsung Galaxy A56 5G",
+    "idealo_generic_query": "Smartphone 5G 5000 mAh",
+    "clone_image_query": "5G smartphone with 5000 mAh battery IP67 rating",
+    "failure_queries": {
+     "de": "Samsung Galaxy A56 5G Probleme",
+     "en": "Samsung Galaxy A56 5G issues",
+     "fr": "Problèmes Samsung Galaxy A56 5G"
+    },
+    "image_url": null,
+    "source_url": null
+   }
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "read listing",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 4631,
+     "prompt_tokens": 320,
+     "completion_tokens": 285,
+     "ts": 1795794927,
+     "output_preview": "{\"title\": \"Samsung Galaxy A56 5G 128GB Smartphone, 5000 mAh, IP67, 329 €\", \"brand\": \"Samsung\", \"model\": \"Galaxy A56 5G\", \"category\": \"smartphone\", \"price_eur\": 329, \"stars\": null, \"review_count\": null, \"claimed_specs\": {\"voltage_v\": null, \"capacity_mah\": 5000, \"weight_g\": null, \"storage_tb\": 0.128, \"lumen\": null, \"health_claims\": [\"IP67\", \"6 Jahre Updates\"], \"other\": [\"5G\"]}, \"idealo_exact_query\":"
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "idealo",
+   "status": "running",
+   "title": "Looking it up on idealo"
+  },
+  {
+   "type": "step",
+   "id": "idealo",
+   "status": "done",
+   "title": "Found on idealo",
+   "data": {
+    "exact": {
+     "name": "Samsung Galaxy A56",
+     "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/206014248_-galaxy-a56-256gb-awesome-graphite-samsung.html",
+     "price": 389.99,
+     "offer_count": 23,
+     "reviews": {
+      "averageRating": 4.68,
+      "totalReviewCount": 295
+     },
+     "tests": [
+      {
+       "providerName": "tariftipp.de",
+       "shortDescription": "Einzeltest Samsung Galaxy A56",
+       "summaryText": "Das Samsung Galaxy A56 punktet mit einem hellen OLED-Display und einer guten Kamera mit 3 Brennweiten. Es gibt eine sechsjährige Update-Garantie, Stereo-Lautsprecher und eine lange Akkulaufzeit. Allerdings ist der Akku nicht induktiv ladbar, der Kamerabuckel ist deutlich und es fehlt eine Speichererweiterung.",
+       "ratingValue": "92,8/100",
+       "publishedAt": 1746180000000,
+       "language": "de",
+       "issue": "online",
+       "testedProductsCount": 1
+      },
+      {
+       "providerName": "Expert Reviews",
+       "shortDescription": "Einzeltest Samsung Galaxy A56",
+       "summaryText": "Positiv fallen das schlanke und robuste Design sowie die hervorragende Akkulaufzeit auf. Lobenswert sind zudem die 6 Jahre Software-Unterstützung. Allerdings gibt es keine Möglichkeit für eine microSD-Karte und die Kameras sind unverändert zum Vorjahr.",
+       "ratingValue": "4/5",
+       "publishedAt": 1742382000000,
+       "language": "de",
+       "issue": "online",
+       "testedProductsCount": 1
+      },
+      {
+       "providerName": "chip.de",
+       "shortDescription": "Einzeltest Samsung Galaxy A56",
+       "summaryText": "Das Samsung Galaxy A56 überzeugt durch ein großes OLED-Display, eine ausdauernde Akkulaufzeit und KI-Funktionen. Es liefert eine solide Leistung für Anwendungen, Multitasking und einfaches 3D-Gaming, während die Triple-Kamera gute Fotos produziert, jedoch ohne Telezoom. Das Gerät ist staub- und wasserdicht, liegt gut in der Hand und wird bis 2031 mit Updates versorgt.",
+       "ratingValue": "gut (1,8)",
+       "publishedAt": 1744711200000,
+       "language": "de",
+       "issue": "online",
+       "testedProductsCount": 1
+      },
+      {
+       "providerName": "MarkEllisReviews.com",
+       "shortDescription": "Einzeltest Samsung Galaxy A56",
+       "summaryText": "Punkten können das edle Design und die leistungsfähigen KI-Funktionen. Es gibt außerdem ein zuverlässiges Kamerasystem mit 3 Brennweiten. Ein Manko ist der fehlende optische Zoom und ein nicht ausreichend helles Display im Freien.",
+       "ratingValue": "80/100",
+       "publishedAt": 1744711200000,
+       "language": "de",
+       "issue": "online",
+       "testedProductsCount": 1
+      },
+      {
+       "providerName": "NextPit",
+       "shortDescription": "Einzeltest Samsung Galaxy A56",
+       "summaryText": "Das Galaxy A56 punktet mit einem hellen Display, guter Leistung und solider Akkulaufzeit. Es gibt zudem eine lange Update-Garantie. Kritikpunkte sind die Kamera mit unnatürlichen Farben und der nicht erweiterbare Speicher.",
+       "ratingValue": "4/5",
+       "publishedAt": 1745834400000,
+       "language": "de",
+       "issue": "online",
+       "testedProductsCount": 1
+      },
+      {
+       "providerName": "Tech Guide",
+       "shortDescription": "Einzeltest Samsung Galaxy A56",
+       "summaryText": "Lobenswert sind das ansprechende Design, das hervorragende Super-AMOLED-Display und die beeindruckenden Kameras. Es gibt KI-Funktionen und eine lange Akkulaufzeit. Allerdings fehlt kabellose Aufladen und ein optischer Zoom.",
+       "ratingValue": "95/100",
+       "publishedAt": 1742814000000,
+       "language": "de",
+       "issue": "online",
+       "testedProductsCount": 1
+      },
+      {
+       "providerName": "connect",
+       "shortDescription": "Einzeltest Samsung Galaxy A56",
+       "summaryText": "Es gibt ein OLED-Display mit 120 Hz, zahlreiche Extras im Betriebssystem und langfristige Software-Updates. Die Akkulaufzeit und Akustik sind beeindruckend. Allerdings sind die Displayränder unsymmetrisch und das Kamerasystem könnte mehr bieten. Zudem sind die Funkeigenschaften noch verbesserungswürdig.",
+       "ratingValue": "77/100",
+       "publishedAt": 1749204000000,
+       "language": "de",
+       "issue": "online",
+       "testedProductsCount": 1
+      },
+      {
+       "providerName": "stuff.tv",
+       "shortDescription": "Einzeltest Samsung Galaxy A56",
+       "summaryText": "Das Samsung Galaxy A56 punktet durch ein ansprechendes Design, einen hellen OLED-Bildschirm, eine angemessene Leistung und recht lange Akkulaufzeit. Allerdings fehlen fast alle Galaxy-AI-Funktionen und die zusätzlichen Kameras bringen wenig Mehrwert.",
+       "ratingValue": "4/5",
+       "publishedAt": 1741690800000,
+       "language": "de",
+       "issue": "online",
+       "testedProductsCount": 1
+      },
+      {
+       "providerName": "notebookcheck",
+       "shortDescription": "Einzeltest Samsung Galaxy A56",
+       "summaryText": "Das Samsung Galaxy A56 punktet mit einem ansprechenden Design, langer Update-Versorgung und Dual-eSIM. Zudem ist es IP67 zertifiziert und hat einen ausdauernden Akku. Allerdings gibt es kein kabelloses Laden, nur wenig Speicher und kaum Bluetooth-Audio-Codecs.",
+       "ratingValue": "80/100",
+       "publishedAt": 1747735200000,
+       "language": "de",
+       "issue": "online",
+       "testedProductsCount": 1
+      },
+      {
+       "providerName": "Stiftung Warentest",
+       "shortDescription": "Einzeltest Samsung Galaxy A56",
+       "summaryText": "Grund­funk­tionen: gut | Kamera: gut | Display: sehr gut | Akku: befriedigend | Hand­habung: gut | Stabilität: gut",
+       "ratingValue": "2,2",
+       "publishedAt": 1749636000000,
+       "language": "de",
+       "issue": "online",
+       "testedProductsCount": 1
+      },
+      {
+       "providerName": "gsmarena.com",
+       "shortDescription": "Einzeltest Samsung Galaxy A56",
+       "summaryText": "Geboten werden eine robuste Verarbeitung mit Gorilla Glas Victus+ und Aluminiumrahmen sowie eine IP67-Bewertung. Es gibt außerdem ein helles Display mit HDR10+-Unterstützung und eine ordentliche Leistung mit gutem thermischen Verhalten. Hervorragende Videos und Selfies sowie angenehme Lautsprecher sind ebenfalls vorhanden. Allerdings fehlt ein Ladegerät in der Box, die Kamera ist nicht überzeugend (außer bei Videos und Selfies) und es gibt keine Unterstützung für microSD-Karten mehr.",
+       "ratingValue": "4/5",
+       "publishedAt": 1742554800000,
+       "language": "de",
+       "issue": "online",
+       "testedProductsCount": 1
+      },
+      {
+       "providerName": "pokde.net",
+       "shortDescription": "Einzeltest Samsung Galaxy A56",
+       "summaryText": "Aussehen: 8/10 – Effizienz: 9/10 – Funktionen: 7,7/10 – Materialien: 7,5/10 – Leistung: 7,2/10 – Mobilität: 7,7/10 – Benutzererlebnis: 7,8/10 – Preis-Leistung: 8,3/10",
+       "ratingValue": "7,9/10",
+       "publishedAt": 1742814000000,
+       "language": "de",
+       "issue": "online",
+       "testedProductsCount": 1
+      },
+      {
+       "providerName": "Digital Trends",
+       "shortDescription": "Einzeltest Samsung Galaxy A56",
+       "summaryText": "Das Samsung Galaxy A56 ist schlank und leicht, mit einer beeindruckenden Akkulaufzeit von 2 Tagen und hervorragender Software. Es gibt jedoch Kritikpunkte, wie eine Kamera, der es an Detailgenauigkeit mangelt, langsame Sicherheitsfunktionen und einen höheren Preis als im Vorjahr.",
+       "ratingValue": "3,5/5",
+       "publishedAt": 1741950000000,
+       "language": "de",
+       "issue": "online",
+       "testedProductsCount": 1
+      },
+      {
+       "providerName": "gadgetguy.com.au",
+       "shortDescription": "Einzeltest Samsung Galaxy A56",
+       "summaryText": "Das Smartphone überzeugt mit einer hervorragenden Akkulaufzeit und guten Kameras. Leider ist die Leistung für 2025 nicht ausreichend und die Kameras erzeugen etwas Rauschen.",
+       "ratingValue": "8/10",
+       "publishedAt": 1744624800000,
+       "language": "de",
+       "issue": "online",
+       "testedProductsCount": 1
+      },
+      {
+       "providerName": "IMTEST",
+       "shortDescription": "Einzeltest Samsung Galaxy A56",
+       "summaryText": "Das Display und die Kamera lieferten gute Testresultate. Auch der Metallrahmen ist lobenswert. Schade, dass kabelloses Aufladen nicht unterstützt wird und dass man den Speicher nicht erweitern kann.",
+       "ratingValue": "gut (2,1)",
+       "publishedAt": 1747648800000,
+       "language": "de",
+       "issue": "online",
+       "testedProductsCount": 1
+      },
+      {
+       "providerName": "ComputerBild",
+       "shortDescription": "Einzeltest Samsung Galaxy A56",
+       "summaryText": "Das Galaxy A56 überzeugt mit einem hellen OLED-Display und bis zu 120 Hz. Es ist wasserdicht und unterstützt eSIM. Leider gibt es keine Möglichkeit den Speicher zu erweitern und kein drahtloses Aufladen.",
+       "ratingValue": "gut (1,5)",
+       "publishedAt": 1744624800000,
+       "language": "de",
+       "issue": "online",
+       "testedProductsCount": 1
+      },
+      {
+       "providerName": "heise bestenlisten",
+       "shortDescription": "Einzeltest Samsung Galaxy A56",
+       "summaryText": "Zu den Vorteilen zählen ein attraktives Display, eine ordentliche CPU-Leistung sowie langfristige Software-Updates für 6 Jahre. Allerdings ist die Makrolinse stark begrenzt.",
+       "ratingValue": "4/5",
+       "publishedAt": 1744106400000,
+       "language": "de",
+       "issue": "online",
+       "testedProductsCount": 1
+      },
+      {
+       "providerName": "Tech Advisor",
+       "shortDescription": "Einzeltest Samsung Galaxy A56",
+       "summaryText": "Das Galaxy A56 ist dünner und leichter als seine Vorgänger. Es gibt eine verbesserte Schnellladefunktion sowie längere Software-Unterstützung. Allerdings sind die zusätzlichen Kameras mager und für Gaming ist es nicht ideal. Leider sind auch die Lautsprecher nicht auf hohem Niveau und das Ganze ist, gemessen an seiner Funktionalität, teuer.",
+       "ratingValue": "3,5/5",
+       "publishedAt": 1742554800000,
+       "language": "de",
+       "issue": "online",
+       "testedProductsCount": 1
+      },
+      {
+       "providerName": "Gadgets360.com",
+       "shortDescription": "Einzeltest Samsung Galaxy A56",
+       "summaryText": "Das Samsung Galaxy A56 punktet mit edlem Design, hellem Display, langer Software-Unterstützung und guten Lautsprechern.  Die Kamera könnteaber  besser sein, es fehlt ein microSD-Kartenslot und das Preis-Leistungs-Verhältnis ist fragwürdig.",
+       "ratingValue": "8/10",
+       "publishedAt": 1754301600000,
+       "language": "de",
+       "issue": "online",
+       "testedProductsCount": 1
+      },
+      {
+       "providerName": "Konsument",
+       "shortDescription": "Einzeltest Samsung Galaxy A56",
+       "summaryText": "Display: sehr gut | Kamera: gut | Audioqualität: gut | Haltbarkeit: sehr gut | Akku: durchschnittlich | Sicherheit: sehr gut",
+       "ratingValue": "gut",
+       "publishedAt": 1758794400000,
+       "language": "de",
+       "issue": "10/2025",
+       "testedProductsCount": 1
+      },
+      {
+       "providerName": "hardwarezone.com.sg",
+       "shortDescription": "Einzeltest Samsung Galaxy A56 5G",
+       "summaryText": "Punkten können das schnelle 45-W-Laden und die lange Akkulaufzeit. Es gibt 6 Jahre Software- und Sicherheitsupdates sowie nützliche, wenn auch begrenzte, KI-Funktionen. Allerdings sind die Kameras durchschnittlich, die Leistung unzureichend und es fehlt an erweiterbarem Speicher.",
+       "ratingValue": "6/10",
+       "publishedAt": 1751796000000,
+       "language": "de",
+       "issue": "online",
+       "testedProductsCount": 1
+      }
+     ],
+     "overview": [
+      "6,7 Zoll",
+      "Full HD",
+      "120 Hz",
+      "50 MP",
+      "8 GB RAM",
+      "256 GB interner Speicher",
+      "Exynos 1580",
+      "Android 15",
+      "5.000 mAh"
+     ],
+     "shops": [
+      {
+       "name": "pccomponentes.de",
+       "rating": {
+        "count": 1,
+        "avg": 1
+       },
+       "marketplace": false
+      },
+      {
+       "name": "playox.de",
+       "rating": {
+        "count": 1352,
+        "avg": 3.8
+       },
+       "marketplace": false
+      },
+      {
+       "name": "office-partner.de",
+       "rating": {
+        "count": 3231,
+        "avg": 4.38
+       },
+       "marketplace": false
+      }
+     ]
+    },
+    "alternatives": [
+     {
+      "name": "Samsung Galaxy A17",
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/207227652_-galaxy-a17-4gb-128gb-black-samsung.html",
+      "image": "https://cdn.idealo.com/folder/Product/207227/6/207227652/s1_produktbild_mobil/samsung-galaxy-a17-4gb-128gb-black.jpg",
+      "price": 169.0,
+      "offer_count": 71,
+      "stars": 4.56,
+      "review_count": 290,
+      "ref": "pr.v1.k1.hH8ltiLHv9e9XAWeNaIN7Tc6B9AR92G-lhvBVm8grfKKXLpV8Q"
+     },
+     {
+      "name": "Samsung Galaxy S26",
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/209522246_-galaxy-s26-256gb-black-samsung.html",
+      "image": "https://cdn.idealo.com/folder/Product/209522/2/209522246/s1_produktbild_mobil/samsung-galaxy-s26-256gb-black.jpg",
+      "price": 660.0,
+      "offer_count": 72,
+      "stars": 4.72,
+      "review_count": 53,
+      "ref": "pr.v1.k1._lGq18W1hZpxGH34jjttg1hIWfQN5dT0KVRwvK6RWAwuzE9IZA"
+     },
+     {
+      "name": "Samsung Galaxy A57",
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/209770546_-galaxy-a57-8gb-256gb-awesome-gray-samsung.html",
+      "image": "https://cdn.idealo.com/folder/Product/209770/5/209770546/s1_produktbild_mobil/samsung-galaxy-a57-8gb-256gb-awesome-gray.jpg",
+      "price": 379.0,
+      "offer_count": 37,
+      "stars": 4.76,
+      "review_count": 99,
+      "ref": "pr.v1.k1.GYYadil3XBjROa8w6tvfF4ErKpqaZyV9dLnT08TJHNIR1dUa0Q"
+     },
+     {
+      "name": "Samsung Galaxy A27",
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/211380187_-galaxy-a27-6gb-128gb-black-samsung.html",
+      "image": "https://cdn.idealo.com/folder/Product/211380/1/211380187/s1_produktbild_mobil/samsung-galaxy-a27-6gb-128gb-black.jpg",
+      "price": 222.0,
+      "offer_count": 54,
+      "stars": 4.57,
+      "review_count": 14,
+      "ref": "pr.v1.k1.surPYL0Vr8BaPVEiMmDgsTKTlakpJ6MqGLNSF26hfFzmAL4Apw"
+     }
+    ]
+   }
+  },
+  {
+   "type": "step",
+   "id": "specs",
+   "status": "done",
+   "title": "Specs plausible",
+   "data": []
+  },
+  {
+   "type": "step",
+   "id": "clones",
+   "status": "running",
+   "title": "Searching for the same product under other names"
+  },
+  {
+   "type": "step",
+   "id": "life",
+   "status": "running",
+   "title": "Collecting failure reports (DE/EN/FR)"
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "rebrand names",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 736,
+     "prompt_tokens": 731,
+     "completion_tokens": 18,
+     "ts": 1795794939,
+     "output_preview": "{\"brands\": [], \"evidence\": []}"
+    }
+   ]
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "classify failure reports",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 25290,
+     "prompt_tokens": 3235,
+     "completion_tokens": 1427,
+     "ts": 1795794936,
+     "output_preview": "{\"items\": [{\"i\": 0, \"relevant\": true, \"failure\": true, \"after_weeks\": null, \"component\": \"network\", \"usage\": \"unknown\", \"lang\": \"en\", \"summary_en\": \"The Samsung Galaxy A56 5G has reported issues with intermittent 'No Service', mobile data not working, and dropped calls, commonly attributed to software or SIM/hardware faults.\"}, {\"i\": 1, \"relevant\": true, \"failure\": true, \"after_weeks\": null, \"comp"
+    },
+    {
+     "purpose": "dedupe reports across languages",
+     "model": "Qwen/Qwen3-Embedding-8B",
+     "status": 200,
+     "ms": 1336,
+     "prompt_tokens": 104,
+     "completion_tokens": 0,
+     "ts": 1795794961
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "clones",
+   "status": "done",
+   "title": "Look-alikes: 0 visual match(es), 0 brand name(s)",
+   "data": {
+    "visual_matches": [],
+    "brands": [],
+    "evidence": []
+   }
+  },
+  {
+   "type": "step",
+   "id": "life",
+   "status": "warn",
+   "title": "3 failure report(s), 3 distinct stories",
+   "data": {
+    "reports": [
+     {
+      "title": "Top 10 Samsung Galaxy A56 Network Problems and Solutions - GalaxyAHub",
+      "url": "https://galaxyahub.com/samsung-galaxy-a56-network-problems-fix",
+      "text": "| Detail | Info |\n --- |\n| Model | Samsung Galaxy A56 5G |\n| Network Bands | 5G Sub-6, 4G LTE, VoLTE, VoWiFi (Wi-Fi Calling) |\n| SIM Type | Nano-SIM + eSIM (dual SIM capable, region dependent) |\n| Common Issue | Intermittent “No Service,” Galaxy A56 mobile data not working, dropped calls |\n| Software | One UI (Android base) |\n| Typical Fix Time | 5–20 minutes for software tweaks; variable for SIM/hardware faults | [...] ### Pros\n\n Broad sub-6GHz 5G and 4G band coverage.\n Excellent dual SIM and e",
+      "i": 0,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": null,
+      "component": "network",
+      "usage": "unknown",
+      "lang": "en",
+      "summary_en": "The Samsung Galaxy A56 5G has reported issues with intermittent 'No Service', mobile data not working, and dropped calls, commonly attributed to software or SIM/hardware faults."
+     },
+     {
+      "title": "Samsung A56 5G no network problem solution - Facebook",
+      "url": "https://www.facebook.com/groups/6466105320081718/posts/41490987660500038",
+      "text": "The most commonly reported Galaxy A56 problems are camera crashes with the macro lens, rapid battery drain, and lag or stutter during everyday",
+      "i": 1,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": null,
+      "component": "camera",
+      "usage": "unknown",
+      "lang": "en",
+      "summary_en": "Users have reported camera crashes, especially with the macro lens, rapid battery drain, and lag or stutter during everyday use on the Samsung Galaxy A56 5G."
+     },
+     {
+      "title": "Issues you have faced so far with the phone : r/GalaxyA56 - Reddit",
+      "url": "https://www.reddit.com/r/GalaxyA56/comments/1orppu7/issues_you_have_faced_so_far_with_the_phone",
+      "text": "Camera focus hunting while recording video · Picture coming out blurry after capturing ? · WiFi network is worse than other phone on the same",
+      "i": 3,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": null,
+      "component": "camera",
+      "usage": "unknown",
+      "lang": "en",
+      "summary_en": "Users on Reddit reported camera focus hunting during video recording, blurry photos after capture, and worse Wi-Fi performance compared to other phones on the same network."
+     }
+    ],
+    "clusters": 3,
+    "tests": [
+     {
+      "providerName": "tariftipp.de",
+      "shortDescription": "Einzeltest Samsung Galaxy A56",
+      "summaryText": "Das Samsung Galaxy A56 punktet mit einem hellen OLED-Display und einer guten Kamera mit 3 Brennweiten. Es gibt eine sechsjährige Update-Garantie, Stereo-Lautsprecher und eine lange Akkulaufzeit. Allerdings ist der Akku nicht induktiv ladbar, der Kamerabuckel ist deutlich und es fehlt eine Speichererweiterung.",
+      "ratingValue": "92,8/100",
+      "publishedAt": 1746180000000,
+      "language": "de",
+      "issue": "online",
+      "testedProductsCount": 1
+     },
+     {
+      "providerName": "Expert Reviews",
+      "shortDescription": "Einzeltest Samsung Galaxy A56",
+      "summaryText": "Positiv fallen das schlanke und robuste Design sowie die hervorragende Akkulaufzeit auf. Lobenswert sind zudem die 6 Jahre Software-Unterstützung. Allerdings gibt es keine Möglichkeit für eine microSD-Karte und die Kameras sind unverändert zum Vorjahr.",
+      "ratingValue": "4/5",
+      "publishedAt": 1742382000000,
+      "language": "de",
+      "issue": "online",
+      "testedProductsCount": 1
+     },
+     {
+      "providerName": "chip.de",
+      "shortDescription": "Einzeltest Samsung Galaxy A56",
+      "summaryText": "Das Samsung Galaxy A56 überzeugt durch ein großes OLED-Display, eine ausdauernde Akkulaufzeit und KI-Funktionen. Es liefert eine solide Leistung für Anwendungen, Multitasking und einfaches 3D-Gaming, während die Triple-Kamera gute Fotos produziert, jedoch ohne Telezoom. Das Gerät ist staub- und wasserdicht, liegt gut in der Hand und wird bis 2031 mit Updates versorgt.",
+      "ratingValue": "gut (1,8)",
+      "publishedAt": 1744711200000,
+      "language": "de",
+      "issue": "online",
+      "testedProductsCount": 1
+     },
+     {
+      "providerName": "MarkEllisReviews.com",
+      "shortDescription": "Einzeltest Samsung Galaxy A56",
+      "summaryText": "Punkten können das edle Design und die leistungsfähigen KI-Funktionen. Es gibt außerdem ein zuverlässiges Kamerasystem mit 3 Brennweiten. Ein Manko ist der fehlende optische Zoom und ein nicht ausreichend helles Display im Freien.",
+      "ratingValue": "80/100",
+      "publishedAt": 1744711200000,
+      "language": "de",
+      "issue": "online",
+      "testedProductsCount": 1
+     },
+     {
+      "providerName": "NextPit",
+      "shortDescription": "Einzeltest Samsung Galaxy A56",
+      "summaryText": "Das Galaxy A56 punktet mit einem hellen Display, guter Leistung und solider Akkulaufzeit. Es gibt zudem eine lange Update-Garantie. Kritikpunkte sind die Kamera mit unnatürlichen Farben und der nicht erweiterbare Speicher.",
+      "ratingValue": "4/5",
+      "publishedAt": 1745834400000,
+      "language": "de",
+      "issue": "online",
+      "testedProductsCount": 1
+     },
+     {
+      "providerName": "Tech Guide",
+      "shortDescription": "Einzeltest Samsung Galaxy A56",
+      "summaryText": "Lobenswert sind das ansprechende Design, das hervorragende Super-AMOLED-Display und die beeindruckenden Kameras. Es gibt KI-Funktionen und eine lange Akkulaufzeit. Allerdings fehlt kabellose Aufladen und ein optischer Zoom.",
+      "ratingValue": "95/100",
+      "publishedAt": 1742814000000,
+      "language": "de",
+      "issue": "online",
+      "testedProductsCount": 1
+     },
+     {
+      "providerName": "connect",
+      "shortDescription": "Einzeltest Samsung Galaxy A56",
+      "summaryText": "Es gibt ein OLED-Display mit 120 Hz, zahlreiche Extras im Betriebssystem und langfristige Software-Updates. Die Akkulaufzeit und Akustik sind beeindruckend. Allerdings sind die Displayränder unsymmetrisch und das Kamerasystem könnte mehr bieten. Zudem sind die Funkeigenschaften noch verbesserungswürdig.",
+      "ratingValue": "77/100",
+      "publishedAt": 1749204000000,
+      "language": "de",
+      "issue": "online",
+      "testedProductsCount": 1
+     },
+     {
+      "providerName": "stuff.tv",
+      "shortDescription": "Einzeltest Samsung Galaxy A56",
+      "summaryText": "Das Samsung Galaxy A56 punktet durch ein ansprechendes Design, einen hellen OLED-Bildschirm, eine angemessene Leistung und recht lange Akkulaufzeit. Allerdings fehlen fast alle Galaxy-AI-Funktionen und die zusätzlichen Kameras bringen wenig Mehrwert.",
+      "ratingValue": "4/5",
+      "publishedAt": 1741690800000,
+      "language": "de",
+      "issue": "online",
+      "testedProductsCount": 1
+     },
+     {
+      "providerName": "notebookcheck",
+      "shortDescription": "Einzeltest Samsung Galaxy A56",
+      "summaryText": "Das Samsung Galaxy A56 punktet mit einem ansprechenden Design, langer Update-Versorgung und Dual-eSIM. Zudem ist es IP67 zertifiziert und hat einen ausdauernden Akku. Allerdings gibt es kein kabelloses Laden, nur wenig Speicher und kaum Bluetooth-Audio-Codecs.",
+      "ratingValue": "80/100",
+      "publishedAt": 1747735200000,
+      "language": "de",
+      "issue": "online",
+      "testedProductsCount": 1
+     },
+     {
+      "providerName": "Stiftung Warentest",
+      "shortDescription": "Einzeltest Samsung Galaxy A56",
+      "summaryText": "Grund­funk­tionen: gut | Kamera: gut | Display: sehr gut | Akku: befriedigend | Hand­habung: gut | Stabilität: gut",
+      "ratingValue": "2,2",
+      "publishedAt": 1749636000000,
+      "language": "de",
+      "issue": "online",
+      "testedProductsCount": 1
+     },
+     {
+      "providerName": "gsmarena.com",
+      "shortDescription": "Einzeltest Samsung Galaxy A56",
+      "summaryText": "Geboten werden eine robuste Verarbeitung mit Gorilla Glas Victus+ und Aluminiumrahmen sowie eine IP67-Bewertung. Es gibt außerdem ein helles Display mit HDR10+-Unterstützung und eine ordentliche Leistung mit gutem thermischen Verhalten. Hervorragende Videos und Selfies sowie angenehme Lautsprecher sind ebenfalls vorhanden. Allerdings fehlt ein Ladegerät in der Box, die Kamera ist nicht überzeugend (außer bei Videos und Selfies) und es gibt keine Unterstützung für microSD-Karten mehr.",
+      "ratingValue": "4/5",
+      "publishedAt": 1742554800000,
+      "language": "de",
+      "issue": "online",
+      "testedProductsCount": 1
+     },
+     {
+      "providerName": "pokde.net",
+      "shortDescription": "Einzeltest Samsung Galaxy A56",
+      "summaryText": "Aussehen: 8/10 – Effizienz: 9/10 – Funktionen: 7,7/10 – Materialien: 7,5/10 – Leistung: 7,2/10 – Mobilität: 7,7/10 – Benutzererlebnis: 7,8/10 – Preis-Leistung: 8,3/10",
+      "ratingValue": "7,9/10",
+      "publishedAt": 1742814000000,
+      "language": "de",
+      "issue": "online",
+      "testedProductsCount": 1
+     },
+     {
+      "providerName": "Digital Trends",
+      "shortDescription": "Einzeltest Samsung Galaxy A56",
+      "summaryText": "Das Samsung Galaxy A56 ist schlank und leicht, mit einer beeindruckenden Akkulaufzeit von 2 Tagen und hervorragender Software. Es gibt jedoch Kritikpunkte, wie eine Kamera, der es an Detailgenauigkeit mangelt, langsame Sicherheitsfunktionen und einen höheren Preis als im Vorjahr.",
+      "ratingValue": "3,5/5",
+      "publishedAt": 1741950000000,
+      "language": "de",
+      "issue": "online",
+      "testedProductsCount": 1
+     },
+     {
+      "providerName": "gadgetguy.com.au",
+      "shortDescription": "Einzeltest Samsung Galaxy A56",
+      "summaryText": "Das Smartphone überzeugt mit einer hervorragenden Akkulaufzeit und guten Kameras. Leider ist die Leistung für 2025 nicht ausreichend und die Kameras erzeugen etwas Rauschen.",
+      "ratingValue": "8/10",
+      "publishedAt": 1744624800000,
+      "language": "de",
+      "issue": "online",
+      "testedProductsCount": 1
+     },
+     {
+      "providerName": "IMTEST",
+      "shortDescription": "Einzeltest Samsung Galaxy A56",
+      "summaryText": "Das Display und die Kamera lieferten gute Testresultate. Auch der Metallrahmen ist lobenswert. Schade, dass kabelloses Aufladen nicht unterstützt wird und dass man den Speicher nicht erweitern kann.",
+      "ratingValue": "gut (2,1)",
+      "publishedAt": 1747648800000,
+      "language": "de",
+      "issue": "online",
+      "testedProductsCount": 1
+     },
+     {
+      "providerName": "ComputerBild",
+      "shortDescription": "Einzeltest Samsung Galaxy A56",
+      "summaryText": "Das Galaxy A56 überzeugt mit einem hellen OLED-Display und bis zu 120 Hz. Es ist wasserdicht und unterstützt eSIM. Leider gibt es keine Möglichkeit den Speicher zu erweitern und kein drahtloses Aufladen.",
+      "ratingValue": "gut (1,5)",
+      "publishedAt": 1744624800000,
+      "language": "de",
+      "issue": "online",
+      "testedProductsCount": 1
+     },
+     {
+      "providerName": "heise bestenlisten",
+      "shortDescription": "Einzeltest Samsung Galaxy A56",
+      "summaryText": "Zu den Vorteilen zählen ein attraktives Display, eine ordentliche CPU-Leistung sowie langfristige Software-Updates für 6 Jahre. Allerdings ist die Makrolinse stark begrenzt.",
+      "ratingValue": "4/5",
+      "publishedAt": 1744106400000,
+      "language": "de",
+      "issue": "online",
+      "testedProductsCount": 1
+     },
+     {
+      "providerName": "Tech Advisor",
+      "shortDescription": "Einzeltest Samsung Galaxy A56",
+      "summaryText": "Das Galaxy A56 ist dünner und leichter als seine Vorgänger. Es gibt eine verbesserte Schnellladefunktion sowie längere Software-Unterstützung. Allerdings sind die zusätzlichen Kameras mager und für Gaming ist es nicht ideal. Leider sind auch die Lautsprecher nicht auf hohem Niveau und das Ganze ist, gemessen an seiner Funktionalität, teuer.",
+      "ratingValue": "3,5/5",
+      "publishedAt": 1742554800000,
+      "language": "de",
+      "issue": "online",
+      "testedProductsCount": 1
+     },
+     {
+      "providerName": "Gadgets360.com",
+      "shortDescription": "Einzeltest Samsung Galaxy A56",
+      "summaryText": "Das Samsung Galaxy A56 punktet mit edlem Design, hellem Display, langer Software-Unterstützung und guten Lautsprechern.  Die Kamera könnteaber  besser sein, es fehlt ein microSD-Kartenslot und das Preis-Leistungs-Verhältnis ist fragwürdig.",
+      "ratingValue": "8/10",
+      "publishedAt": 1754301600000,
+      "language": "de",
+      "issue": "online",
+      "testedProductsCount": 1
+     },
+     {
+      "providerName": "Konsument",
+      "shortDescription": "Einzeltest Samsung Galaxy A56",
+      "summaryText": "Display: sehr gut | Kamera: gut | Audioqualität: gut | Haltbarkeit: sehr gut | Akku: durchschnittlich | Sicherheit: sehr gut",
+      "ratingValue": "gut",
+      "publishedAt": 1758794400000,
+      "language": "de",
+      "issue": "10/2025",
+      "testedProductsCount": 1
+     },
+     {
+      "providerName": "hardwarezone.com.sg",
+      "shortDescription": "Einzeltest Samsung Galaxy A56 5G",
+      "summaryText": "Punkten können das schnelle 45-W-Laden und die lange Akkulaufzeit. Es gibt 6 Jahre Software- und Sicherheitsupdates sowie nützliche, wenn auch begrenzte, KI-Funktionen. Allerdings sind die Kameras durchschnittlich, die Leistung unzureichend und es fehlt an erweiterbarem Speicher.",
+      "ratingValue": "6/10",
+      "publishedAt": 1751796000000,
+      "language": "de",
+      "issue": "online",
+      "testedProductsCount": 1
+     }
+    ]
+   }
+  },
+  {
+   "type": "step",
+   "id": "cost",
+   "status": "running",
+   "title": "Working out the cost per day"
+  },
+  {
+   "type": "step",
+   "id": "cost",
+   "status": "done",
+   "title": "Cost per day",
+   "data": {
+    "rows": [
+     {
+      "name": "Samsung Galaxy A56 5G 128GB Smartphone, 5000 mAh, IP67",
+      "price": 329,
+      "life_years": {
+       "low": 3,
+       "mid": 5,
+       "high": 7
+      },
+      "basis": "Samsung is an established brand with strong global presence, multiple retail outlets, and extensive user reviews. The device has IP67 rating and 5000 mAh battery, suggesting durability. No failure reports with specific after_weeks data. However, the absence of failure reports does not imply reliability; typical smartphone life is 3–5 years under normal use. Given the brand's track record and moderate price point, mid-life is set at 5 years. Low end is pulled down to 3 years due to potential early software support end (typically 4–5 years), and high end at 7 years based on strong build quality and brand longevity (e.g., Samsung's history of supporting devices beyond 5 years).",
+      "per_day": {
+       "best": 0.131,
+       "mid": 0.183,
+       "worst": 0.303
+      },
+      "url": null,
+      "per_month": 5.56,
+      "per_year": 66.8
+     },
+     {
+      "name": "Samsung Galaxy A17",
+      "price": 169.0,
+      "life_years": {
+       "low": 2,
+       "mid": 4,
+       "high": 6
+      },
+      "basis": "Lower-tier model with fewer premium features. Despite 4.56 stars and 290 reviews, it's a budget device with less robust build and shorter software support (typically 2–3 years). No failure reports with after_weeks. Life is shortened due to lower build quality and likely shorter update cycle. Mid-life at 4 years is optimistic based on Samsung's A-series pattern. High end at 6 years assumes exceptional care and no major hardware failure.",
+      "per_day": {
+       "best": 0.08,
+       "mid": 0.118,
+       "worst": 0.234
+      },
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/207227652_-galaxy-a17-4gb-128gb-black-samsung.html",
+      "per_month": 3.59,
+      "per_year": 43.07
+     },
+     {
+      "name": "Samsung Galaxy S26",
+      "price": 660.0,
+      "life_years": {
+       "low": 4,
+       "mid": 6,
+       "high": 8
+      },
+      "basis": "Flagship model with higher build quality, better materials, and longer software support (typically 5–6 years). Strong brand reputation and high review count (53) with 4.72 stars. No failure reports with after_weeks. Given the premium positioning and Samsung's history of extended support for S-series, mid-life is set at 6 years. Low end at 4 years accounts for potential early obsolescence due to rapid innovation. High end at 8 years reflects long-term durability and strong resale value.",
+      "per_day": {
+       "best": 0.229,
+       "mid": 0.304,
+       "worst": 0.455
+      },
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/209522246_-galaxy-s26-256gb-black-samsung.html",
+      "per_month": 9.24,
+      "per_year": 110.96
+     },
+     {
+      "name": "Samsung Galaxy A57",
+      "price": 379.0,
+      "life_years": {
+       "low": 4,
+       "mid": 6,
+       "high": 8
+      },
+      "basis": "Higher-tier A-series model with better specs than A56 (e.g., better camera, faster processor). 4.76 stars and 99 reviews suggest strong user satisfaction. No failure reports with after_weeks. Positioned as a mid-to-high-end device with longer software support (4–5 years). Mid-life at 6 years based on Samsung's A-series upgrade cycle. Low end at 4 years due to potential battery degradation and slower updates. High end at 8 years reflects strong build and brand reliability.",
+      "per_day": {
+       "best": 0.132,
+       "mid": 0.176,
+       "worst": 0.262
+      },
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/209770546_-galaxy-a57-8gb-256gb-awesome-gray-samsung.html",
+      "per_month": 5.35,
+      "per_year": 64.24
+     },
+     {
+      "name": "Samsung Galaxy A27",
+      "price": 222.0,
+      "life_years": {
+       "low": 2,
+       "mid": 4,
+       "high": 6
+      },
+      "basis": "Budget A-series device with 4.57 stars and only 14 reviews. Low review count suggests limited market presence or recent launch. No failure reports with after_weeks. Likely shorter software support (3 years) and lower build quality. Mid-life at 4 years is optimistic. Low end at 2 years due to potential early failure or lack of updates. High end at 6 years assumes careful use and no major hardware issues.",
+      "per_day": {
+       "best": 0.104,
+       "mid": 0.155,
+       "worst": 0.307
+      },
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/211380187_-galaxy-a27-6gb-128gb-black-samsung.html",
+      "per_month": 4.71,
+      "per_year": 56.58
+     }
+    ],
+    "consumables": [],
+    "energy_eur_year": 0.93,
+    "electricity_price": 0.37,
+    "usage_assumption": "Average daily usage: 4 hours, 5 days/week. Charging 1x/day, 80% battery. Includes standby and active use.",
+    "decisive_question": "Which smartphone offers the best balance of durability, software support, and long-term cost efficiency, considering ownership cost over 5 years?"
+   }
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "lifetime + consumables estimate",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 20627,
+     "prompt_tokens": 547,
+     "completion_tokens": 1077,
+     "ts": 1795794962,
+     "output_preview": "{\"items\": [{\"name\": \"Samsung Galaxy A56 5G 128GB Smartphone, 5000 mAh, IP67\", \"price_eur\": 329, \"life_years\": {\"low\": 3, \"mid\": 5, \"high\": 7}, \"basis\": \"Samsung is an established brand with strong global presence, multiple retail outlets, and extensive user reviews. The device has IP67 rating and 5000 mAh battery, suggesting durability. No failure reports with specific after_weeks data. However, t"
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "verdict",
+   "status": "running",
+   "title": "Deciding (live Nebius call)"
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "final verdict",
+     "model": "deepseek-ai/DeepSeek-V4-Pro-0813",
+     "status": 200,
+     "ms": 39431,
+     "prompt_tokens": 7653,
+     "completion_tokens": 3134,
+     "ts": 1795794983,
+     "output_preview": "{\"verdict\": \"BUY\", \"headline\": \"Solid midrange Samsung with strong independent test record\", \"confidence\": \"medium\", \"reasons\": [{\"text\": \"Stiftung Warentest rates it 2.2 (good) and multiple independent tests (chip.de 1.8, ComputerBild 1.5) confirm excellent display, long battery, IP67, and 6-year updates.\", \"tier\": \"A\", \"url\": \"https://www.idealo.de/preisvergleich/OffersOfProduct/206014248_-galax"
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "verdict",
+   "status": "done",
+   "title": "Decided (live Nebius call)"
+  },
+  {
+   "type": "verdict",
+   "data": {
+    "verdict": "BUY",
+    "headline": "Solid midrange Samsung with strong independent test record",
+    "confidence": "medium",
+    "reasons": [
+     {
+      "text": "Stiftung Warentest rates it 2.2 (good) and multiple independent tests (chip.de 1.8, ComputerBild 1.5) confirm excellent display, long battery, IP67, and 6-year updates.",
+      "tier": "A",
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/206014248_-galaxy-a56-256gb-awesome-graphite-samsung.html"
+     },
+     {
+      "text": "Consistent test criticisms: no microSD slot, no wireless charging, camera quality mixed, and performance only adequate for gaming.",
+      "tier": "A",
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/206014248_-galaxy-a56-256gb-awesome-graphite-samsung.html"
+     },
+     {
+      "text": "User forum reports mention intermittent network 'No Service', camera crashes, and battery drain, but these are not reflected in most professional tests and may be software-related.",
+      "tier": "B",
+      "url": "https://galaxyahub.com/samsung-galaxy-a56-network-problems-fix"
+     },
+     {
+      "text": "Idealo user rating 4.68/5 from 295 reviews is positive but likely inflated compared to independent test averages.",
+      "tier": "B",
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/206014248_-galaxy-a56-256gb-awesome-graphite-samsung.html"
+     }
+    ],
+    "better_alternative": null,
+    "missing_fact": null,
+    "trust_adjusted_stars": 4.0
+   }
+  }
+ ],
+ "verdict": {
+  "verdict": "BUY",
+  "headline": "Solid midrange Samsung with strong independent test record",
+  "confidence": "medium",
+  "reasons": [
+   {
+    "text": "Stiftung Warentest rates it 2.2 (good) and multiple independent tests (chip.de 1.8, ComputerBild 1.5) confirm excellent display, long battery, IP67, and 6-year updates.",
+    "tier": "A",
+    "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/206014248_-galaxy-a56-256gb-awesome-graphite-samsung.html"
+   },
+   {
+    "text": "Consistent test criticisms: no microSD slot, no wireless charging, camera quality mixed, and performance only adequate for gaming.",
+    "tier": "A",
+    "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/206014248_-galaxy-a56-256gb-awesome-graphite-samsung.html"
+   },
+   {
+    "text": "User forum reports mention intermittent network 'No Service', camera crashes, and battery drain, but these are not reflected in most professional tests and may be software-related.",
+    "tier": "B",
+    "url": "https://galaxyahub.com/samsung-galaxy-a56-network-problems-fix"
+   },
+   {
+    "text": "Idealo user rating 4.68/5 from 295 reviews is positive but likely inflated compared to independent test averages.",
+    "tier": "B",
+    "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/206014248_-galaxy-a56-256gb-awesome-graphite-samsung.html"
+   }
+  ],
+  "better_alternative": null,
+  "missing_fact": null,
+  "trust_adjusted_stars": 4.0
+ }
+}

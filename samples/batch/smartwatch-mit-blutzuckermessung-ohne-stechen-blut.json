@@ -1,0 +1,469 @@
+{
+ "input": "Smartwatch mit Blutzuckermessung ohne Stechen, Blutdruck, EKG, 4,4 Sterne (3.100 Bewertungen), 29,99 €, no-name",
+ "events": [
+  {
+   "type": "step",
+   "id": "claim",
+   "status": "running",
+   "title": "Reading the listing"
+  },
+  {
+   "type": "step",
+   "id": "claim",
+   "status": "done",
+   "title": "Listing read",
+   "data": {
+    "title": "Smartwatch mit Blutzuckermessung ohne Stechen, Blutdruck, EKG",
+    "brand": null,
+    "model": null,
+    "category": "smartwatch",
+    "price_eur": 29.99,
+    "stars": 4.4,
+    "review_count": 3100,
+    "claimed_specs": {
+     "voltage_v": null,
+     "capacity_mah": null,
+     "weight_g": null,
+     "storage_tb": null,
+     "lumen": null,
+     "health_claims": [
+      "Blutzuckermessung ohne Stechen",
+      "Blutdruck",
+      "EKG"
+     ],
+     "other": []
+    },
+    "idealo_exact_query": "no-name",
+    "idealo_generic_query": "Smartwatch Blutzuckermessung ohne Stechen",
+    "clone_image_query": "smartwatch with blood sugar monitoring without pricking, blood pressure, EKG",
+    "failure_queries": {
+     "de": "Smartwatch Blutzuckermessung ohne Stechen Probleme",
+     "en": "smartwatch blood sugar monitoring without pricking issues",
+     "fr": "montre connectée mesure glycémie sans piqûre problèmes"
+    },
+    "image_url": null,
+    "source_url": null
+   }
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "read listing",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 5123,
+     "prompt_tokens": 329,
+     "completion_tokens": 268,
+     "ts": 1795794984,
+     "output_preview": "{\"title\": \"Smartwatch mit Blutzuckermessung ohne Stechen, Blutdruck, EKG\", \"brand\": null, \"model\": null, \"category\": \"smartwatch\", \"price_eur\": 29.99, \"stars\": 4.4, \"review_count\": 3100, \"claimed_specs\": {\"voltage_v\": null, \"capacity_mah\": null, \"weight_g\": null, \"storage_tb\": null, \"lumen\": null, \"health_claims\": [\"Blutzuckermessung ohne Stechen\", \"Blutdruck\", \"EKG\"], \"other\": []}, \"idealo_exact_"
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "idealo",
+   "status": "running",
+   "title": "Looking it up on idealo"
+  },
+  {
+   "type": "step",
+   "id": "idealo",
+   "status": "warn",
+   "title": "Not sold by any idealo shop",
+   "data": {
+    "exact": null,
+    "alternatives": [
+     {
+      "name": "Amazfit T-Rex 3 Pro",
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/207664012_-t-rex-3-pro-48mm-tactical-black-amazfit.html",
+      "image": "https://cdn.idealo.com/folder/Product/207664/0/207664012/s1_produktbild_mobil/amazfit-t-rex-3-pro-48mm-tactical-black.jpg",
+      "price": 299.2,
+      "offer_count": 30,
+      "stars": 4.48,
+      "review_count": 119,
+      "ref": "pr.v1.k1.ngJnPahjAK3VlgQDa3Yx5PEdNOaGSy6dAqz_NhqvoDXUMzYEpw"
+     }
+    ]
+   }
+  },
+  {
+   "type": "step",
+   "id": "specs",
+   "status": "warn",
+   "title": "1 spec claim(s) don't add up",
+   "data": [
+    {
+     "severity": "high",
+     "rule": "health_claim",
+     "text": "Claims \"Blutzuckermessung ohne Stechen\". The US FDA has warned that smartwatches and rings that claim to measure blood glucose without piercing the skin are not authorised and can be dangerously wrong."
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "clones",
+   "status": "running",
+   "title": "Searching for the same product under other names"
+  },
+  {
+   "type": "step",
+   "id": "life",
+   "status": "running",
+   "title": "Collecting failure reports (DE/EN/FR)"
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "rebrand names",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 1341,
+     "prompt_tokens": 721,
+     "completion_tokens": 70,
+     "ts": 1795794998,
+     "output_preview": "{\"brands\": [\"FITVII\", \"MorePro\"], \"evidence\": [{\"brand\": \"FITVII\", \"url\": null}, {\"brand\": \"MorePro\", \"url\": null}]}"
+    }
+   ]
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "classify failure reports",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 23978,
+     "prompt_tokens": 2543,
+     "completion_tokens": 1247,
+     "ts": 1795794996,
+     "output_preview": "{\"items\": [{\"i\": 0, \"relevant\": false, \"failure\": false, \"after_weeks\": null, \"component\": null, \"usage\": \"unknown\", \"lang\": \"de\", \"summary_en\": \"A study by the University of Ulm compared smartwatches to CGM systems for glucose measurement, finding significant inaccuracies. The technology is not yet mature for reliable non-invasive glucose monitoring.\"}, {\"i\": 1, \"relevant\": false, \"failure\": fals"
+    },
+    {
+     "purpose": "dedupe reports across languages",
+     "model": "Qwen/Qwen3-Embedding-8B",
+     "status": 200,
+     "ms": 375,
+     "prompt_tokens": 317,
+     "completion_tokens": 0,
+     "ts": 1795795020
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "clones",
+   "status": "warn",
+   "title": "Look-alikes: 0 visual match(es), 2 brand name(s)",
+   "data": {
+    "visual_matches": [],
+    "brands": [
+     "FITVII",
+     "MorePro"
+    ],
+    "evidence": [
+     {
+      "brand": "FITVII",
+      "url": null
+     },
+     {
+      "brand": "MorePro",
+      "url": null
+     }
+    ]
+   }
+  },
+  {
+   "type": "step",
+   "id": "life",
+   "status": "warn",
+   "title": "8 failure report(s), 5 distinct stories",
+   "data": {
+    "reports": [
+     {
+      "title": "Blutzucker messen mit der Smartwatch: Geht es schon ohne Pieks? - COMPUTER BILD",
+      "url": "https://www.computerbild.de/artikel/cb-Tests-Wearables-Blutzucker-messen-Smartwatch-ohne-Pieks-Review-38151643.html",
+      "text": "Bei allen drei Modellen genügte es, die Blutzucker-App zu öffnen und die Messung mit einen Fingertipp zu starten. Dann war etwas Geduld gefragt: Bis zu einer Minute dauerte es, bis der Wert erschien. Aber passen die Messdaten? Dazu checkte der Tester gegen: also in den Finger piksen, das Blut auf einem Messstreifen platzieren und das Lesegerät befragen. Das Ergebnis war so erwartbar wie erschütternd.\n\n### Hier Werte, da nur Tendenzen [...] Das Problem bei allen drei Watches: Unbedenkliche Werte ",
+      "i": 2,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": null,
+      "component": "glucose sensor",
+      "usage": "unknown",
+      "lang": "de",
+      "summary_en": "A test comparing three smartwatches claiming non-invasive glucose measurement found unreliable results. When compared to finger-prick tests, the values were inaccurate, showing only trends rather than precise readings."
+     },
+     {
+      "title": "FDA warns against smartwatches, rings that claim to measure blood sugar without needles - CBS News",
+      "url": "https://www.cbsnews.com/news/fda-warns-against-smartwatches-rings-claim-measure-blood-sugar-without-needles",
+      "text": "# FDA warns against smartwatches, rings that claim to measure blood sugar without needles\n\nSmartwatches and rings that claim to measure blood sugar levels for medical purposes without piercing the skin could be dangerous and should be avoided, the U.S. Food and Drug Administration warned Wednesday.\n\nThe caution applies to any watch or ring, regardless of brand, that claims to measure blood glucose levels in a noninvasive way, the agency said. The FDA said it has not authorized any such device. [",
+      "i": 3,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": null,
+      "component": "non-invasive glucose sensor",
+      "usage": "unknown",
+      "lang": "en",
+      "summary_en": "The FDA warns against using smartwatches or rings claiming to measure blood glucose without needles, stating they are not authorized and may provide dangerous inaccuracies."
+     },
+     {
+      "title": "Do Not Use Smartwatches or Smart Rings to Measure Blood Glucose Levels: FDA Safety Communication | FDA",
+      "url": "https://www.fda.gov/medical-devices/safety-communications/do-not-use-smartwatches-or-smart-rings-measure-blood-glucose-levels-fda-safety-communication",
+      "text": "The U.S. Food and Drug Administration (FDA) is warning consumers, patients, caregivers, and health care providers of risks related to using smartwatches or smart rings that claim to measure blood glucose levels (blood sugar) without piercing the skin. These devices are different than smartwatch applications that display data from FDA-authorized blood glucose measuring devices that pierce the skin, like continuous glucose monitoring devices (CGMs). The FDA has not authorized, cleared, or [...] Th",
+      "i": 4,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": null,
+      "component": "non-invasive glucose sensor",
+      "usage": "unknown",
+      "lang": "en",
+      "summary_en": "The FDA warns consumers not to use smartwatches or rings claiming to measure blood glucose non-invasively, as they have not been authorized and may pose serious health risks."
+     },
+     {
+      "title": "SmartWatch vs Blood Glucose Meter — I’m shocked!",
+      "url": "https://www.youtube.com/watch?v=qPNtYBsuo0M&vl=en",
+      "text": "The FitV GT5 Pro Max is yet another smart watch claiming that it can test your blood glucose non-invasively. No finger pricks, no sensors on your body, just this bad boy on your wrist. The company that makes the watch sent it to me and asked me to test it, but they didn't pay me to make this video, which shows they must be pretty confident about this product. So, let's find out if reliable non-invasive glucose monitoring is finally here or if it's just another scam. Here is what we're going to [",
+      "i": 5,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": null,
+      "component": "glucose sensor",
+      "usage": "hobby",
+      "lang": "en",
+      "summary_en": "A YouTuber tested the FitV GT5 Pro Max smartwatch, which claims non-invasive glucose monitoring. The test revealed unreliable results, raising concerns about the product's validity and potential scam."
+     },
+     {
+      "title": "Do Not Use Smartwatches or Smart Rings to Measure Blood Glucose Levels: FDA Safety Communication | FDA",
+      "url": "https://www.fda.gov/medical-devices/safety-communications/do-not-use-smartwatches-or-smart-rings-measure-blood-glucose-levels-fda-safety-communication",
+      "text": "Sellers of these smartwatches and smart rings claim their devices measure blood glucose levels without requiring people to prick their finger or pierce the skin. They claim to use non-invasive techniques. These smartwatches and smart rings do not directly test blood glucose levels.",
+      "i": 6,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": null,
+      "component": "non-invasive glucose sensor",
+      "usage": "unknown",
+      "lang": "en",
+      "summary_en": "The FDA confirms that smartwatches and rings claiming to measure blood glucose without skin piercing do not directly test glucose levels and are not authorized for medical use."
+     },
+     {
+      "title": "Glucowear™",
+      "url": "https://afontechnology.com/glucowear",
+      "text": "Skip to content\n\nAfon Technology logo with no background\n\nIn development by a team of distinguished scientists, doctors and engineers, our Glucowear™ is a non-invasive and totally pain free revolution in diabetes technology. With continuous detection, there is no delay for results or finger pricking for calibration.\n\n Blood Sugar Tracking\n\n Non-Invasive Sensor\n\n Determines ‘Time in Range’\n\n## Who is Glucowear™ for? [...] The rf/microwave technology feeds real time data to the companion app on a ",
+      "i": 8,
+      "relevant": true,
+      "failure": false,
+      "after_weeks": null,
+      "component": "non-invasive sensor",
+      "usage": "unknown",
+      "lang": "en",
+      "summary_en": "Glucowear™ is a non-invasive glucose monitoring device in development using RF/microwave technology. It is not yet available, but claims continuous, real-time glucose tracking without finger pricks."
+     },
+     {
+      "title": "Diabète - L’arnaque des montres, bagues ou bracelets connectés pour lire la glycémie - Actualité - Que Choisir Ensemble",
+      "url": "https://www.quechoisir.org/actualite-diabete-l-arnaque-des-montres-bagues-ou-bracelets-connectes-pour-lire-la-glycemie-n165520",
+      "text": "## En résumé\n\n- Les gadgets connectés (montres, bagues, capteurs sans piqûre) vendus principalement en ligne ne mesurent pas la glycémie de façon fiable.\n- Leur utilisation peut entraîner un traitement inadapté, avec des risques graves pour la santé des diabétiques.\n- Seulement deux méthodes sont reconnues : le recueil d’une goutte de sang ou le capteur sous-cutané. [...] Pour beaucoup de diabétiques, suivre sa glycémie, c’est-à-dire le taux de sucre dans le sang, est indispensable, notamment po",
+      "i": 10,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": null,
+      "component": "non-invasive glucose sensor",
+      "usage": "unknown",
+      "lang": "fr",
+      "summary_en": "A French consumer organization warns that connected devices claiming to measure glucose without pricking are unreliable and potentially dangerous, calling them scams."
+     },
+     {
+      "title": "Attention aux arnaques : mesure de la glycémie non invasif | FFD",
+      "url": "https://www.federationdesdiabetiques.org/federation/actualites/des-montres-pour-mesurer-le-taux-de-glucose-attention-aux-arnaques",
+      "text": "Vous êtes nombreux à avoir sollicité la Fédération et à nous interroger également sur la vente sur plusieurs sites internet de montres connectées, présentées comme permettant de mesurer le taux de glucose sans piqûre. La Fédération Française des Diabétiques vous alerte : il s’agit d’une arnaque et l’utilisation d’une montre pour mesurer votre taux de glucose serait dangereuse et aucunement fiable. [...] Dans tous les cas, n’hésitez pas à contacter la Fédération pour partager votre vécu sur notre",
+      "i": 11,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": null,
+      "component": "non-invasive glucose sensor",
+      "usage": "unknown",
+      "lang": "fr",
+      "summary_en": "The French Diabetes Federation warns that smartwatches claiming to measure glucose without pricking are scams and dangerous, as they provide unreliable readings that could lead to improper treatment."
+     },
+     {
+      "title": "Actualité - Mesure de glycémie sans piqûre : l’ANSM et la DGCCRF alertent sur les risques pour la santé des montres, bagues ou autres moniteurs connectés - ANSM",
+      "url": "https://ansm.sante.fr/actualites/mesure-de-glycemie-sans-piqure-lansm-et-la-dgccrf-alertent-sur-les-risques-pour-la-sante-des-montres-bagues-ou-autres-moniteurs-connectes",
+      "text": "##### La Direction générale de la concurrence, de la consommation et de la répression des fraudes (DGCCRF) et l’Agence nationale de sécurité du médicament et des produits de santé (ANSM) alertent les consommateurs sur la vente d’appareils affirmant mesurer la glycémie par simple contact avec la peau. Ces appareils sont trompeurs car ils ne peuvent pas donner de valeurs de glycémie fiables, mettant ainsi en danger la santé des personnes diabétiques. [...] Ces produits peuvent fournir des valeurs ",
+      "i": 12,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": null,
+      "component": "non-invasive glucose sensor",
+      "usage": "unknown",
+      "lang": "fr",
+      "summary_en": "ANSM and DGCCRF in France warn consumers about the risks of using connected devices claiming to measure glucose without pricking, emphasizing they are not reliable and may endanger health."
+     }
+    ],
+    "clusters": 5,
+    "tests": []
+   }
+  },
+  {
+   "type": "step",
+   "id": "cost",
+   "status": "running",
+   "title": "Working out the cost per day"
+  },
+  {
+   "type": "step",
+   "id": "cost",
+   "status": "done",
+   "title": "Cost per day",
+   "data": {
+    "rows": [
+     {
+      "name": "Smartwatch mit Blutzuckermessung ohne Stechen, Blutdruck, EKG",
+      "price": 29.99,
+      "life_years": {
+       "low": 1.0,
+       "mid": 2.5,
+       "high": 4.0
+      },
+      "basis": "Low life based on absence of established brand presence, lack of failure data with specific failure weeks, and no evidence of spare parts or repairability. High life assumes consistent use and no sensor failure. Mid-life reflects average expected durability given the product's low price and unverified non-invasive glucose sensor reliability. Failure reports mention 'non-invasive glucose sensor' and 'glucose sensor' failures without specific timing, suggesting early failure risk. No test data or repair options available. Product appears to be a throwaway rebrand with no verified long-term performance.",
+      "per_day": {
+       "best": 0.021,
+       "mid": 0.033,
+       "worst": 0.083
+      },
+      "url": null,
+      "per_month": 1.0,
+      "per_year": 12.04
+     },
+     {
+      "name": "Amazfit T-Rex 3 Pro",
+      "price": 299.2,
+      "life_years": {
+       "low": 5.0,
+       "mid": 7.0,
+       "high": 10.0
+      },
+      "basis": "Established brand (Amazfit) with strong market presence, high review count (119), multiple offers (30), and proven durability in rugged smartwatches. Known for long battery life, water resistance, and reliable sensors. No failure reports for this model. Life estimates based on industry benchmarks for premium fitness trackers and evidence of sustained user support and spare parts availability.",
+      "per_day": {
+       "best": 0.082,
+       "mid": 0.118,
+       "worst": 0.164
+      },
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/207664012_-t-rex-3-pro-48mm-tactical-black-amazfit.html",
+      "per_month": 3.59,
+      "per_year": 43.07
+     }
+    ],
+    "consumables": [],
+    "energy_eur_year": 0.18,
+    "electricity_price": 0.37,
+    "usage_assumption": "Daily use for 8 hours, including heart rate, blood pressure, glucose monitoring, and notifications. Charging once per week.",
+    "decisive_question": "Is the non-invasive glucose sensor technology reliable enough to justify the high consumable cost and short expected lifespan of the base product, or should a more established brand with proven longevity be preferred despite higher upfront cost?"
+   }
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "lifetime + consumables estimate",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 11635,
+     "prompt_tokens": 536,
+     "completion_tokens": 552,
+     "ts": 1795795021,
+     "output_preview": "{\"items\": [{\"name\": \"Smartwatch mit Blutzuckermessung ohne Stechen, Blutdruck, EKG\", \"price_eur\": 29.99, \"life_years\": {\"low\": 1.0, \"mid\": 2.5, \"high\": 4.0}, \"basis\": \"Low life based on absence of established brand presence, lack of failure data with specific failure weeks, and no evidence of spare parts or repairability. High life assumes consistent use and no sensor failure. Mid-life reflects av"
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "verdict",
+   "status": "running",
+   "title": "Deciding (live Nebius call)"
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "final verdict",
+     "model": "deepseek-ai/DeepSeek-V4-Pro-0813",
+     "status": 200,
+     "ms": 19829,
+     "prompt_tokens": 2422,
+     "completion_tokens": 1417,
+     "ts": 1795795032,
+     "output_preview": "{\"verdict\": \"AVOID\", \"headline\": \"FDA warns: non-invasive glucose smartwatch is not authorized\", \"confidence\": \"high\", \"reasons\": [{\"text\": \"FDA warns smartwatches claiming non-invasive blood glucose are not authorized and can be dangerously inaccurate.\", \"tier\": \"A\", \"url\": \"https://www.fda.gov/medical-devices/safety-communications/do-not-use-smartwatches-or-smart-rings-measure-blood-glucose-leve"
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "verdict",
+   "status": "done",
+   "title": "Decided (live Nebius call)"
+  },
+  {
+   "type": "verdict",
+   "data": {
+    "verdict": "AVOID",
+    "headline": "FDA warns: non-invasive glucose smartwatch is not authorized",
+    "confidence": "high",
+    "reasons": [
+     {
+      "text": "FDA warns smartwatches claiming non-invasive blood glucose are not authorized and can be dangerously inaccurate.",
+      "tier": "A",
+      "url": "https://www.fda.gov/medical-devices/safety-communications/do-not-use-smartwatches-or-smart-rings-measure-blood-glucose-levels-fda-safety-communication"
+     },
+     {
+      "text": "French health and consumer authorities (ANSM, DGCCRF, Diabetes Federation) call such devices scams and dangerous.",
+      "tier": "A",
+      "url": "https://ansm.sante.fr/actualites/mesure-de-glycemie-sans-piqure-lansm-et-la-dgccrf-alertent-sur-les-risques-pour-la-sante-des-montres-bagues-ou-autres-moniteurs-connectes"
+     },
+     {
+      "text": "Independent test found glucose readings inaccurate, showing only trends rather than precise values.",
+      "tier": "B",
+      "url": "https://www.computerbild.de/artikel/cb-Tests-Wearables-Blutzucker-messen-Smartwatch-ohne-Pieks-Review-38151643.html"
+     },
+     {
+      "text": "No established brand, no spare parts, and clone-family rebrands (FITVII, MorePro) indicate a throwaway product.",
+      "tier": "C",
+      "url": null
+     }
+    ],
+    "better_alternative": null,
+    "missing_fact": null,
+    "trust_adjusted_stars": 1.0
+   }
+  }
+ ],
+ "verdict": {
+  "verdict": "AVOID",
+  "headline": "FDA warns: non-invasive glucose smartwatch is not authorized",
+  "confidence": "high",
+  "reasons": [
+   {
+    "text": "FDA warns smartwatches claiming non-invasive blood glucose are not authorized and can be dangerously inaccurate.",
+    "tier": "A",
+    "url": "https://www.fda.gov/medical-devices/safety-communications/do-not-use-smartwatches-or-smart-rings-measure-blood-glucose-levels-fda-safety-communication"
+   },
+   {
+    "text": "French health and consumer authorities (ANSM, DGCCRF, Diabetes Federation) call such devices scams and dangerous.",
+    "tier": "A",
+    "url": "https://ansm.sante.fr/actualites/mesure-de-glycemie-sans-piqure-lansm-et-la-dgccrf-alertent-sur-les-risques-pour-la-sante-des-montres-bagues-ou-autres-moniteurs-connectes"
+   },
+   {
+    "text": "Independent test found glucose readings inaccurate, showing only trends rather than precise values.",
+    "tier": "B",
+    "url": "https://www.computerbild.de/artikel/cb-Tests-Wearables-Blutzucker-messen-Smartwatch-ohne-Pieks-Review-38151643.html"
+   },
+   {
+    "text": "No established brand, no spare parts, and clone-family rebrands (FITVII, MorePro) indicate a throwaway product.",
+    "tier": "C",
+    "url": null
+   }
+  ],
+  "better_alternative": null,
+  "missing_fact": null,
+  "trust_adjusted_stars": 1.0
+ }
+}

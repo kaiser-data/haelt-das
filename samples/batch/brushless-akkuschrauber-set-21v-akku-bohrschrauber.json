@@ -1,0 +1,436 @@
+{
+ "input": "Brushless Akkuschrauber Set 21V, Akku-Bohrschrauber Bürstenlos 2x 2000mAh Akku, 60Nm, 4,7 Sterne (1.832 Bewertungen), 39,99 €, Marke: SEESII",
+ "events": [
+  {
+   "type": "step",
+   "id": "claim",
+   "status": "running",
+   "title": "Reading the listing"
+  },
+  {
+   "type": "step",
+   "id": "claim",
+   "status": "done",
+   "title": "Listing read",
+   "data": {
+    "title": "Brushless Akkuschrauber Set 21V, Akku-Bohrschrauber Bürstenlos 2x 2000mAh Akku, 60Nm",
+    "brand": "SEESII",
+    "model": null,
+    "category": "cordless drill",
+    "price_eur": 39.99,
+    "stars": 4.7,
+    "review_count": 1832,
+    "claimed_specs": {
+     "voltage_v": 21,
+     "capacity_mah": 2000,
+     "weight_g": null,
+     "storage_tb": null,
+     "lumen": null,
+     "health_claims": [],
+     "other": [
+      "60Nm",
+      "2x 2000mAh Akku",
+      "bürstenlos"
+     ]
+    },
+    "idealo_exact_query": "SEESII Brushless Akkuschrauber Set 21V",
+    "idealo_generic_query": "Akku-Bohrschrauber 21V",
+    "clone_image_query": "cordless drill brushless 21V 60Nm",
+    "failure_queries": {
+     "de": "SEESII Akkuschrauber Probleme",
+     "en": "SEESII cordless drill issues",
+     "fr": "problèmes perceuse sans fil SEESII"
+    },
+    "image_url": null,
+    "source_url": null
+   }
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "read listing",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 4991,
+     "prompt_tokens": 354,
+     "completion_tokens": 303,
+     "ts": 1795794868,
+     "output_preview": "{\"title\": \"Brushless Akkuschrauber Set 21V, Akku-Bohrschrauber Bürstenlos 2x 2000mAh Akku, 60Nm\", \"brand\": \"SEESII\", \"model\": null, \"category\": \"cordless drill\", \"price_eur\": 39.99, \"stars\": 4.7, \"review_count\": 1832, \"claimed_specs\": {\"voltage_v\": 21, \"capacity_mah\": 2000, \"weight_g\": null, \"storage_tb\": null, \"lumen\": null, \"health_claims\": [], \"other\": [\"60Nm\", \"2x 2000mAh Akku\", \"bürstenlos\"]}"
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "idealo",
+   "status": "running",
+   "title": "Looking it up on idealo"
+  },
+  {
+   "type": "step",
+   "id": "idealo",
+   "status": "warn",
+   "title": "Not sold by any idealo shop",
+   "data": {
+    "exact": null,
+    "alternatives": [
+     {
+      "name": "Makita DDF482",
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/6148180_-ddf482rfj-makita.html",
+      "image": "https://cdn.idealo.com/folder/Product/6148/1/6148180/s1_produktbild_mobil/makita-ddf482rfj.jpg",
+      "price": 168.99,
+      "offer_count": 53,
+      "stars": 4.87,
+      "review_count": 39,
+      "ref": "pr.v1.k1.gGoRQgsJQpiWagyHAPVJUcK2SoQi-OdGr8FIYzJn1XZEISk"
+     },
+     {
+      "name": "Bosch GSR 18V-65",
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/205555020_-gsr-18v-65-0-601-9n3-200-bosch.html",
+      "image": "https://cdn.idealo.com/folder/Product/205555/0/205555020/s1_produktbild_mobil/bosch-gsr-18v-65-0-601-9n3-200.jpg",
+      "price": 78.99,
+      "offer_count": 31,
+      "stars": 4.78,
+      "review_count": 76,
+      "ref": "pr.v1.k1.d90DBzY2_swLe64dDVyc_mfR5XEhaNrgnQ3Zej8IsBIEAYRACQ"
+     }
+    ]
+   }
+  },
+  {
+   "type": "step",
+   "id": "specs",
+   "status": "warn",
+   "title": "1 spec claim(s) don't add up",
+   "data": [
+    {
+     "severity": "warn",
+     "rule": "voltage_inflation",
+     "text": "\"21V\" is the unloaded peak voltage of a 5-cell pack; the nominal voltage is 18V. Branded tools label the same pack 18V."
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "clones",
+   "status": "running",
+   "title": "Searching for the same product under other names"
+  },
+  {
+   "type": "step",
+   "id": "life",
+   "status": "running",
+   "title": "Collecting failure reports (DE/EN/FR)"
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "classify failure reports",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 22698,
+     "prompt_tokens": 2498,
+     "completion_tokens": 1325,
+     "ts": 1795794876,
+     "output_preview": "{\"items\": [{\"i\": 0, \"relevant\": false, \"failure\": false, \"after_weeks\": null, \"component\": null, \"usage\": \"unknown\", \"lang\": \"en\", \"summary_en\": \"The video discusses a cordless impact wrench with 650Nm torque, not the specific 21V brushless drill set in question. It is unrelated to the product model.\"}, {\"i\": 1, \"relevant\": false, \"failure\": false, \"after_weeks\": null, \"component\": null, \"usage\": "
+    },
+    {
+     "purpose": "dedupe reports across languages",
+     "model": "Qwen/Qwen3-Embedding-8B",
+     "status": 200,
+     "ms": 813,
+     "prompt_tokens": 75,
+     "completion_tokens": 0,
+     "ts": 1795794899
+    }
+   ]
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "rebrand names",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 20077,
+     "prompt_tokens": 949,
+     "completion_tokens": 526,
+     "ts": 1795794882,
+     "output_preview": "{\"brands\": [\"YUNXI\", \"KORAWALT\", \"VXB\", \"JEXUGK\", \"MPT\", \"Adrinfly\", \"JRK\", \"Olmlmo\"], \"evidence\": [{\"brand\": \"YUNXI\", \"url\": \"https://www.alibaba.com/product-detail/Wholesale-High-Quality-21V-60Nm-Rechargeable_1601404752296.html\"}, {\"brand\": \"KORAWALT\", \"url\": \"https://www.alibaba.com/product-detail/Wholesale-High-Quality-21V-60Nm-Rechargeable_1601404752296.html\"}, {\"brand\": \"VXB\", \"url\": \"https:"
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "clones",
+   "status": "warn",
+   "title": "Look-alikes: 0 visual match(es), 8 brand name(s)",
+   "data": {
+    "visual_matches": [],
+    "brands": [
+     "YUNXI",
+     "KORAWALT",
+     "VXB",
+     "JEXUGK",
+     "MPT",
+     "Adrinfly",
+     "JRK",
+     "Olmlmo"
+    ],
+    "evidence": [
+     {
+      "brand": "YUNXI",
+      "url": "https://www.alibaba.com/product-detail/Wholesale-High-Quality-21V-60Nm-Rechargeable_1601404752296.html"
+     },
+     {
+      "brand": "KORAWALT",
+      "url": "https://www.alibaba.com/product-detail/Wholesale-High-Quality-21V-60Nm-Rechargeable_1601404752296.html"
+     },
+     {
+      "brand": "VXB",
+      "url": "https://vxb.com/products/top-shelf-21v-brushless-cordless-drill-kit-with-ha"
+     },
+     {
+      "brand": "JEXUGK",
+      "url": "https://www.ebay.com/itm/236931814638"
+     },
+     {
+      "brand": "MPT",
+      "url": "https://www.facebook.com/mptglobal/videos/work-smarter-with-mpt-brushless-drill-mpcd2129-21v-max-60nm-high-torque-22000mah/1497182935841516"
+     },
+     {
+      "brand": "Adrinfly",
+      "url": "https://www.lowes.com/pd/Adrinfly-Cordless-Drill-Tool-Set-21V-Brushless-Motor-60Nm-Torque-2-power-cells-Portable-Household-Driver-Case-for-Home-Repair-DIY/105367180"
+     },
+     {
+      "brand": "JRK",
+      "url": "https://jrk.com.ph/products/jrk-cordless-brushless-lithium-ion-impact-drill-jrkcid21v"
+     },
+     {
+      "brand": "Olmlmo",
+      "url": "https://www.youtube.com/watch?v=lkTSWxIMeGg"
+     }
+    ]
+   }
+  },
+  {
+   "type": "step",
+   "id": "life",
+   "status": "warn",
+   "title": "2 failure report(s), 2 distinct stories",
+   "data": {
+    "reports": [
+     {
+      "title": "How to Use a Cordless Drill Properly | Complete SeeSii 21V Cordless Drill Tutorial & Review",
+      "url": "https://www.youtube.com/watch?v=UsHbZg4_YSY",
+      "text": "it. You do this and it holds it shut. That's very convenient. This one that holds this shut doesn't work. Doesn't hold it shut. This one's a good type. Holds it shut nicely. However, I think it's the type that this one had. that eventually broke off. And there's another one, is, I don't have it with me, but it's really really annoying because it gets loose and it's constantly getting in the way. Now, the thing about shears is you don't want to do any job that's too big for them because you can [",
+      "i": 5,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": 4,
+      "component": "chuck",
+      "usage": "hobby",
+      "lang": "en",
+      "summary_en": "A user reports that the drill's chuck does not hold securely, eventually breaking off after a few weeks of use. The issue is described as annoying and affecting usability during DIY projects."
+     },
+     {
+      "title": "The WORST BRAND Power Tools ONLINE - Do Not Buy This TOOL!",
+      "url": "https://www.youtube.com/watch?v=YjyzkVuo0h4",
+      "text": "# The WORST BRAND Power Tools ONLINE - Do Not Buy This TOOL!\n## Channel: D.I.Y. AUTO SCHOOL (verified)\n204K subscribers\n291 likes\n\n### Description\n5,750 views\nPosted: 2025-05-19\nThe WORST BRAND Power Tools ONLINE - Do Not Buy This TOOL!\n#tools #diy #review #seesii \nSEESII brand power tools are the worst on the market.. This review will show you that you will waste your money buying any tool with the brand name SEESII.. You've Been WARNED!\n or 972-420-1293 [...] [13:42] It's junk. It's trash. I c",
+      "i": 7,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": 2,
+      "component": "motor",
+      "usage": "unknown",
+      "lang": "en",
+      "summary_en": "A YouTube review claims the Seesii brand power tools are junk and a waste of money. The reviewer states the tool failed after just two weeks, calling it unreliable and poorly built."
+     }
+    ],
+    "clusters": 2,
+    "tests": []
+   }
+  },
+  {
+   "type": "step",
+   "id": "cost",
+   "status": "running",
+   "title": "Working out the cost per day"
+  },
+  {
+   "type": "step",
+   "id": "cost",
+   "status": "done",
+   "title": "Cost per day",
+   "data": {
+    "rows": [
+     {
+      "name": "SEESII Brushless Akkuschrauber Set 21V, Akku-Bohrschrauber Bürstenlos 2x 2000mAh Akku, 60Nm",
+      "price": 39.99,
+      "life_years": {
+       "low": 0.04,
+       "mid": 0.31,
+       "high": 7
+      },
+      "basis": "Failure reports show motor failure at 2 weeks and chuck failure at 4 weeks under hobby use, indicating poor durability. No spare parts or repair data available. Brand has 1832 reviews with 4.7 stars, suggesting decent user satisfaction but not reliability. No evidence of long-term support or service network. Life is pulled down to low end due to early failures. Established brands like Makita/Bosch have better track records, so this is considered lower-tier.",
+      "per_day": {
+       "best": 0.017,
+       "mid": 0.355,
+       "worst": 2.192
+      },
+      "url": null,
+      "per_month": 10.79,
+      "per_year": 129.57
+     },
+     {
+      "name": "Makita DDF482",
+      "price": 168.99,
+      "life_years": {
+       "low": 8,
+       "mid": 12,
+       "high": 15
+      },
+      "basis": "Makita is a well-established brand with strong reputation for durability and service. 39 reviews and 53 offers suggest availability and market presence. No failure reports found. Industry standard for cordless drills is 10+ years with proper care. High review count and brand trust justify longer life estimates.",
+      "per_day": {
+       "best": 0.032,
+       "mid": 0.04,
+       "worst": 0.059
+      },
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/6148180_-ddf482rfj-makita.html",
+      "per_month": 1.22,
+      "per_year": 14.6
+     },
+     {
+      "name": "Bosch GSR 18V-65",
+      "price": 78.99,
+      "life_years": {
+       "low": 6,
+       "mid": 10,
+       "high": 14
+      },
+      "basis": "Bosch is a reputable brand with 76 reviews and 31 offers. Known for reliable cordless tools. No failure reports found. Typical life for Bosch professional-grade drills is 8–12 years. Slightly shorter than Makita due to lower price point and fewer professional endorsements, but still significantly better than SEESII.",
+      "per_day": {
+       "best": 0.017,
+       "mid": 0.023,
+       "worst": 0.037
+      },
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/205555020_-gsr-18v-65-0-601-9n3-200-bosch.html",
+      "per_month": 0.7,
+      "per_year": 8.39
+     }
+    ],
+    "consumables": [],
+    "energy_eur_year": 0.44,
+    "electricity_price": 0.37,
+    "usage_assumption": "Average hobby use: 1 hour per week, 50 weeks per year. Charging 2 batteries per month (2000mAh each, 21V). Energy consumption based on typical cordless drill efficiency.",
+    "decisive_question": "Is long-term reliability and durability more important than initial cost, given the high failure rate of the SEESII model?"
+   }
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "lifetime + consumables estimate",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 11872,
+     "prompt_tokens": 473,
+     "completion_tokens": 670,
+     "ts": 1795794902,
+     "output_preview": "{\"items\": [{\"name\": \"SEESII Brushless Akkuschrauber Set 21V, Akku-Bohrschrauber Bürstenlos 2x 2000mAh Akku, 60Nm\", \"price_eur\": 39.99, \"life_years\": {\"low\": 1.5, \"mid\": 4, \"high\": 7}, \"basis\": \"Failure reports show motor failure at 2 weeks and chuck failure at 4 weeks under hobby use, indicating poor durability. No spare parts or repair data available. Brand has 1832 reviews with 4.7 stars, sugges"
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "verdict",
+   "status": "running",
+   "title": "Deciding (live Nebius call)"
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "final verdict",
+     "model": "deepseek-ai/DeepSeek-V4-Pro-0813",
+     "status": 200,
+     "ms": 12788,
+     "prompt_tokens": 2362,
+     "completion_tokens": 1217,
+     "ts": 1795794914,
+     "output_preview": "{\"verdict\": \"BUY_ALTERNATIVE\", \"headline\": \"Avoid generic rebrand; buy Bosch GSR 18V-65 instead\", \"confidence\": \"medium\", \"reasons\": [{\"text\": \"Same tool sold under at least 8 brands (YUNXI, KORAWALT, VXB, JEXUGK, MPT, Adrinfly, JRK, Olmlmo), a classic throwaway rebrand with no independent support or spare parts.\", \"tier\": \"A\", \"url\": \"https://www.alibaba.com/product-detail/Wholesale-High-Quality-"
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "verdict",
+   "status": "done",
+   "title": "Decided (live Nebius call)"
+  },
+  {
+   "type": "verdict",
+   "data": {
+    "verdict": "BUY_ALTERNATIVE",
+    "headline": "Avoid generic rebrand; buy Bosch GSR 18V-65 instead",
+    "confidence": "medium",
+    "reasons": [
+     {
+      "text": "Same tool sold under at least 8 brands (YUNXI, KORAWALT, VXB, JEXUGK, MPT, Adrinfly, JRK, Olmlmo), a classic throwaway rebrand with no independent support or spare parts.",
+      "tier": "A",
+      "url": "https://www.alibaba.com/product-detail/Wholesale-High-Quality-21V-60Nm-Rechargeable_1601404752296.html"
+     },
+     {
+      "text": "User reports show chuck failure after 4 weeks and motor failure after 2 weeks, contradicting the 4.7-star average and 1832 reviews.",
+      "tier": "A",
+      "url": "https://www.youtube.com/watch?v=UsHbZg4_YSY"
+     },
+     {
+      "text": "Advertised 21V is only the unloaded peak voltage of an 18V pack; spec inflation is common on generic tools and misleads buyers.",
+      "tier": "B",
+      "url": null
+     },
+     {
+      "text": "Cost per year is higher than Bosch or Makita due to likely short life; Bosch GSR 18V-65 costs €78.99 with established service and 31 offers.",
+      "tier": "B",
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/205555020_-gsr-18v-65-0-601-9n3-200-bosch.html"
+     }
+    ],
+    "better_alternative": "Bosch GSR 18V-65",
+    "missing_fact": "Independent torque and battery cycle test from a recognized lab",
+    "trust_adjusted_stars": 3.0
+   }
+  }
+ ],
+ "verdict": {
+  "verdict": "BUY_ALTERNATIVE",
+  "headline": "Avoid generic rebrand; buy Bosch GSR 18V-65 instead",
+  "confidence": "medium",
+  "reasons": [
+   {
+    "text": "Same tool sold under at least 8 brands (YUNXI, KORAWALT, VXB, JEXUGK, MPT, Adrinfly, JRK, Olmlmo), a classic throwaway rebrand with no independent support or spare parts.",
+    "tier": "A",
+    "url": "https://www.alibaba.com/product-detail/Wholesale-High-Quality-21V-60Nm-Rechargeable_1601404752296.html"
+   },
+   {
+    "text": "User reports show chuck failure after 4 weeks and motor failure after 2 weeks, contradicting the 4.7-star average and 1832 reviews.",
+    "tier": "A",
+    "url": "https://www.youtube.com/watch?v=UsHbZg4_YSY"
+   },
+   {
+    "text": "Advertised 21V is only the unloaded peak voltage of an 18V pack; spec inflation is common on generic tools and misleads buyers.",
+    "tier": "B",
+    "url": null
+   },
+   {
+    "text": "Cost per year is higher than Bosch or Makita due to likely short life; Bosch GSR 18V-65 costs €78.99 with established service and 31 offers.",
+    "tier": "B",
+    "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/205555020_-gsr-18v-65-0-601-9n3-200-bosch.html"
+   }
+  ],
+  "better_alternative": "Bosch GSR 18V-65",
+  "missing_fact": "Independent torque and battery cycle test from a recognized lab",
+  "trust_adjusted_stars": 3.0
+ }
+}

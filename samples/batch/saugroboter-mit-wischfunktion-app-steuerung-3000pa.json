@@ -1,0 +1,389 @@
+{
+ "input": "Saugroboter mit Wischfunktion, App-Steuerung, 3000Pa, 4,5 Sterne (1.200 Bewertungen), 119 €, Marke: ONSON-like no-name",
+ "events": [
+  {
+   "type": "step",
+   "id": "claim",
+   "status": "running",
+   "title": "Reading the listing"
+  },
+  {
+   "type": "step",
+   "id": "claim",
+   "status": "done",
+   "title": "Listing read",
+   "data": {
+    "title": "Saugroboter mit Wischfunktion, App-Steuerung, 3000Pa",
+    "brand": "ONSON-like no-name",
+    "model": null,
+    "category": "robot vacuum",
+    "price_eur": 119,
+    "stars": 4.5,
+    "review_count": 1200,
+    "claimed_specs": {
+     "voltage_v": null,
+     "capacity_mah": null,
+     "weight_g": null,
+     "storage_tb": null,
+     "lumen": null,
+     "health_claims": [],
+     "other": [
+      "Wischfunktion",
+      "App-Steuerung",
+      "3000Pa Saugleistung"
+     ]
+    },
+    "idealo_exact_query": "ONSON-like no-name Saugroboter mit Wischfunktion, App-Steuerung, 3000Pa",
+    "idealo_generic_query": "Roboterstaubsauger 3000Pa",
+    "clone_image_query": "robot vacuum with mopping function app control 3000Pa suction",
+    "failure_queries": {
+     "de": "Roboterstaubsauger ONSON-like no-name Probleme",
+     "en": "robot vacuum ONSON-like no-name failures",
+     "fr": "aspirateur robot ONSON-like no-name problèmes"
+    },
+    "image_url": null,
+    "source_url": null
+   }
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "read listing",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 4470,
+     "prompt_tokens": 337,
+     "completion_tokens": 303,
+     "ts": 1795795183,
+     "output_preview": "{\"title\": \"Saugroboter mit Wischfunktion, App-Steuerung, 3000Pa\", \"brand\": \"ONSON-like no-name\", \"model\": null, \"category\": \"robot vacuum\", \"price_eur\": 119, \"stars\": 4.5, \"review_count\": 1200, \"claimed_specs\": {\"voltage_v\": null, \"capacity_mah\": null, \"weight_g\": null, \"storage_tb\": null, \"lumen\": null, \"health_claims\": [], \"other\": [\"Wischfunktion\", \"App-Steuerung\", \"3000Pa Saugleistung\"]}, \"ide"
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "idealo",
+   "status": "running",
+   "title": "Looking it up on idealo"
+  },
+  {
+   "type": "step",
+   "id": "idealo",
+   "status": "warn",
+   "title": "Not sold by any idealo shop",
+   "data": {
+    "exact": null,
+    "alternatives": [
+     {
+      "name": "lubluelu SL60D",
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/204292273_-sl60d-schwarz-lubluelu.html",
+      "image": "https://cdn.idealo.com/folder/Product/204292/2/204292273/s1_produktbild_mobil/lubluelu-sl60d-schwarz.jpg",
+      "price": 89.99,
+      "offer_count": 6,
+      "stars": 4.34,
+      "review_count": 410,
+      "ref": "pr.v1.k1.HuVg8mDeFw9W4cAf6ukeCiV5T7HS6YlVhcTcJlKx2kgDb4TNmQ"
+     }
+    ]
+   }
+  },
+  {
+   "type": "step",
+   "id": "specs",
+   "status": "done",
+   "title": "Specs plausible",
+   "data": []
+  },
+  {
+   "type": "step",
+   "id": "clones",
+   "status": "running",
+   "title": "Searching for the same product under other names"
+  },
+  {
+   "type": "step",
+   "id": "life",
+   "status": "running",
+   "title": "Collecting failure reports (DE/EN/FR)"
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "rebrand names",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 4912,
+     "prompt_tokens": 911,
+     "completion_tokens": 293,
+     "ts": 1795795194,
+     "output_preview": "{\"brands\": [\"Roborock\", \"Tesvor\", \"YOMA\", \"AIRROBO\", \"Serenite\"], \"evidence\": [{\"brand\": \"Roborock\", \"url\": \"https://us.roborock.com\"}, {\"brand\": \"Tesvor\", \"url\": \"https://www.youtube.com/watch?v=_Gv2ls8hzGw\"}, {\"brand\": \"YOMA\", \"url\": \"https://www.target.com/p/yoma-e2-robot-vacuum-and-mop-combo-3000pa-strong-suction-2-8-slim-design-120min-runtime-app-alexa-control-self-charging-robotic-vacuum-cle"
+    }
+   ]
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "classify failure reports",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 18800,
+     "prompt_tokens": 2299,
+     "completion_tokens": 1240,
+     "ts": 1795795192,
+     "output_preview": "{\"items\": [{\"i\": 0, \"relevant\": false, \"failure\": false, \"after_weeks\": null, \"component\": null, \"usage\": \"unknown\", \"lang\": \"en\", \"summary_en\": \"Discussion about the ONSON brand being delisted from Amazon, but no specific failure report of the product model.\"}, {\"i\": 1, \"relevant\": false, \"failure\": false, \"after_weeks\": null, \"component\": null, \"usage\": \"unknown\", \"lang\": \"en\", \"summary_en\": \"Tu"
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "clones",
+   "status": "warn",
+   "title": "Look-alikes: 0 visual match(es), 5 brand name(s)",
+   "data": {
+    "visual_matches": [],
+    "brands": [
+     "Roborock",
+     "Tesvor",
+     "YOMA",
+     "AIRROBO",
+     "Serenite"
+    ],
+    "evidence": [
+     {
+      "brand": "Roborock",
+      "url": "https://us.roborock.com"
+     },
+     {
+      "brand": "Tesvor",
+      "url": "https://www.youtube.com/watch?v=_Gv2ls8hzGw"
+     },
+     {
+      "brand": "YOMA",
+      "url": "https://www.target.com/p/yoma-e2-robot-vacuum-and-mop-combo-3000pa-strong-suction-2-8-slim-design-120min-runtime-app-alexa-control-self-charging-robotic-vacuum-cleaner/-/A-1010884435"
+     },
+     {
+      "brand": "AIRROBO",
+      "url": "https://us.air-robo.com/products/airrobo-p30-3-in-1-robot-vacuum-and-mop-combo-with-3000pa-suction-wifi-app-voice-control-compatible-with-alexa-and-google-assistant"
+     },
+     {
+      "brand": "Serenite",
+      "url": null
+     }
+    ]
+   }
+  },
+  {
+   "type": "step",
+   "id": "life",
+   "status": "done",
+   "title": "0 failure report(s), 0 distinct stories",
+   "data": {
+    "reports": [],
+    "clusters": 0,
+    "tests": []
+   }
+  },
+  {
+   "type": "step",
+   "id": "cost",
+   "status": "running",
+   "title": "Working out the cost per day"
+  },
+  {
+   "type": "step",
+   "id": "cost",
+   "status": "done",
+   "title": "Cost per day",
+   "data": {
+    "rows": [
+     {
+      "name": "Saugroboter mit Wischfunktion, App-Steuerung, 3000Pa",
+      "price": 119,
+      "life_years": {
+       "low": 2,
+       "mid": 4,
+       "high": 6
+      },
+      "basis": "Brand is a no-name (ONSON-like), lacks established presence. 1200 reviews at 4.5 stars suggest decent reliability, but no failure reports. No spare parts or repair data available. Life assumed mid-range based on typical robot vacuum durability for non-established brands. Low end pulled down to 2 years due to lack of repairability and brand trust.",
+      "per_day": {
+       "best": 1.576,
+       "mid": 1.604,
+       "worst": 1.685
+      },
+      "url": null,
+      "per_month": 48.76,
+      "per_year": 585.46
+     },
+     {
+      "name": "lubluelu SL60D",
+      "price": 89.99,
+      "life_years": {
+       "low": 1.5,
+       "mid": 3,
+       "high": 5
+      },
+      "basis": "Lower price and fewer reviews (410) with 4.34 stars suggest lower reliability. No failure reports or repair data. Brand not established. Life assumed shorter than main product due to lower price point and weaker market presence. Low end set to 1.5 years as typical for budget robot vacuums with limited support.",
+      "per_day": {
+       "best": 1.571,
+       "mid": 1.604,
+       "worst": 1.686
+      },
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/204292273_-sl60d-schwarz-lubluelu.html",
+      "per_month": 48.76,
+      "per_year": 585.46
+     }
+    ],
+    "consumables": [
+     {
+      "name": "Staubsaugerbeutel",
+      "idealo_query": "Staubsaugerbeutel für roboter",
+      "units_per_year": 2,
+      "price_eur": 12.0,
+      "per_year": 24.0,
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/209506617_-3-2l-saugroboter-staubbeutel-fuer-mova-p50-pro-ultra-p50-ultra-p50s-ultra-e30-ultra-s20-ultra-v50-ultra-e40-ultra-z60ultraroller-mobius60-mova.html",
+      "found": "MOVA 3.2L Saugroboter Staubbeutel für MOVA P50 Pro Ultra / P50 Ultra / P50s Ultra / E30 Ultra / S20 Ultra / V50 Ultra / E40 Ultra//Z60UltraRoller/MOBIUS60"
+     },
+     {
+      "name": "Wischmatten",
+      "idealo_query": "Wischmatten für saugroboter",
+      "units_per_year": 1.5,
+      "price_eur": 289.99,
+      "per_year": 357,
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/206288324_-t80-omni-black-ecovacs.html",
+      "found": "ECOVACS T80 OMNI"
+     },
+     {
+      "name": "Filter",
+      "idealo_query": "Filter für saugroboter",
+      "units_per_year": 1,
+      "price_eur": 169.0,
+      "per_year": 169.0,
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/206905506_-q10-vf-roborock.html",
+      "found": "Roborock Q10 VF"
+     }
+    ],
+    "energy_eur_year": 5.55,
+    "electricity_price": 0.37,
+    "usage_assumption": "Daily use of 30 minutes, 5 days a week, with moderate suction and occasional mopping.",
+    "decisive_question": "Is long-term reliability and durability more important than initial cost, given the lack of repairability and spare parts availability for both products?"
+   }
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "lifetime + consumables estimate",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 8718,
+     "prompt_tokens": 360,
+     "completion_tokens": 508,
+     "ts": 1795795210,
+     "output_preview": "{\"items\": [{\"name\": \"Saugroboter mit Wischfunktion, App-Steuerung, 3000Pa\", \"price_eur\": 119, \"life_years\": {\"low\": 2, \"mid\": 4, \"high\": 6}, \"basis\": \"Brand is a no-name (ONSON-like), lacks established presence. 1200 reviews at 4.5 stars suggest decent reliability, but no failure reports. No spare parts or repair data available. Life assumed mid-range based on typical robot vacuum durability for n"
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "verdict",
+   "status": "running",
+   "title": "Deciding (live Nebius call)"
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "final verdict",
+     "model": "deepseek-ai/DeepSeek-V4-Pro-0813",
+     "status": 200,
+     "ms": 18258,
+     "prompt_tokens": 1920,
+     "completion_tokens": 1577,
+     "ts": 1795795222,
+     "output_preview": "{\"verdict\": \"ASK\", \"headline\": \"No independent tests or spare parts for this no-name vacuum\", \"confidence\": \"low\", \"reasons\": [{\"text\": \"No independent tests, failure reports, or exact Idealo listing exist for this ONSON-like no-name model; the 3000Pa suction claim is unverified.\", \"tier\": \"A\", \"url\": null}, {\"text\": \"The product appears to be a generic clone: visual matches are empty and similar "
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "verdict",
+   "status": "done",
+   "title": "Decided (live Nebius call)"
+  },
+  {
+   "type": "verdict",
+   "data": {
+    "verdict": "ASK",
+    "headline": "No independent tests or spare parts for this no-name vacuum",
+    "confidence": "low",
+    "reasons": [
+     {
+      "text": "No independent tests, failure reports, or exact Idealo listing exist for this ONSON-like no-name model; the 3000Pa suction claim is unverified.",
+      "tier": "A",
+      "url": null
+     },
+     {
+      "text": "The product appears to be a generic clone: visual matches are empty and similar 3000Pa robot vacuums are sold under multiple brands (Roborock, Tesvor, YOMA, AIRROBO, Serenite).",
+      "tier": "B",
+      "url": "https://us.roborock.com"
+     },
+     {
+      "text": "4.5 stars from 1200 reviews is a cheap signal and cannot compensate for missing spare parts, repair data, or brand track record.",
+      "tier": "C",
+      "url": null
+     },
+     {
+      "text": "Consumable searches returned incompatible items (MOVA bags, Ecovacs mop, Roborock filter), so real running costs and parts availability are unknown.",
+      "tier": "A",
+      "url": null
+     },
+     {
+      "text": "The lubluelu SL60D alternative has an Idealo listing, 410 reviews, and a lower price, but also lacks independent reliability data.",
+      "tier": "B",
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/204292273_-sl60d-schwarz-lubluelu.html"
+     }
+    ],
+    "better_alternative": "lubluelu SL60D",
+    "missing_fact": "Are spare parts (brushes, filters, battery) available for this exact model?",
+    "trust_adjusted_stars": 4.0
+   }
+  }
+ ],
+ "verdict": {
+  "verdict": "ASK",
+  "headline": "No independent tests or spare parts for this no-name vacuum",
+  "confidence": "low",
+  "reasons": [
+   {
+    "text": "No independent tests, failure reports, or exact Idealo listing exist for this ONSON-like no-name model; the 3000Pa suction claim is unverified.",
+    "tier": "A",
+    "url": null
+   },
+   {
+    "text": "The product appears to be a generic clone: visual matches are empty and similar 3000Pa robot vacuums are sold under multiple brands (Roborock, Tesvor, YOMA, AIRROBO, Serenite).",
+    "tier": "B",
+    "url": "https://us.roborock.com"
+   },
+   {
+    "text": "4.5 stars from 1200 reviews is a cheap signal and cannot compensate for missing spare parts, repair data, or brand track record.",
+    "tier": "C",
+    "url": null
+   },
+   {
+    "text": "Consumable searches returned incompatible items (MOVA bags, Ecovacs mop, Roborock filter), so real running costs and parts availability are unknown.",
+    "tier": "A",
+    "url": null
+   },
+   {
+    "text": "The lubluelu SL60D alternative has an Idealo listing, 410 reviews, and a lower price, but also lacks independent reliability data.",
+    "tier": "B",
+    "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/204292273_-sl60d-schwarz-lubluelu.html"
+   }
+  ],
+  "better_alternative": "lubluelu SL60D",
+  "missing_fact": "Are spare parts (brushes, filters, battery) available for this exact model?",
+  "trust_adjusted_stars": 4.0
+ }
+}

@@ -1,0 +1,400 @@
+{
+ "productRef": "pr.v1.k1.XS4St5tGE70i-Zkzxjgg-y-UmY898oD3TD0e8paJKDgzqOs_Vw",
+ "itemType": "PRODUCT",
+ "siteId": 1,
+ "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/214170186_-psr18v-60-06039d7201-bosch.html",
+ "name": "Bosch PSR18V-60",
+ "nameDelta": "06039D7201",
+ "imageUrls": [
+  "https://cdn.idealo.com/folder/Product/214170/1/214170186/s1_produktbild_mobil/bosch-psr18v-60-akku-bohrschrauber-18v-2-5ah-06039d7201.jpg"
+ ],
+ "nextOffset": 3,
+ "offers": [
+  {
+   "key": "9dfba3730b776407bdeff000f5c6efef",
+   "price": "86,30 €",
+   "basePrice": null,
+   "shop": {
+    "shopId": "315657",
+    "merchantId": null,
+    "name": "baumarkteu.de",
+    "merchantName": null,
+    "rating": {
+     "count": 10450,
+     "avg": 4.25
+    },
+    "isMarketplace": false
+   },
+   "payments": [
+    {
+     "costCode": "PP",
+     "name": "PayPal"
+    },
+    {
+     "costCode": "CBC",
+     "name": "Kreditkarte"
+    },
+    {
+     "costCode": "COD",
+     "name": "Nachnahme"
+    },
+    {
+     "costCode": "CIA",
+     "name": "Vorkasse"
+    }
+   ],
+   "showPaymentDisclaimer": false,
+   "delivery": {
+    "deliveryText": "bis Di. 01.12.2026",
+    "deliveryStatus": "SHORT",
+    "earlyDeliveryDate": null,
+    "lateDeliveryDate": "2026-12-01"
+   },
+   "freeReturnDays": null,
+   "relocatorUrl": "https://www.idealo.de/relocator/relocate?offerKey=9dfba3730b776407bdeff000f5c6efef&categoryId=3687&pos=1&price=86.30&productid=214170186&sid=315657&type=offer&media=ipc-public-mcp",
+   "minShippingCost": "5,90 €",
+   "hasAlwaysFreeShipping": false,
+   "cheapestTotalPriceOffer": true,
+   "freshness": "2026-11-27T14:22:27.148Z"
+  },
+  {
+   "key": "84cfa26b5b5ca1d7d006a82bb6fe16fe",
+   "price": "86,70 €",
+   "basePrice": null,
+   "shop": {
+    "shopId": "321307",
+    "merchantId": null,
+    "name": "alango.de",
+    "merchantName": null,
+    "rating": {
+     "count": 570,
+     "avg": 5
+    },
+    "isMarketplace": false
+   },
+   "payments": [
+    {
+     "costCode": "PP",
+     "name": "PayPal"
+    },
+    {
+     "costCode": "CBC",
+     "name": "Kreditkarte"
+    },
+    {
+     "costCode": "APPLE_PAY",
+     "name": "Apple Pay"
+    },
+    {
+     "costCode": "CIA",
+     "name": "Vorkasse"
+    }
+   ],
+   "showPaymentDisclaimer": false,
+   "delivery": {
+    "deliveryText": "Di. 01.12.–Mi. 02.12.2026",
+    "deliveryStatus": "SHORT",
+    "earlyDeliveryDate": "2026-12-01",
+    "lateDeliveryDate": "2026-12-02"
+   },
+   "freeReturnDays": 30,
+   "relocatorUrl": "https://www.idealo.de/relocator/relocate?offerKey=84cfa26b5b5ca1d7d006a82bb6fe16fe&categoryId=3687&pos=2&price=86.70&productid=214170186&sid=321307&type=offer&media=ipc-public-mcp",
+   "minShippingCost": "6,00 €",
+   "hasAlwaysFreeShipping": false,
+   "cheapestTotalPriceOffer": false,
+   "freshness": "2026-11-27T14:22:27.148Z"
+  },
+  {
+   "key": "fe6adb11e78d8e8e49af6c3af3b6b525",
+   "price": "91,04 €",
+   "basePrice": null,
+   "shop": {
+    "shopId": "311322",
+    "merchantId": "ALANGO.DE",
+    "name": "manomano.de",
+    "merchantName": "ALANGO.DE",
+    "rating": {
+     "count": null,
+     "avg": null
+    },
+    "isMarketplace": true
+   },
+   "payments": [
+    {
+     "costCode": "INV",
+     "name": "Rechnung"
+    },
+    {
+     "costCode": "PP",
+     "name": "PayPal"
+    },
+    {
+     "costCode": "SUW",
+     "name": "Sofort."
+    },
+    {
+     "costCode": "CBC",
+     "name": "Kreditkarte"
+    },
+    {
+     "costCode": "CIA",
+     "name": "Vorkasse"
+    }
+   ],
+   "showPaymentDisclaimer": false,
+   "delivery": {
+    "deliveryText": "Di. 01.12.–Mi. 02.12.2026",
+    "deliveryStatus": "SHORT",
+    "earlyDeliveryDate": "2026-12-01",
+    "lateDeliveryDate": "2026-12-02"
+   },
+   "freeReturnDays": null,
+   "relocatorUrl": "https://www.idealo.de/relocator/relocate?offerKey=fe6adb11e78d8e8e49af6c3af3b6b525&categoryId=3687&pos=3&price=91.04&productid=214170186&sid=311322&type=offer&media=ipc-public-mcp",
+   "minShippingCost": "6,00 €",
+   "hasAlwaysFreeShipping": false,
+   "cheapestTotalPriceOffer": false,
+   "freshness": "2026-11-27T14:22:27.149Z"
+  }
+ ],
+ "testReports": {
+  "summary": {
+   "ratingCount": 0
+  },
+  "list": []
+ },
+ "productSpecification": {
+  "groups": [
+   {
+    "name": "Leistungsdaten",
+    "type": "DEFAULT",
+    "attributes": [
+     {
+      "name": "Getriebe",
+      "value": "2-Gang"
+     },
+     {
+      "name": "max. Leerlaufdrehzahl",
+      "value": "1.900 U/min"
+     },
+     {
+      "name": "max. Drehmoment hart",
+      "value": "51 Nm"
+     },
+     {
+      "name": "max. Drehmoment weich",
+      "value": "24 Nm"
+     },
+     {
+      "name": "Drehmomentstufen",
+      "value": "20 + 1"
+     },
+     {
+      "name": "max. Leerlaufdrehzahl 1. Gang",
+      "value": "500 U/min"
+     },
+     {
+      "name": "max. Leerlaufdrehzahl 2. Gang",
+      "value": "1.900 U/min"
+     },
+     {
+      "name": "Leistungsmerkmale",
+      "value": "bürstenloser EC-Motor, LED-Licht, Rechts-/Linkslauf, Softgriff, Ladezustandsanzeige"
+     }
+    ]
+   },
+   {
+    "name": "Funktionsumfang",
+    "type": "DEFAULT",
+    "attributes": [
+     {
+      "name": "Bohrfutterspannweite",
+      "value": "13 mm"
+     }
+    ]
+   },
+   {
+    "name": "Akku",
+    "type": "DEFAULT",
+    "attributes": [
+     {
+      "name": "Akkuspannung",
+      "value": "18 V"
+     },
+     {
+      "name": "Anzahl Akkus",
+      "value": "mit 1 Akku"
+     },
+     {
+      "name": "Akkukapazität",
+      "value": "2,5 Ah"
+     },
+     {
+      "name": "Akkutechnologie",
+      "value": "Li-Ion"
+     }
+    ]
+   },
+   {
+    "name": "Zubehör",
+    "type": "DEFAULT",
+    "attributes": [
+     {
+      "name": "Lieferumfang",
+      "value": "Bohrfutter"
+     }
+    ]
+   },
+   {
+    "name": "",
+    "type": "IMPORTANT",
+    "attributes": [
+     {
+      "name": "Gelistet seit",
+      "value": "September 2026"
+     },
+     {
+      "name": "Bauart",
+      "value": "Akku-Bohrschrauber"
+     }
+    ]
+   }
+  ]
+ },
+ "productOverview": [
+  "max. Leerlaufdrehzahl 1.900 U/min",
+  "max. Drehmoment hart 51 Nm",
+  "Drehmomentstufen 20 + 1",
+  "bürstenloser EC-Motor",
+  "18 V",
+  "2,5 Ah"
+ ],
+ "productDetailsUrl": "https://www.idealo.de/preisvergleich/OffersOfProduct/214170186_-psr18v-60-06039d7201-bosch.html#datasheet",
+ "priceTrend": {
+  "history": [
+   {
+    "dateTime": 1793228399999,
+    "price": 8761
+   },
+   {
+    "dateTime": 1793314799999,
+    "price": 8761
+   },
+   {
+    "dateTime": 1793401199999,
+    "price": 8761
+   },
+   {
+    "dateTime": 1793487599999,
+    "price": 8666
+   },
+   {
+    "dateTime": 1793573999999,
+    "price": 8666
+   },
+   {
+    "dateTime": 1793660399999,
+    "price": 8666
+   },
+   {
+    "dateTime": 1793746799999,
+    "price": 8666
+   },
+   {
+    "dateTime": 1793833199999,
+    "price": 8666
+   },
+   {
+    "dateTime": 1793919599999,
+    "price": 8666
+   },
+   {
+    "dateTime": 1794005999999,
+    "price": 8666
+   },
+   {
+    "dateTime": 1794092399999,
+    "price": 8666
+   },
+   {
+    "dateTime": 1794178799999,
+    "price": 8666
+   },
+   {
+    "dateTime": 1794265199999,
+    "price": 8666
+   },
+   {
+    "dateTime": 1794351599999,
+    "price": 8666
+   },
+   {
+    "dateTime": 1794437999999,
+    "price": 8666
+   },
+   {
+    "dateTime": 1794524399999,
+    "price": 8666
+   },
+   {
+    "dateTime": 1794610799999,
+    "price": 8390
+   },
+   {
+    "dateTime": 1794697199999,
+    "price": 8390
+   },
+   {
+    "dateTime": 1794783599999,
+    "price": 8390
+   },
+   {
+    "dateTime": 1794869999999,
+    "price": 8390
+   },
+   {
+    "dateTime": 1794956399999,
+    "price": 8390
+   },
+   {
+    "dateTime": 1795042799999,
+    "price": 8553
+   },
+   {
+    "dateTime": 1795129199999,
+    "price": 8553
+   },
+   {
+    "dateTime": 1795215599999,
+    "price": 8731
+   },
+   {
+    "dateTime": 1795301999999,
+    "price": 8681
+   },
+   {
+    "dateTime": 1795388399999,
+    "price": 8681
+   },
+   {
+    "dateTime": 1795474799999,
+    "price": 8731
+   },
+   {
+    "dateTime": 1795561199999,
+    "price": 8681
+   },
+   {
+    "dateTime": 1795647599999,
+    "price": 8670
+   },
+   {
+    "dateTime": 1795733999999,
+    "price": 8670
+   },
+   {
+    "dateTime": 1795789347122,
+    "price": 8630
+   }
+  ]
+ }
+}

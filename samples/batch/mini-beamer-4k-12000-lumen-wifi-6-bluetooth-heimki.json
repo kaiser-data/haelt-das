@@ -1,0 +1,461 @@
+{
+ "input": "Mini Beamer 4K 12000 Lumen, WiFi 6, Bluetooth, Heimkino, 4,5 Sterne (5.600 Bewertungen), 89,99 €, no-name",
+ "events": [
+  {
+   "type": "step",
+   "id": "claim",
+   "status": "running",
+   "title": "Reading the listing"
+  },
+  {
+   "type": "step",
+   "id": "claim",
+   "status": "done",
+   "title": "Listing read",
+   "data": {
+    "title": "Mini Beamer 4K 12000 Lumen, WiFi 6, Bluetooth, Heimkino",
+    "brand": null,
+    "model": null,
+    "category": "projector",
+    "price_eur": 89.99,
+    "stars": 4.5,
+    "review_count": 5600,
+    "claimed_specs": {
+     "voltage_v": null,
+     "capacity_mah": null,
+     "weight_g": null,
+     "storage_tb": null,
+     "lumen": 12000,
+     "health_claims": [],
+     "other": [
+      "4K",
+      "WiFi 6",
+      "Bluetooth",
+      "Heimkino"
+     ]
+    },
+    "idealo_exact_query": "no-name Mini Beamer 4K 12000 Lumen",
+    "idealo_generic_query": "Beamer 12000 Lumen",
+    "clone_image_query": "mini projector 4K 12000 lumen wifi 6 bluetooth",
+    "failure_queries": {
+     "de": "Mini Beamer 4K 12000 Lumen Probleme",
+     "en": "mini projector 4K 12000 lumen issues",
+     "fr": "projecteur mini 4K 12000 lumens problèmes"
+    },
+    "image_url": null,
+    "source_url": null
+   }
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "read listing",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 3974,
+     "prompt_tokens": 334,
+     "completion_tokens": 300,
+     "ts": 1795795183,
+     "output_preview": "{\"title\": \"Mini Beamer 4K 12000 Lumen, WiFi 6, Bluetooth, Heimkino\", \"brand\": null, \"model\": null, \"category\": \"projector\", \"price_eur\": 89.99, \"stars\": 4.5, \"review_count\": 5600, \"claimed_specs\": {\"voltage_v\": null, \"capacity_mah\": null, \"weight_g\": null, \"storage_tb\": null, \"lumen\": 12000, \"health_claims\": [], \"other\": [\"4K\", \"WiFi 6\", \"Bluetooth\", \"Heimkino\"]}, \"idealo_exact_query\": \"no-name Mi"
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "idealo",
+   "status": "running",
+   "title": "Looking it up on idealo"
+  },
+  {
+   "type": "step",
+   "id": "idealo",
+   "status": "warn",
+   "title": "Not sold by any idealo shop",
+   "data": {
+    "exact": null,
+    "alternatives": [
+     {
+      "name": "Epson CO-FH02",
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/202169944_-co-fh02-epson.html",
+      "image": "https://cdn.idealo.com/folder/Product/202169/9/202169944/s1_produktbild_mobil/epson-co-fh02.jpg",
+      "price": 449.99,
+      "offer_count": 44,
+      "stars": 4.18,
+      "review_count": 137,
+      "ref": "pr.v1.k1.FlQPs93Wfp3rGDJDF80y8_2zKBbqRn2VZ5_22xEBF4vIecHcHQ"
+     },
+     {
+      "name": "Epson CO-FH01",
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/202336148_-co-fh01-epson.html",
+      "image": "https://cdn.idealo.com/folder/Product/202336/1/202336148/s1_produktbild_mobil/epson-co-fh01.jpg",
+      "price": 408.99,
+      "offer_count": 45,
+      "stars": 4.78,
+      "review_count": 50,
+      "ref": "pr.v1.k1.is0UqYQiW3IdjE0W8GdBv-L__PQN8C1BGp_fD9ffIu9QgFPhyQ"
+     },
+     {
+      "name": "Epson EB-FH08",
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/206524036_-eb-fh08-epson.html",
+      "image": "https://cdn.idealo.com/folder/Product/206524/0/206524036/s1_produktbild_mobil/epson-eb-fh08.jpg",
+      "price": 489.9,
+      "offer_count": 32,
+      "stars": 4.35,
+      "review_count": 40,
+      "ref": "pr.v1.k1.h9C9yYP0syo0k-0JxCAWnp1t9-kCDT2mvT5cccpWYE5t7me0JA"
+     },
+     {
+      "name": "Viewsonic PX701-4K",
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/200985940_-px701-4k-viewsonic.html",
+      "image": "https://cdn.idealo.com/folder/Product/200985/9/200985940/s1_produktbild_mobil/viewsonic-px701-4k.jpg",
+      "price": 765.5,
+      "offer_count": 17,
+      "stars": 3.84,
+      "review_count": 44,
+      "ref": "pr.v1.k1.bj867-L5O_zWB45LfVyNGHtqh4cr6EBNxqAyMgAvzRKwjhwuiA"
+     }
+    ]
+   }
+  },
+  {
+   "type": "step",
+   "id": "specs",
+   "status": "warn",
+   "title": "1 spec claim(s) don't add up",
+   "data": [
+    {
+     "severity": "warn",
+     "rule": "lumen_inflation",
+     "text": "12,000 lumen at €90: budget projectors usually quote non-ANSI 'light source' lumen; measured ANSI brightness is typically a fraction of this."
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "clones",
+   "status": "running",
+   "title": "Searching for the same product under other names"
+  },
+  {
+   "type": "step",
+   "id": "life",
+   "status": "running",
+   "title": "Collecting failure reports (DE/EN/FR)"
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "rebrand names",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 4825,
+     "prompt_tokens": 1021,
+     "completion_tokens": 299,
+     "ts": 1795795195,
+     "output_preview": "{\"brands\": [\"XGODI\", \"XGODY\", \"Etokfoks\", \"ELEPHAS\"], \"evidence\": [{\"brand\": \"XGODI\", \"url\": \"https://www.newegg.com/p/0FC-0600-002A3\"}, {\"brand\": \"XGODY\", \"url\": \"https://www.amazon.com/Projector-Brightness-Bluetooth-Portable-Entertainment/dp/B0H8WL4BKG\"}, {\"brand\": \"Etokfoks\", \"url\": \"https://www.lowes.com/pd/Etokfoks-mini-smart-4K-projector-with-Android-14-WiFi-6-Bluetooth-5-4-auto-keystone-180"
+    }
+   ]
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "classify failure reports",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 27039,
+     "prompt_tokens": 2840,
+     "completion_tokens": 1642,
+     "ts": 1795795191,
+     "output_preview": "{\"items\": [{\"i\": 0, \"relevant\": false, \"failure\": false, \"after_weeks\": null, \"component\": null, \"usage\": \"unknown\", \"lang\": \"en\", \"summary_en\": \"This is a product listing for a 12000-lumen mini projector with WiFi 6 and Bluetooth, but it contains no user-reported failure or performance issues. It is a generic product description with customer ratings, not a firsthand or reported case of failure.\""
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "clones",
+   "status": "warn",
+   "title": "Look-alikes: 0 visual match(es), 4 brand name(s)",
+   "data": {
+    "visual_matches": [],
+    "brands": [
+     "XGODI",
+     "XGODY",
+     "Etokfoks",
+     "ELEPHAS"
+    ],
+    "evidence": [
+     {
+      "brand": "XGODI",
+      "url": "https://www.newegg.com/p/0FC-0600-002A3"
+     },
+     {
+      "brand": "XGODY",
+      "url": "https://www.amazon.com/Projector-Brightness-Bluetooth-Portable-Entertainment/dp/B0H8WL4BKG"
+     },
+     {
+      "brand": "Etokfoks",
+      "url": "https://www.lowes.com/pd/Etokfoks-mini-smart-4K-projector-with-Android-14-WiFi-6-Bluetooth-5-4-auto-keystone-180-degree-rotation-and-130-in-short-throw-display-white/105592097"
+     },
+     {
+      "brand": "ELEPHAS",
+      "url": "https://www.walmart.com/ip/Mini-Projector-with-WiFi-and-Bluetooth-1080P-Projector-12000-Lumens-Built-in-Apps/20171223894"
+     }
+    ]
+   }
+  },
+  {
+   "type": "step",
+   "id": "life",
+   "status": "warn",
+   "title": "1 failure report(s), 0 distinct stories",
+   "data": {
+    "reports": [
+     {
+      "title": "Why is my 12000 lumen XGODY projector not bright enough?",
+      "url": "https://www.facebook.com/groups/1693776734531705/posts/1850824452160265",
+      "text": "Users of the Elephas projector have reported issues with pixelation, particularly when streaming content or using a long HDMI cable, and",
+      "i": 5,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": 4,
+      "component": "pixelation",
+      "usage": "hobby",
+      "lang": "en",
+      "summary_en": "Users of the Elephas projector (likely a rebranded or similar model to the Mini Beamer 4K 12000 Lumen) reported pixelation issues, especially during streaming or when using long HDMI cables. This is a first-hand user-reported failure."
+     }
+    ],
+    "clusters": 0,
+    "tests": []
+   }
+  },
+  {
+   "type": "step",
+   "id": "cost",
+   "status": "running",
+   "title": "Working out the cost per day"
+  },
+  {
+   "type": "step",
+   "id": "cost",
+   "status": "done",
+   "title": "Cost per day",
+   "data": {
+    "rows": [
+     {
+      "name": "Mini Beamer 4K 12000 Lumen, WiFi 6, Bluetooth, Heimkino",
+      "price": 89.99,
+      "life_years": {
+       "low": 0.08,
+       "mid": 0.31,
+       "high": 4.0
+      },
+      "basis": "Failure report shows pixelation after 4 weeks of hobby use; no spare parts or repairability data; no established brand presence; low price suggests throwaway design; review count (5600) is high but likely driven by low-cost impulse buys; no evidence of long-term reliability. Life is pulled down to 1 year (low) due to early failure report. Mid and high estimates reflect potential for longer life with minimal use and no failures, but not supported by evidence.",
+      "per_day": {
+       "best": 0.183,
+       "mid": 0.917,
+       "worst": 3.203
+      },
+      "url": null,
+      "per_month": 27.88,
+      "per_year": 334.71
+     },
+     {
+      "name": "Epson CO-FH02",
+      "price": 449.99,
+      "life_years": {
+       "low": 5.0,
+       "mid": 7.0,
+       "high": 10.0
+      },
+      "basis": "Epson is an established brand with professional-grade projectors; 137 reviews and 44 offers suggest market presence; no failure reports found; mid-to-high star rating (4.18) with moderate review count; typical for Epson projectors to last 5–10 years with proper care. Life estimates based on brand reputation and typical projector longevity in similar segments.",
+      "per_day": {
+       "best": 0.245,
+       "mid": 0.298,
+       "worst": 0.368
+      },
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/202169944_-co-fh02-epson.html",
+      "per_month": 9.06,
+      "per_year": 108.77
+     },
+     {
+      "name": "Epson CO-FH01",
+      "price": 408.99,
+      "life_years": {
+       "low": 5.0,
+       "mid": 7.0,
+       "high": 10.0
+      },
+      "basis": "Epson brand with strong reputation; 50 reviews and 45 offers indicate availability; high star rating (4.78) suggests reliability; no failure reports; similar product line to CO-FH02; expected lifespan consistent with Epson’s durability standards. Mid-to-high life estimates based on brand reliability and user satisfaction.",
+      "per_day": {
+       "best": 0.234,
+       "mid": 0.282,
+       "worst": 0.346
+      },
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/202336148_-co-fh01-epson.html",
+      "per_month": 8.57,
+      "per_year": 102.93
+     },
+     {
+      "name": "Epson EB-FH08",
+      "price": 489.9,
+      "life_years": {
+       "low": 5.0,
+       "mid": 7.0,
+       "high": 10.0
+      },
+      "basis": "Epson product with 40 reviews and 32 offers; 4.35 stars; moderate but stable rating; no failure reports; part of Epson’s proven home/professional projector line; expected lifespan aligns with Epson’s typical 5–10 year durability. Mid-to-high estimates based on brand consistency and product category norms.",
+      "per_day": {
+       "best": 0.256,
+       "mid": 0.313,
+       "worst": 0.39
+      },
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/206524036_-eb-fh08-epson.html",
+      "per_month": 9.52,
+      "per_year": 114.25
+     },
+     {
+      "name": "Viewsonic PX701-4K",
+      "price": 765.5,
+      "life_years": {
+       "low": 4.0,
+       "mid": 6.0,
+       "high": 8.0
+      },
+      "basis": "Higher price point suggests better build quality; 44 reviews and 17 offers indicate limited availability; lower star rating (3.84) may reflect mixed user experience; no failure reports; Viewsonic has a moderate reputation in projectors; life estimates reflect mid-tier reliability and durability, below Epson but above budget throwaways.",
+      "per_day": {
+       "best": 0.384,
+       "mid": 0.471,
+       "worst": 0.646
+      },
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/200985940_-px701-4k-viewsonic.html",
+      "per_month": 14.32,
+      "per_year": 171.91
+     }
+    ],
+    "consumables": [],
+    "energy_eur_year": 44.4,
+    "electricity_price": 0.37,
+    "usage_assumption": "Average home use: 2 hours per day, 365 days/year, with moderate brightness settings.",
+    "decisive_question": "Is the product’s short lifespan (due to early failure) and lack of repairability worth the low upfront cost, or should you invest in a more durable, higher-priced model with better long-term ownership cost?"
+   }
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "lifetime + consumables estimate",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 26053,
+     "prompt_tokens": 526,
+     "completion_tokens": 958,
+     "ts": 1795795218,
+     "output_preview": "{\"items\": [{\"name\": \"Mini Beamer 4K 12000 Lumen, WiFi 6, Bluetooth, Heimkino\", \"price_eur\": 89.99, \"life_years\": {\"low\": 1.0, \"mid\": 2.5, \"high\": 4.0}, \"basis\": \"Failure report shows pixelation after 4 weeks of hobby use; no spare parts or repairability data; no established brand presence; low price suggests throwaway design; review count (5600) is high but likely driven by low-cost impulse buys; "
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "verdict",
+   "status": "running",
+   "title": "Deciding (live Nebius call)"
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "final verdict",
+     "model": "deepseek-ai/DeepSeek-V4-Pro-0813",
+     "status": 200,
+     "ms": 42519,
+     "prompt_tokens": 2814,
+     "completion_tokens": 1868,
+     "ts": 1795795244,
+     "output_preview": "{\"verdict\": \"BUY_ALTERNATIVE\", \"headline\": \"Cheap no-name projector: inflated specs and early failure; buy Epson instead\", \"confidence\": \"medium\", \"reasons\": [{\"text\": \"12,000 lumen at €90 is not ANSI brightness; measured output is typically a fraction of the claimed figure, making the spec misleading.\", \"tier\": \"A\", \"url\": null}, {\"text\": \"A first-hand failure report shows pixelation after only 4"
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "verdict",
+   "status": "done",
+   "title": "Decided (live Nebius call)"
+  },
+  {
+   "type": "verdict",
+   "data": {
+    "verdict": "BUY_ALTERNATIVE",
+    "headline": "Cheap no-name projector: inflated specs and early failure; buy Epson instead",
+    "confidence": "medium",
+    "reasons": [
+     {
+      "text": "12,000 lumen at €90 is not ANSI brightness; measured output is typically a fraction of the claimed figure, making the spec misleading.",
+      "tier": "A",
+      "url": null
+     },
+     {
+      "text": "A first-hand failure report shows pixelation after only 4 weeks of hobby use in a rebranded model from the same clone family.",
+      "tier": "A",
+      "url": "https://www.facebook.com/groups/1693776734531705/posts/1850824452160265"
+     },
+     {
+      "text": "The product belongs to a clone family of throwaway brands (XGODI, XGODY, Etokfoks, ELEPHAS) with no established support or spare parts.",
+      "tier": "B",
+      "url": "https://www.newegg.com/p/0FC-0600-002A3"
+     },
+     {
+      "text": "Despite the low upfront price, estimated cost per year is about €335, far worse than an Epson alternative at roughly €103 per year.",
+      "tier": "B",
+      "url": null
+     },
+     {
+      "text": "The 4.5-star average and 5,600 reviews are likely driven by low-cost impulse buys, not long-term reliability evidence.",
+      "tier": "C",
+      "url": null
+     }
+    ],
+    "better_alternative": "Epson CO-FH01",
+    "missing_fact": null,
+    "trust_adjusted_stars": 2.0
+   }
+  }
+ ],
+ "verdict": {
+  "verdict": "BUY_ALTERNATIVE",
+  "headline": "Cheap no-name projector: inflated specs and early failure; buy Epson instead",
+  "confidence": "medium",
+  "reasons": [
+   {
+    "text": "12,000 lumen at €90 is not ANSI brightness; measured output is typically a fraction of the claimed figure, making the spec misleading.",
+    "tier": "A",
+    "url": null
+   },
+   {
+    "text": "A first-hand failure report shows pixelation after only 4 weeks of hobby use in a rebranded model from the same clone family.",
+    "tier": "A",
+    "url": "https://www.facebook.com/groups/1693776734531705/posts/1850824452160265"
+   },
+   {
+    "text": "The product belongs to a clone family of throwaway brands (XGODI, XGODY, Etokfoks, ELEPHAS) with no established support or spare parts.",
+    "tier": "B",
+    "url": "https://www.newegg.com/p/0FC-0600-002A3"
+   },
+   {
+    "text": "Despite the low upfront price, estimated cost per year is about €335, far worse than an Epson alternative at roughly €103 per year.",
+    "tier": "B",
+    "url": null
+   },
+   {
+    "text": "The 4.5-star average and 5,600 reviews are likely driven by low-cost impulse buys, not long-term reliability evidence.",
+    "tier": "C",
+    "url": null
+   }
+  ],
+  "better_alternative": "Epson CO-FH01",
+  "missing_fact": null,
+  "trust_adjusted_stars": 2.0
+ }
+}

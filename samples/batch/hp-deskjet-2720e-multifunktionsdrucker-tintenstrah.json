@@ -1,0 +1,604 @@
+{
+ "input": "HP DeskJet 2720e Multifunktionsdrucker, Tintenstrahl, WLAN, 49 €",
+ "events": [
+  {
+   "type": "step",
+   "id": "claim",
+   "status": "running",
+   "title": "Reading the listing"
+  },
+  {
+   "type": "step",
+   "id": "claim",
+   "status": "done",
+   "title": "Listing read",
+   "data": {
+    "title": "HP DeskJet 2720e Multifunktionsdrucker, Tintenstrahl, WLAN",
+    "brand": "HP",
+    "model": "DeskJet 2720e",
+    "category": "printer",
+    "price_eur": 49,
+    "stars": null,
+    "review_count": null,
+    "claimed_specs": {
+     "voltage_v": null,
+     "capacity_mah": null,
+     "weight_g": null,
+     "storage_tb": null,
+     "lumen": null,
+     "health_claims": [],
+     "other": [
+      "Tintenstrahl",
+      "WLAN"
+     ]
+    },
+    "idealo_exact_query": "HP DeskJet 2720e",
+    "idealo_generic_query": "Multifunktionsdrucker Tintenstrahl WLAN",
+    "clone_image_query": "inkjet multifunction printer wireless",
+    "failure_queries": {
+     "de": "HP DeskJet 2720e Probleme",
+     "en": "HP DeskJet 2720e issues",
+     "fr": "problèmes HP DeskJet 2720e"
+    },
+    "image_url": null,
+    "source_url": null
+   }
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "read listing",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 5343,
+     "prompt_tokens": 311,
+     "completion_tokens": 253,
+     "ts": 1795795022,
+     "output_preview": "{\"title\": \"HP DeskJet 2720e Multifunktionsdrucker, Tintenstrahl, WLAN\", \"brand\": \"HP\", \"model\": \"DeskJet 2720e\", \"category\": \"printer\", \"price_eur\": 49, \"stars\": null, \"review_count\": null, \"claimed_specs\": {\"voltage_v\": null, \"capacity_mah\": null, \"weight_g\": null, \"storage_tb\": null, \"lumen\": null, \"health_claims\": [], \"other\": [\"Tintenstrahl\", \"WLAN\"]}, \"idealo_exact_query\": \"HP DeskJet 2720e\","
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "idealo",
+   "status": "running",
+   "title": "Looking it up on idealo"
+  },
+  {
+   "type": "step",
+   "id": "idealo",
+   "status": "done",
+   "title": "Found on idealo",
+   "data": {
+    "exact": {
+     "name": "HP DeskJet 2820e (588K9B)",
+     "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/203450108_-deskjet-2820e-588k9b-hp.html",
+     "price": 65.0,
+     "offer_count": 4,
+     "reviews": {
+      "averageRating": 3.9,
+      "totalReviewCount": 10
+     },
+     "tests": [
+      {
+       "providerName": "Stiftung Warentest",
+       "shortDescription": "Einzeltest HP Deskjet 2820e",
+       "summaryText": "Die Druckqualität ist solide und die Ausdrucke sind licht- und wasserbeständig. Die Tintenkosten fallen aber hoch aus. Der Scanner macht einen guten Job, der Kopierer ist noch verbesserungswürdig. Der Stromverbrauch und die Betriebslautstärke liegen im grünen Bereich.",
+       "ratingValue": "3,6",
+       "publishedAt": 1727344800000,
+       "language": "de",
+       "issue": "online",
+       "testedProductsCount": 1
+      },
+      {
+       "providerName": "ComputerBild",
+       "shortDescription": "Einzeltest HP Deskjet 2820e",
+       "summaryText": "Die Druckqualität ist hoch und der Textdruck geht sehr schnell. Allerdings dauern Farbseiten sehr lange. Der Stromverbrauch ist gering, doch die Tintenkosten sind etwas hoch. Unschön ist auch das kleine Papierfach.",
+       "ratingValue": "befriedigend (3,3)",
+       "publishedAt": 1709463600000,
+       "language": "de",
+       "issue": "online",
+       "testedProductsCount": 1
+      }
+     ],
+     "overview": [
+      "A4",
+      "4.800 x 1.200 dpi",
+      "7 Seiten/min (s/w)",
+      "5 Seiten/min (Farbe)",
+      "mit Multifarbpatronen",
+      "Speichergröße 64 MB",
+      "LCD-Display",
+      "Scanner-Sensor CIS (Contact Image Sensor)",
+      "max. Papierzufuhr 60 Blatt",
+      "Duplexdruck",
+      "WLAN",
+      "Apple AirPrint",
+      "randloser Druck"
+     ],
+     "shops": [
+      {
+       "name": "euronics.de",
+       "rating": {
+        "count": null,
+        "avg": null
+       },
+       "marketplace": true
+      }
+     ]
+    },
+    "alternatives": [
+     {
+      "name": "HP Envy 6120e (714L8B)",
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/204896937_-envy-6120e-714l8b-hp.html",
+      "image": "https://cdn.idealo.com/folder/Product/204896/9/204896937/s1_produktbild_mobil/hp-envy-6120e-714l8b.jpg",
+      "price": 64.99,
+      "offer_count": 39,
+      "stars": 4.78,
+      "review_count": 32,
+      "ref": "pr.v1.k1.0CEsmh8qGq7uDzmNGJlGLGXbtXlbT8DGHRtXCodz9SOaPeb1HQ"
+     },
+     {
+      "name": "Epson Expression Home XP-2205",
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/202081887_-expression-home-xp-2205-epson.html",
+      "image": "https://cdn.idealo.com/folder/Product/202081/8/202081887/s1_produktbild_mobil/epson-expression-home-xp-2205.jpg",
+      "price": 57.5,
+      "offer_count": 43,
+      "stars": 4.4,
+      "review_count": 10,
+      "ref": "pr.v1.k1.ze_6foa6cGs_RwWiygYmlEMx7UCiF--EUn_MlKNvgrcnt3GM9Q"
+     },
+     {
+      "name": "Epson EcoTank ET-2926",
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/210684329_-ecotank-et-2926-epson.html",
+      "image": "https://cdn.idealo.com/folder/Product/210684/3/210684329/s1_produktbild_mobil/epson-ecotank-et-2926.jpg",
+      "price": 149.0,
+      "offer_count": 30,
+      "stars": 4.06,
+      "review_count": 18,
+      "ref": "pr.v1.k1.co1L3A9XJt1SjLKZgnau-wFLOQiIcX1KIUrit6WZr4PdtrUcyA"
+     },
+     {
+      "name": "Canon MAXIFY GX2051",
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/210248077_-maxify-gx2051-canon.html",
+      "image": "https://cdn.idealo.com/folder/Product/210248/0/210248077/s1_produktbild_mobil/canon-maxify-gx2051.jpg",
+      "price": 298.39,
+      "offer_count": 36,
+      "stars": 5,
+      "review_count": 5,
+      "ref": "pr.v1.k1.zRFuMyp9wlWXGI6k2ZS_mxFc-Obmxgwj8NcJ-G2ehGyPgFI5vQ"
+     }
+    ]
+   }
+  },
+  {
+   "type": "step",
+   "id": "specs",
+   "status": "done",
+   "title": "Specs plausible",
+   "data": []
+  },
+  {
+   "type": "step",
+   "id": "clones",
+   "status": "running",
+   "title": "Searching for the same product under other names"
+  },
+  {
+   "type": "step",
+   "id": "life",
+   "status": "running",
+   "title": "Collecting failure reports (DE/EN/FR)"
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "rebrand names",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 552,
+     "prompt_tokens": 717,
+     "completion_tokens": 18,
+     "ts": 1795795034,
+     "output_preview": "{\"brands\": [], \"evidence\": []}"
+    }
+   ]
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "classify failure reports",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 22440,
+     "prompt_tokens": 3335,
+     "completion_tokens": 1257,
+     "ts": 1795795031,
+     "output_preview": "{\"items\": [{\"i\": 0, \"relevant\": true, \"failure\": true, \"after_weeks\": null, \"component\": \"Wireless connectivity / Device discovery\", \"usage\": \"unknown\", \"lang\": \"en\", \"summary_en\": \"User reports that the HP Smart app no longer recognizes their HP DeskJet 2720e printer, despite successful re-addition, indicating a persistent detection and setup issue likely due to software changes in Windows and HP"
+    },
+    {
+     "purpose": "dedupe reports across languages",
+     "model": "Qwen/Qwen3-Embedding-8B",
+     "status": 200,
+     "ms": 465,
+     "prompt_tokens": 255,
+     "completion_tokens": 0,
+     "ts": 1795795053
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "clones",
+   "status": "done",
+   "title": "Look-alikes: 0 visual match(es), 0 brand name(s)",
+   "data": {
+    "visual_matches": [],
+    "brands": [],
+    "evidence": []
+   }
+  },
+  {
+   "type": "step",
+   "id": "life",
+   "status": "warn",
+   "title": "7 failure report(s), 5 distinct stories",
+   "data": {
+    "reports": [
+     {
+      "title": "Solved: HP App doesn't recognize my Deskjet 2720e anymore! - HP Support Community - 9600097",
+      "url": "https://h30434.www3.hp.com/t5/Printer-Setup-Software-Drivers/HP-App-doesn-t-recognize-my-Deskjet-2720e-anymore/td-p/9600097",
+      "text": "What you’re experiencing is not your fault; it is the result of changes to Windows + HP Smart + and HP’s retirement of Print & Scan Doctor, along with some recent issues affecting device discovery in third‑party print services. Let’s fix your printer detection step‑by‑step.STEP 1: Remove the “Microsoft IPP Class Driver” and Re‑Add the Printer [...] HP Smart Print was able to find my Deskjet 2720e again but couldn' finish the setup routine!\n\nBy incidence, I then found a setting in Windows called ",
+      "i": 0,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": null,
+      "component": "Wireless connectivity / Device discovery",
+      "usage": "unknown",
+      "lang": "en",
+      "summary_en": "User reports that the HP Smart app no longer recognizes their HP DeskJet 2720e printer, despite successful re-addition, indicating a persistent detection and setup issue likely due to software changes in Windows and HP Smart."
+     },
+     {
+      "title": "DeskJet 2720e - the usual disconnection issue - HP Support Community - 9632606",
+      "url": "https://h30434.www3.hp.com/t5/Printer-Wireless-Networking-Internet/DeskJet-2720e-the-usual-disconnection-issue/td-p/9632606",
+      "text": "## DeskJet 2720e - the usual disconnection issue\n\nOptions\n\n- Mark Topic as New\n- Mark Topic as Read\n- Float this Topic for Current User\n- Bookmark\n- Subscribe\n- Mute\n- Printer Friendly Page\n\nturn on suggested results\n\nAuto-suggest helps you quickly narrow down your search results by suggesting possible matches as you type.\n\nShowing results for \n\nStart a conversation",
+      "i": 1,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": null,
+      "component": "Wireless connectivity",
+      "usage": "unknown",
+      "lang": "en",
+      "summary_en": "User describes a recurring disconnection issue with the HP DeskJet 2720e, indicating ongoing wireless stability problems with the printer."
+     },
+     {
+      "title": "Solved: HP App doesn't recognize my Deskjet 2720e anymore! - HP Support Community - 9600097",
+      "url": "https://h30434.www3.hp.com/t5/Printer-Setup-Software-Drivers/HP-App-doesn-t-recognize-my-Deskjet-2720e-anymore/td-p/9600097",
+      "text": "What you’re experiencing is not your fault; it is the result of changes to Windows + HP Smart + and HP’s retirement of Print & Scan Doctor, along with some recent issues affecting device discovery in third‑party print services. Let’s fix your printer detection step‑by‑step.STEP 1: Remove the “Microsoft IPP Class Driver” and Re‑Add the Printer [...] HP Smart Print was able to find my Deskjet 2720e again but couldn' finish the setup routine!\n\nBy incidence, I then found a setting in Windows called ",
+      "i": 5,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": null,
+      "component": "Wireless connectivity / Device discovery",
+      "usage": "unknown",
+      "lang": "en",
+      "summary_en": "Same as snippet 0: user unable to get HP Smart app to recognize their DeskJet 2720e after re-addition, indicating a software-level failure in device detection."
+     },
+     {
+      "title": "HP Deskjet 2720e Not printing - HP Support Community - 8526484",
+      "url": "https://h30434.www3.hp.com/t5/Printing-Errors-or-Lights-Stuck-Print-Jobs/HP-Deskjet-2720e-Not-printing/td-p/8526484",
+      "text": "My printer has suddenly stopped printing for no reason. The power light is flashing quickly, but there are no error messages, although the",
+      "i": 6,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": null,
+      "component": "Print engine / Hardware",
+      "usage": "unknown",
+      "lang": "en",
+      "summary_en": "User reports the HP DeskJet 2720e suddenly stopped printing with a flashing power light but no error messages, suggesting a hardware or firmware failure."
+     },
+     {
+      "title": "DeskJet 2720e - the usual disconnection issue - HP Support Community - 9632606",
+      "url": "https://h30434.www3.hp.com/t5/Printer-Wireless-Networking-Internet/DeskJet-2720e-the-usual-disconnection-issue/td-p/9632606",
+      "text": "## DeskJet 2720e - the usual disconnection issue\n\nOptions\n\n- Mark Topic as New\n- Mark Topic as Read\n- Float this Topic for Current User\n- Bookmark\n- Subscribe\n- Mute\n- Printer Friendly Page\n\nturn on suggested results\n\nAuto-suggest helps you quickly narrow down your search results by suggesting possible matches as you type.\n\nShowing results for \n\nStart a conversation",
+      "i": 7,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": null,
+      "component": "Wireless connectivity",
+      "usage": "unknown",
+      "lang": "en",
+      "summary_en": "Repetition of the same disconnection issue reported in snippet 1, confirming a recurring problem with the HP DeskJet 2720e's wireless stability."
+     },
+     {
+      "title": "Solved: HP App doesn't recognize my Deskjet 2720e anymore! - HP Support Community - 9600097",
+      "url": "https://h30434.www3.hp.com/t5/Printer-Setup-Software-Drivers/HP-App-doesn-t-recognize-my-Deskjet-2720e-anymore/td-p/9600097",
+      "text": "What you’re experiencing is not your fault; it is the result of changes to Windows + HP Smart + and HP’s retirement of Print & Scan Doctor, along with some recent issues affecting device discovery in third‑party print services. Let’s fix your printer detection step‑by‑step.STEP 1: Remove the “Microsoft IPP Class Driver” and Re‑Add the Printer [...] HP Smart Print was able to find my Deskjet 2720e again but couldn' finish the setup routine!\n\nBy incidence, I then found a setting in Windows called ",
+      "i": 10,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": null,
+      "component": "Wireless connectivity / Device discovery",
+      "usage": "unknown",
+      "lang": "en",
+      "summary_en": "Same as snippets 0 and 5: HP Smart app fails to recognize the DeskJet 2720e after re-addition, indicating a persistent software-level detection failure."
+     },
+     {
+      "title": "DeskJet 2720e - the usual disconnection issue - HP Support Community - 9632606",
+      "url": "https://h30434.www3.hp.com/t5/Printer-Wireless-Networking-Internet/DeskJet-2720e-the-usual-disconnection-issue/td-p/9632606",
+      "text": "## DeskJet 2720e - the usual disconnection issue\n\nOptions\n\n- Mark Topic as New\n- Mark Topic as Read\n- Float this Topic for Current User\n- Bookmark\n- Subscribe\n- Mute\n- Printer Friendly Page\n\nturn on suggested results\n\nAuto-suggest helps you quickly narrow down your search results by suggesting possible matches as you type.\n\nShowing results for \n\nStart a conversation",
+      "i": 11,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": null,
+      "component": "Wireless connectivity",
+      "usage": "unknown",
+      "lang": "en",
+      "summary_en": "Repetition of the disconnection issue reported in snippets 1 and 7, confirming a recurring wireless stability problem with the HP DeskJet 2720e."
+     }
+    ],
+    "clusters": 5,
+    "tests": [
+     {
+      "providerName": "Stiftung Warentest",
+      "shortDescription": "Einzeltest HP Deskjet 2820e",
+      "summaryText": "Die Druckqualität ist solide und die Ausdrucke sind licht- und wasserbeständig. Die Tintenkosten fallen aber hoch aus. Der Scanner macht einen guten Job, der Kopierer ist noch verbesserungswürdig. Der Stromverbrauch und die Betriebslautstärke liegen im grünen Bereich.",
+      "ratingValue": "3,6",
+      "publishedAt": 1727344800000,
+      "language": "de",
+      "issue": "online",
+      "testedProductsCount": 1
+     },
+     {
+      "providerName": "ComputerBild",
+      "shortDescription": "Einzeltest HP Deskjet 2820e",
+      "summaryText": "Die Druckqualität ist hoch und der Textdruck geht sehr schnell. Allerdings dauern Farbseiten sehr lange. Der Stromverbrauch ist gering, doch die Tintenkosten sind etwas hoch. Unschön ist auch das kleine Papierfach.",
+      "ratingValue": "befriedigend (3,3)",
+      "publishedAt": 1709463600000,
+      "language": "de",
+      "issue": "online",
+      "testedProductsCount": 1
+     }
+    ]
+   }
+  },
+  {
+   "type": "step",
+   "id": "cost",
+   "status": "running",
+   "title": "Working out the cost per day"
+  },
+  {
+   "type": "step",
+   "id": "cost",
+   "status": "done",
+   "title": "Cost per day",
+   "data": {
+    "rows": [
+     {
+      "name": "HP DeskJet 2720e Multifunktionsdrucker, Tintenstrahl, WLAN",
+      "price": 49,
+      "life_years": {
+       "low": 2,
+       "mid": 4,
+       "high": 6
+      },
+      "basis": "Low life (2 years) pulled down by multiple failure reports related to wireless connectivity (6 out of 7 reports), despite no specific 'after_weeks' data. No spare parts or repairability evidence. Throwaway rebrand product with no established service network. Mid and high estimates based on typical inkjet printer lifespan with moderate use, but capped by failure trends.",
+      "per_day": {
+       "best": 0.383,
+       "mid": 0.394,
+       "worst": 0.427
+      },
+      "url": null,
+      "per_month": 11.98,
+      "per_year": 143.81
+     },
+     {
+      "name": "HP Envy 6120e (714L8B)",
+      "price": 64.99,
+      "life_years": {
+       "low": 3,
+       "mid": 5,
+       "high": 7
+      },
+      "basis": "Higher star rating (4.78) and more reviews (32) suggest better reliability. Established HP brand with widespread service network. No failure reports in dataset. Life estimates based on typical mid-tier HP inkjet printers with better build quality than base models.",
+      "per_day": {
+       "best": 0.386,
+       "mid": 0.396,
+       "worst": 0.42
+      },
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/204896937_-envy-6120e-714l8b-hp.html",
+      "per_month": 12.04,
+      "per_year": 144.54
+     },
+     {
+      "name": "Epson Expression Home XP-2205",
+      "price": 57.5,
+      "life_years": {
+       "low": 3,
+       "mid": 5,
+       "high": 7
+      },
+      "basis": "Good star rating (4.4) and moderate review count (10). Epson has a solid reputation for reliability in entry-level inkjets. No failure reports in dataset. Life estimates aligned with Epson's typical performance, slightly lower than HP Envy due to fewer reviews and lower star rating.",
+      "per_day": {
+       "best": 0.383,
+       "mid": 0.392,
+       "worst": 0.413
+      },
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/202081887_-expression-home-xp-2205-epson.html",
+      "per_month": 11.92,
+      "per_year": 143.08
+     },
+     {
+      "name": "Epson EcoTank ET-2926",
+      "price": 149.0,
+      "life_years": {
+       "low": 6,
+       "mid": 8,
+       "high": 10
+      },
+      "basis": "EcoTank series known for long life due to refillable ink tanks and robust build. Lower failure rate in industry. High review count (18) and strong brand reputation. No failure reports in dataset. Life estimates based on Epson's documented durability and user reports of 8+ year lifespans with proper maintenance.",
+      "per_day": {
+       "best": 0.401,
+       "mid": 0.411,
+       "worst": 0.428
+      },
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/210684329_-ecotank-et-2926-epson.html",
+      "per_month": 12.49,
+      "per_year": 150.01
+     },
+     {
+      "name": "Canon MAXIFY GX2051",
+      "price": 298.39,
+      "life_years": {
+       "low": 7,
+       "mid": 10,
+       "high": 12
+      },
+      "basis": "Highest star rating (5.0) and strong brand reputation. Canon MAXIFY series designed for durability and high-volume use. No failure reports in dataset. High price reflects premium build and longevity. Life estimates based on Canon's track record with business-class printers and user reports of 10+ year lifespans.",
+      "per_day": {
+       "best": 0.428,
+       "mid": 0.442,
+       "worst": 0.477
+      },
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/210248077_-maxify-gx2051-canon.html",
+      "per_month": 13.44,
+      "per_year": 161.33
+     }
+    ],
+    "consumables": [
+     {
+      "name": "HP 672XL Tintenpatrone (schwarz)",
+      "idealo_query": "HP 672XL schwarz tintenpatrone",
+      "units_per_year": 1.5,
+      "price_eur": 43.99,
+      "per_year": 65.98,
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/4625013_-nr-62xl-schwarz-c2p05ae-hp.html",
+      "found": "HP Nr. 62XL schwarz (C2P05AE)"
+     },
+     {
+      "name": "HP 672XL Tintenpatrone (farbig)",
+      "idealo_query": "HP 672XL farbig tintenpatrone",
+      "units_per_year": 1.5,
+      "price_eur": 39.95,
+      "per_year": 59.93,
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/4625100_-nr-62xl-3-farbig-c2p07ae-hp.html",
+      "found": "HP Nr. 62XL 3-farbig (C2P07AE)"
+     }
+    ],
+    "energy_eur_year": 5.55,
+    "electricity_price": 0.37,
+    "usage_assumption": "Average home use: 50 pages per month, 600 pages per year, 20% coverage, 10% duty cycle. Includes standby and active printing.",
+    "decisive_question": "Which printer offers the best balance of low upfront cost, long-term reliability, and low consumable cost over 5 years?"
+   }
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "lifetime + consumables estimate",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 17748,
+     "prompt_tokens": 654,
+     "completion_tokens": 892,
+     "ts": 1795795054,
+     "output_preview": "{\"items\": [{\"name\": \"HP DeskJet 2720e Multifunktionsdrucker, Tintenstrahl, WLAN\", \"price_eur\": 49, \"life_years\": {\"low\": 2, \"mid\": 4, \"high\": 6}, \"basis\": \"Low life (2 years) pulled down by multiple failure reports related to wireless connectivity (6 out of 7 reports), despite no specific 'after_weeks' data. No spare parts or repairability evidence. Throwaway rebrand product with no established se"
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "verdict",
+   "status": "running",
+   "title": "Deciding (live Nebius call)"
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "final verdict",
+     "model": "deepseek-ai/DeepSeek-V4-Pro-0813",
+     "status": 200,
+     "ms": 21495,
+     "prompt_tokens": 4259,
+     "completion_tokens": 1780,
+     "ts": 1795795076,
+     "output_preview": "{\"verdict\": \"AVOID\", \"headline\": \"Cheap printer, costly ink and recurring wireless failures\", \"confidence\": \"medium\", \"reasons\": [{\"text\": \"Independent tests (Stiftung Warentest 3.6, ComputerBild 3.3) criticize high ink costs and small paper tray.\", \"tier\": \"A\", \"url\": \"https://www.idealo.de/preisvergleich/OffersOfProduct/203450108_-deskjet-2820e-588k9b-hp.html\"}, {\"text\": \"Multiple user reports o"
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "verdict",
+   "status": "done",
+   "title": "Decided (live Nebius call)"
+  },
+  {
+   "type": "verdict",
+   "data": {
+    "verdict": "AVOID",
+    "headline": "Cheap printer, costly ink and recurring wireless failures",
+    "confidence": "medium",
+    "reasons": [
+     {
+      "text": "Independent tests (Stiftung Warentest 3.6, ComputerBild 3.3) criticize high ink costs and small paper tray.",
+      "tier": "A",
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/203450108_-deskjet-2820e-588k9b-hp.html"
+     },
+     {
+      "text": "Multiple user reports of recurring wireless disconnection and HP Smart app failing to recognize the printer.",
+      "tier": "A",
+      "url": "https://h30434.www3.hp.com/t5/Printer-Wireless-Networking-Internet/DeskJet-2720e-the-usual-disconnection-issue/td-p/9632606"
+     },
+     {
+      "text": "Ink cartridges cost about 126 EUR/year, making total cost of ownership high despite 49 EUR price.",
+      "tier": "B",
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/4625013_-nr-62xl-schwarz-c2p05ae-hp.html"
+     },
+     {
+      "text": "Only 4 offers and 10 reviews for the near-identical 2820e; thin market presence and low sample.",
+      "tier": "C",
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/203450108_-deskjet-2820e-588k9b-hp.html"
+     }
+    ],
+    "better_alternative": "Epson EcoTank ET-2926",
+    "missing_fact": null,
+    "trust_adjusted_stars": null
+   }
+  }
+ ],
+ "verdict": {
+  "verdict": "AVOID",
+  "headline": "Cheap printer, costly ink and recurring wireless failures",
+  "confidence": "medium",
+  "reasons": [
+   {
+    "text": "Independent tests (Stiftung Warentest 3.6, ComputerBild 3.3) criticize high ink costs and small paper tray.",
+    "tier": "A",
+    "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/203450108_-deskjet-2820e-588k9b-hp.html"
+   },
+   {
+    "text": "Multiple user reports of recurring wireless disconnection and HP Smart app failing to recognize the printer.",
+    "tier": "A",
+    "url": "https://h30434.www3.hp.com/t5/Printer-Wireless-Networking-Internet/DeskJet-2720e-the-usual-disconnection-issue/td-p/9632606"
+   },
+   {
+    "text": "Ink cartridges cost about 126 EUR/year, making total cost of ownership high despite 49 EUR price.",
+    "tier": "B",
+    "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/4625013_-nr-62xl-schwarz-c2p05ae-hp.html"
+   },
+   {
+    "text": "Only 4 offers and 10 reviews for the near-identical 2820e; thin market presence and low sample.",
+    "tier": "C",
+    "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/203450108_-deskjet-2820e-588k9b-hp.html"
+   }
+  ],
+  "better_alternative": "Epson EcoTank ET-2926",
+  "missing_fact": null,
+  "trust_adjusted_stars": null
+ }
+}

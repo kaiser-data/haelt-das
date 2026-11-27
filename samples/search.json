@@ -1,0 +1,255 @@
+{
+ "query": "Bosch PSR 18 LI-2 Akkuschrauber",
+ "availableCategories": [
+  {
+   "categoryId": "3687",
+   "categoryName": "Akkuschrauber",
+   "amount": 27
+  },
+  {
+   "categoryId": "27597",
+   "categoryName": "Maschinen-Set",
+   "amount": 1
+  },
+  {
+   "categoryId": "18715",
+   "categoryName": "Werkzeugakkus",
+   "amount": 18
+  },
+  {
+   "categoryId": "10173",
+   "categoryName": "Staubsauger-Zubehör",
+   "amount": 8
+  },
+  {
+   "categoryId": "18364",
+   "categoryName": "Kinderwerkzeug",
+   "amount": 1
+  }
+ ],
+ "availableManufacturers": [
+  {
+   "manufacturerId": "1032",
+   "manufacturerName": "Bosch",
+   "amount": 29
+  },
+  {
+   "manufacturerId": "109396",
+   "manufacturerName": "vhbw",
+   "amount": 23
+  },
+  {
+   "manufacturerId": "27740",
+   "manufacturerName": "klein",
+   "amount": 1
+  },
+  {
+   "manufacturerId": "121232",
+   "manufacturerName": "OEM",
+   "amount": 2
+  }
+ ],
+ "availableFilters": [
+  {
+   "attributeId": "15583",
+   "name": "Produkttyp",
+   "filters": [
+    {
+     "filterId": "500976",
+     "content": "Akku-Bohrschrauber",
+     "amount": 23
+    },
+    {
+     "filterId": "1641684",
+     "content": "Mini-Akkuschrauber",
+     "amount": 2
+    },
+    {
+     "filterId": "5386607",
+     "content": "Akku-Maschinenset",
+     "amount": 1
+    },
+    {
+     "filterId": "5183670",
+     "content": "Nachbau-Werkzeugakku",
+     "amount": 16
+    },
+    {
+     "filterId": "1200747",
+     "content": "Staubsauger-Akku",
+     "amount": 7
+    },
+    {
+     "filterId": "1507003",
+     "content": "Spielzeug-Akkuschrauber",
+     "amount": 1
+    },
+    {
+     "filterId": "1626934",
+     "content": "Original-Werkzeugakku",
+     "amount": 2
+    },
+    {
+     "filterId": "1808807",
+     "content": "Akku-Trockenbauschrauber",
+     "amount": 1
+    },
+    {
+     "filterId": "399962",
+     "content": "Akku-Schlagbohrschrauber",
+     "amount": 1
+    },
+    {
+     "filterId": "9704999",
+     "content": "Staubsauger-Ersatzteil",
+     "amount": 1
+    }
+   ]
+  }
+ ],
+ "suggestedFilters": [],
+ "sizeAttributes": [],
+ "results": [
+  {
+   "productRef": "pr.v1.k1.XS4St5tGE70i-Zkzxjgg-y-UmY898oD3TD0e8paJKDgzqOs_Vw",
+   "itemType": "PRODUCT",
+   "siteId": 1,
+   "name": "Bosch PSR18V-60",
+   "nameDelta": "06039D7201",
+   "price": "86,30 €",
+   "imageUrl": "https://cdn.idealo.com/folder/Product/214170/1/214170186/s1_produktbild_mobil/bosch-psr18v-60-akku-bohrschrauber-18v-2-5ah-06039d7201.jpg",
+   "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/214170186_-psr18v-60-06039d7201-bosch.html",
+   "totalOfferCount": 23
+  },
+  {
+   "productRef": "pr.v1.k1.4l8bF0FqFyVnGKg8Ks_J7dx_esuF_z6C60ES-HEQ-MsfYzKvvA",
+   "itemType": "PRODUCT",
+   "siteId": 1,
+   "name": "Bosch PSR 1800 LI-2",
+   "nameDelta": "Solo (0 603 9A3 10J)",
+   "price": "55,49 €",
+   "imageUrl": "https://cdn.idealo.com/folder/Product/200682/7/200682742/s1_produktbild_mobil/bosch-psr-1800-li-2-solo-0-603-9a3-10j.jpg",
+   "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/200682742_-psr-1800-li-2-solo-0-603-9a3-10j-bosch.html",
+   "userReviewsSummary": {
+    "averageRating": 4.65,
+    "totalReviewCount": 96
+   },
+   "totalOfferCount": 8
+  },
+  {
+   "productRef": "pr.v1.k1.ULiDWrXhjYXP8U3OH272nA33tHXE0U4HsHi5WD7IjRUfSlQ",
+   "itemType": "PRODUCT",
+   "siteId": 1,
+   "name": "Bosch PSR 1800 LI-2",
+   "nameDelta": "2 x 1,5 Ah im Koffer",
+   "price": "161,96 €",
+   "imageUrl": "https://cdn.idealo.com/folder/Product/6674/1/6674182/s1_produktbild_mobil/bosch-psr-1800-li-2-2-x-1-5-ah-im-koffer.jpg",
+   "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/6674182_-psr-1800-li-2-2-x-1-5-ah-im-koffer-bosch.html",
+   "userReviewsSummary": {
+    "averageRating": 4.65,
+    "totalReviewCount": 96
+   },
+   "totalOfferCount": 3
+  },
+  {
+   "productRef": "pr.v1.k1.8wuxfTf8L4uNUP3X8Bdk3qJ6GijwGJsKF5DmuMw6cvFZe4sFUg",
+   "itemType": "PRODUCT",
+   "siteId": 1,
+   "name": "Bosch PSR 18V-60 Akku-Bohrschrauber 18V 2x2,5Ah (06039D7202)",
+   "price": "104,59 €",
+   "imageUrl": "https://cdn.idealo.com/folder/Product/214177/7/214177757/s1_produktbild_mobil/bosch-psr-18v-60-akku-bohrschrauber-18v-2x2-5ah-06039d7202.jpg",
+   "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/214177757_-psr-18v-60-akku-bohrschrauber-18v-2x2-5ah-06039d7202-bosch.html",
+   "totalOfferCount": 18
+  },
+  {
+   "productRef": "pr.v1.k1.H2QxOH39NRFbnV4DQj8SYqpmdsFIzrPAcLUcC417C8k_qrE",
+   "itemType": "PRODUCT",
+   "siteId": 1,
+   "name": "Bosch PSR 18 LI-2 Ergonomic",
+   "nameDelta": "0 603 9B0 102",
+   "imageUrl": "https://cdn.idealo.com/folder/Product/4857/4/4857492/s1_produktbild_mobil/bosch-psr-18-li-2-ergonomic-0-603-9b0-102.jpg",
+   "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/4857492_-psr-18-li-2-ergonomic-0-603-9b0-102-bosch.html",
+   "testReportsSummary": {
+    "grade": "1,6"
+   },
+   "totalOfferCount": 1
+  },
+  {
+   "productRef": "pr.v1.k1.rxzIb4ZlhTi6vy-_79Uw8EgpU1xuMUi-70NzqBI7FTthV5E",
+   "itemType": "PRODUCT",
+   "siteId": 1,
+   "name": "klein toys Bosch Spielzeug Akkuschrauber (8567)",
+   "price": "12,99 €",
+   "imageUrl": "https://cdn.idealo.com/folder/Product/5160/0/5160061/s1_produktbild_mobil/klein-toys-bosch-spielzeug-akkuschrauber-8567.jpg",
+   "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/5160061_-bosch-spielzeug-akkuschrauber-8567-klein.html",
+   "userReviewsSummary": {
+    "averageRating": 4.31,
+    "totalReviewCount": 774
+   },
+   "totalOfferCount": 28,
+   "badges": {
+    "bargain": {
+     "discountRate": 15,
+     "tags": [
+      "REGULAR",
+      "SHORTTERM",
+      "BLACK_FRIDAY"
+     ]
+    }
+   }
+  },
+  {
+   "productRef": "pr.v1.k1.1GQRrIosBlDJCuyaEt6HkZ8bucoMuJR7mUCJS5SGiIxBO2v8tA",
+   "itemType": "PRODUCT",
+   "siteId": 1,
+   "name": "Bosch PSR Select 3,6 V 1 Akku 4,5 Nm",
+   "price": "43,99 €",
+   "imageUrl": "https://cdn.idealo.com/folder/Product/210666/1/210666131/s1_produktbild_mobil/bosch-psr-select-3-6-v-1-akku-4-5-nm.jpg",
+   "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/210666131_-psr-select-3-6-v-1-akku-4-5-nm-bosch.html",
+   "totalOfferCount": 23
+  },
+  {
+   "productRef": "pr.v1.k1.fyslA0ShcIRf-HeiLKn1XwLZk70vEKWQ9Lo7JGTCG2FyOflDVw",
+   "itemType": "PRODUCT",
+   "siteId": 1,
+   "name": "vhbw Ersatzakku Li-Ion 18V 2000mAh, 2er-Pack (183664944-9)",
+   "price": "55,49 €",
+   "imageUrl": "https://cdn.idealo.com/folder/Product/213440/4/213440416/s1_produktbild_mobil/vhbw-ersatzakku-li-ion-18v-2000mah-2er-pack-183664944-9.jpg",
+   "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/213440416_-ersatzakku-li-ion-18v-2000mah-2er-pack-183664944-9-vhbw.html",
+   "totalOfferCount": 3,
+   "badges": {
+    "bargain": {
+     "discountRate": 24,
+     "tags": [
+      "REGULAR"
+     ]
+    }
+   }
+  },
+  {
+   "productRef": "pr.v1.k1.oLxSFfytdnocE22yCjWsa9PFgxIxs8cOhxiKhI_TGyazJf5awQ",
+   "itemType": "PRODUCT",
+   "siteId": 1,
+   "name": "Bosch PSR 1800 LI-2",
+   "nameDelta": "2 × 1,5 Ah + Ladegerät im Koffer",
+   "imageUrl": "https://cdn.idealo.com/folder/Product/200682/7/200682753/s1_produktbild_mobil/bosch-psr-1800-li-2-2-x-1-5-ah-ladegeraet-im-koffer.jpg",
+   "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/200682753_-psr-1800-li-2-2-1-5-ah-ladegeraet-im-koffer-bosch.html",
+   "userReviewsSummary": {
+    "averageRating": 4.65,
+    "totalReviewCount": 96
+   },
+   "totalOfferCount": 1
+  },
+  {
+   "productRef": "pr.v1.k1.HtdMgLvOfwdR800GZXPfF-dNIml82A142xpGGd3TfaabzxGdFg",
+   "itemType": "PRODUCT",
+   "siteId": 1,
+   "name": "Bosch PSR18V-60",
+   "nameDelta": "06039D7200",
+   "price": "56,58 €",
+   "imageUrl": "https://cdn.idealo.com/folder/Product/214391/7/214391775/s1_produktbild_mobil/bosch-psr18v-60-06039d7200.jpg",
+   "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/214391775_-psr18v-60-06039d7200-bosch.html",
+   "totalOfferCount": 22
+  }
+ ]
+}

@@ -1,0 +1,547 @@
+{
+ "input": "Powerbank 50000mAh, 22,5W Schnellladung, nur 180g, 4,6 Sterne (2.410 Bewertungen), 24,99 €, no-name",
+ "events": [
+  {
+   "type": "step",
+   "id": "claim",
+   "status": "running",
+   "title": "Reading the listing"
+  },
+  {
+   "type": "step",
+   "id": "claim",
+   "status": "done",
+   "title": "Listing read",
+   "data": {
+    "title": "Powerbank 50000mAh, 22,5W Schnellladung, nur 180g",
+    "brand": null,
+    "model": null,
+    "category": "power bank",
+    "price_eur": 24.99,
+    "stars": 4.6,
+    "review_count": 2410,
+    "claimed_specs": {
+     "voltage_v": null,
+     "capacity_mah": 50000,
+     "weight_g": 180,
+     "storage_tb": null,
+     "lumen": null,
+     "health_claims": [],
+     "other": [
+      "22,5W Schnellladung",
+      "nur 180g"
+     ]
+    },
+    "idealo_exact_query": "no-name",
+    "idealo_generic_query": "Powerbank 50000mAh",
+    "clone_image_query": "power bank 50000mah 22.5w fast charging 180g",
+    "failure_queries": {
+     "de": "Powerbank 50000mAh Probleme",
+     "en": "power bank 50000mah issues",
+     "fr": "problèmes power bank 50000mah"
+    },
+    "image_url": null,
+    "source_url": null
+   }
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "read listing",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 8809,
+     "prompt_tokens": 336,
+     "completion_tokens": 282,
+     "ts": 1795794868,
+     "output_preview": "{\"title\": \"Powerbank 50000mAh, 22,5W Schnellladung, nur 180g\", \"brand\": null, \"model\": null, \"category\": \"power bank\", \"price_eur\": 24.99, \"stars\": 4.6, \"review_count\": 2410, \"claimed_specs\": {\"voltage_v\": null, \"capacity_mah\": 50000, \"weight_g\": 180, \"storage_tb\": null, \"lumen\": null, \"health_claims\": [], \"other\": [\"22,5W Schnellladung\", \"nur 180g\"]}, \"idealo_exact_query\": \"no-name\", \"idealo_gene"
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "idealo",
+   "status": "running",
+   "title": "Looking it up on idealo"
+  },
+  {
+   "type": "step",
+   "id": "idealo",
+   "status": "warn",
+   "title": "Not sold by any idealo shop",
+   "data": {
+    "exact": null,
+    "alternatives": [
+     {
+      "name": "Ugreen Powerbank 25000 mAh 145W",
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/202927750_-powerbank-25000-mah-145w-ugreen.html",
+      "image": "https://cdn.idealo.com/folder/Product/202927/7/202927750/s1_produktbild_mobil/ugreen-powerbank-25000-mah-145w.jpg",
+      "price": 47.5,
+      "offer_count": 26,
+      "stars": 4.5,
+      "review_count": 44,
+      "ref": "pr.v1.k1.3B2yoMr4hGbaBX3IttYYGDygnj8ZKUOTVfJzbpx96Dx1D4-Fuw"
+     },
+     {
+      "name": "Intenso Powerbank HE25000",
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/204913107_-powerbank-he25000-intenso.html",
+      "image": "https://cdn.idealo.com/folder/Product/204913/1/204913107/s1_produktbild_mobil/intenso-powerbank-he25000.jpg",
+      "price": 44.9,
+      "offer_count": 41,
+      "stars": 4,
+      "review_count": 6,
+      "ref": "pr.v1.k1.8Nzf-wmAsBZnb8yxeDKZ09ue0xH0cp57SF4ZHAJdVsQ2fbop7Q"
+     }
+    ]
+   }
+  },
+  {
+   "type": "step",
+   "id": "specs",
+   "status": "warn",
+   "title": "1 spec claim(s) don't add up",
+   "data": [
+    {
+     "severity": "high",
+     "rule": "impossible_capacity",
+     "text": "50,000 mAh at 180 g would be 1028 Wh/kg; Li-ion cells top out around 270 Wh/kg. The capacity claim cannot be true."
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "clones",
+   "status": "running",
+   "title": "Searching for the same product under other names"
+  },
+  {
+   "type": "step",
+   "id": "life",
+   "status": "running",
+   "title": "Collecting failure reports (DE/EN/FR)"
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "rebrand names",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 20069,
+     "prompt_tokens": 827,
+     "completion_tokens": 437,
+     "ts": 1795794889,
+     "output_preview": "{\"brands\": [\"Lenovo\", \"TRANYOO\", \"VEGER\", \"Custom Logo (Alibaba)\", \"DHgate\", \"Made-in-China\", \"TikTok (nielarts)\"], \"evidence\": [{\"brand\": \"Lenovo\", \"url\": null}, {\"brand\": \"TRANYOO\", \"url\": \"https://www.tiktok.com/@nielarts/video/7408169662258744577?lang=ar\"}, {\"brand\": \"VEGER\", \"url\": \"https://www.newegg.com/p/39G-01HV-00136\"}, {\"brand\": \"Custom Logo (Alibaba)\", \"url\": \"https://www.alibaba.com/p"
+    }
+   ]
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "classify failure reports",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 36646,
+     "prompt_tokens": 2569,
+     "completion_tokens": 1354,
+     "ts": 1795794882,
+     "output_preview": "{\"items\": [{\"i\": 0, \"relevant\": true, \"failure\": true, \"after_weeks\": null, \"component\": null, \"usage\": \"unknown\", \"lang\": \"en\", \"summary_en\": \"A user reports that their 50,000mAh power bank discharged completely in seconds upon first use, indicating significantly lower actual capacity than advertised.\"}, {\"i\": 1, \"relevant\": false, \"failure\": false, \"after_weeks\": null, \"component\": null, \"usage\""
+    },
+    {
+     "purpose": "dedupe reports across languages",
+     "model": "Qwen/Qwen3-Embedding-8B",
+     "status": 200,
+     "ms": 372,
+     "prompt_tokens": 370,
+     "completion_tokens": 0,
+     "ts": 1795794919
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "clones",
+   "status": "warn",
+   "title": "Look-alikes: 0 visual match(es), 7 brand name(s)",
+   "data": {
+    "visual_matches": [],
+    "brands": [
+     "Lenovo",
+     "TRANYOO",
+     "VEGER",
+     "Custom Logo (Alibaba)",
+     "DHgate",
+     "Made-in-China",
+     "TikTok (nielarts)"
+    ],
+    "evidence": [
+     {
+      "brand": "Lenovo",
+      "url": null
+     },
+     {
+      "brand": "TRANYOO",
+      "url": "https://www.tiktok.com/@nielarts/video/7408169662258744577?lang=ar"
+     },
+     {
+      "brand": "VEGER",
+      "url": "https://www.newegg.com/p/39G-01HV-00136"
+     },
+     {
+      "brand": "Custom Logo (Alibaba)",
+      "url": "https://www.alibaba.com/product-detail/Custom-Logo-Solar-Rechargeable-Power-Bank_1601842979590.html?mark=google_shopping&pcy=gb_en"
+     },
+     {
+      "brand": "DHgate",
+      "url": "https://in.dhgate.com/product/50000mah-wireless-magnetic-power-bank-fast/1109054647.html"
+     },
+     {
+      "brand": "Made-in-China",
+      "url": "https://www.made-in-china.com/video-channel/iaspor_xGsYptuyVPkR_High-Capacity-Fast-Charging-Power-Bank-22-5W-Pd-Smart-Charge-50000mAh-Powerbank.html"
+     },
+     {
+      "brand": "TikTok (nielarts)",
+      "url": "https://www.tiktok.com/@nielarts/video/7408169662258744577?lang=ar"
+     }
+    ]
+   }
+  },
+  {
+   "type": "step",
+   "id": "life",
+   "status": "warn",
+   "title": "11 failure report(s), 10 distinct stories",
+   "data": {
+    "reports": [
+     {
+      "title": "Help with PowerBank of 50000 mAh and its real capacity : r/batteries",
+      "url": "https://www.reddit.com/r/batteries/comments/1g53jf1/help_with_powerbank_of_50000_mah_and_its_real",
+      "text": "as soon as I got them noticed that their capacity was less, because the battery percentage indicator was completely discharged in seconds when",
+      "i": 0,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": null,
+      "component": null,
+      "usage": "unknown",
+      "lang": "en",
+      "summary_en": "A user reports that their 50,000mAh power bank discharged completely in seconds upon first use, indicating significantly lower actual capacity than advertised."
+     },
+     {
+      "title": "Power Bank Failure: 6 Signs It's Time for a Replacement",
+      "url": "https://www.ecoflow.com/us/blog/six-signs-power-bank-replacement",
+      "text": "If a 10,000mAh power bank once recharged a smartphone two full times but now struggles to handle even one, the decline is obvious. Reduced runtime signals that the internal cells have lost capacity and can no longer store as much energy as before.\n\nAnother clear warning is when the charger itself takes much longer to refill. A device that used to top up in three hours may suddenly require five or six. This slow recharging can point to cell wear or problems in the charging circuit. [...] When you",
+      "i": 2,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": null,
+      "component": "battery capacity",
+      "usage": "unknown",
+      "lang": "en",
+      "summary_en": "A user observes that their 10,000mAh power bank now fails to charge a phone even once, indicating reduced runtime due to degraded internal cells—similar failure pattern applies to high-capacity models."
+     },
+     {
+      "title": "Resetting a Power Bank: Troubleshooting Guide – Scosche",
+      "url": "https://scosche.com/blogs/news/resetting-a-power-bank-troubleshooting-guide",
+      "text": "One possible reason is that the power bank's battery has reached the end of its lifespan. Like any rechargeable battery, power bank batteries have a limited number of charge cycles. After a certain number of cycles, the battery's capacity to hold a charge diminishes, resulting in shorter battery life. In such cases, replacing the battery may be necessary. [...] One common cause of improper charging is using a low-quality or incompatible charging cable. Power banks require a cable that can handle",
+      "i": 3,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": null,
+      "component": "battery lifespan",
+      "usage": "unknown",
+      "lang": "en",
+      "summary_en": "A user reports that their power bank's charging time has significantly increased, suggesting battery degradation or circuit issues after extended use."
+     },
+     {
+      "title": "Power Bank Not Charging? Here’s How to Reset and Fix It Fast!",
+      "url": "https://www.youtube.com/watch?v=OukVm6h-cuo",
+      "text": "[0:26] Charging on and off. It might need a reset to fix its internal system. Give it a try. Overheating. Is your power\n[0:33] bank overheating? Reset it to help it cool down. Battery level indicator issues indicator says full but your\n[0:40] phone still dead. Reset it to fix the glitch. Inactive for long periods. Has your power bank been sitting unused for ages? Reset it to wake up its circuits. [...] [1:44] maintenance tips. Store properly. Keep it in a cool, dry place away from sunlight and m",
+      "i": 4,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": null,
+      "component": "battery level indicator",
+      "usage": "unknown",
+      "lang": "en",
+      "summary_en": "A user experiences inconsistent charging behavior, including erratic charging cycles and a falsely full battery indicator, which are resolved by resetting the device."
+     },
+     {
+      "title": "What could have caused 50000 mah power banks to stop working at ...",
+      "url": "https://www.facebook.com/groups/857913615944659/posts/1170403078029043",
+      "text": "Possible causes include weak batteries, fake or low- capacity power banks, or obsolete products.",
+      "i": 5,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": null,
+      "component": null,
+      "usage": "unknown",
+      "lang": "en",
+      "summary_en": "A Facebook post discusses possible reasons why 50,000mAh power banks stop working, including weak, fake, or obsolete batteries—indicating real-world failure cases."
+     },
+     {
+      "title": "Daniel Siuphlear on Facebook: \"Why my 50,000mAh power bank suddenly start charging phones slowly please?\"",
+      "url": "https://www.facebook.com/groups/864258768629217/posts/1689909919397427",
+      "text": "# Daniel Siuphlear on Facebook: \"Why my 50,000mAh power bank suddenly start charging phones slowly please?\"\n\nWhy my 50,000mAh power bank suddenly start charging phones slowly please?\n\n- Author: Daniel Siuphlear\n- Group: WOLD ONLINE MARKET (BUYING AND SELLING) SWAP ANY THING\n- Posted: 2026-10-15T06:11:18+00:00\n- Reactions: 0\n- Comment count: 0\n- Shares: 4\n- Privacy: Public group",
+      "i": 6,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": null,
+      "component": "charging speed",
+      "usage": "unknown",
+      "lang": "en",
+      "summary_en": "A user reports that their 50,000mAh power bank suddenly began charging phones slowly, indicating a sudden performance decline."
+     },
+     {
+      "title": "Power Bank Failure: 6 Signs It's Time for a Replacement",
+      "url": "https://www.ecoflow.com/us/blog/six-signs-power-bank-replacement",
+      "text": "If a 10,000mAh power bank once recharged a smartphone two full times but now struggles to handle even one, the decline is obvious. Reduced runtime signals that the internal cells have lost capacity and can no longer store as much energy as before.\n\nAnother clear warning is when the charger itself takes much longer to refill. A device that used to top up in three hours may suddenly require five or six. This slow recharging can point to cell wear or problems in the charging circuit. [...] When you",
+      "i": 7,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": null,
+      "component": "battery capacity",
+      "usage": "unknown",
+      "lang": "en",
+      "summary_en": "A user notes a significant drop in performance of a 10,000mAh power bank, now failing to charge a phone even once—indicating internal battery degradation, applicable to larger models."
+     },
+     {
+      "title": "Power Bank Not Charging? Here’s How to Reset and Fix It Fast!",
+      "url": "https://www.youtube.com/watch?v=OukVm6h-cuo",
+      "text": "[0:26] Charging on and off. It might need a reset to fix its internal system. Give it a try. Overheating. Is your power\n[0:33] bank overheating? Reset it to help it cool down. Battery level indicator issues indicator says full but your\n[0:40] phone still dead. Reset it to fix the glitch. Inactive for long periods. Has your power bank been sitting unused for ages? Reset it to wake up its circuits. [...] [1:44] maintenance tips. Store properly. Keep it in a cool, dry place away from sunlight and m",
+      "i": 9,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": null,
+      "component": "battery level indicator",
+      "usage": "unknown",
+      "lang": "en",
+      "summary_en": "A video tutorial describes a user experiencing inconsistent charging and a falsely full battery indicator, resolved by resetting the device—indicative of real-world failure."
+     },
+     {
+      "title": "What Can a 50000mAh Power Bank Actually Charge? Real-World Answers",
+      "url": "https://electronics.alibaba.com/question/50000mah-power-bank-guide-real-capacity,-air-travel-charging-truths",
+      "text": "## Common Misconceptions—And What the Data Shows\n\nMisconception #1: “More mAh = longer runtime.”  \nReality: Runtime depends on usable watt-hours, not raw mAh. A 20,000mAh unit with 85% efficiency (≈63Wh usable) may outlast a 50,000mAh unit with 60% efficiency (≈111Wh usable) when powering a 10W device—because the latter’s conversion losses generate excess heat, triggering thermal throttling sooner. [...] The headline capacity—50,000 milliamp-hours—is measured at the battery cell level, typically",
+      "i": 12,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": null,
+      "component": "conversion efficiency",
+      "usage": "unknown",
+      "lang": "en",
+      "summary_en": "A user reports that a 50,000mAh power bank suffers from high conversion losses and thermal throttling, reducing effective runtime despite high nominal capacity."
+     },
+     {
+      "title": "What could have caused 50000 mah power banks to stop working at 50% ...",
+      "url": "https://www.facebook.com/groups/857913615944659/posts/1170403078029043",
+      "text": "Using a weak or faulty power bank can pose several risks, including overheating, explosion, or damage to your devices.",
+      "i": 13,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": null,
+      "component": null,
+      "usage": "unknown",
+      "lang": "en",
+      "summary_en": "A Facebook post warns that weak or faulty 50,000mAh power banks can overheat, explode, or damage devices—indicating real safety failures."
+     },
+     {
+      "title": "Help with PowerBank of 50000 mAh and its real capacity : r/batteries",
+      "url": "https://www.reddit.com/r/batteries/comments/1g53jf1/help_with_powerbank_of_50000_mah_and_its_real",
+      "text": "Some time ago I bought two PowerBanks on Amazon of 50000 mAh, even knowing that they were too cheap and surely would have less capacity. Well,",
+      "i": 14,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": null,
+      "component": null,
+      "usage": "unknown",
+      "lang": "en",
+      "summary_en": "A Reddit user confirms that their 50,000mAh power bank had significantly less actual capacity than advertised, despite knowing it was cheap and likely underperforming."
+     }
+    ],
+    "clusters": 10,
+    "tests": []
+   }
+  },
+  {
+   "type": "step",
+   "id": "cost",
+   "status": "running",
+   "title": "Working out the cost per day"
+  },
+  {
+   "type": "step",
+   "id": "cost",
+   "status": "done",
+   "title": "Cost per day",
+   "data": {
+    "rows": [
+     {
+      "name": "Powerbank 50000mAh, 22,5W Schnellladung, nur 180g",
+      "price": 24.99,
+      "life_years": {
+       "low": 2,
+       "mid": 4,
+       "high": 6
+      },
+      "basis": "Low life (2 years) driven by absence of failure reports with specific failure weeks, lack of established brand presence, and no spare parts or repairability data. Mid and high estimates based on typical lithium-ion battery degradation in consumer power banks (4–6 years), but capped by limited evidence. No long-term failure data or repairability indicators.",
+      "per_day": {
+       "best": 0.012,
+       "mid": 0.018,
+       "worst": 0.035
+      },
+      "url": null,
+      "per_month": 0.55,
+      "per_year": 6.57
+     },
+     {
+      "name": "Ugreen Powerbank 25000 mAh 145W",
+      "price": 47.5,
+      "life_years": {
+       "low": 3,
+       "mid": 5,
+       "high": 7
+      },
+      "basis": "Higher price and slightly lower star rating (4.5) with moderate review count (44). Ugreen is a known brand with some market presence, but limited failure reports. Life extended compared to base product due to higher power output and brand reputation, but still limited by lack of long-term failure data. No evidence of spare parts or repairability.",
+      "per_day": {
+       "best": 0.019,
+       "mid": 0.027,
+       "worst": 0.044
+      },
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/202927750_-powerbank-25000-mah-145w-ugreen.html",
+      "per_month": 0.82,
+      "per_year": 9.86
+     },
+     {
+      "name": "Intenso Powerbank HE25000",
+      "price": 44.9,
+      "life_years": {
+       "low": 2,
+       "mid": 3,
+       "high": 4
+      },
+      "basis": "Low review count (6) and lower star rating (4.0) suggest less reliability evidence. Intenso is a budget brand with minimal market presence and no repairability data. Shorter life assumed due to lack of trust signals and no failure reports with specific failure weeks. Mid and high estimates based on typical battery life, but constrained by weak evidence.",
+      "per_day": {
+       "best": 0.031,
+       "mid": 0.042,
+       "worst": 0.062
+      },
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/204913107_-powerbank-he25000-intenso.html",
+      "per_month": 1.28,
+      "per_year": 15.33
+     }
+    ],
+    "consumables": [],
+    "energy_eur_year": 0.18,
+    "electricity_price": 0.37,
+    "usage_assumption": "Average user charges the powerbank 3 times per week, each charge taking ~2 hours at 22.5W. Annual energy use estimated at ~0.5 kWh based on 156 charges/year × 0.0032 kWh per charge (22.5W × 2h / 1000).",
+    "decisive_question": "Is the product's long-term reliability and battery longevity sufficient to justify its cost over multiple years, especially given the lack of repairability and spare parts?"
+   }
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "lifetime + consumables estimate",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 9535,
+     "prompt_tokens": 626,
+     "completion_tokens": 622,
+     "ts": 1795794919,
+     "output_preview": "{\"items\": [{\"name\": \"Powerbank 50000mAh, 22,5W Schnellladung, nur 180g\", \"price_eur\": 24.99, \"life_years\": {\"low\": 2, \"mid\": 4, \"high\": 6}, \"basis\": \"Low life (2 years) driven by absence of failure reports with specific failure weeks, lack of established brand presence, and no spare parts or repairability data. Mid and high estimates based on typical lithium-ion battery degradation in consumer pow"
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "verdict",
+   "status": "running",
+   "title": "Deciding (live Nebius call)"
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "final verdict",
+     "model": "deepseek-ai/DeepSeek-V4-Pro-0813",
+     "status": 200,
+     "ms": 55097,
+     "prompt_tokens": 3065,
+     "completion_tokens": 1042,
+     "ts": 1795794929,
+     "output_preview": "{\"verdict\": \"BUY_ALTERNATIVE\", \"headline\": \"Impossible 50,000mAh at 180g; buy Ugreen instead\", \"confidence\": \"high\", \"reasons\": [{\"text\": \"50,000 mAh at 180 g would require about 1028 Wh/kg, far beyond the ~270 Wh/kg limit of Li-ion cells, so the claimed capacity cannot be real.\", \"tier\": \"A\", \"url\": null}, {\"text\": \"The same product appears as a rebranded/no-name clone across Alibaba, DHgate, Tik"
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "verdict",
+   "status": "done",
+   "title": "Decided (live Nebius call)"
+  },
+  {
+   "type": "verdict",
+   "data": {
+    "verdict": "BUY_ALTERNATIVE",
+    "headline": "Impossible 50,000mAh at 180g; buy Ugreen instead",
+    "confidence": "high",
+    "reasons": [
+     {
+      "text": "50,000 mAh at 180 g would require about 1028 Wh/kg, far beyond the ~270 Wh/kg limit of Li-ion cells, so the claimed capacity cannot be real.",
+      "tier": "A",
+      "url": null
+     },
+     {
+      "text": "The same product appears as a rebranded/no-name clone across Alibaba, DHgate, TikTok and other marketplaces, indicating a throwaway brand cycle rather than an established product.",
+      "tier": "B",
+      "url": "https://www.alibaba.com/product-detail/Custom-Logo-Solar-Rechargeable-Power-Bank_1601842979590.html?mark=google_shopping&pcy=gb_en"
+     },
+     {
+      "text": "Real-world reports describe 50,000 mAh power banks discharging in seconds, charging slowly, overheating or failing early, matching the impossible capacity claim.",
+      "tier": "B",
+      "url": "https://www.reddit.com/r/batteries/comments/1g53jf1/help_with_powerbank_of_50000_mah_and_its_real"
+     },
+     {
+      "text": "The 4.6-star average and 2,410 reviews are cheap signals that do not overcome the physical impossibility of the claimed specification.",
+      "tier": "C",
+      "url": null
+     }
+    ],
+    "better_alternative": "Ugreen Powerbank 25000 mAh 145W",
+    "missing_fact": null,
+    "trust_adjusted_stars": 1.5
+   }
+  }
+ ],
+ "verdict": {
+  "verdict": "BUY_ALTERNATIVE",
+  "headline": "Impossible 50,000mAh at 180g; buy Ugreen instead",
+  "confidence": "high",
+  "reasons": [
+   {
+    "text": "50,000 mAh at 180 g would require about 1028 Wh/kg, far beyond the ~270 Wh/kg limit of Li-ion cells, so the claimed capacity cannot be real.",
+    "tier": "A",
+    "url": null
+   },
+   {
+    "text": "The same product appears as a rebranded/no-name clone across Alibaba, DHgate, TikTok and other marketplaces, indicating a throwaway brand cycle rather than an established product.",
+    "tier": "B",
+    "url": "https://www.alibaba.com/product-detail/Custom-Logo-Solar-Rechargeable-Power-Bank_1601842979590.html?mark=google_shopping&pcy=gb_en"
+   },
+   {
+    "text": "Real-world reports describe 50,000 mAh power banks discharging in seconds, charging slowly, overheating or failing early, matching the impossible capacity claim.",
+    "tier": "B",
+    "url": "https://www.reddit.com/r/batteries/comments/1g53jf1/help_with_powerbank_of_50000_mah_and_its_real"
+   },
+   {
+    "text": "The 4.6-star average and 2,410 reviews are cheap signals that do not overcome the physical impossibility of the claimed specification.",
+    "tier": "C",
+    "url": null
+   }
+  ],
+  "better_alternative": "Ugreen Powerbank 25000 mAh 145W",
+  "missing_fact": null,
+  "trust_adjusted_stars": 1.5
+ }
+}

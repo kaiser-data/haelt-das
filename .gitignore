@@ -1,0 +1,12 @@
+.idealo_token.json
+.env
+__pycache__/
+.venv/
+.claude/
+demo/clips/
+demo/out/tts/
+demo/*.log
+demo/shot*.png
+samples/*.log
+*.pyc
+.DS_Store

@@ -1,0 +1,602 @@
+{
+ "input": "Dyson V8 Cyclone Akku-Staubsauger, 40 Min Laufzeit, 199 €",
+ "events": [
+  {
+   "type": "step",
+   "id": "claim",
+   "status": "running",
+   "title": "Reading the listing"
+  },
+  {
+   "type": "step",
+   "id": "claim",
+   "status": "done",
+   "title": "Listing read",
+   "data": {
+    "title": "Dyson V8 Cyclone Akku-Staubsauger",
+    "brand": "Dyson",
+    "model": "V8 Cyclone",
+    "category": "vacuum cleaner",
+    "price_eur": 199,
+    "stars": null,
+    "review_count": null,
+    "claimed_specs": {
+     "voltage_v": null,
+     "capacity_mah": null,
+     "weight_g": null,
+     "storage_tb": null,
+     "lumen": null,
+     "health_claims": [],
+     "other": [
+      "40 Min Laufzeit"
+     ]
+    },
+    "idealo_exact_query": "Dyson V8 Cyclone",
+    "idealo_generic_query": "Akku-Staubsauger 40 Min Laufzeit",
+    "clone_image_query": "cordless vacuum cleaner 40 minute runtime",
+    "failure_queries": {
+     "de": "Dyson V8 Cyclone Staubsauger Probleme",
+     "en": "Dyson V8 Cyclone vacuum cleaner failures",
+     "fr": "problèmes Dyson V8 Cyclone aspirateur"
+    },
+    "image_url": null,
+    "source_url": null
+   }
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "read listing",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 3694,
+     "prompt_tokens": 310,
+     "completion_tokens": 257,
+     "ts": 1795795183,
+     "output_preview": "{\"title\": \"Dyson V8 Cyclone Akku-Staubsauger\", \"brand\": \"Dyson\", \"model\": \"V8 Cyclone\", \"category\": \"vacuum cleaner\", \"price_eur\": 199, \"stars\": null, \"review_count\": null, \"claimed_specs\": {\"voltage_v\": null, \"capacity_mah\": null, \"weight_g\": null, \"storage_tb\": null, \"lumen\": null, \"health_claims\": [], \"other\": [\"40 Min Laufzeit\"]}, \"idealo_exact_query\": \"Dyson V8 Cyclone\", \"idealo_generic_query"
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "idealo",
+   "status": "running",
+   "title": "Looking it up on idealo"
+  },
+  {
+   "type": "step",
+   "id": "idealo",
+   "status": "done",
+   "title": "Found on idealo",
+   "data": {
+    "exact": {
+     "name": "Dyson V8 Cyclone 494706-01",
+     "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/211849572_-v8-cyclone-494706-01-dyson.html",
+     "price": 199.0,
+     "offer_count": 30,
+     "reviews": {
+      "averageRating": 4.54,
+      "totalReviewCount": 41
+     },
+     "tests": [],
+     "overview": [
+      "schwarz",
+      "Saugen",
+      "Saugkraft 150 AW",
+      "Betriebszeit 60 Min.",
+      "Behältervolumen 0,5 Liter",
+      "beutellos",
+      "mit 1 Akku",
+      "Lithium-Ionen",
+      "Gesamtgewicht 2,7 kg",
+      "für Tierbesitzer geeignet"
+     ],
+     "shops": [
+      {
+       "name": "allesfuerzuhause.de",
+       "rating": {
+        "count": 2616,
+        "avg": 4.83
+       },
+       "marketplace": false
+      },
+      {
+       "name": "euronics.de",
+       "rating": {
+        "count": null,
+        "avg": null
+       },
+       "marketplace": true
+      }
+     ]
+    },
+    "alternatives": [
+     {
+      "name": "Dyson Car+Boat Handstaubsauger (586120-01)",
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/206021995_-car-boat-handstaubsauger-586120-01-dyson.html",
+      "image": "https://cdn.idealo.com/folder/Product/206021/9/206021995/s1_produktbild_mobil/dyson-car-boat-handstaubsauger-586120-01.jpg",
+      "price": 169.0,
+      "offer_count": 23,
+      "stars": 4.59,
+      "review_count": 29,
+      "ref": "pr.v1.k1.eHNkeXH-oSbslWvZe6ycvN0YGJFMlegSYdf7W6YumrzfWVwrNg"
+     },
+     {
+      "name": "Bosch BSS71125AH",
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/202900687_-bss71125ah-bosch.html",
+      "image": "https://cdn.idealo.com/folder/Product/202900/6/202900687/s1_produktbild_mobil/bosch-bss71125ah.jpg",
+      "price": 179.99,
+      "offer_count": 19,
+      "stars": 4.55,
+      "review_count": 29,
+      "ref": "pr.v1.k1.ANIW7q9BHt1qYwr02xvCUAcPERbeMGiI3KANJGxNtfDB-of3yg"
+     },
+     {
+      "name": "Shark Clean & Self-Empty (BU3521EU)",
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/204674214_-clean-self-empty-bu3521eu-shark-clean.html",
+      "image": "https://cdn.idealo.com/folder/Product/204674/2/204674214/s1_produktbild_mobil/shark-clean-self-empty-bu3521eu.jpg",
+      "price": 244.0,
+      "offer_count": 5,
+      "stars": 4.4,
+      "review_count": 92,
+      "ref": "pr.v1.k1.V-_bR4Yh1PWIvjzPoKYX3sLzexR2iLYNY2iJq-Y05HQ7cOBVbA"
+     },
+     {
+      "name": "Dyson V8 Origin (2026)",
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/210209433_-v8-origin-2026-dyson.html",
+      "image": "https://cdn.idealo.com/folder/Product/210209/4/210209433/s1_produktbild_mobil/dyson-v8-origin-2026.jpg",
+      "price": 229.0,
+      "offer_count": 4,
+      "stars": 4.55,
+      "review_count": 31,
+      "ref": "pr.v1.k1.7O0C1gExxj5ZToERkgb8bmk9GfQW11dWNOQenjB4_BM5c0AKkQ"
+     }
+    ]
+   }
+  },
+  {
+   "type": "step",
+   "id": "specs",
+   "status": "done",
+   "title": "Specs plausible",
+   "data": []
+  },
+  {
+   "type": "step",
+   "id": "clones",
+   "status": "running",
+   "title": "Searching for the same product under other names"
+  },
+  {
+   "type": "step",
+   "id": "life",
+   "status": "running",
+   "title": "Collecting failure reports (DE/EN/FR)"
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "rebrand names",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 2931,
+     "prompt_tokens": 838,
+     "completion_tokens": 203,
+     "ts": 1795795191,
+     "output_preview": "{\"brands\": [\"Shark\", \"ZYNET\", \"LG\"], \"evidence\": [{\"brand\": \"Shark\", \"url\": \"https://www.sharkninja.com/vacuums-air-care/vacuum-cleaners/cordless-vacuums\"}, {\"brand\": \"ZYNET\", \"url\": \"https://www.walmart.com/ip/Cordless-Vacuum-Cleaner-600W-40kPa-Stick-Vacuum-40-Minute-Runtime-Handheld-Design-4-LED-Lights-for-Pet-Hair-Carpets-and-Hard-Floors/20849517853\"}, {\"brand\": \"LG\", \"url\": \"https://www.lg.com"
+    }
+   ]
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "classify failure reports",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 22323,
+     "prompt_tokens": 2864,
+     "completion_tokens": 1294,
+     "ts": 1795795191,
+     "output_preview": "{\"items\": [{\"i\": 0, \"relevant\": false, \"failure\": false, \"after_weeks\": null, \"component\": null, \"usage\": \"unknown\", \"lang\": \"de\", \"summary_en\": \"General maintenance instructions for the Dyson V8 vacuum cleaner, including filter cleaning and bin emptying. Not a case of failure or performance issue.\"}, {\"i\": 1, \"relevant\": true, \"failure\": true, \"after_weeks\": 12, \"component\": \"battery\", \"usage\": \""
+    },
+    {
+     "purpose": "dedupe reports across languages",
+     "model": "Qwen/Qwen3-Embedding-8B",
+     "status": 200,
+     "ms": 2309,
+     "prompt_tokens": 270,
+     "completion_tokens": 0,
+     "ts": 1795795213
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "clones",
+   "status": "warn",
+   "title": "Look-alikes: 0 visual match(es), 3 brand name(s)",
+   "data": {
+    "visual_matches": [],
+    "brands": [
+     "Shark",
+     "ZYNET",
+     "LG"
+    ],
+    "evidence": [
+     {
+      "brand": "Shark",
+      "url": "https://www.sharkninja.com/vacuums-air-care/vacuum-cleaners/cordless-vacuums"
+     },
+     {
+      "brand": "ZYNET",
+      "url": "https://www.walmart.com/ip/Cordless-Vacuum-Cleaner-600W-40kPa-Stick-Vacuum-40-Minute-Runtime-Handheld-Design-4-LED-Lights-for-Pet-Hair-Carpets-and-Hard-Floors/20849517853"
+     },
+     {
+      "brand": "LG",
+      "url": "https://www.lg.com/us/vacuum-cleaners"
+     }
+    ]
+   }
+  },
+  {
+   "type": "step",
+   "id": "life",
+   "status": "warn",
+   "title": "7 failure report(s), 6 distinct stories",
+   "data": {
+    "reports": [
+     {
+      "title": "Dyson V8 Cyclone | REVIEW | Surprisingly powerful or budget version?",
+      "url": "https://www.youtube.com/watch?v=76C2uxyktYA&vl=en-US",
+      "text": "Wechselakku, ja, das ist definitiv ein Feature, aber ansonsten war's das auch schon. Ihr habt hier kein Display Display, was euch irgendwas anzeigt oder irgendwelche anderen krassen Feature. Leider auch kein Licht hier vorne an der Hauptbürste dran. Und man sieht auch irgendwie gar nicht, wie voll der Akku gerade ist. Ja, wenn während ihr saugt so bei den letzten ja paar Minuten macht er einmal durch so einen kleinen Saugkraftverlust. Er macht dann irgendwie so und signalisiert euch so: \"Ey, [..",
+      "i": 1,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": 12,
+      "component": "battery",
+      "usage": "unknown",
+      "lang": "de",
+      "summary_en": "User reports a noticeable suction power drop during the last few minutes of operation, indicating battery degradation after about a year of use. No display to monitor battery level."
+     },
+     {
+      "title": "Support | Dyson V8™ cordless stick vacuum | Dyson",
+      "url": "https://www.dyson.com/support/vacuum-cleaners/cordless/v8/pinch-pre-filter",
+      "text": "The battery has run out – Charge it on the dock or at the socket.\n The cyclone isn't fitted correctly – Make sure the cyclone is fully pushed down.\n The battery needs replacing – Spares and accessories are listed above or order batteries at Dyson.com.\n The main body is faulty – Contact our customer support to organize a replacement.\n The charger is faulty – Spares and accessories are listed above or order a spare charger at Dyson.com. [...] If your Dyson V8™ is performing poorly, or losing sucti",
+      "i": 5,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": 36,
+      "component": "battery",
+      "usage": "unknown",
+      "lang": "en",
+      "summary_en": "User reports the Dyson V8 losing suction and requiring battery replacement after several years of use. Dyson support suggests battery replacement as a solution."
+     },
+     {
+      "title": "Dyson V8 Animal Troubleshooting - iFixit",
+      "url": "https://www.ifixit.com/Wiki/Dyson_V8_Animal_Troubleshooting",
+      "text": "The Device Experiences Pulsing Power\n  + Blocked Airway\n  + Old Filter\n  + Low Battery\n The Device Rattles\n  + Loose Tool Connection\n  + Blocked Bin\n The Device Has No Power\n  + Low Battery\n  + Blocked Airway\n  + Dirty Filters\n The Device’s Brushbar Does not Rotate\n  + Loose Connection\n  + Tangled or Jammed Brushbar\n  + Broken Brushbar\n The Device Has Low Suction\n  + Blocked Air Intake\n  + Blocked Shaft\n  + Blockage in Brushbar\n The Device’s LED Flashes\n  + Blue Light Flashing [...] The light on",
+      "i": 7,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": 36,
+      "component": "airway",
+      "usage": "unknown",
+      "lang": "en",
+      "summary_en": "User-reported issues with the Dyson V8 Animal including pulsing power, rattling, and low suction. Root causes include blocked airways, old filters, and low battery. Confirmed after several years of use."
+     },
+     {
+      "title": "How to Fix Dyson V7/V8 Stop & Start – Quick & Easy Solution",
+      "url": "https://www.youtube.com/watch?v=kP2cLDoXiBA",
+      "text": "[0:32] this case, if you have pets, a lot of hair can get stuck up in here. You want to remove it. Use your finger. Use\n[0:40] whatever. Throw it out. Next, pull up like you're emptying the bin. And on the side here, you see this red red button.\n[0:51] Hold that red button down with your other hand. You want to grab the cyclone and pull it out like so. [...] ### Transcript\n[0:00] Hey everyone, the vacuum doctor here and just quick video. If you have a Dyson V7\n[0:05] or V8 and it's doing this, t",
+      "i": 8,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": 36,
+      "component": "switch",
+      "usage": "unknown",
+      "lang": "en",
+      "summary_en": "User reports the Dyson V8 starts and stops immediately despite a fully charged battery. Suggests a faulty switch or internal electrical issue after 3 years of use."
+     },
+     {
+      "title": "Dyson Stick Vacuums Lose CR Recommendation Over Reliability Issues - Consumer Reports",
+      "url": "https://www.consumerreports.org/appliances/vacuum-cleaners/dyson-stick-vacuums-lose-cr-recommendation-over-reliability-issues-a3791934667",
+      "text": "The Dyson V8 Absolute, which CR deemed “the best stick vacuum we’ve ever tested” in September 2016 after it aced our key lab tests, relinquishes the top slot in our ratings that it has held since then. The Poor reliability ratings mean that the V8 and four other V-series models ranging in price from $300 to $700 lose their “recommended” designation and drop to the middle of the pack, followed by two more models that weren’t recommended. All seven Dyson stick vacuums we test now rate Very Good",
+      "i": 9,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": 36,
+      "component": "overall reliability",
+      "usage": "unknown",
+      "lang": "en",
+      "summary_en": "Consumer Reports removes the Dyson V8 from its recommended list due to poor reliability ratings. Multiple V-series models, including the V8, are reported to fail after 3–4 years of use."
+     },
+     {
+      "title": "Test Dyson V8 Cyclone : l'aspirateur-balai V8 remis au goût du jour, mais pas tout à fait… - Les Numériques",
+      "url": "https://www.lesnumeriques.com/aspirateur-balai/dyson-v8-cyclone-p77071/test.html",
+      "text": "Le V8 Cyclone ne bénéficie pas de la brosse Anti Tangle Cones du V16 Piston Animal. Un système de peigne a été prévu pour retenir les cheveux longs, mais d'après nos tests, celui-ci n'est pas des plus efficaces. En effet, on retrouve les quelques cheveux que nous avons répandus sur le sol dans la brosse rotative après être passé dessus. Et ce qui n'arrange pas vraiment les choses, l'extraction de la brosse n'est pas très aisée. Il faut en effet se munir d'un outil (manche de cuillère, pièce de [",
+      "i": 10,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": 12,
+      "component": "brush bar",
+      "usage": "hobby",
+      "lang": "fr",
+      "summary_en": "User reports the Dyson V8 Cyclone fails to effectively remove long hair from the brush bar, despite having an anti-tangle feature. The brush bar is difficult to remove and clean, leading to poor performance."
+     },
+     {
+      "title": "Les 6 problèmes et pannes les plus fréquents sur un aspirateur Dyson - Maniaques",
+      "url": "https://maniaques.fr/probleme-dyson-panne",
+      "text": "Répondre\n26. Dyson V8 une grosse merde !!!!! bien chère\n\n    Répondre\n27. 3 ans de fonctionnement en ayant remplacer la gchette très fragile. Et là, il démarre et s’arrête aussitôt. Batterie chargée, idem. Je suis d’accord avec la majorité des commentaires, « pas à la hauteur de la qualité vanté ». Déçu, je vais changer de marque et sûrement moins cher !!! [...] 32. Je vois que ns sommes nombreux à vivre les mêmes situations ! En 2018 j’ai acheté pour 9OO€ d’électroménager chez DARTY (cliente de",
+      "i": 11,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": 36,
+      "component": "switch",
+      "usage": "unknown",
+      "lang": "fr",
+      "summary_en": "User reports the Dyson V8 starts and stops immediately after 3 years of use, even with a fully charged battery. The user blames a fragile switch and expresses disappointment in the product's durability."
+     }
+    ],
+    "clusters": 6,
+    "tests": []
+   }
+  },
+  {
+   "type": "step",
+   "id": "cost",
+   "status": "running",
+   "title": "Working out the cost per day"
+  },
+  {
+   "type": "step",
+   "id": "cost",
+   "status": "done",
+   "title": "Cost per day",
+   "data": {
+    "rows": [
+     {
+      "name": "Dyson V8 Cyclone Akku-Staubsauger",
+      "price": 199,
+      "life_years": {
+       "low": 0.23,
+       "mid": 2.77,
+       "high": 8.0
+      },
+      "basis": "Failure reports show multiple failures at 12 and 36 weeks (battery, brush bar, switch, airway, overall reliability). 12-week failures (especially battery and brush bar) suggest low end of life is constrained by component wear. 36-week failures indicate mid-life durability. No long-term reliability data beyond 36 weeks. Dyson is a well-established brand with strong reviews and widespread availability, supporting higher-end estimates. However, battery degradation is a known issue in this model, pulling down the low estimate. Based on failure reports and brand reputation, life is estimated between 2–8 years.",
+      "per_day": {
+       "best": 0.178,
+       "mid": 0.306,
+       "worst": 2.48
+      },
+      "url": null,
+      "per_month": 9.3,
+      "per_year": 111.69
+     },
+     {
+      "name": "Dyson Car+Boat Handstaubsauger (586120-01)",
+      "price": 169.0,
+      "life_years": {
+       "low": 2.0,
+       "mid": 4.0,
+       "high": 6.0
+      },
+      "basis": "Smaller, specialized product with fewer reviews (29) and no dedicated failure reports. Designed for occasional use (car/boat), likely less durable than full-sized vacuums. No spare parts or repair data available. Brand is Dyson, so reliability is moderate, but product is rebranded and disposable in nature. Life estimate pulled down due to lack of testing data and limited use case. Established brand helps mid/high estimates.",
+      "per_day": {
+       "best": 0.187,
+       "mid": 0.225,
+       "worst": 0.341
+      },
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/206021995_-car-boat-handstaubsauger-586120-01-dyson.html",
+      "per_month": 6.84,
+      "per_year": 82.12
+     },
+     {
+      "name": "Bosch BSS71125AH",
+      "price": 179.99,
+      "life_years": {
+       "low": 3.0,
+       "mid": 6.0,
+       "high": 9.0
+      },
+      "basis": "Bosch is a well-established brand with strong reputation in household appliances. 29 reviews and 4.55 stars indicate solid user satisfaction. No failure reports found, but general reliability in this category supports longer life. No evidence of early failures. Product is a standard cordless vacuum with no known design flaws. Higher mid/high estimates justified by brand and review count. Lower end reflects average consumer use and lack of long-term data.",
+      "per_day": {
+       "best": 0.164,
+       "mid": 0.192,
+       "worst": 0.274
+      },
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/202900687_-bss71125ah-bosch.html",
+      "per_month": 5.84,
+      "per_year": 70.08
+     },
+     {
+      "name": "Shark Clean & Self-Empty (BU3521EU)",
+      "price": 244.0,
+      "life_years": {
+       "low": 3.0,
+       "mid": 6.0,
+       "high": 10.0
+      },
+      "basis": "High review count (92) and 4.4 stars indicate strong market acceptance. Self-emptying feature suggests higher build quality. No failure reports found. Brand is reputable, and product is designed for regular household use. Higher price point and advanced features support longer life. However, no evidence of long-term durability beyond 5 years. Mid/high estimates based on brand, reviews, and feature set. Low end reflects potential for motor or bin mechanism wear.",
+      "per_day": {
+       "best": 0.176,
+       "mid": 0.221,
+       "worst": 0.332
+      },
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/204674214_-clean-self-empty-bu3521eu-shark-clean.html",
+      "per_month": 6.72,
+      "per_year": 80.67
+     },
+     {
+      "name": "Dyson V8 Origin (2026)",
+      "price": 229.0,
+      "life_years": {
+       "low": 3.0,
+       "mid": 6.0,
+       "high": 9.0
+      },
+      "basis": "Newer model with updated design (2026), likely improved battery and motor. 31 reviews and 4.55 stars suggest good reliability. No failure reports. Dyson’s brand strength and product lineage support longer life. However, no long-term data available. Price and features justify higher mid/high estimates. Low end pulled down slightly due to lack of long-term evidence and known battery issues in previous V8 models.",
+      "per_day": {
+       "best": 0.179,
+       "mid": 0.214,
+       "worst": 0.319
+      },
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/210209433_-v8-origin-2026-dyson.html",
+      "per_month": 6.51,
+      "per_year": 78.11
+     }
+    ],
+    "consumables": [
+     {
+      "name": "Dyson V8 Battery Replacement",
+      "idealo_query": "Dyson V8 Akku Ersatz",
+      "units_per_year": 0.2,
+      "price_eur": 43.49,
+      "per_year": 8.7,
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/201003514_-li-ion-akku-2800mah-21-6v-passend-dyson-sv10-v8-v8-absolute-v8-absolute-cord-free-v8-animal-vhbw-vhbw.html",
+      "found": "vhbw Li-Ion Akku 2800mAh (21.6V) passend Dyson SV10, V8, V8 Absolute, V8 Absolute Cord-Free, V8 Animal - Vhbw"
+     },
+     {
+      "name": "Dyson V8 Filter",
+      "idealo_query": "Dyson V8 Filter",
+      "units_per_year": 0.5,
+      "price_eur": 7.49,
+      "per_year": 3.75,
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/211778347_-hepa-ersatzfilter-fuer-dyson-v7-v8-v10-v11-v12-sv12-70001702-cg-coolgadget.html",
+      "found": "Coolgadget HEPA-Ersatzfilter für Dyson V7, V8, V10, V11, V12, SV12 (70001702_CG)"
+     },
+     {
+      "name": "Dyson V8 Brush Bar",
+      "idealo_query": "Dyson V8 Bürstenaufsatz",
+      "units_per_year": 0.1,
+      "price_eur": 229.0,
+      "per_year": 22.9,
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/210209433_-v8-origin-2026-dyson.html",
+      "found": "Dyson V8 Origin (2026)"
+     }
+    ],
+    "energy_eur_year": 4.62,
+    "electricity_price": 0.37,
+    "usage_assumption": "Average household use: 30 minutes per day, 5 days per week",
+    "decisive_question": "Which vacuum cleaner offers the best balance of durability, low consumable cost, and long-term ownership value?"
+   }
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "lifetime + consumables estimate",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 17105,
+     "prompt_tokens": 660,
+     "completion_tokens": 1089,
+     "ts": 1795795215,
+     "output_preview": "{\"items\": [{\"name\": \"Dyson V8 Cyclone Akku-Staubsauger\", \"price_eur\": 199, \"life_years\": {\"low\": 2.0, \"mid\": 5.0, \"high\": 8.0}, \"basis\": \"Failure reports show multiple failures at 12 and 36 weeks (battery, brush bar, switch, airway, overall reliability). 12-week failures (especially battery and brush bar) suggest low end of life is constrained by component wear. 36-week failures indicate mid-life "
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "verdict",
+   "status": "running",
+   "title": "Deciding (live Nebius call)"
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "final verdict",
+     "model": "deepseek-ai/DeepSeek-V4-Pro-0813",
+     "status": 200,
+     "ms": 23774,
+     "prompt_tokens": 4041,
+     "completion_tokens": 2114,
+     "ts": 1795795235,
+     "output_preview": "{\"verdict\": \"BUY_ALTERNATIVE\", \"headline\": \"Avoid Dyson V8 Cyclone; buy Bosch BSS71125AH instead\", \"confidence\": \"medium\", \"reasons\": [{\"text\": \"Consumer Reports removed the Dyson V8 from its recommended list due to poor reliability; multiple V-series models fail after 3–4 years.\", \"tier\": \"A\", \"url\": \"https://www.consumerreports.org/appliances/vacuum-cleaners/dyson-stick-vacuums-lose-cr-recommend"
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "verdict",
+   "status": "done",
+   "title": "Decided (live Nebius call)"
+  },
+  {
+   "type": "verdict",
+   "data": {
+    "verdict": "BUY_ALTERNATIVE",
+    "headline": "Avoid Dyson V8 Cyclone; buy Bosch BSS71125AH instead",
+    "confidence": "medium",
+    "reasons": [
+     {
+      "text": "Consumer Reports removed the Dyson V8 from its recommended list due to poor reliability; multiple V-series models fail after 3–4 years.",
+      "tier": "A",
+      "url": "https://www.consumerreports.org/appliances/vacuum-cleaners/dyson-stick-vacuums-lose-cr-recommendation-over-reliability-issues-a3791934667"
+     },
+     {
+      "text": "Multiple user failure reports: switch failure after 3 years, battery degradation, and brush bar issues with long hair.",
+      "tier": "A",
+      "url": "https://www.ifixit.com/Wiki/Dyson_V8_Animal_Troubleshooting"
+     },
+     {
+      "text": "Estimated lifetime cost is high: mid-life only 2.77 years, €111.69/year plus consumables, versus Bosch BSS71125AH at €70.08/year.",
+      "tier": "B",
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/211849572_-v8-cyclone-494706-01-dyson.html"
+     },
+     {
+      "text": "Bosch BSS71125AH costs €179.99, has a 6-year mid-life estimate, no failure reports, and 4.55 stars from 29 reviews.",
+      "tier": "B",
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/202900687_-bss71125ah-bosch.html"
+     },
+     {
+      "text": "Dyson V8 Cyclone has 30 offers and 4.54 stars from only 41 reviews, with no independent tests to offset reliability concerns.",
+      "tier": "C",
+      "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/211849572_-v8-cyclone-494706-01-dyson.html"
+     }
+    ],
+    "better_alternative": "Bosch BSS71125AH (€179.99)",
+    "missing_fact": null,
+    "trust_adjusted_stars": 3.8
+   }
+  }
+ ],
+ "verdict": {
+  "verdict": "BUY_ALTERNATIVE",
+  "headline": "Avoid Dyson V8 Cyclone; buy Bosch BSS71125AH instead",
+  "confidence": "medium",
+  "reasons": [
+   {
+    "text": "Consumer Reports removed the Dyson V8 from its recommended list due to poor reliability; multiple V-series models fail after 3–4 years.",
+    "tier": "A",
+    "url": "https://www.consumerreports.org/appliances/vacuum-cleaners/dyson-stick-vacuums-lose-cr-recommendation-over-reliability-issues-a3791934667"
+   },
+   {
+    "text": "Multiple user failure reports: switch failure after 3 years, battery degradation, and brush bar issues with long hair.",
+    "tier": "A",
+    "url": "https://www.ifixit.com/Wiki/Dyson_V8_Animal_Troubleshooting"
+   },
+   {
+    "text": "Estimated lifetime cost is high: mid-life only 2.77 years, €111.69/year plus consumables, versus Bosch BSS71125AH at €70.08/year.",
+    "tier": "B",
+    "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/211849572_-v8-cyclone-494706-01-dyson.html"
+   },
+   {
+    "text": "Bosch BSS71125AH costs €179.99, has a 6-year mid-life estimate, no failure reports, and 4.55 stars from 29 reviews.",
+    "tier": "B",
+    "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/202900687_-bss71125ah-bosch.html"
+   },
+   {
+    "text": "Dyson V8 Cyclone has 30 offers and 4.54 stars from only 41 reviews, with no independent tests to offset reliability concerns.",
+    "tier": "C",
+    "url": "https://www.idealo.de/preisvergleich/OffersOfProduct/211849572_-v8-cyclone-494706-01-dyson.html"
+   }
+  ],
+  "better_alternative": "Bosch BSS71125AH (€179.99)",
+  "missing_fact": null,
+  "trust_adjusted_stars": 3.8
+ }
+}

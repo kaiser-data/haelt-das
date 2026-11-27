@@ -1,0 +1,407 @@
+{
+ "input": "USB Stick 2TB, USB 3.0 Speicherstick 2000GB, Metall, wasserdicht, 4,5 Sterne (920 Bewertungen), 15,99 €, no-name",
+ "events": [
+  {
+   "type": "step",
+   "id": "claim",
+   "status": "running",
+   "title": "Reading the listing"
+  },
+  {
+   "type": "step",
+   "id": "claim",
+   "status": "done",
+   "title": "Listing read",
+   "data": {
+    "title": "USB Stick 2TB, USB 3.0 Speicherstick 2000GB, Metall, wasserdicht",
+    "brand": null,
+    "model": null,
+    "category": "usb stick",
+    "price_eur": 15.99,
+    "stars": 4.5,
+    "review_count": 920,
+    "claimed_specs": {
+     "voltage_v": null,
+     "capacity_mah": null,
+     "weight_g": null,
+     "storage_tb": 2,
+     "lumen": null,
+     "health_claims": [],
+     "other": [
+      "USB 3.0",
+      "2000GB",
+      "Metall",
+      "wasserdicht"
+     ]
+    },
+    "idealo_exact_query": "no-name",
+    "idealo_generic_query": "USB-Stick 2TB",
+    "clone_image_query": "metal waterproof USB stick 2TB USB 3.0",
+    "failure_queries": {
+     "de": "USB Stick 2TB Probleme",
+     "en": "USB stick 2TB failures",
+     "fr": "Problèmes clé USB 2TB"
+    },
+    "image_url": null,
+    "source_url": null
+   }
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "read listing",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 4738,
+     "prompt_tokens": 335,
+     "completion_tokens": 257,
+     "ts": 1795794868,
+     "output_preview": "{\"title\": \"USB Stick 2TB, USB 3.0 Speicherstick 2000GB, Metall, wasserdicht\", \"brand\": null, \"model\": null, \"category\": \"usb stick\", \"price_eur\": 15.99, \"stars\": 4.5, \"review_count\": 920, \"claimed_specs\": {\"voltage_v\": null, \"capacity_mah\": null, \"weight_g\": null, \"storage_tb\": 2, \"lumen\": null, \"health_claims\": [], \"other\": [\"USB 3.0\", \"2000GB\", \"Metall\", \"wasserdicht\"]}, \"idealo_exact_query\": \"n"
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "idealo",
+   "status": "running",
+   "title": "Looking it up on idealo"
+  },
+  {
+   "type": "step",
+   "id": "idealo",
+   "status": "warn",
+   "title": "Not sold by any idealo shop",
+   "data": {
+    "exact": null,
+    "alternatives": []
+   }
+  },
+  {
+   "type": "step",
+   "id": "specs",
+   "status": "warn",
+   "title": "1 spec claim(s) don't add up",
+   "data": [
+    {
+     "severity": "high",
+     "rule": "fake_capacity",
+     "text": "2 TB for €16 is €8/TB. Genuine flash storage of this kind costs several times more; this pattern matches fake-capacity drives that report a size they do not have."
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "clones",
+   "status": "running",
+   "title": "Searching for the same product under other names"
+  },
+  {
+   "type": "step",
+   "id": "life",
+   "status": "running",
+   "title": "Collecting failure reports (DE/EN/FR)"
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "rebrand names",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 5621,
+     "prompt_tokens": 825,
+     "completion_tokens": 293,
+     "ts": 1795794881,
+     "output_preview": "{\"brands\": [\"Vansuny\", \"Walmart\", \"Takealot\", \"AliExpress\", \"eBay\"], \"evidence\": [{\"brand\": \"Vansuny\", \"url\": \"https://www.amazon.com/Vansuny-Waterproof-Memory-Portable-Tablets/dp/B0998WHY69\"}, {\"brand\": \"Walmart\", \"url\": \"https://www.walmart.com/ip/Waterproof-2TB-USB-3-0-Metal-Flash-Drive/5289962434\"}, {\"brand\": \"Takealot\", \"url\": \"https://www.takealot.com/usb-3-0-pendrive-2tb-high-speed-pen-driv"
+    }
+   ]
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "classify failure reports",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 24394,
+     "prompt_tokens": 2411,
+     "completion_tokens": 1389,
+     "ts": 1795794878,
+     "output_preview": "{\"items\": [{\"i\": 0, \"relevant\": true, \"failure\": true, \"after_weeks\": null, \"component\": \"storage capacity\", \"usage\": \"unknown\", \"lang\": \"en\", \"summary_en\": \"A user reports being unable to format a 2TB USB stick on Windows 10, suspecting it might be counterfeit or have a power issue with the SD card reader.\"}, {\"i\": 1, \"relevant\": true, \"failure\": true, \"after_weeks\": null, \"component\": \"device re"
+    },
+    {
+     "purpose": "dedupe reports across languages",
+     "model": "Qwen/Qwen3-Embedding-8B",
+     "status": 200,
+     "ms": 4152,
+     "prompt_tokens": 240,
+     "completion_tokens": 0,
+     "ts": 1795794903
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "clones",
+   "status": "warn",
+   "title": "Look-alikes: 0 visual match(es), 5 brand name(s)",
+   "data": {
+    "visual_matches": [],
+    "brands": [
+     "Vansuny",
+     "Walmart",
+     "Takealot",
+     "AliExpress",
+     "eBay"
+    ],
+    "evidence": [
+     {
+      "brand": "Vansuny",
+      "url": "https://www.amazon.com/Vansuny-Waterproof-Memory-Portable-Tablets/dp/B0998WHY69"
+     },
+     {
+      "brand": "Walmart",
+      "url": "https://www.walmart.com/ip/Waterproof-2TB-USB-3-0-Metal-Flash-Drive/5289962434"
+     },
+     {
+      "brand": "Takealot",
+      "url": "https://www.takealot.com/usb-3-0-pendrive-2tb-high-speed-pen-drive-metal-waterproof-usb-f/PLID98573876"
+     },
+     {
+      "brand": "AliExpress",
+      "url": "https://www.aliexpress.com/w/wholesale-2tb-usb-stick-3.0.html"
+     },
+     {
+      "brand": "eBay",
+      "url": "https://www.ebay.com/itm/398444829530"
+     }
+    ]
+   }
+  },
+  {
+   "type": "step",
+   "id": "life",
+   "status": "warn",
+   "title": "6 failure report(s), 6 distinct stories",
+   "data": {
+    "reports": [
+     {
+      "title": "Cant format 2TB USB stick on windows 10 - Microsoft Learn",
+      "url": "https://learn.microsoft.com/en-us/answers/questions/4290520/cant-format-2tb-usb-stick-on-windows-10",
+      "text": "2TB might be fake but 256GB cannot be fake at the same time. It may be power issue with the SD card reader built in, they are generally of USB",
+      "i": 0,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": null,
+      "component": "storage capacity",
+      "usage": "unknown",
+      "lang": "en",
+      "summary_en": "A user reports being unable to format a 2TB USB stick on Windows 10, suspecting it might be counterfeit or have a power issue with the SD card reader."
+     },
+     {
+      "title": "USB Drives with 2TB not recognizing no media problem - Reddit",
+      "url": "https://www.reddit.com/r/Windows10TechSupport/comments/mibeqj/usb_drives_with_2tb_not_recognizing_no_media",
+      "text": "I have a problem. When I insert a 2 TB Usb Drive into my laptop, my laptop detects it but it doesn't recognize it and I check in disk management",
+      "i": 1,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": null,
+      "component": "device recognition",
+      "usage": "unknown",
+      "lang": "en",
+      "summary_en": "A user reports that a 2TB USB drive is detected by the laptop but not recognized in Disk Management, indicating a failure to properly mount or identify the drive."
+     },
+     {
+      "title": "2TB USB Drives from eBay & AliExpress – Real or SCAM? Fake Flash Drive Test & Teardown",
+      "url": "https://www.youtube.com/watch?v=z9VgOwFtVEc",
+      "text": "Integrity on this drive so the best thing you can do for a drive like this is to adjust its capacity close to the actual one go ahead and right click the start button and choose Disk Management right click on your USB drive select delete volume then right click again and choose new simple volume let's create a 53 gig partition select Xbox file system so it's compatible with all platforms click next and finish now it's around the same test on the other USB drive wow that's incredibly slow okay [.",
+      "i": 2,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": null,
+      "component": "storage capacity",
+      "usage": "unknown",
+      "lang": "en",
+      "summary_en": "A YouTube video demonstrates testing a 2TB USB drive from eBay/AliExpress, revealing it is fake with actual capacity far below advertised; the user adjusts the partition size to match the real capacity, confirming the drive is misrepresented."
+     },
+     {
+      "title": "The 2TB Flash Drive Scam - Datarecovery.com",
+      "url": "https://datarecovery.com/2022/03/the-2tb-flash-drive-scam-why-high-capacity-flash-drives-are-fakes",
+      "text": "But neither manufacturer offers a 2TB USB flash drive for general audiences, and for good reason: High-capacity flash media is difficult to produce reliably, and most consumers don’t need to store a tremendous amount of data on a USB stick. External hard drives and solid-state drives are much better tools for transferring large amounts of data. [...] You’re browsing Amazon or eBay, and you see a great deal: A 2-terabyte (TB) USB thumb drive for about $40. Is it a great bargain, or a dangerous sc",
+      "i": 3,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": null,
+      "component": "product authenticity",
+      "usage": "unknown",
+      "lang": "en",
+      "summary_en": "An article from Datarecovery.com explains that 2TB USB flash drives sold on marketplaces like Amazon and eBay are typically scams, as manufacturers do not produce such high-capacity drives for general consumers due to technical and reliability challenges."
+     },
+     {
+      "title": "Problème avec les clés USB de 2 Téraoctes - Microsoft Learn",
+      "url": "https://learn.microsoft.com/fr-fr/answers/questions/3968762/probl-me-avec-les-cl-s-usb-de-2-t-raoctes",
+      "text": "Je les ai formaté en NTFS mais le formatage la clé USB LONOVO NTFS/4096 octets semble échouer (plus de 6 heures pour rien). Quelqu'un peut m'",
+      "i": 10,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": null,
+      "component": "formatting",
+      "usage": "unknown",
+      "lang": "fr",
+      "summary_en": "A user reports that formatting a 2TB USB stick (LONOVO brand) in NTFS fails after more than 6 hours, indicating a serious performance or hardware issue with the drive."
+     },
+     {
+      "title": "Problème avec une clé USB Sony de 2 To : r/linuxquestions - Reddit",
+      "url": "https://www.reddit.com/r/linuxquestions/comments/1lrlpmh/problem_with_2_tb_sony_usb?tl=fr",
+      "text": "Salut, oui, je vérifiais les paramètres de montage et c'était juste une mauvaise configuration. Et j'ai vérifié pour les partitions et ça dit",
+      "i": 11,
+      "relevant": true,
+      "failure": true,
+      "after_weeks": null,
+      "component": "device recognition",
+      "usage": "unknown",
+      "lang": "fr",
+      "summary_en": "A Reddit post from a Linux user discussing issues with a 2TB Sony USB drive, including mounting problems and partition configuration errors, suggesting a failure in proper recognition."
+     }
+    ],
+    "clusters": 6,
+    "tests": []
+   }
+  },
+  {
+   "type": "step",
+   "id": "cost",
+   "status": "running",
+   "title": "Working out the cost per day"
+  },
+  {
+   "type": "step",
+   "id": "cost",
+   "status": "done",
+   "title": "Cost per day",
+   "data": {
+    "rows": [
+     {
+      "name": "USB Stick 2TB, USB 3.0 Speicherstick 2000GB, Metall, wasserdicht",
+      "price": 15.99,
+      "life_years": {
+       "low": 2,
+       "mid": 5,
+       "high": 8
+      },
+      "basis": "No failure reports with specific timing; however, generic failure reports (e.g., device recognition, formatting) suggest reliability issues. Product is a throwaway rebrand with no spare parts or repairability data. High-end metal build and water resistance may extend life slightly. Based on typical USB stick lifecycle evidence: short for rebrands, longer for established brands with reviews. This product lacks brand credibility and repair data, so mid-life is conservative. Low end pulled down to 2 years due to unverified failure reports and lack of durability evidence.",
+      "per_day": {
+       "best": 0.005,
+       "mid": 0.009,
+       "worst": 0.022
+      },
+      "url": null,
+      "per_month": 0.27,
+      "per_year": 3.28
+     }
+    ],
+    "consumables": [],
+    "energy_eur_year": 0.0,
+    "electricity_price": 0.37,
+    "usage_assumption": "Used intermittently for file transfers, not continuously powered.",
+    "decisive_question": "Is the product likely to fail due to unverified reliability issues before 5 years, despite its metal and water-resistant design?"
+   }
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "lifetime + consumables estimate",
+     "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+     "status": 200,
+     "ms": 4336,
+     "prompt_tokens": 433,
+     "completion_tokens": 270,
+     "ts": 1795794907,
+     "output_preview": "{\"items\": [{\"name\": \"USB Stick 2TB, USB 3.0 Speicherstick 2000GB, Metall, wasserdicht\", \"price_eur\": 15.99, \"life_years\": {\"low\": 2, \"mid\": 5, \"high\": 8}, \"basis\": \"No failure reports with specific timing; however, generic failure reports (e.g., device recognition, formatting) suggest reliability issues. Product is a throwaway rebrand with no spare parts or repairability data. High-end metal build"
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "verdict",
+   "status": "running",
+   "title": "Deciding (live Nebius call)"
+  },
+  {
+   "type": "calls",
+   "calls": [
+    {
+     "purpose": "final verdict",
+     "model": "deepseek-ai/DeepSeek-V4-Pro-0813",
+     "status": 200,
+     "ms": 8571,
+     "prompt_tokens": 1820,
+     "completion_tokens": 770,
+     "ts": 1795794911,
+     "output_preview": "{\"verdict\": \"AVOID\", \"headline\": \"2TB for €16 is a fake-capacity scam\", \"confidence\": \"high\", \"reasons\": [{\"text\": \"2TB for €16 is €8/TB, far below genuine flash storage cost; this matches known fake-capacity drives that report a size they do not have.\", \"tier\": \"A\", \"url\": \"https://datarecovery.com/2022/03/the-2tb-flash-drive-scam-why-high-capacity-flash-drives-are-fakes\"}, {\"text\": \"Multiple ind"
+    }
+   ]
+  },
+  {
+   "type": "step",
+   "id": "verdict",
+   "status": "done",
+   "title": "Decided (live Nebius call)"
+  },
+  {
+   "type": "verdict",
+   "data": {
+    "verdict": "AVOID",
+    "headline": "2TB for €16 is a fake-capacity scam",
+    "confidence": "high",
+    "reasons": [
+     {
+      "text": "2TB for €16 is €8/TB, far below genuine flash storage cost; this matches known fake-capacity drives that report a size they do not have.",
+      "tier": "A",
+      "url": "https://datarecovery.com/2022/03/the-2tb-flash-drive-scam-why-high-capacity-flash-drives-are-fakes"
+     },
+     {
+      "text": "Multiple independent failure reports show formatting, recognition, and authenticity problems, with actual capacity far below advertised.",
+      "tier": "A",
+      "url": "https://www.youtube.com/watch?v=z9VgOwFtVEc"
+     },
+     {
+      "text": "The same product appears under many throwaway brands across AliExpress, eBay, Walmart, and Takealot, indicating a rebrand cycle with no reliable manufacturer support.",
+      "tier": "B",
+      "url": "https://www.aliexpress.com/w/wholesale-2tb-usb-stick-3.0.html"
+     }
+    ],
+    "better_alternative": "Buy a genuine 128GB or 256GB USB 3.0 stick from SanDisk, Samsung, or Kingston",
+    "missing_fact": null,
+    "trust_adjusted_stars": 1.5
+   }
+  }
+ ],
+ "verdict": {
+  "verdict": "AVOID",
+  "headline": "2TB for €16 is a fake-capacity scam",
+  "confidence": "high",
+  "reasons": [
+   {
+    "text": "2TB for €16 is €8/TB, far below genuine flash storage cost; this matches known fake-capacity drives that report a size they do not have.",
+    "tier": "A",
+    "url": "https://datarecovery.com/2022/03/the-2tb-flash-drive-scam-why-high-capacity-flash-drives-are-fakes"
+   },
+   {
+    "text": "Multiple independent failure reports show formatting, recognition, and authenticity problems, with actual capacity far below advertised.",
+    "tier": "A",
+    "url": "https://www.youtube.com/watch?v=z9VgOwFtVEc"
+   },
+   {
+    "text": "The same product appears under many throwaway brands across AliExpress, eBay, Walmart, and Takealot, indicating a rebrand cycle with no reliable manufacturer support.",
+    "tier": "B",
+    "url": "https://www.aliexpress.com/w/wholesale-2tb-usb-stick-3.0.html"
+   }
+  ],
+  "better_alternative": "Buy a genuine 128GB or 256GB USB 3.0 stick from SanDisk, Samsung, or Kingston",
+  "missing_fact": null,
+  "trust_adjusted_stars": 1.5
+ }
+}

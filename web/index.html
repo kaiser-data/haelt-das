@@ -168,15 +168,20 @@ function renderReceipt(cost){
   lines.push(`<div class="row"><span>${esc(me.name).slice(0,38)}</span><b>${eur(me.price)}</b></div>`);
   for (const c of cost.consumables || []) lines.push(`<div class="row"><span>+ ${esc(c.name)} / year</span><b>${eur(c.per_year)}</b></div>`);
   if (cost.energy_eur_year) lines.push(`<div class="row"><span>+ electricity / year</span><b>${eur(cost.energy_eur_year)}</b></div>`);
-  lines.push(`<div class="row"><span>expected life</span><b>${me.life_years.low}–${me.life_years.high} yrs</b></div>`);
+  if (!me.not_working) lines.push(`<div class="row"><span>expected life</span><b>${me.life_years.low}–${me.life_years.high} yrs</b></div>`);
   if (me.per_wear) {
     lines.push(`<div class="row"><span>expected wears</span><b>${me.wears.low}–${me.wears.high}</b></div>`);
     lines.push(`<hr><div class="row big"><span>PER WEAR</span><span>${eur(me.per_wear.mid)}</span></div>`);
     lines.push(`<div class="note">range ${eur(me.per_wear.high)}–${eur(me.per_wear.low)} per wear</div>`);
   }
-  lines.push(`<hr><div class="row big"><span>PER DAY</span><span>${eur(me.per_day.mid)}</span></div>`);
-  lines.push(`<div class="row"><span>per month · per year</span><b>${eur(me.per_month)} · ${eur(me.per_year)}</b></div>`);
-  lines.push(`<div class="note">range ${eur(me.per_day.best)}–${eur(me.per_day.worst)} per day · ${esc(me.basis||"")}</div>`);
+  if (me.not_working) {
+    lines.push(`<hr><div class="row big"><span>PER DAY</span><span>n/a</span></div>`);
+    lines.push(`<div class="note">listing says "${esc(me.not_working)}": not a working product, so there are no days of use to price</div>`);
+  } else {
+    lines.push(`<hr><div class="row big"><span>PER DAY</span><span>${eur(me.per_day.mid)}</span></div>`);
+    lines.push(`<div class="row"><span>per month · per year</span><b>${eur(me.per_month)} · ${eur(me.per_year)}</b></div>`);
+    lines.push(`<div class="note">range ${eur(me.per_day.best)}–${eur(me.per_day.worst)} per day · ${esc(me.basis||"")}</div>`);
+  }
   if (alts.length){
     lines.push(`<hr><div class="row"><span><b>COMPARE</b></span><span>per day</span></div>`);
     for (const a of alts) lines.push(`<div class="row"><span><a href="${esc(a.url)}" target="_blank">${esc(a.name).slice(0,36)}</a> ${eur(a.price)}</span><b>${eur(a.per_day.mid)}</b></div>`);
@@ -191,6 +196,8 @@ function onStep(ev){
   stepEl(ev);
   if (ev.status === "running") return;
   const d = ev.data;
+  if (ev.id === "condition" && d)
+    card(`<h3>Not a working product</h3><div class="flag high">${esc(d.text)}</div>`);
   if (ev.id === "specs" && d?.length)
     card(`<h3>Spec claims that don't add up</h3>` + d.map(f => `<div class="flag ${f.severity}">${esc(f.text)}</div>`).join(""));
   if (ev.id === "clones" && d){

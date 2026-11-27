@@ -18,7 +18,8 @@ CONSUMABLE_CATEGORIES = ("printer", "coffee", "espresso", "capsule", "toothbrush
 CLAIM_SCHEMA = """{
  "title": str, "brand": str|null, "model": str|null,
  "category": str (short English, e.g. "cordless drill", "usb stick", "projector", "power bank", "printer", "smartwatch"),
- "price_eur": number|null, "stars": number|null, "review_count": int|null,
+ "price_eur": number|null, "condition": str|null (item condition exactly as written in the listing, e.g. "neu", "gebraucht", "defekt - nicht funktionsfähig"),
+ "condition_code": "new"|"used"|"refurbished"|"defective"|null ("defective" only if the listing says the item itself is broken or sold for parts), "stars": number|null, "review_count": int|null,
  "claimed_specs": {"voltage_v": number|null, "capacity_mah": number|null, "weight_g": number|null,
                    "storage_tb": number|null, "lumen": number|null, "health_claims": [str], "other": [str]},
  "idealo_exact_query": str (brand + model for an exact catalogue search),
@@ -227,12 +228,14 @@ async def running_cost(claim, found, life):
         "Life: base it on evidence. Failure reports with after_weeks must pull 'low' down to that range; throwaway rebrand "
         "products without tests or spare parts get short lives; established brands with many shops and reviews get longer ones.\n"
         "Consumables: ONLY parts the product needs to keep working and that wear out by design (ink, capsules, filters, "
-        "brush heads, blades). Not accessories, not optional bits. Many products have none: return []. Reply JSON:\n"
+        "brush heads, blades). Not accessories, not optional bits. Many products have none: return []. "
+        "Wears: for clothing, shoes and home textiles estimate how many times the item will be worn/used before it is worn out (use material and failure reports); for everything else return null. Reply JSON:\n"
         '{"items": [{"name": str, "price_eur": number, "life_years": {"low": number, "mid": number, "high": number}, '
         '"basis": str}], "consumables": [{"name": str, "idealo_query": str, "units_per_year": number}], '
-        '"energy_kwh_per_year": number|null, "usage_assumption": str, "decisive_question": str}\n'
+        '"energy_kwh_per_year": number|null, "usage_assumption": str, "decisive_question": str, '
+        '"wears": {"low": number, "mid": number, "high": number}|null}\n'
         "items[0] must be the product the user looks at; then each alternative in order.\n"
-        f"Product: {json.dumps({k: claim.get(k) for k in ('title', 'brand', 'category', 'price_eur', 'stars', 'review_count')}, ensure_ascii=False)}\n"
+        f"Product: {json.dumps({k: claim.get(k) for k in ('title', 'brand', 'category', 'price_eur', 'stars', 'review_count', 'is_clothing', 'material')}, ensure_ascii=False)}\n"
         f"Alternatives: {json.dumps([{k: a[k] for k in ('name', 'price', 'stars', 'review_count', 'offer_count')} for a in alts], ensure_ascii=False)}\n"
         f"Failure reports: {json.dumps([{k: r.get(k) for k in ('after_weeks', 'component', 'usage')} for r in life.get('reports', []) if r.get('failure')], ensure_ascii=False)}",
         purpose="lifetime + consumables estimate", max_tokens=2500)
@@ -269,13 +272,18 @@ async def running_cost(claim, found, life):
                      "per_day": {"best": round(per_day(life_y.get("high")), 3), "mid": round(per_day(life_y.get("mid")), 3),
                                  "worst": round(per_day(life_y.get("low")), 3)},
                      "url": alts[idx - 1]["url"] if idx > 0 and idx - 1 < len(alts) else claim.get("source_url")})
+    broken = rules.not_working(claim)
+    if rows and broken:  # a broken unit has no days of use to spread the price over, and nothing to run
+        rows[0].update(not_working=broken, life_years={"low": None, "mid": None, "high": None},
+                       per_day={"best": None, "mid": None, "worst": None})
+        consumables, energy = [], 0.0
     for r in rows:
         mid = r["per_day"]["mid"]
-        r["per_month"], r["per_year"] = round(mid * 30.4, 2), round(mid * 365, 2)
-    wears = plan.get("wears")
-    if claim.get("is_clothing") and wears and rows:
+        r["per_month"], r["per_year"] = (None, None) if mid is None else (round(mid * 30.4, 2), round(mid * 365, 2))
+    wears = rules.wear_counts(plan.get("wears"))
+    if claim.get("is_clothing") and wears and rows and not broken:
         p = rows[0]["price"] or 0
-        rows[0]["per_wear"] = {k: round(p / max(float(wears.get(k) or 1), 1), 2) for k in ("low", "mid", "high")}
+        rows[0]["per_wear"] = {k: round(p / wears[k], 2) for k in ("low", "mid", "high")}
         rows[0]["wears"] = wears
     return {"rows": rows, "consumables": consumables, "energy_eur_year": round(energy, 2),
             "electricity_price": ELECTRICITY_EUR_PER_KWH, "usage_assumption": plan.get("usage_assumption"),
@@ -375,6 +383,11 @@ async def run(inp):
                      title=f"French durability index {fr['overall']}/10 (repair {fr['repairability']}, reliability {fr['reliability']})",
                      data=fr)
 
+    broken = rules.not_working(claim)
+    if broken:
+        yield _event("step", id="condition", status="warn", title="Sold as broken or for parts: no cost per day",
+                     data={"phrase": broken, "text": f"The listing says \"{broken}\": this is a broken unit or a donor for "
+                                                       "parts, not a working product. There is no cost per day of use to compare."})
     flags = rules.check(claim.get("claimed_specs") or {}, claim.get("price_eur"), claim.get("category", ""))
     yield _event("step", id="specs", status="warn" if flags else "done",
                  title=f"{len(flags)} spec claim(s) don't add up" if flags else "Specs plausible", data=flags)
@@ -429,7 +442,7 @@ async def run(inp):
         yield c
 
     yield _event("step", id="verdict", status="running", title="Deciding (live Nebius call)")
-    v = await verdict({"claim": public_claim, "idealo": found, "spec_flags": flags, "clone_family": clones,
+    v = await verdict({"claim": public_claim, "sold_as_broken": broken, "idealo": found, "spec_flags": flags, "clone_family": clones,
                        "french_durability_index": fr, "responsibility": resp, "lifetime": {"reports": [{k: r.get(k) for k in ("url", "failure", "after_weeks", "component", "usage", "summary_en")}
                                                 for r in life.get("reports", [])], "tests": life.get("tests")},
                        "cost": cost})

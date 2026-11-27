@@ -12,3 +12,4 @@ samples/*.log
 .DS_Store
 data/fr_durabilite/
 demo/ext_badge.png
+.pytest_cache/

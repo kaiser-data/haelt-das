@@ -7,12 +7,15 @@ self.addEventListener("install", event => {
   event.waitUntil(caches.open(SHELL).then(cache => cache.addAll(SHELL_FILES)).then(() => self.skipWaiting()));
 });
 
+async function dropOldShells() {
+  // one at a time: there are only ever a handful of our own old shell versions to delete
+  for (const key of await caches.keys()) {
+    if (key.startsWith("haeltdas-shell-") && key !== SHELL) await caches.delete(key);
+  }
+}
+
 self.addEventListener("activate", event => {
-  event.waitUntil(
-    caches.keys()
-      .then(keys => Promise.all(keys.filter(k => k.startsWith("haeltdas-shell-") && k !== SHELL).map(k => caches.delete(k))))
-      .then(() => self.clients.claim())
-  );
+  event.waitUntil(dropOldShells().then(() => self.clients.claim()));
 });
 
 self.addEventListener("fetch", event => {

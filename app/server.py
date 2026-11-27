@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 
 load_dotenv(Path(__file__).resolve().parent.parent / ".env")
 
-from fastapi import FastAPI, HTTPException, Request  # noqa: E402
+from fastapi import FastAPI, HTTPException, Request, status  # noqa: E402
 from fastapi.middleware.cors import CORSMiddleware  # noqa: E402
 from fastapi.responses import FileResponse, StreamingResponse  # noqa: E402
 
@@ -39,18 +39,18 @@ app = FastAPI(title="Hält das?")
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
 
 
-@app.get("/")
+@app.get("/", status_code=status.HTTP_200_OK, summary="The web app")
 async def index():
     return FileResponse(WEB / "index.html")
 
 
 # Installable app (PWA): manifest with a share target, service worker at the root scope, icons
-@app.get("/manifest.webmanifest")
+@app.get("/manifest.webmanifest", status_code=status.HTTP_200_OK, summary="PWA manifest with share target")
 async def manifest():
     return FileResponse(WEB / "manifest.webmanifest", media_type="application/manifest+json")
 
 
-@app.get("/sw.js")
+@app.get("/sw.js", status_code=status.HTTP_200_OK, summary="Service worker (app shell cache)")
 async def service_worker():
     return FileResponse(WEB / "sw.js", media_type="text/javascript", headers={"Cache-Control": "no-cache"})
 
@@ -58,10 +58,10 @@ async def service_worker():
 ICONS = {p.name: p for p in (WEB / "icons").glob("*.png")}
 
 
-@app.get("/icons/{name}")
+@app.get("/icons/{name}", status_code=status.HTTP_200_OK, summary="App icons")
 async def icon(name: str):
     if name not in ICONS:  # only the files that exist at startup, never a path from the request
-        raise HTTPException(status_code=404)
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND)
     return FileResponse(ICONS[name], media_type="image/png")
 
 
@@ -124,7 +124,7 @@ async def _replay_stream(inp):
     yield _sse({"type": "end"})
 
 
-@app.post("/api/replay")
+@app.post("/api/replay", status_code=status.HTTP_200_OK, summary="Replay a recorded live run as SSE")
 async def replay(req: Request):
     """Demo recording mode: stream a saved live run (samples/batch) with the same events, at a recordable pace."""
     try:
@@ -135,7 +135,7 @@ async def replay(req: Request):
                              headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"})
 
 
-@app.post("/api/check")
+@app.post("/api/check", status_code=status.HTTP_200_OK, summary="Check a listing live, streamed as SSE")
 async def check(req: Request):
     if REPLAY_ONLY:
         return await replay(req)

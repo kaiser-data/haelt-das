@@ -108,6 +108,29 @@
   .report:last-child{border-bottom:0}
   .report .pill{font-size:10.5px;padding:1px 7px;text-transform:uppercase}
   .err{color:var(--red);font-weight:600}
+  .hero{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-card);padding:30px 32px 28px}
+  .hero h1{font:700 34px/1.12 var(--sans);letter-spacing:-.03em;margin:0;text-wrap:balance}
+  .hero h1 span{color:var(--brand)}
+  .hero .lead{color:var(--muted);font-size:16px;margin:10px 0 22px;max-width:60ch}
+  .promises{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:0 0 26px;padding:0;list-style:none}
+  .promises li{border-top:2px solid var(--ink);padding-top:10px;font-size:14px;color:var(--muted)}
+  .promises b{display:block;color:var(--ink);font-size:15px;margin-bottom:2px}
+  .examples{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .ex{all:unset;box-sizing:border-box;cursor:pointer;display:block;border:1px solid var(--line);border-radius:var(--r-card);padding:14px 16px;background:var(--canvas);transition:border-color .15s, transform .15s}
+  .ex:hover{border-color:var(--ink);transform:translateY(-1px)}
+  .ex:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+  .ex .vp{display:inline-block;font:700 11px var(--sans);letter-spacing:.06em;color:#fff;border-radius:999px;padding:3px 9px}
+  .ex .t{font:600 15px/1.3 var(--sans);margin:10px 0 4px;color:var(--ink)}
+  .ex .d{font-size:13px;color:var(--muted);line-height:1.45}
+  .ex .go{font:600 12px var(--sans);color:var(--ink);margin-top:10px}
+  .vp.AVOID{background:var(--red)} .vp.BUY_ALTERNATIVE{background:var(--blue)} .vp.ASK{background:var(--amber)}
+  @media (max-width:900px){.promises,.examples{grid-template-columns:1fr}}
+  .evpills{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+  .evpill{font:600 12px var(--sans);background:rgba(255,255,255,.75);border:1px solid rgba(21,19,15,.12);color:var(--ink);border-radius:999px;padding:4px 10px}
+  .evpill i{font-style:normal;color:var(--muted);font-weight:600;margin-right:4px}
+  .ticker .step{position:relative;border-bottom:0}
+  .ticker .step:not(:last-child)::after{content:"";position:absolute;left:9px;top:31px;bottom:-8px;width:2px;background:var(--line)}
+  .muted-note{font-size:12px;color:var(--faint);font-weight:400;text-transform:none;letter-spacing:0}
   .replay-note{display:none;font:600 11px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:var(--line-2);border-radius:999px;padding:4px 10px;margin-left:auto}
   body.replay .replay-note{display:inline-block}
   body.replay header{position:sticky;top:0;z-index:5}
@@ -147,12 +170,27 @@
   <div class="grid">
     <section>
       <h3>Live analysis</h3>
-      <div class="ticker" id="ticker"><div class="empty">Waiting for a product…</div></div>
+      <div class="ticker" id="ticker"><div class="empty">Each step appears here as the agent works.</div></div>
       <h3 style="margin-top:22px">Nebius Token Factory calls</h3>
       <div class="callsum" id="callsum"></div>
       <div class="calls" id="calls">no calls yet</div>
     </section>
     <section>
+      <div class="hero" id="hero">
+        <h1>Will it last? Know before you pay<span>.</span></h1>
+        <p class="lead">Paste any listing, a link or a screenshot. An agent checks it the way an experienced buyer would, and every reason links to a source where one exists.</p>
+        <ul class="promises">
+          <li><b>What it really costs</b>price spread over the life you can expect, per day or per wear</li>
+          <li><b>Who is tricking you</b>inflated specs, rebrands under other names, unproven green claims</li>
+          <li><b>When it doesn't know</b>conflicting evidence gets ASK and the one fact that would decide</li>
+        </ul>
+        <h3>Recorded examples</h3>
+        <div class="examples">
+          <button class="ex" data-chip="21V"><span class="vp BUY_ALTERNATIVE">BUY ALTERNATIVE</span><div class="t">No-name „21V" drill, €39.99</div><div class="d">4.7★, but sold under 8 brand names and by no idealo shop.</div><div class="go">See the check →</div></button>
+          <button class="ex" data-chip="USB stick"><span class="vp AVOID">AVOID</span><div class="t">„2 TB" USB stick, €15.99</div><div class="d">€8 per terabyte: the size can't be real.</div><div class="go">See the check →</div></button>
+          <button class="ex" data-chip="LG OLED"><span class="vp ASK">ASK</span><div class="t">LG OLED TV, €1,799</div><div class="d">Official index 8/10 vs failure reports: what would decide it?</div><div class="go">See the check →</div></button>
+        </div>
+      </div>
       <div class="verdict" id="verdict"></div>
       <div class="receipt" id="receipt"></div>
       <div class="cards" id="cards"></div>
@@ -263,6 +301,10 @@ function onStep(ev){
   stepEl(ev);
   if (ev.status === "running") return;
   const d = ev.data;
+  if (ev.id === "idealo" && d) state.idealo = d;
+  if (ev.id === "specs") state.flags = d || [];
+  if (ev.id === "life" && d) state.fails = (d.reports || []).filter(r => r.failure).length;
+  if (ev.id === "clones" && d) state.brands = (d.brands || []).length;
   if (ev.id === "condition" && d)
     card(`<h3>Not a working product</h3><div class="flag high">${esc(d.text)}</div>`);
   if (ev.id === "specs" && d?.length)
@@ -271,7 +313,8 @@ function onStep(ev){
     const imgs = (d.visual_matches||[]).map(m => `<figure><img src="${esc(m.image)}" loading="lazy"><figcaption>${esc(m.brand_on_image_2||"look-alike")} · ${esc(m.same)}</figcaption></figure>`).join("");
     const src = Object.fromEntries((d.evidence||[]).map(e => [e.brand, e.url]));
     const brands = (d.brands||[]).map(b => src[b] ? `<a class="pill" href="${esc(src[b])}" target="_blank" title="source">${esc(b)} ↗</a>` : `<span class="pill">${esc(b)}</span>`).join("");
-    if (imgs || brands) card(`<h3>Same product, other names</h3>${brands ? `<div>${brands}</div>` : ""}${imgs ? `<div class="family" style="margin-top:10px">${imgs}</div>` : ""}`);
+    const how = imgs ? "" : ` <span class="muted-note">· found by name, no image match</span>`;
+    if (imgs || brands) card(`<h3>Same product, other names${how}</h3>${brands ? `<div>${brands}</div>` : ""}${imgs ? `<div class="family" style="margin-top:10px">${imgs}</div>` : ""}`);
   }
   if (ev.id === "life" && d?.reports?.length){
     const rs = d.reports.filter(r => r.failure).map(r => `<div class="report">${r.after_weeks ? `<b>after ${esc(r.after_weeks)} wk</b> · ` : ""}${esc(r.summary_en)} <span class="pill">${esc(r.lang)}</span> <a href="${esc(r.url)}" target="_blank">source</a></div>`).join("");
@@ -304,12 +347,24 @@ function verdictStats(v){
   return out.length ? `<div class="vs">${out.join("")}</div>` : "";
 }
 
+// the hard, checkable evidence right under the decision
+function evidencePills(){
+  const out = [];
+  const i = state.idealo;
+  if (i) out.push(i.exact ? `<span class="evpill"><i>idealo</i>${esc(i.exact.offer_count)} shops sell it</span>` : `<span class="evpill"><i>idealo</i>no shop sells it</span>`);
+  if (state.flags?.length) out.push(`<span class="evpill"><i>physics</i>${state.flags.length > 1 ? state.flags.length + " spec claims don't" : "1 spec claim doesn't"} add up</span>`);
+  if (state.fails) out.push(`<span class="evpill"><i>reports</i>${state.fails} failure report${state.fails > 1 ? "s" : ""}</span>`);
+  if (state.brands > 1) out.push(`<span class="evpill"><i>look-alikes</i>${state.brands} other brand names</span>`);
+  return out.length ? `<div class="evpills">${out.join("")}</div>` : "";
+}
+
 function onVerdict(v){
   const el = $("#verdict");
   el.className = "verdict " + v.verdict;
   el.innerHTML = `<div class="v" data-label="${esc(v.verdict.replace("_"," "))}">confidence ${esc(v.confidence)}${v.trust_adjusted_stars ? ` · trust-adjusted ${esc(v.trust_adjusted_stars)}★` : ""}</div>
     <div class="h">${esc(v.headline)}</div>
     ${verdictStats(v)}
+    ${evidencePills()}
     ${v.better_alternative ? `<div class="meta"><b>Better</b> ${esc(v.better_alternative)}</div>` : ""}
     ${v.missing_fact ? `<div class="meta"><b>What would change my mind</b> ${esc(v.missing_fact)}</div>` : ""}`;
   el.style.display = "block";
@@ -332,13 +387,20 @@ addEventListener("message", e => {
   run();
 });
 
+document.querySelectorAll(".ex").forEach(b => b.onclick = () => {
+  const chip = [...document.querySelectorAll(".chip")].find(c => c.textContent.includes(b.dataset.chip));
+  if (chip) chip.click();
+});
+
 async function run(){
   const q = $("#q").value.trim();
   if (!q && !image && !pagePayload) return;
   $("#go").disabled = true;
+  $("#hero").style.display = "none";
   $("#ticker").innerHTML = ""; $("#cards").innerHTML = ""; $("#calls").innerHTML = "no calls yet"; $("#callsum").textContent = ""; nCalls = 0; callTot.ms = 0; callTot.tok = 0; callTot.models.clear(); state.stars = null; state.alts = [];
   $("#verdict").style.display = "none"; $("#receipt").style.display = "none";
   for (const k in steps) delete steps[k]; nCalls = 0;
+  state.idealo = null; state.flags = []; state.fails = 0; state.brands = 0;
   const body = pagePayload ? {page: pagePayload} : image ? {image} : (/^https?:\/\//.test(q) ? {url:q} : {text:q});
   pagePayload = null;
   try{

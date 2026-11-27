@@ -132,7 +132,8 @@ async def _hash_from(src):
             import imagehash
             from PIL import Image
             raw = base64.b64decode(src.split(",", 1)[1])
-            return imagehash.phash(Image.open(io.BytesIO(raw)).convert("RGB"))
+            with Image.open(io.BytesIO(raw)) as img:
+                return imagehash.phash(img.convert("RGB"))
         except Exception:  # noqa: BLE001
             return None
     return await web.image_hash(src)

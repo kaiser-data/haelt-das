@@ -68,6 +68,10 @@ Every call goes through `app/llm.py` and appears in the UI's call log (model, la
   PR #9 (demo replay + installable app) showed the same pattern twice more: 4 issues → fixed; then Norma flagged our
   fix for its *unbounded `Promise.all`* rule as *sequential await in a loop*. Resolution: a bounded `Promise.all`
   (at most 10 of our own old caches). 4 → 1 → 0 ✅. All 9 PRs were merged only after a clean Norma check.
+- **Norma inside the agent loop (tie-break):** the Norma MCP runs in the Claude Code session. `get_open_issues`
+  pulled the open findings, the agent fixed the ones in app code (blocking file I/O inside async in `app/idealo.py`,
+  connect-phase timeouts in `app/llm.py`/`app/idealo.py`, PIL images closed with `with`), `live_check` confirmed both
+  core files clean before the push, and `register_applied_actions` wrote the 5 fixes to the audit trail (PR #11).
 - **What we deliberately left:** (1) The pre-existing issues Norma lists in the files we touched (7 on the last PR
   check, from the baseline scan). Our rule for the day: a PR may not *introduce* an issue; old ones are fixed when
   we touch their cause (e.g. the old `print()` in `app/store.py` went with the logging fix), not mass-edited for

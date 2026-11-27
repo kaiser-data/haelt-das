@@ -1,4 +1,5 @@
 """Async client for the idealo MCP server (token from scripts/idealo_mcp.py login)."""
+import asyncio
 import json
 import re
 import secrets
@@ -11,19 +12,20 @@ BASE = "https://mcp.idealo.com"
 MCP_URL = f"{BASE}/mcp"
 TOKEN_FILE = Path(__file__).resolve().parent.parent / ".idealo_token.json"
 
-_client = httpx.AsyncClient(timeout=60)
+CONNECT_TIMEOUT = 5  # a dead host shows up in seconds; only reading the answer may take long
+_client = httpx.AsyncClient(timeout=httpx.Timeout(60, connect=CONNECT_TIMEOUT))
 _state = {"sid": None, "calls": 0}
 
 
 async def _token():
-    tok = json.loads(TOKEN_FILE.read_text())
+    tok = json.loads(await asyncio.to_thread(TOKEN_FILE.read_text, encoding="utf-8"))
     if time.time() > tok["obtained_at"] + tok.get("expires_in", 3600) - 60 and tok.get("refresh_token"):
         r = await _client.post(f"{BASE}/oauth2/token", data={
             "grant_type": "refresh_token", "refresh_token": tok["refresh_token"], "client_id": tok["client_id"],
         })
         if r.status_code < 300:
             tok.update(r.json(), obtained_at=int(time.time()))
-            TOKEN_FILE.write_text(json.dumps(tok, indent=2))
+            await asyncio.to_thread(TOKEN_FILE.write_text, json.dumps(tok, indent=2), encoding="utf-8")
     return tok["access_token"]
 
 

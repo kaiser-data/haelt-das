@@ -1,24 +1,34 @@
-// Reads the product facts from the page the user is looking at (in their own browser, no server-side scraping)
-// and hands them to the Hält das? app in the iframe.
-function grab() {
-  const txt = s => document.querySelector(s)?.innerText?.trim() || null;
-  const meta = n => document.querySelector(`meta[property="${n}"],meta[name="${n}"]`)?.content || null;
-  const imgs = [meta("og:image"), ...[...document.images].filter(i => i.naturalWidth >= 300).map(i => i.src)]
-    .filter(Boolean).slice(0, 4);
-  const body = document.body.innerText.replace(/\s+\n/g, "\n").slice(0, 9000);
-  return {
-    url: location.href,
-    title: meta("og:title") || document.title,
-    price: txt(".a-price .a-offscreen") || meta("product:price:amount") || null,
-    rating: txt("#acrPopover") || null,
-    reviews: txt("#acrCustomerReviewText") || null,
-    bullets: txt("#feature-bullets") || null,
-    images: imgs,
-    text: body,
-  };
+// Side panel: hands the product page to the Hält das? app (iframe) and sends the verdict back to the page badge.
+const frame = document.getElementById("app");
+let ready = false, queued = null, currentTab = null;
+frame.addEventListener("load", () => { ready = true; if (queued) send(queued); });
+
+function send(job) {
+  currentTab = job.tabId;
+  if (!ready) { queued = job; return; }
+  queued = null;
+  frame.contentWindow.postMessage({ type: "haeltdas-page", page: job.page }, "*");
 }
-document.getElementById("check").onclick = async () => {
+
+async function grabActive() {
   const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-  const [{ result }] = await chrome.scripting.executeScript({ target: { tabId: tab.id }, func: grab });
-  document.getElementById("app").contentWindow.postMessage({ type: "haeltdas-page", page: result }, "*");
-};
+  const [{ result }] = await chrome.scripting.executeScript({
+    target: { tabId: tab.id },
+    func: () => ({ url: location.href, title: document.title, text: document.body.innerText.slice(0, 8000),
+                   images: [document.querySelector('meta[property="og:image"]')?.content].filter(Boolean) }),
+  });
+  send({ tabId: tab.id, page: result });
+}
+document.getElementById("check").onclick = grabActive;
+
+// a click on the page badge that happened before this panel existed
+chrome.storage.session.get("pending").then(({ pending }) => {
+  if (pending && Date.now() - pending.at < 15000) { chrome.storage.session.remove("pending"); send(pending); }
+});
+chrome.runtime.onMessage.addListener(msg => {
+  if (msg?.type === "haeltdas-run") { chrome.storage.session.remove("pending"); send(msg); }
+});
+addEventListener("message", e => {
+  if (e.data?.type === "haeltdas-result" && currentTab != null)
+    chrome.runtime.sendMessage({ type: "haeltdas-verdict-from-panel", tabId: currentTab, verdict: e.data.verdict, perDay: e.data.perDay });
+});

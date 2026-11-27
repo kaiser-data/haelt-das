@@ -26,8 +26,10 @@ async def save_check(inp, claim, found, flags, clones, life, cost, verdict, call
         "verdict_full": verdict, "nebius_calls": calls,
     }
     try:
-        r = await _client.post(f"{url}/rest/v1/checks", json=row, headers={
-            "apikey": key, "Authorization": f"Bearer {key}", "Prefer": "return=representation"})
+        headers = {"apikey": key, "Prefer": "return=representation"}
+        if not key.startswith("sb_"):  # legacy service_role JWT also goes in Authorization; new sb_secret_ keys do not
+            headers["Authorization"] = f"Bearer {key}"
+        r = await _client.post(f"{url}/rest/v1/checks", json=row, headers=headers)
         r.raise_for_status()
         return r.json()[0]["id"]
     except Exception as e:  # noqa: BLE001 - a storage outage must never break a live check

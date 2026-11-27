@@ -7,6 +7,10 @@ experienced buyer would and prints a *receipt from the future*: the price per da
 
 > I bought a cordless drill with 4.7★. Six weeks later the chuck broke. Then I found the same drill under other names.
 
+![Architecture: client → FastAPI → six-stage pipeline → Nebius, idealo, Tavily, data.gouv.fr, Supabase](docs/architecture.svg)
+
+How the pieces fit: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
+
 ## What it checks
 | Check | How | Source |
 |---|---|---|

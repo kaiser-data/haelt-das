@@ -3,7 +3,7 @@
 LIION_MAX_WH_PER_KG = 270  # best commercial Li-ion cells; packs with housing are lower
 
 # Listings that sell a broken unit or a part: a cost per day of use is meaningless for them.
-NOT_WORKING_TERMS = ("defekt", "nicht funktionsfähig", "funktioniert nicht", "ersatzteil", "für bastler", "bastlerware",
+NOT_WORKING_TERMS = ("defekt", "nicht funktionsfähig", "funktioniert nicht", "für bastler", "bastlerware",
                      "for parts", "not working", "spares or repair", "pour pièces", "hors service", "en panne")
 
 

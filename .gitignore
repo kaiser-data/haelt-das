@@ -11,3 +11,4 @@ samples/*.log
 *.pyc
 .DS_Store
 data/fr_durabilite/
+demo/ext_badge.png

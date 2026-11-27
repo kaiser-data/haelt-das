@@ -1,6 +1,6 @@
 """FastAPI server: POST /api/check streams pipeline events as Server-Sent Events; / serves the website."""
 import json
-import traceback
+import logging
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -12,6 +12,21 @@ from fastapi.middleware.cors import CORSMiddleware  # noqa: E402
 from fastapi.responses import FileResponse, StreamingResponse  # noqa: E402
 
 from app import pipeline  # noqa: E402
+
+log = logging.getLogger("app.server")
+
+
+def _configure_app_logging():
+    """Send our own 'app.*' loggers to stderr under uvicorn; the root logger stays untouched for importers."""
+    app_log = logging.getLogger("app")
+    if not app_log.handlers:
+        handler = logging.StreamHandler()
+        handler.setFormatter(logging.Formatter("%(asctime)s %(levelname)s %(name)s: %(message)s"))
+        app_log.addHandler(handler)
+        app_log.setLevel(logging.INFO)
+
+
+_configure_app_logging()
 
 WEB = Path(__file__).resolve().parent.parent / "web"
 app = FastAPI(title="Hält das?")
@@ -32,7 +47,7 @@ async def check(req: Request):
             async for ev in pipeline.run(inp):
                 yield f"data: {json.dumps(ev, ensure_ascii=False, default=str)}\n\n"
         except Exception as e:  # noqa: BLE001 - surface the error in the UI instead of a dead stream
-            traceback.print_exc()
+            log.exception("check failed for input kinds %s", sorted(k for k in inp if inp.get(k)))
             yield f"data: {json.dumps({'type': 'error', 'message': str(e)})}\n\n"
         yield "data: {\"type\": \"end\"}\n\n"
 

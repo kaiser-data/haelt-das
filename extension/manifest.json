@@ -1,11 +1,12 @@
 {
   "manifest_version": 3,
   "name": "Hält das?",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "What a product really costs per day, how long it lasts, and whether someone is trying to trick you.",
-  "permissions": ["sidePanel", "activeTab", "scripting", "tabs"],
+  "permissions": ["sidePanel", "activeTab", "scripting", "tabs", "storage"],
   "host_permissions": ["http://127.0.0.1:8787/*"],
   "action": {"default_title": "Hält das? Check this product"},
   "side_panel": {"default_path": "panel.html"},
-  "background": {"service_worker": "background.js"}
+  "background": {"service_worker": "background.js"},
+  "content_scripts": [{"matches": ["https://*/*"], "js": ["content.js"], "run_at": "document_idle"}]
 }

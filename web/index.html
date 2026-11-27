@@ -222,7 +222,7 @@ function onStep(ev){
   }
   if (ev.id === "fr" && d)
     card(`<h3>Official French durability index</h3><div class="row" style="display:flex;gap:18px;align-items:baseline"><span style="font:800 34px var(--sans)">${d.overall}</span><span>/10 · repairability <b>${d.repairability}</b> · reliability <b>${d.reliability}</b></span></div><div class="report">${esc(d.model)} · filed by ${esc(d.filed_by)} · ${esc(d.date||"")} ${d.detail_url ? `<a href="${esc(d.detail_url)}" target="_blank">scoring sheet</a>` : ""}</div><div class="note" style="font-size:12px;color:var(--muted)">${esc(d.source)}</div>`);
-  if (ev.id === "cost") renderReceipt(d);
+  if (ev.id === "cost") { renderReceipt(d); window.__perDay = d?.rows?.[0]?.per_day?.mid ?? null; }
 }
 
 function onVerdict(v){
@@ -233,6 +233,7 @@ function onVerdict(v){
     ${v.better_alternative ? `<div class="meta">Better: ${esc(v.better_alternative)}</div>` : ""}
     ${v.missing_fact ? `<div class="meta">What would change my mind: ${esc(v.missing_fact)}</div>` : ""}`;
   el.style.display = "block";
+  if (window.parent !== window) window.parent.postMessage({type: "haeltdas-result", verdict: v.verdict, perDay: window.__perDay}, "*");
   const rs = (v.reasons||[]).map(r => `<div class="reason"><div class="tier t${esc(r.tier)}">${esc(r.tier)}</div><div>${esc(r.text)} ${r.url ? `<a href="${esc(r.url)}" target="_blank">source</a>` : ""}</div></div>`).join("");
   const c = card(`<h3>Why · evidence tier A = hard to fake · C = cheap signal</h3>${rs}`);
   $("#cards").prepend(c);

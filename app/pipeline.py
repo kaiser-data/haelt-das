@@ -6,9 +6,12 @@ import asyncio
 import base64
 import io
 import json
+import logging
 import math
 
 from app import fr_index, idealo, llm, rules, store, web
+
+log = logging.getLogger(__name__)
 
 ELECTRICITY_EUR_PER_KWH = 0.37  # assumption, shown in the UI and adjustable
 # Only these product types have running consumables worth pricing; for tools, bits and chargers are not running costs.
@@ -48,7 +51,10 @@ async def understand(inp):
         return claim
     page = None
     if inp.get("page"):  # from the browser extension
-        page = inp["page"]
+        diag = {k: inp["page"][k] for k in ("jsonld_skipped", "grab_error") if inp["page"].get(k)}
+        if diag:  # extension diagnostics belong in the server log, not in the model prompt
+            log.info("extension diagnostics for %s: %s", inp["page"].get("url"), diag)
+        page = {k: v for k, v in inp["page"].items() if k not in ("jsonld_skipped", "grab_error")}
         text = json.dumps(page, ensure_ascii=False)[:12000]
         img = (page.get("images") or [None])[0]
     elif inp.get("url"):
@@ -66,15 +72,22 @@ async def understand(inp):
                                 system=system, purpose="read listing")
     claim["image_url"] = img
     claim["source_url"] = inp.get("url") or (page or {}).get("url")
+    if page and page.get("gtin"):
+        claim["gtin"] = str(page["gtin"])
     return claim
 
 
 async def find_on_idealo(claim):
     out = {"exact": None, "alternatives": []}
-    res = (await idealo.search(claim.get("idealo_exact_query") or claim["title"])).get("results") or []
+    res, by_gtin = [], False
+    if claim.get("gtin"):  # barcode from the shop page's structured data: an exact match, not a fuzzy one
+        res = (await idealo.search(claim["gtin"])).get("results") or []
+        by_gtin = bool(res)
+    if not res:
+        res = (await idealo.search(claim.get("idealo_exact_query") or claim["title"])).get("results") or []
     brand = (claim.get("brand") or "").lower()
     for r in res[:5]:
-        if brand and brand in r["name"].lower():
+        if by_gtin or (brand and brand in r["name"].lower()):
             d = await idealo.details(r["productRef"])
             offers = d.get("offers") or []
             out["exact"] = {

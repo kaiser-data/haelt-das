@@ -121,7 +121,7 @@
 <header>
   <div class="mark">Hält das<span>?</span></div>
   <div class="tag">What it really costs per day, how long it lasts, and whether someone is trying to trick you.</div>
-  <div class="replay-note" title="Events of a recorded live run, played back faster for the video">Replay of a recorded live run · sped up</div>
+  <div class="replay-note" title="Events of a recorded live run, played back faster; no live calls are made">Recorded live run · 27 Nov 2026 · replayed faster · live checks off</div>
 </header>
 <main>
   <form class="input" id="f">
@@ -200,7 +200,15 @@ function card(html){ const d = document.createElement("div"); d.className = "car
 
 function renderReceipt(cost){
   const r = $("#receipt"); if (!cost?.rows?.length) return;
-  const [me, ...alts] = cost.rows;
+  const [me, ...rest] = cost.rows;
+  // one row per model: the cheapest offer, so the same product never shows up twice in the comparison
+  const byModel = new Map();
+  for (const a of rest) {
+    const key = String(a.name || "").toLowerCase().replace(/[^a-z0-9]/g, "");
+    const seen = byModel.get(key);
+    if (!seen || (a.price ?? Infinity) < (seen.price ?? Infinity)) byModel.set(key, a);
+  }
+  const alts = [...byModel.values()];
   const lines = [];
   lines.push(`<div class="title">RECEIPT FROM THE FUTURE</div><div class="sub">what it really costs you · ${new Date().toLocaleDateString("de-DE")}</div>`);
   lines.push(`<div class="row"><span>${esc(me.name).slice(0,38)}</span><b>${eur(me.price)}</b></div>`);
@@ -328,6 +336,12 @@ if (sharedText && !document.body.classList.contains("embed")) {
   $("#q").value = sharedText;
   history.replaceState(null, "", "/");
   run();
+}
+// Public demo link: start the first recorded example right away, so the first screen is never empty
+const IS_LOCAL = ["127.0.0.1", "localhost"].includes(location.hostname);
+if (REPLAY && !IS_LOCAL && !sharedText) {
+  const first = document.querySelector(".chip");
+  if (first) { $("#q").value = first.dataset.q; run(); }
 }
 if ("serviceWorker" in navigator && !document.body.classList.contains("embed")) {
   navigator.serviceWorker.register("/sw.js").catch(e => card(`<div class="err">Offline mode unavailable: ${esc(e.message)}</div>`));

@@ -299,7 +299,7 @@ function verdictStats(v){
     out.push(`<div><b><s>${esc(state.stars)}★</s> → ${esc(v.trust_adjusted_stars)}★</b>shown → trust-adjusted rating</div>`);
   const me = window.__perDay, alts = state.alts || [];
   const best = alts.reduce((m, a) => (!m || a.per_day.mid < m.per_day.mid) ? a : m, null);
-  if (me && best && me / best.per_day.mid >= 1.5)
+  if (["AVOID", "BUY_ALTERNATIVE"].includes(v.verdict) && me && best && me / best.per_day.mid >= 1.5)
     out.push(`<div><b>${Math.round(me / best.per_day.mid)}× more per day</b>than ${esc(best.name)} (${eur(me)} vs ${eur(best.per_day.mid)})</div>`);
   return out.length ? `<div class="vs">${out.join("")}</div>` : "";
 }

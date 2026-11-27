@@ -65,9 +65,13 @@ Every call goes through `app/llm.py` and appears in the UI's call log (model, la
   code* (the server-side diagnostics line) → we moved the whole app (pipeline, store, server) to `logging`; then
   1 Low *logging.basicConfig outside `__main__`* → only the `app.*` logger is configured, the root logger is left to
   whoever imports us. Sequence on PR #3: **6 → 2 → 1 → 1 → 0** ✅, each step a cause fixed, nothing deleted.
-- **Finding we accepted:** <rule> in `app/pipeline.py` / `app/web.py`: untrusted web text (search snippets, listing
-  pages) is passed into model prompts. That is the product's purpose; mitigations: JSON-only outputs, the decision
-  model never executes tools, every claim must cite a URL, the UI escapes all model output.
+- **What we deliberately left:** (1) The pre-existing issues Norma lists in the files we touched (7 on the last PR
+  check, from the baseline scan). Our rule for the day: a PR may not *introduce* an issue; old ones are fixed when
+  we touch their cause (e.g. the old `print()` in `app/store.py` went with the logging fix), not mass-edited for
+  score. (2) A risk we accept by design: untrusted web text (search snippets, listing pages) goes into model
+  prompts in `app/pipeline.py` / `app/web.py`. Reading that text is the product's job. Mitigations: JSON-only
+  outputs, no model can call tools or act, every reason must cite a URL a human can open, the UI escapes all
+  model output, and extension diagnostics are kept out of prompts. Norma's Security area scores 100 %.
 - **Consistency example:** the two agents disagreed on missing numbers. Grok's PR #5 filled a missing wear count
   with 1 (`wears.get(k) or 1`), so an empty estimate showed the full price as "cost per wear". The repo's rule,
   stated in the extraction prompt, is *never invent numbers; use null*. Codex's review caught it; `rules.wear_counts`
